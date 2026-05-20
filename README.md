@@ -4,6 +4,8 @@ A general-purpose React UI component library with accessible, themeable componen
 
 📖 **[Browse the components on Storybook](https://open-resource-discovery.github.io/ui-components/)**
 
+> AI-agent-friendly project map: [`llms.txt`](./llms.txt).
+
 ## Installation
 
 ```bash

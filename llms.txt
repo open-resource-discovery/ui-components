@@ -1,0 +1,80 @@
+# @open-resource-discovery/ui-components
+
+> Accessible, themeable React UI components built on Base UI and Tailwind v4 — part of the Open Resource Discovery toolset.
+
+Install: `npm install @open-resource-discovery/ui-components`. Peer deps: React 18+ or 19, react-dom 18+ or 19. Optional peers: `shiki` for `CodeBlock`, `@monaco-editor/react` for `CodeEditor`. Wrap the app in `<ThemeRoot>` and import `'@open-resource-discovery/ui-components/styles'` once at the entry point. Theming is driven by `--ord-*` CSS variables on the `.ord-ui` class; `.ord-ui.dark` switches to dark mode.
+
+## Getting Started
+
+- [Storybook (live docs)](https://open-resource-discovery.github.io/ui-components/): Interactive demos and prop tables for every component.
+- [Source on GitHub](https://github.com/open-resource-discovery/ui-components): README, contribution guide, license.
+- [Quick start](https://github.com/open-resource-discovery/ui-components#quick-start): Wrap the app in `<ThemeRoot>`, import the stylesheet, render components.
+
+## Theming
+
+- [Colours](https://open-resource-discovery.github.io/ui-components/?path=/story/styleguide-colours--default): Surface, brand, state, and border tokens — light and dark.
+- [Typography](https://open-resource-discovery.github.io/ui-components/?path=/story/styleguide-typography--default): Type scale and weight ramp.
+- [Radius & spacing](https://open-resource-discovery.github.io/ui-components/?path=/story/styleguide-radius-spacing--default): Corner radii and 4px-grid spacing.
+- [ThemeRoot](https://open-resource-discovery.github.io/ui-components/?path=/story/theme-themeroot--light): Required wrapper that scopes `.ord-ui` and exposes tokens.
+
+## Components
+
+### Forms & input
+
+- [Button](https://open-resource-discovery.github.io/ui-components/?path=/story/components-button--default)
+- [Input](https://open-resource-discovery.github.io/ui-components/?path=/story/components-input--default)
+- [Textarea](https://open-resource-discovery.github.io/ui-components/?path=/story/components-textarea--default)
+- [PasswordInput](https://open-resource-discovery.github.io/ui-components/?path=/story/components-passwordinput--default)
+- [Checkbox](https://open-resource-discovery.github.io/ui-components/?path=/story/components-checkbox--default)
+- [Switch](https://open-resource-discovery.github.io/ui-components/?path=/story/components-switch--default)
+- [Combobox / SimpleCombobox](https://open-resource-discovery.github.io/ui-components/?path=/story/components-combobox--default)
+- [Select / SimpleSelect](https://open-resource-discovery.github.io/ui-components/?path=/story/components-select--default)
+- [Field](https://open-resource-discovery.github.io/ui-components/?path=/story/components-field--default)
+
+### Layout
+
+- [Card / SimpleCard](https://open-resource-discovery.github.io/ui-components/?path=/story/components-card--default)
+- [Tabs](https://open-resource-discovery.github.io/ui-components/?path=/story/components-tabs--default)
+- [Separator](https://open-resource-discovery.github.io/ui-components/?path=/story/components-separator--horizontal)
+- [ScrollArea](https://open-resource-discovery.github.io/ui-components/?path=/story/components-scrollarea--default)
+- [SplitPane](https://open-resource-discovery.github.io/ui-components/?path=/story/components-splitpane--two-panes)
+- [CollapsibleSection](https://open-resource-discovery.github.io/ui-components/?path=/story/components-collapsiblesection--default)
+- [SectionCard](https://open-resource-discovery.github.io/ui-components/?path=/story/components-sectioncard--basic)
+
+### Feedback & display
+
+- [Badge](https://open-resource-discovery.github.io/ui-components/?path=/story/components-badge--default)
+- [Tooltip](https://open-resource-discovery.github.io/ui-components/?path=/story/components-tooltip--default)
+- [Avatar](https://open-resource-discovery.github.io/ui-components/?path=/story/components-avatar--with-image)
+- [Progress](https://open-resource-discovery.github.io/ui-components/?path=/story/components-progress--default)
+- [Spinner](https://open-resource-discovery.github.io/ui-components/?path=/story/components-spinner--default)
+- [ValidationEntry](https://open-resource-discovery.github.io/ui-components/?path=/story/components-validationentry--pass)
+
+### Code & content
+
+- [CodeBlock](https://open-resource-discovery.github.io/ui-components/?path=/story/components-codeblock--default)
+- [CodeEditor](https://open-resource-discovery.github.io/ui-components/?path=/story/components-codeeditor--default)
+- [MarkdownText](https://open-resource-discovery.github.io/ui-components/?path=/story/components-markdowntext--default)
+- [HttpLogEntry](https://open-resource-discovery.github.io/ui-components/?path=/story/components-httplogentry--success)
+
+### Chat
+
+- [ChatMessage](https://open-resource-discovery.github.io/ui-components/?path=/story/components-chatmessage--user-message)
+- [ChatInput](https://open-resource-discovery.github.io/ui-components/?path=/story/components-chatinput--default)
+- [TypingIndicator](https://open-resource-discovery.github.io/ui-components/?path=/story/components-typingindicator--default)
+
+### Composite
+
+- [ConnectionCard](https://open-resource-discovery.github.io/ui-components/?path=/story/components-connectioncard--default)
+- [InfoCard](https://open-resource-discovery.github.io/ui-components/?path=/story/components-infocard--default)
+
+## Theme primitives
+
+- [ThemeRoot](https://github.com/open-resource-discovery/ui-components/blob/main/src/theme/ThemeRoot.tsx): Required wrapper exposing `.ord-ui` and CSS tokens.
+- [useTheme](https://github.com/open-resource-discovery/ui-components/blob/main/src/theme/useTheme.ts): Hook for reading and setting `'light' | 'dark' | 'system'`.
+
+## Optional
+
+- [Claude Code skill](https://github.com/open-resource-discovery/ui-components/blob/main/.claude/skills/ord-ui/SKILL.md): Auto-loaded guidance for Claude Code users in downstream projects.
+- [License (Apache-2.0)](https://github.com/open-resource-discovery/ui-components/blob/main/LICENSE)
+- [REUSE compliance](https://github.com/open-resource-discovery/ui-components/blob/main/REUSE.toml)
