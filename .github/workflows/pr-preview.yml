@@ -1,0 +1,47 @@
+name: PR Preview
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, reopened, synchronize, closed]
+
+jobs:
+  pr-preview:
+    permissions:
+      contents: read
+      actions: write # required for upload-artifact in fork PRs
+      pull-requests: read
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Setup Node
+        if: github.event.action != 'closed'
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24.15.0"
+
+      - name: Build preview
+        if: github.event.action != 'closed'
+        env:
+          PR_PREVIEW_NUMBER: ${{ github.event.pull_request.number }}
+          STORYBOOK_BASE_URL: /pr-preview/ui-components/pr-${{ github.event.pull_request.number }}/
+          NODE_ENV: production
+        run: |
+          set -euo pipefail
+          npm ci
+          npm run build-storybook
+
+      - name: PR preview
+        uses: open-resource-discovery/pr-preview-action@main
+        with:
+          fork: true
+          target-repo: open-resource-discovery/pr-preview
+          pages-base-url: https://open-resource-discovery.github.io/pr-preview
+          umbrella-dir: ui-components
+          token: ${{ secrets.PR_PREVIEW_TOKEN }}
+          build-dir: storybook-static

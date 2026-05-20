@@ -1,0 +1,109 @@
+{
+  "name": "@open-resource-discovery/ui-components",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "Apache-2.0",
+  "description": "A general-purpose React UI component library with accessible, themeable components",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/open-resource-discovery/ui-components.git"
+  },
+  "homepage": "https://github.com/open-resource-discovery/ui-components#readme",
+  "bugs": {
+    "url": "https://github.com/open-resource-discovery/ui-components/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "accessible",
+    "themeable",
+    "design-system",
+    "open-resource-discovery"
+  ],
+  "main": "./dist/ui-components.cjs",
+  "module": "./dist/ui-components.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/ui-components.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/ui-components.cjs"
+      }
+    },
+    "./styles": "./dist/ui-components.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "test": "vitest run --passWithNoTests",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "@monaco-editor/react": "^4.0.0",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "shiki": "^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "shiki": {
+      "optional": true
+    },
+    "@monaco-editor/react": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.5.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "react-markdown": "^10.1.0",
+    "react-resizable-panels": "^4.11.1",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "@monaco-editor/react": "^4.7.0",
+    "@sap/eslint-config": "^0.5.1",
+    "@storybook/addon-docs": "^10.4.0",
+    "@storybook/react": "^10.4.0",
+    "@storybook/react-vite": "^10.4.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "@testing-library/jest-dom": "^6.6.0",
+    "@testing-library/react": "^16.0.0",
+    "@types/react": "^19.2.15",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^6.0.2",
+    "ajv": "^8.20.0",
+    "eslint": "^10.4.0",
+    "eslint-plugin-storybook": "10.4.0",
+    "jsdom": "^29.1.1",
+    "prettier": "^3.4.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "shiki": "^4.1.0",
+    "storybook": "^10.4.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.13",
+    "vite-plugin-dts": "^5.0.1",
+    "vitest": "^4.1.7"
+  }
+}

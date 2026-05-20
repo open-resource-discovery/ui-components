@@ -1,0 +1,52 @@
+.ord-ui {
+  --ord-radius: 0.625rem;
+  --ord-background: #ffffff;
+  --ord-foreground: #0b1120;
+  --ord-primary: #172554;
+  --ord-primary-foreground: #f8fafc;
+  --ord-secondary: #f1f5f9;
+  --ord-secondary-foreground: #0b1120;
+  --ord-muted: #f1f5f9;
+  --ord-muted-foreground: #6b7280;
+  --ord-accent: #f1f5f9;
+  --ord-accent-foreground: #0b1120;
+  --ord-destructive: #dc2626;
+  --ord-destructive-foreground: #ffffff;
+  --ord-success: #22c55e;
+  --ord-success-foreground: #ffffff;
+  --ord-warning: #f59e0b;
+  --ord-warning-foreground: #ffffff;
+  --ord-border: #e2e8f0;
+  --ord-input: #e2e8f0;
+  --ord-ring: #64748b;
+  --ord-card: #ffffff;
+  --ord-card-foreground: #0b1120;
+  --ord-popover: #ffffff;
+  --ord-popover-foreground: #0b1120;
+}
+
+.ord-ui.dark {
+  --ord-background: #1e1e1e;
+  --ord-foreground: #d4d4d4;
+  --ord-primary: #0098ff;
+  --ord-primary-foreground: #1e1e1e;
+  --ord-secondary: #2d2d30;
+  --ord-secondary-foreground: #d4d4d4;
+  --ord-muted: #2d2d30;
+  --ord-muted-foreground: #969696;
+  --ord-accent: #2d2d30;
+  --ord-accent-foreground: #d4d4d4;
+  --ord-destructive: #f44747;
+  --ord-destructive-foreground: #ffffff;
+  --ord-success: #16a34a;
+  --ord-success-foreground: #ffffff;
+  --ord-warning: #ff9800;
+  --ord-warning-foreground: #ffffff;
+  --ord-border: #3e3e42;
+  --ord-input: #3e3e42;
+  --ord-ring: #0098ff;
+  --ord-card: #252526;
+  --ord-card-foreground: #d4d4d4;
+  --ord-popover: #252526;
+  --ord-popover-foreground: #d4d4d4;
+}

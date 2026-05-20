@@ -1,0 +1,82 @@
+@import "tailwindcss";
+@import "../theme/tokens.css";
+
+@theme inline {
+  --color-background: var(--ord-background);
+  --color-foreground: var(--ord-foreground);
+  --color-primary: var(--ord-primary);
+  --color-primary-foreground: var(--ord-primary-foreground);
+  --color-secondary: var(--ord-secondary);
+  --color-secondary-foreground: var(--ord-secondary-foreground);
+  --color-muted: var(--ord-muted);
+  --color-muted-foreground: var(--ord-muted-foreground);
+  --color-accent: var(--ord-accent);
+  --color-accent-foreground: var(--ord-accent-foreground);
+  --color-destructive: var(--ord-destructive);
+  --color-destructive-foreground: var(--ord-destructive-foreground);
+  --color-success: var(--ord-success);
+  --color-success-foreground: var(--ord-success-foreground);
+  --color-warning: var(--ord-warning);
+  --color-warning-foreground: var(--ord-warning-foreground);
+  --color-border: var(--ord-border);
+  --color-input: var(--ord-input);
+  --color-ring: var(--ord-ring);
+  --color-card: var(--ord-card);
+  --color-card-foreground: var(--ord-card-foreground);
+  --color-popover: var(--ord-popover);
+  --color-popover-foreground: var(--ord-popover-foreground);
+  --radius: var(--ord-radius);
+}
+
+.ord-ui {
+  color: var(--ord-foreground);
+}
+
+.ord-ui :where(*) {
+  border-color: var(--ord-border);
+}
+
+/* Progress indeterminate animation */
+@keyframes progress-indeterminate {
+  0% {
+    transform: translateX(-100%);
+    width: 50%;
+  }
+  50% {
+    transform: translateX(0%);
+    width: 50%;
+  }
+  100% {
+    transform: translateX(200%);
+    width: 50%;
+  }
+}
+
+@utility animate-progress-indeterminate {
+  animation: progress-indeterminate 1.5s ease-in-out infinite;
+}
+
+/* Shiki dual-theme support */
+.ord-ui.dark .ord-code-block span[style*="--shiki-dark"] {
+  color: var(--shiki-dark) !important;
+}
+
+.ord-ui.dark .ord-code-block pre {
+  background-color: transparent !important;
+}
+
+/* CodeBlock line numbers */
+.ord-code-block-lines code {
+  counter-reset: line;
+}
+
+.ord-code-block-lines .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 2rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: var(--ord-muted-foreground);
+  user-select: none;
+}
