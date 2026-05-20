@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Horizontal: Story = {
   render: () => (
-    <div style={{ width: 300 }}>
+    <div style={{ width: "100%", maxWidth: 300 }}>
       <p>Content above</p>
       <Separator style={{ margin: '16px 0' }} />
       <p>Content below</p>

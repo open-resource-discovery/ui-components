@@ -16,7 +16,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => (
-    <div style={{ width: 400 }}>
+    <div style={{ width: "100%", maxWidth: 400 }}>
       <Tabs.Root defaultValue="account">
         <Tabs.List>
           <Tabs.Tab value="account">Account</Tabs.Tab>
@@ -39,7 +39,7 @@ export const Default: Story = {
 
 export const WithBadges: Story = {
   render: () => (
-    <div style={{ width: 500 }}>
+    <div style={{ width: "100%", maxWidth: 500 }}>
       <Tabs.Root defaultValue="preview">
         <Tabs.List>
           <Tabs.Tab value="preview">Preview</Tabs.Tab>

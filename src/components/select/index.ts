@@ -1,4 +1,4 @@
-export { Select } from './Select';
+export { Select } from "./Select";
 export type {
   SelectRootProps,
   SelectTriggerProps,
@@ -14,7 +14,7 @@ export type {
   SelectGroupLabelProps,
   SelectScrollUpArrowProps,
   SelectScrollDownArrowProps,
-} from './Select';
+} from "./Select";
 
-export { SimpleSelect } from './SimpleSelect';
-export type { SimpleSelectProps, SelectItem, SelectGroup } from './SimpleSelect';
+export { SimpleSelect } from "./SimpleSelect";
+export type { SimpleSelectProps, SelectItem, SelectGroup } from "./SimpleSelect";

@@ -24,7 +24,7 @@ function ComboboxExample() {
   );
 
   return (
-    <div style={{ width: 240 }}>
+    <div style={{ width: "100%", maxWidth: 240 }}>
       <Combobox.Root onInputValueChange={(value: string) => setInputValue(value)}>
         <Combobox.Input placeholder="Search fruits..." />
         <Combobox.Portal>
@@ -54,7 +54,7 @@ export const Default: Story = {
 
 export const WithPlaceholder: Story = {
   render: () => (
-    <div style={{ width: 240 }}>
+    <div style={{ width: "100%", maxWidth: 240 }}>
       <Combobox.Root>
         <Combobox.Input placeholder="Type to search..." />
         <Combobox.Portal>
@@ -78,7 +78,7 @@ const fruitItems = fruits.map((f) => ({ value: f.toLowerCase(), label: f }));
 
 export const Simple: Story = {
   render: () => (
-    <div style={{ width: 240 }}>
+    <div style={{ width: "100%", maxWidth: 240 }}>
       <SimpleCombobox
         items={fruitItems}
         placeholder="Pick a fruit..."

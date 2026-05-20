@@ -1,7 +1,7 @@
-import React, { forwardRef, useState, type InputHTMLAttributes } from 'react';
-import { cn } from '@/utils/cn';
+import React, { forwardRef, useState, type InputHTMLAttributes } from "react";
+import { cn } from "@/utils/cn";
 
-export type PasswordInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type'>;
+export type PasswordInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "type">;
 
 const EyeIcon = (): React.JSX.Element => (
   <svg
@@ -13,8 +13,7 @@ const EyeIcon = (): React.JSX.Element => (
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
-    strokeLinejoin="round"
-  >
+    strokeLinejoin="round">
     <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
     <circle cx="12" cy="12" r="3" />
   </svg>
@@ -30,8 +29,7 @@ const EyeOffIcon = (): React.JSX.Element => (
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
-    strokeLinejoin="round"
-  >
+    strokeLinejoin="round">
     <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24" />
     <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68" />
     <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61" />
@@ -39,34 +37,31 @@ const EyeOffIcon = (): React.JSX.Element => (
   </svg>
 );
 
-const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
-  ({ className, ...props }, ref) => {
-    const [showPassword, setShowPassword] = useState(false);
+const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(({ className, ...props }, ref) => {
+  const [showPassword, setShowPassword] = useState(false);
 
-    return (
-      <div className="relative">
-        <input
-          type={showPassword ? 'text' : 'password'}
-          className={cn(
-            'flex h-10 w-full rounded-[var(--ord-radius)] border border-input bg-background px-3 py-2 pr-10 text-sm text-foreground ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
-            className,
-          )}
-          ref={ref}
-          {...props}
-        />
-        <button
-          type="button"
-          className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground focus-visible:outline-none"
-          onClick={() => setShowPassword((prev) => !prev)}
-          tabIndex={-1}
-          aria-label={showPassword ? 'Hide password' : 'Show password'}
-        >
-          {showPassword ? <EyeOffIcon /> : <EyeIcon />}
-        </button>
-      </div>
-    );
-  },
-);
-PasswordInput.displayName = 'PasswordInput';
+  return (
+    <div className="relative">
+      <input
+        type={showPassword ? "text" : "password"}
+        className={cn(
+          "flex h-10 w-full rounded-[var(--ord-radius)] border border-input bg-background px-3 py-2 pr-10 text-sm text-foreground ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+          className,
+        )}
+        ref={ref}
+        {...props}
+      />
+      <button
+        type="button"
+        className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground focus-visible:outline-none"
+        onClick={() => setShowPassword((prev) => !prev)}
+        tabIndex={-1}
+        aria-label={showPassword ? "Hide password" : "Show password"}>
+        {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+      </button>
+    </div>
+  );
+});
+PasswordInput.displayName = "PasswordInput";
 
 export { PasswordInput };

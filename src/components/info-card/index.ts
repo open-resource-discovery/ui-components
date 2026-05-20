@@ -1,4 +1,4 @@
-export { InfoCard } from './InfoCard';
+export { InfoCard } from "./InfoCard";
 export type {
   InfoCardRootProps,
   InfoCardHeaderProps,
@@ -7,4 +7,4 @@ export type {
   InfoCardSubtitleProps,
   InfoCardContentProps,
   InfoCardSectionProps,
-} from './InfoCard';
+} from "./InfoCard";

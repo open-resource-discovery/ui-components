@@ -1,10 +1,7 @@
-import React, { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react';
-import { Dialog } from './Dialog';
+import React, { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import { Dialog } from "./Dialog";
 
-export interface SimpleDialogProps extends Omit<
-  ComponentPropsWithoutRef<'div'>,
-  'title' | 'children'
-> {
+export interface SimpleDialogProps extends Omit<ComponentPropsWithoutRef<"div">, "title" | "children"> {
   trigger?: ReactNode;
   title?: ReactNode;
   description?: ReactNode;
@@ -18,18 +15,7 @@ export interface SimpleDialogProps extends Omit<
 
 export const SimpleDialog = forwardRef<HTMLDivElement, SimpleDialogProps>(
   (
-    {
-      trigger,
-      title,
-      description,
-      children,
-      footer,
-      open,
-      defaultOpen,
-      onOpenChange,
-      showClose = true,
-      ...rest
-    },
+    { trigger, title, description, children, footer, open, defaultOpen, onOpenChange, showClose = true, ...rest },
     ref,
   ): React.JSX.Element => {
     return (
@@ -49,8 +35,7 @@ export const SimpleDialog = forwardRef<HTMLDivElement, SimpleDialogProps>(
             {showClose && (
               <Dialog.Close
                 aria-label="Close"
-                className="absolute right-4 top-4 inline-flex h-6 w-6 items-center justify-center rounded-sm text-muted-foreground opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
+                className="absolute right-4 top-4 inline-flex h-6 w-6 items-center justify-center rounded-sm text-muted-foreground opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="14"
@@ -60,8 +45,7 @@ export const SimpleDialog = forwardRef<HTMLDivElement, SimpleDialogProps>(
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
+                  strokeLinejoin="round">
                   <path d="M18 6 6 18" />
                   <path d="m6 6 12 12" />
                 </svg>
@@ -73,4 +57,4 @@ export const SimpleDialog = forwardRef<HTMLDivElement, SimpleDialogProps>(
     );
   },
 );
-SimpleDialog.displayName = 'SimpleDialog';
+SimpleDialog.displayName = "SimpleDialog";

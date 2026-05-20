@@ -1,4 +1,4 @@
-export { Dialog } from './Dialog';
+export { Dialog } from "./Dialog";
 export type {
   DialogRootProps,
   DialogTriggerProps,
@@ -8,7 +8,7 @@ export type {
   DialogTitleProps,
   DialogDescriptionProps,
   DialogCloseProps,
-} from './Dialog';
+} from "./Dialog";
 
-export { SimpleDialog } from './SimpleDialog';
-export type { SimpleDialogProps } from './SimpleDialog';
+export { SimpleDialog } from "./SimpleDialog";
+export type { SimpleDialogProps } from "./SimpleDialog";

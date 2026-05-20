@@ -1,14 +1,8 @@
-import {
-  forwardRef,
-  useRef,
-  useCallback,
-  type ComponentPropsWithoutRef,
-  type KeyboardEvent,
-} from 'react';
-import { cn } from '@/utils/cn';
-import { Button } from '@/components/button';
+import { forwardRef, useRef, useCallback, type ComponentPropsWithoutRef, type KeyboardEvent } from "react";
+import { cn } from "@/utils/cn";
+import { Button } from "@/components/button";
 
-export type ChatInputProps = Omit<ComponentPropsWithoutRef<'form'>, 'onSubmit'> & {
+export type ChatInputProps = Omit<ComponentPropsWithoutRef<"form">, "onSubmit"> & {
   onSubmit?: (value: string) => void;
   placeholder?: string;
   disabled?: boolean;
@@ -17,32 +11,21 @@ export type ChatInputProps = Omit<ComponentPropsWithoutRef<'form'>, 'onSubmit'> 
 };
 
 export const ChatInput = forwardRef<HTMLFormElement, ChatInputProps>(
-  (
-    {
-      onSubmit,
-      placeholder = 'Type a message...',
-      disabled,
-      loading,
-      onCancel,
-      className,
-      ...props
-    },
-    ref,
-  ) => {
+  ({ onSubmit, placeholder = "Type a message...", disabled, loading, onCancel, className, ...props }, ref) => {
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
     const resetHeight = useCallback(() => {
       const el = textareaRef.current;
       if (el) {
-        el.style.height = 'auto';
-        el.style.height = '40px';
+        el.style.height = "auto";
+        el.style.height = "40px";
       }
     }, []);
 
     const handleInput = useCallback(() => {
       const el = textareaRef.current;
       if (el) {
-        el.style.height = 'auto';
+        el.style.height = "auto";
         el.style.height = `${Math.min(el.scrollHeight, 120)}px`;
       }
     }, []);
@@ -55,7 +38,7 @@ export const ChatInput = forwardRef<HTMLFormElement, ChatInputProps>(
         const value = el.value.trim();
         if (!value) return;
         onSubmit?.(value);
-        el.value = '';
+        el.value = "";
         resetHeight();
       },
       [onSubmit, resetHeight],
@@ -63,7 +46,7 @@ export const ChatInput = forwardRef<HTMLFormElement, ChatInputProps>(
 
     const handleKeyDown = useCallback(
       (e: KeyboardEvent<HTMLTextAreaElement>) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
+        if (e.key === "Enter" && !e.shiftKey) {
           e.preventDefault();
           handleSubmit();
         }
@@ -74,10 +57,9 @@ export const ChatInput = forwardRef<HTMLFormElement, ChatInputProps>(
     return (
       <form
         ref={ref}
-        className={cn('border-t border-border p-3 flex items-end gap-2', className)}
+        className={cn("border-t border-border p-3 flex items-end gap-2", className)}
         onSubmit={handleSubmit}
-        {...props}
-      >
+        {...props}>
         <textarea
           ref={textareaRef}
           rows={1}
@@ -89,13 +71,7 @@ export const ChatInput = forwardRef<HTMLFormElement, ChatInputProps>(
         />
         {loading ? (
           <Button type="button" variant="ghost" size="icon" onClick={onCancel} aria-label="Stop">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
               <rect x="6" y="6" width="12" height="12" rx="2" />
             </svg>
           </Button>
@@ -110,8 +86,7 @@ export const ChatInput = forwardRef<HTMLFormElement, ChatInputProps>(
               stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
-              strokeLinejoin="round"
-            >
+              strokeLinejoin="round">
               <path d="M12 19V5" />
               <path d="m5 12 7-7 7 7" />
             </svg>
@@ -121,4 +96,4 @@ export const ChatInput = forwardRef<HTMLFormElement, ChatInputProps>(
     );
   },
 );
-ChatInput.displayName = 'ChatInput';
+ChatInput.displayName = "ChatInput";

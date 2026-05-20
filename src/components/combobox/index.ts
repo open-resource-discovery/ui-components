@@ -1,4 +1,4 @@
-export { Combobox } from './Combobox';
+export { Combobox } from "./Combobox";
 export type {
   ComboboxRootProps,
   ComboboxInputProps,
@@ -10,7 +10,7 @@ export type {
   ComboboxEmptyProps,
   ComboboxGroupProps,
   ComboboxGroupLabelProps,
-} from './Combobox';
+} from "./Combobox";
 
-export { SimpleCombobox } from './SimpleCombobox';
-export type { SimpleComboboxProps, ComboboxItem } from './SimpleCombobox';
+export { SimpleCombobox } from "./SimpleCombobox";
+export type { SimpleComboboxProps, ComboboxItem } from "./SimpleCombobox";

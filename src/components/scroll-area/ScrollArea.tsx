@@ -1,7 +1,7 @@
-import { forwardRef, useEffect, useRef, type ComponentPropsWithoutRef } from 'react';
-import { cn } from '@/utils/cn';
+import { forwardRef, useEffect, useRef, type ComponentPropsWithoutRef } from "react";
+import { cn } from "@/utils/cn";
 
-export type ScrollAreaProps = ComponentPropsWithoutRef<'div'> & {
+export type ScrollAreaProps = ComponentPropsWithoutRef<"div"> & {
   autoScroll?: boolean;
 };
 
@@ -17,7 +17,7 @@ export const ScrollArea = forwardRef<HTMLDivElement, ScrollAreaProps>(
       if (!el) return;
 
       const observer = new MutationObserver(() => {
-        el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' });
+        el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
       });
 
       observer.observe(el, { childList: true, subtree: true });
@@ -27,10 +27,10 @@ export const ScrollArea = forwardRef<HTMLDivElement, ScrollAreaProps>(
     }, [autoScroll, scrollRef]);
 
     return (
-      <div ref={scrollRef} className={cn('flex-1 overflow-y-auto', className)} {...props}>
+      <div ref={scrollRef} className={cn("flex-1 overflow-y-auto", className)} {...props}>
         {children}
       </div>
     );
   },
 );
-ScrollArea.displayName = 'ScrollArea';
+ScrollArea.displayName = "ScrollArea";

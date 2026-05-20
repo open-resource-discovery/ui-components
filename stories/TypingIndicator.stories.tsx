@@ -17,7 +17,7 @@ export const Default: Story = {};
 
 export const InContext: Story = {
   render: () => (
-    <div className="flex flex-col gap-2" style={{ width: 300 }}>
+    <div className="flex flex-col gap-2" style={{ width: "100%", maxWidth: 300 }}>
       <div className="mr-auto max-w-[85%] rounded-2xl rounded-bl-sm bg-muted px-4 py-2 text-sm">
         Let me think about that...
       </div>

@@ -1,33 +1,25 @@
-import React, { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react';
-import { Collapsible } from '@base-ui/react/collapsible';
-import { cn } from '@/utils/cn';
+import React, { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import { Collapsible } from "@base-ui/react/collapsible";
+import { cn } from "@/utils/cn";
 
 /* ----- Root ----- */
-export interface CollapsibleSectionRootProps extends ComponentPropsWithoutRef<
-  typeof Collapsible.Root
-> {
+export interface CollapsibleSectionRootProps extends ComponentPropsWithoutRef<typeof Collapsible.Root> {
   className?: string;
   bordered?: boolean;
 }
 
-function CollapsibleSectionRoot({
-  className,
-  bordered,
-  ...props
-}: CollapsibleSectionRootProps): React.JSX.Element {
+function CollapsibleSectionRoot({ className, bordered, ...props }: CollapsibleSectionRootProps): React.JSX.Element {
   return (
     <Collapsible.Root
-      className={cn('flex flex-col', bordered && 'rounded-lg border bg-card p-3', className)}
+      className={cn("flex flex-col", bordered && "rounded-lg border bg-card p-3", className)}
       {...props}
     />
   );
 }
-CollapsibleSectionRoot.displayName = 'CollapsibleSection.Root';
+CollapsibleSectionRoot.displayName = "CollapsibleSection.Root";
 
 /* ----- Trigger ----- */
-export interface CollapsibleSectionTriggerProps extends ComponentPropsWithoutRef<
-  typeof Collapsible.Trigger
-> {
+export interface CollapsibleSectionTriggerProps extends ComponentPropsWithoutRef<typeof Collapsible.Trigger> {
   className?: string;
   children: ReactNode;
   icon?: ReactNode;
@@ -40,11 +32,10 @@ const CollapsibleSectionTrigger = forwardRef<HTMLButtonElement, CollapsibleSecti
     <Collapsible.Trigger
       ref={ref}
       className={cn(
-        'group flex flex-wrap items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer w-full',
+        "group flex flex-wrap items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer w-full",
         className,
       )}
-      {...props}
-    >
+      {...props}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="12"
@@ -55,8 +46,7 @@ const CollapsibleSectionTrigger = forwardRef<HTMLButtonElement, CollapsibleSecti
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="h-3 w-3 shrink-0 transition-transform data-[panel-open]:rotate-90"
-      >
+        className="h-3 w-3 shrink-0 transition-transform data-[panel-open]:rotate-90">
         <polyline points="9 18 15 12 9 6" />
       </svg>
       {icon && <span className="shrink-0 h-4 w-4 [&>svg]:h-full [&>svg]:w-full">{icon}</span>}
@@ -70,21 +60,17 @@ const CollapsibleSectionTrigger = forwardRef<HTMLButtonElement, CollapsibleSecti
     </Collapsible.Trigger>
   ),
 );
-CollapsibleSectionTrigger.displayName = 'CollapsibleSection.Trigger';
+CollapsibleSectionTrigger.displayName = "CollapsibleSection.Trigger";
 
 /* ----- Content ----- */
-export interface CollapsibleSectionContentProps extends ComponentPropsWithoutRef<
-  typeof Collapsible.Panel
-> {
+export interface CollapsibleSectionContentProps extends ComponentPropsWithoutRef<typeof Collapsible.Panel> {
   className?: string;
 }
 
 const CollapsibleSectionContent = forwardRef<HTMLDivElement, CollapsibleSectionContentProps>(
-  ({ className, ...props }, ref) => (
-    <Collapsible.Panel ref={ref} className={cn('mt-1.5', className)} {...props} />
-  ),
+  ({ className, ...props }, ref) => <Collapsible.Panel ref={ref} className={cn("mt-1.5", className)} {...props} />,
 );
-CollapsibleSectionContent.displayName = 'CollapsibleSection.Content';
+CollapsibleSectionContent.displayName = "CollapsibleSection.Content";
 
 /* ----- Namespace Export ----- */
 export const CollapsibleSection = Object.assign(

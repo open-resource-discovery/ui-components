@@ -1,13 +1,13 @@
-import React, { forwardRef, useState, useMemo, type ComponentPropsWithoutRef } from 'react';
-import { Combobox } from './Combobox';
-import { cn } from '@/utils/cn';
+import React, { forwardRef, useState, useMemo, type ComponentPropsWithoutRef } from "react";
+import { Combobox } from "./Combobox";
+import { cn } from "@/utils/cn";
 
 export interface ComboboxItem {
   value: string;
   label: string;
 }
 
-export interface SimpleComboboxProps extends Omit<ComponentPropsWithoutRef<'div'>, 'onChange'> {
+export interface SimpleComboboxProps extends Omit<ComponentPropsWithoutRef<"div">, "onChange"> {
   items: ComboboxItem[];
   placeholder?: string;
   maxVisibleItems?: number;
@@ -19,31 +19,20 @@ export interface SimpleComboboxProps extends Omit<ComponentPropsWithoutRef<'div'
 
 export const SimpleCombobox = forwardRef<HTMLDivElement, SimpleComboboxProps>(
   (
-    {
-      items,
-      placeholder,
-      maxVisibleItems = 8,
-      value,
-      defaultValue,
-      onChange,
-      disabled,
-      className,
-      ...props
-    },
+    { items, placeholder, maxVisibleItems = 8, value, defaultValue, onChange, disabled, className, ...props },
     ref,
   ): React.JSX.Element => {
-    const [inputValue, setInputValue] = useState('');
+    const [inputValue, setInputValue] = useState("");
 
     const filteredItems = useMemo(
-      (): ComboboxItem[] =>
-        items.filter((item) => item.label.toLowerCase().includes(inputValue.toLowerCase())),
+      (): ComboboxItem[] => items.filter((item) => item.label.toLowerCase().includes(inputValue.toLowerCase())),
       [items, inputValue],
     );
 
     const maxHeight = `${maxVisibleItems * 36}px`;
 
     return (
-      <div ref={ref} className={cn('w-full', className)} {...props}>
+      <div ref={ref} className={cn("w-full", className)} {...props}>
         <Combobox.Root
           value={value}
           defaultValue={defaultValue}
@@ -53,8 +42,7 @@ export const SimpleCombobox = forwardRef<HTMLDivElement, SimpleComboboxProps>(
           onInputValueChange={(val) => {
             setInputValue(val);
           }}
-          disabled={disabled}
-        >
+          disabled={disabled}>
           <Combobox.Input placeholder={placeholder} />
           <Combobox.Portal>
             <Combobox.Positioner>
@@ -77,4 +65,4 @@ export const SimpleCombobox = forwardRef<HTMLDivElement, SimpleComboboxProps>(
     );
   },
 );
-SimpleCombobox.displayName = 'SimpleCombobox';
+SimpleCombobox.displayName = "SimpleCombobox";

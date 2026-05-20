@@ -1,16 +1,13 @@
-import React, { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react';
-import { Sheet } from './Sheet';
+import React, { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import { Sheet } from "./Sheet";
 
-export interface SimpleSheetProps extends Omit<
-  ComponentPropsWithoutRef<'div'>,
-  'title' | 'children'
-> {
+export interface SimpleSheetProps extends Omit<ComponentPropsWithoutRef<"div">, "title" | "children"> {
   trigger?: ReactNode;
   title?: ReactNode;
   description?: ReactNode;
   children?: ReactNode;
   footer?: ReactNode;
-  side?: 'top' | 'right' | 'bottom' | 'left';
+  side?: "top" | "right" | "bottom" | "left";
   open?: boolean;
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
@@ -25,7 +22,7 @@ export const SimpleSheet = forwardRef<HTMLDivElement, SimpleSheetProps>(
       description,
       children,
       footer,
-      side = 'right',
+      side = "right",
       open,
       defaultOpen,
       onOpenChange,
@@ -51,8 +48,7 @@ export const SimpleSheet = forwardRef<HTMLDivElement, SimpleSheetProps>(
             {showClose && (
               <Sheet.Close
                 aria-label="Close"
-                className="absolute right-4 top-4 inline-flex h-6 w-6 items-center justify-center rounded-sm text-muted-foreground opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
+                className="absolute right-4 top-4 inline-flex h-6 w-6 items-center justify-center rounded-sm text-muted-foreground opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="14"
@@ -62,8 +58,7 @@ export const SimpleSheet = forwardRef<HTMLDivElement, SimpleSheetProps>(
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
+                  strokeLinejoin="round">
                   <path d="M18 6 6 18" />
                   <path d="m6 6 12 12" />
                 </svg>
@@ -75,4 +70,4 @@ export const SimpleSheet = forwardRef<HTMLDivElement, SimpleSheetProps>(
     );
   },
 );
-SimpleSheet.displayName = 'SimpleSheet';
+SimpleSheet.displayName = "SimpleSheet";

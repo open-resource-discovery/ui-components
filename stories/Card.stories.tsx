@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => (
-    <Card style={{ width: 350 }}>
+    <Card style={{ width: "100%", maxWidth: 350 }}>
       <Card.Header>
         <Card.Title>Card Title</Card.Title>
         <Card.Description>Card description goes here.</Card.Description>
@@ -36,7 +36,7 @@ export const Default: Story = {
 export const Simple: Story = {
   render: () => (
     <SimpleCard
-      style={{ width: 350 }}
+      style={{ width: "100%", maxWidth: 350 }}
       title="Notifications"
       description="You have 3 unread messages."
       content={<p className="text-sm text-muted-foreground">Check your inbox for the latest updates.</p>}
@@ -53,7 +53,7 @@ export const Simple: Story = {
 export const MinimalSimpleCard: Story = {
   render: () => (
     <SimpleCard
-      style={{ width: 350 }}
+      style={{ width: "100%", maxWidth: 350 }}
       title="Simple Title Only"
     />
   ),

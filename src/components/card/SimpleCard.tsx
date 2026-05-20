@@ -1,11 +1,8 @@
-import React, { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react';
-import { Card } from './Card';
-import { cn } from '@/utils/cn';
+import React, { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import { Card } from "./Card";
+import { cn } from "@/utils/cn";
 
-export interface SimpleCardProps extends Omit<
-  ComponentPropsWithoutRef<'div'>,
-  'title' | 'content'
-> {
+export interface SimpleCardProps extends Omit<ComponentPropsWithoutRef<"div">, "title" | "content"> {
   title?: ReactNode;
   description?: ReactNode;
   content?: ReactNode;
@@ -26,4 +23,4 @@ export const SimpleCard = forwardRef<HTMLDivElement, SimpleCardProps>(
     </Card>
   ),
 );
-SimpleCard.displayName = 'SimpleCard';
+SimpleCard.displayName = "SimpleCard";

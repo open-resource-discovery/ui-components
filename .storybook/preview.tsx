@@ -1,14 +1,14 @@
-import type { Preview } from '@storybook/react-vite';
-import { useEffect } from 'react';
-import { ThemeRoot } from '../src/theme/ThemeRoot';
-import '../src/styles/base.css';
+import type { Preview } from "@storybook/react-vite";
+import React from "react";
+import { ThemeRoot } from "../src/theme/ThemeRoot";
+import "../src/styles/base.css";
 
 const preview: Preview = {
   parameters: {
     backgrounds: {
       options: {
-        light: { name: 'Light', value: '#ffffff' },
-        dark: { name: 'Dark', value: '#0a0a0a' },
+        light: { name: "Light", value: "#ffffff" },
+        dark: { name: "Dark", value: "#0a0a0a" },
       },
     },
     controls: {
@@ -19,24 +19,19 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ['Styleguide', 'Theme', '*'],
+        order: ["Styleguide", "Theme", "*"],
       },
     },
   },
   initialGlobals: {
-    backgrounds: { value: 'light' },
+    backgrounds: { value: "light" },
   },
   decorators: [
-    (Story, context) => {
-      const value = context.globals?.backgrounds?.value ?? 'light';
-      const isDark = value === 'dark';
-      useEffect(() => {
-        document.querySelectorAll('.ord-ui').forEach((el) => {
-          el.classList.toggle('dark', isDark);
-        });
-      }, [isDark]);
+    (Story, context): React.JSX.Element => {
+      const value = context.globals?.backgrounds?.value ?? "light";
+      const isDark = value === "dark";
       return (
-        <ThemeRoot defaultTheme={isDark ? 'dark' : 'light'}>
+        <ThemeRoot defaultTheme={isDark ? "dark" : "light"}>
           <Story />
         </ThemeRoot>
       );

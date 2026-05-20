@@ -1,12 +1,12 @@
-import { forwardRef, useCallback, useMemo, useState, type ComponentPropsWithoutRef } from 'react';
-import { cn } from '@/utils/cn';
-import { Button } from '@/components/button';
+import { forwardRef, useCallback, useMemo, useState, type ComponentPropsWithoutRef } from "react";
+import { cn } from "@/utils/cn";
+import { Button } from "@/components/button";
 
 type HighlighterLike = {
   codeToHtml: (code: string, options: Record<string, unknown>) => string;
 };
 
-export type CodeBlockProps = ComponentPropsWithoutRef<'div'> & {
+export type CodeBlockProps = ComponentPropsWithoutRef<"div"> & {
   code: string;
   language?: string;
   filename?: string;
@@ -26,8 +26,8 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
       language,
       filename,
       highlighter,
-      lightTheme = 'github-light',
-      darkTheme = 'github-dark',
+      lightTheme = "github-light",
+      darkTheme = "github-dark",
       showLineNumbers = false,
       showCopyButton = true,
       onCopy,
@@ -58,7 +58,7 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
       }
     }, [highlighter, code, language, lightTheme, darkTheme]);
 
-    const lines = code.split('\n');
+    const lines = code.split("\n");
 
     const copyButton = showCopyButton && (
       <Button
@@ -66,12 +66,10 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
         size="icon"
         onClick={handleCopy}
         className={cn(
-          'h-7 w-7 shrink-0',
-          !filename &&
-            'absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity',
+          "h-7 w-7 shrink-0",
+          !filename && "absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity",
         )}
-        aria-label={copied ? 'Copied' : 'Copy code'}
-      >
+        aria-label={copied ? "Copied" : "Copy code"}>
         {copied ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -82,8 +80,7 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
             stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
-            strokeLinejoin="round"
-          >
+            strokeLinejoin="round">
             <polyline points="20 6 9 17 4 12" />
           </svg>
         ) : (
@@ -96,8 +93,7 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
             stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
-            strokeLinejoin="round"
-          >
+            strokeLinejoin="round">
             <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
             <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
           </svg>
@@ -108,9 +104,8 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
     return (
       <div
         ref={ref}
-        className={cn('ord-code-block group rounded-lg border bg-muted overflow-hidden', className)}
-        {...props}
-      >
+        className={cn("ord-code-block group rounded-lg border bg-muted overflow-hidden", className)}
+        {...props}>
         {filename && (
           <div className="flex items-center gap-2 px-3 py-2 border-b text-xs text-muted-foreground">
             <svg
@@ -123,8 +118,7 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="shrink-0"
-            >
+              className="shrink-0">
               <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
               <path d="M14 2v4a2 2 0 0 0 2 2h4" />
             </svg>
@@ -133,14 +127,14 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
           </div>
         )}
 
-        <div className="relative" style={maxHeight ? { maxHeight, overflowY: 'auto' } : undefined}>
+        <div className="relative" style={maxHeight ? { maxHeight, overflowY: "auto" } : undefined}>
           {!filename && copyButton}
 
           {highlightedHtml ? (
             <div
               className={cn(
-                'p-4 overflow-x-auto font-mono text-sm [&_pre]:!bg-transparent [&_code]:!bg-transparent',
-                showLineNumbers && 'ord-code-block-lines',
+                "p-4 overflow-x-auto font-mono text-sm [&_pre]:!bg-transparent [&_code]:!bg-transparent",
+                showLineNumbers && "ord-code-block-lines",
               )}
               dangerouslySetInnerHTML={{ __html: highlightedHtml }}
             />
@@ -165,4 +159,4 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
     );
   },
 );
-CodeBlock.displayName = 'CodeBlock';
+CodeBlock.displayName = "CodeBlock";

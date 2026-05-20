@@ -1,6 +1,4 @@
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-import storybook from "eslint-plugin-storybook";
-
 import { withCustomConfig } from "@sap/eslint-config";
 
 export default withCustomConfig([
@@ -14,6 +12,13 @@ export default withCustomConfig([
         project: ["tsconfig.json"],
         tsconfigRootDir: import.meta.dirname,
       },
+    },
+  },
+  {
+    files: [".storybook/**/*.{ts,tsx}", "tests/**/*.{ts,tsx}", "*.{ts,tsx}"],
+    rules: {
+      "@typescript-eslint/prefer-readonly": "off",
+      "@typescript-eslint/no-unnecessary-type-assertion": "off",
     },
   },
 ]);

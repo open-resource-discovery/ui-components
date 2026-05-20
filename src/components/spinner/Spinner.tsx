@@ -1,22 +1,21 @@
-import { forwardRef, type HTMLAttributes } from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from '@/utils/cn';
+import { forwardRef, type HTMLAttributes } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/utils/cn";
 
-const spinnerVariants = cva('animate-spin text-primary', {
+const spinnerVariants = cva("animate-spin text-primary", {
   variants: {
     size: {
-      sm: 'h-4 w-4',
-      default: 'h-6 w-6',
-      lg: 'h-8 w-8',
+      sm: "h-4 w-4",
+      default: "h-6 w-6",
+      lg: "h-8 w-8",
     },
   },
   defaultVariants: {
-    size: 'default',
+    size: "default",
   },
 });
 
-export interface SpinnerProps
-  extends HTMLAttributes<SVGSVGElement>, VariantProps<typeof spinnerVariants> {}
+export interface SpinnerProps extends HTMLAttributes<SVGSVGElement>, VariantProps<typeof spinnerVariants> {}
 
 const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(({ className, size, ...props }, ref) => {
   return (
@@ -28,8 +27,7 @@ const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(({ className, size, ...p
       fill="none"
       viewBox="0 0 24 24"
       className={cn(spinnerVariants({ size, className }))}
-      {...props}
-    >
+      {...props}>
       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
       <path
         className="opacity-75"
@@ -39,6 +37,6 @@ const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(({ className, size, ...p
     </svg>
   );
 });
-Spinner.displayName = 'Spinner';
+Spinner.displayName = "Spinner";
 
 export { Spinner, spinnerVariants };

@@ -1,6 +1,6 @@
-import React, { forwardRef, useMemo, type ComponentPropsWithoutRef } from 'react';
-import { Select } from './Select';
-import { cn } from '@/utils/cn';
+import React, { forwardRef, useMemo, type ComponentPropsWithoutRef } from "react";
+import { Select } from "./Select";
+import { cn } from "@/utils/cn";
 
 export interface SelectItem {
   value: string;
@@ -13,7 +13,7 @@ export interface SelectGroup {
   items: SelectItem[];
 }
 
-export interface SimpleSelectProps extends Omit<ComponentPropsWithoutRef<'div'>, 'onChange'> {
+export interface SimpleSelectProps extends Omit<ComponentPropsWithoutRef<"div">, "onChange"> {
   items: (SelectItem | SelectGroup)[];
   placeholder?: string;
   value?: string;
@@ -23,14 +23,11 @@ export interface SimpleSelectProps extends Omit<ComponentPropsWithoutRef<'div'>,
 }
 
 function isGroup(item: SelectItem | SelectGroup): item is SelectGroup {
-  return 'items' in item;
+  return "items" in item;
 }
 
 export const SimpleSelect = forwardRef<HTMLDivElement, SimpleSelectProps>(
-  (
-    { items, placeholder, value, defaultValue, onChange, disabled, className, ...props },
-    ref,
-  ): React.JSX.Element => {
+  ({ items, placeholder, value, defaultValue, onChange, disabled, className, ...props }, ref): React.JSX.Element => {
     const itemsMap = useMemo((): Record<string, string> => {
       const map: Record<string, string> = {};
       for (const item of items) {
@@ -46,7 +43,7 @@ export const SimpleSelect = forwardRef<HTMLDivElement, SimpleSelectProps>(
     }, [items]);
 
     return (
-      <div ref={ref} className={cn('w-full', className)} {...props}>
+      <div ref={ref} className={cn("w-full", className)} {...props}>
         <Select.Root
           value={value}
           defaultValue={defaultValue}
@@ -54,8 +51,7 @@ export const SimpleSelect = forwardRef<HTMLDivElement, SimpleSelectProps>(
             onChange?.(val as string);
           }}
           disabled={disabled}
-          items={itemsMap}
-        >
+          items={itemsMap}>
           <Select.Trigger>
             <Select.Value placeholder={placeholder} />
             <Select.Icon />
@@ -69,11 +65,7 @@ export const SimpleSelect = forwardRef<HTMLDivElement, SimpleSelectProps>(
                     <Select.Group key={item.label}>
                       <Select.GroupLabel>{item.label}</Select.GroupLabel>
                       {item.items.map((groupItem) => (
-                        <Select.Item
-                          key={groupItem.value}
-                          value={groupItem.value}
-                          disabled={groupItem.disabled}
-                        >
+                        <Select.Item key={groupItem.value} value={groupItem.value} disabled={groupItem.disabled}>
                           <Select.ItemIndicator />
                           <Select.ItemText>{groupItem.label}</Select.ItemText>
                         </Select.Item>
@@ -95,4 +87,4 @@ export const SimpleSelect = forwardRef<HTMLDivElement, SimpleSelectProps>(
     );
   },
 );
-SimpleSelect.displayName = 'SimpleSelect';
+SimpleSelect.displayName = "SimpleSelect";

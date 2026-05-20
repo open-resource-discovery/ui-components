@@ -1,4 +1,4 @@
-export { Tooltip } from './Tooltip';
+export { Tooltip } from "./Tooltip";
 export type {
   TooltipProviderProps,
   TooltipRootProps,
@@ -7,4 +7,4 @@ export type {
   TooltipPositionerProps,
   TooltipPopupProps,
   TooltipArrowProps,
-} from './Tooltip';
+} from "./Tooltip";

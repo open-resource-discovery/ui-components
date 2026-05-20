@@ -1,4 +1,4 @@
-export { Card } from './Card';
+export { Card } from "./Card";
 export type {
   CardRootProps,
   CardHeaderProps,
@@ -6,7 +6,7 @@ export type {
   CardDescriptionProps,
   CardContentProps,
   CardFooterProps,
-} from './Card';
+} from "./Card";
 
-export { SimpleCard } from './SimpleCard';
-export type { SimpleCardProps } from './SimpleCard';
+export { SimpleCard } from "./SimpleCard";
+export type { SimpleCardProps } from "./SimpleCard";
