@@ -20,8 +20,8 @@ Peer deps: `react@^18 || ^19`, `react-dom@^18 || ^19`. Optional peers: `shiki` (
 Two things are required at the app root:
 
 ```tsx
-import '@open-resource-discovery/ui-components/styles';
-import { ThemeRoot } from '@open-resource-discovery/ui-components';
+import "@open-resource-discovery/ui-components/styles";
+import { ThemeRoot } from "@open-resource-discovery/ui-components";
 
 export default function App() {
   return (
@@ -39,7 +39,7 @@ export default function App() {
 Every component is a named export from the package root — never deep-import:
 
 ```tsx
-import { Button, Card, Tabs, Tooltip } from '@open-resource-discovery/ui-components';
+import { Button, Card, Tabs, Tooltip } from "@open-resource-discovery/ui-components";
 ```
 
 ## Composition
@@ -78,6 +78,7 @@ When asked to use a component, link the user to its Storybook page rather than g
 ## When to use this skill
 
 Use whenever the user mentions:
+
 - `@open-resource-discovery/ui-components` or "ord-ui" or "ord components"
 - Any of the components by name (Button, Input, Combobox, Tabs, Tooltip, Avatar, Card, etc.) **in the context of this library**
 - `.ord-ui` CSS class or `--ord-*` design tokens

@@ -15,8 +15,8 @@ npm install @open-resource-discovery/ui-components
 ## Quick Start
 
 ```tsx
-import { ThemeRoot, Button, Card } from '@open-resource-discovery/ui-components';
-import '@open-resource-discovery/ui-components/styles';
+import { ThemeRoot, Button, Card } from "@open-resource-discovery/ui-components";
+import "@open-resource-discovery/ui-components/styles";
 
 function App() {
   return (
@@ -51,16 +51,12 @@ Available tokens include `--ord-background`, `--ord-foreground`, `--ord-primary`
 Use the `useTheme` hook to toggle between light and dark modes:
 
 ```tsx
-import { useTheme } from '@open-resource-discovery/ui-components';
+import { useTheme } from "@open-resource-discovery/ui-components";
 
 function ThemeToggle() {
   const { theme, setTheme } = useTheme();
 
-  return (
-    <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
-      Toggle theme
-    </button>
-  );
+  return <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>Toggle theme</button>;
 }
 ```
 

@@ -51,10 +51,15 @@
     "dev": "vite",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "vitest run --passWithNoTests",
-    "lint": "eslint src/",
     "typecheck": "tsc --noEmit",
-    "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
+    "eslint": "eslint . --fix",
+    "eslint:ci": "eslint .",
+    "prettier": "prettier --write \"**/*.{json,yml,yaml,md}\"",
+    "prettier:ci": "prettier --check \"**/*.{json,yml,yaml,md}\"",
+    "format": "npm run prettier && npm run eslint",
+    "test": "vitest run --passWithNoTests",
+    "test:ci": "jest --ci --collectCoverage",
+    "test:watch": "jest --watchAll",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {

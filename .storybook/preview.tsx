@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react-vite';
 import { useEffect } from 'react';
+import { ThemeRoot } from '../src/theme/ThemeRoot';
 import '../src/styles/base.css';
 
 const preview: Preview = {
@@ -35,9 +36,9 @@ const preview: Preview = {
         });
       }, [isDark]);
       return (
-        <div className={`ord-ui text-foreground${isDark ? ' dark' : ''}`}>
+        <ThemeRoot defaultTheme={isDark ? 'dark' : 'light'}>
           <Story />
-        </div>
+        </ThemeRoot>
       );
     },
   ],

@@ -73,6 +73,37 @@ export type { SimpleSelectProps, SelectItem, SelectGroup } from './components/se
 export { Switch } from './components/switch';
 export type { SwitchRootProps, SwitchThumbProps } from './components/switch';
 
+// Overlay Components
+export { Dialog } from './components/dialog';
+export type {
+  DialogRootProps,
+  DialogTriggerProps,
+  DialogPortalProps,
+  DialogBackdropProps,
+  DialogPopupProps,
+  DialogTitleProps,
+  DialogDescriptionProps,
+  DialogCloseProps,
+} from './components/dialog';
+
+export { SimpleDialog } from './components/dialog';
+export type { SimpleDialogProps } from './components/dialog';
+
+export { Sheet, sheetPopupVariants } from './components/sheet';
+export type {
+  SheetRootProps,
+  SheetTriggerProps,
+  SheetPortalProps,
+  SheetBackdropProps,
+  SheetPopupProps,
+  SheetTitleProps,
+  SheetDescriptionProps,
+  SheetCloseProps,
+} from './components/sheet';
+
+export { SimpleSheet } from './components/sheet';
+export type { SimpleSheetProps } from './components/sheet';
+
 // Layout Components
 export { Card } from './components/card';
 export type {
