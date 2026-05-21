@@ -110,5 +110,8 @@
     "vite": "^8.0.13",
     "vite-plugin-dts": "^5.0.1",
     "vitest": "^4.1.7"
+  },
+  "overrides": {
+    "dompurify": "^3.4.5"
   }
 }
