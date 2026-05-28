@@ -111,6 +111,10 @@
     "vite-plugin-dts": "^5.0.1",
     "vitest": "^4.1.7"
   },
+  "engines": {
+    "node": ">=24.15.0",
+    "npm": ">=11.11.1"
+  },
   "overrides": {
     "dompurify": "^3.4.5"
   }
