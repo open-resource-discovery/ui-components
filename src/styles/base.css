@@ -219,3 +219,72 @@
   color: var(--ord-muted-foreground);
   user-select: none;
 }
+
+/* ValidationPass animated checkmark */
+.validation-pass-checkmark {
+  width: 100%;
+  max-width: 150px;
+  max-height: 150px;
+  min-width: 80px;
+  min-height: 80px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: var(--ord-success-foreground, #fff);
+  stroke-miterlimit: 10;
+  box-shadow: inset 0 0 0 var(--ord-success);
+  animation:
+    validation-pass-fill 0.4s ease-in-out 0.4s forwards,
+    validation-pass-scale 0.3s ease-in-out 0.9s both;
+  aspect-ratio: 1;
+}
+.validation-pass-circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 4;
+  stroke-miterlimit: 10;
+  stroke: var(--ord-success);
+  fill: none;
+  animation: validation-pass-stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+.validation-pass-check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: validation-pass-stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+@keyframes validation-pass-stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes validation-pass-scale {
+  0%,
+  100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+@keyframes validation-pass-fill {
+  100% {
+    box-shadow: inset 0 0 0 80px var(--ord-success);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .validation-pass-checkmark,
+  .validation-pass-circle,
+  .validation-pass-check {
+    animation: none;
+  }
+  .validation-pass-checkmark {
+    box-shadow: inset 0 0 0 80px var(--ord-success);
+  }
+  .validation-pass-circle {
+    stroke-dashoffset: 0;
+  }
+  .validation-pass-check {
+    stroke-dashoffset: 0;
+  }
+}

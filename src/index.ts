@@ -204,5 +204,8 @@ export type { SplitPaneRootProps, SplitPanelProps, SplitPaneHandleProps } from "
 export { ValidationEntry } from "./components/validation-entry";
 export type { ValidationEntryProps, ValidationStatus } from "./components/validation-entry";
 
+export { ValidationPass } from "./components/validation-pass";
+export type { ValidationPassProps } from "./components/validation-pass";
+
 export { CodeEditor } from "./components/code-editor";
 export type { CodeEditorProps } from "./components/code-editor";
