@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useMemo, useState, type CSSProperties } from 'react';
+import { useEffect, useMemo, useState, type CSSProperties } from 'react';
 import { ThemeRoot } from '../src/theme/ThemeRoot';
 import { Button } from '../src/components/button';
 import { Input } from '../src/components/input';
@@ -264,10 +264,6 @@ function buildOverrides(state: EditorState): CSSProperties {
     if (v) out[k] = v;
   }
   out['--ord-radius'] = `${state.radius / 16}rem`;
-  if (state.fontFamily && state.fontFamily !== 'inherit') {
-    out.fontFamily = state.fontFamily;
-  }
-  out.fontSize = `${state.fontSize}px`;
   return out as CSSProperties;
 }
 
@@ -439,9 +435,7 @@ function EditorSidebar({
               <SimpleSelect
                 items={FONT_PRESETS}
                 value={state.fontFamily}
-                onValueChange={(v) =>
-                  setState((s) => ({ ...s, fontFamily: typeof v === 'string' ? v : 'inherit' }))
-                }
+                onChange={(v) => setState((s) => ({ ...s, fontFamily: v || 'inherit' }))}
               />
             </Field.Root>
             <Field.Root>
@@ -818,6 +812,21 @@ function ComponentsGallery() {
 function ThemeEditorComposition() {
   const [state, setState] = useState<EditorState>(() => initialState('light'));
   const overrides = useMemo(() => buildOverrides(state), [state]);
+
+  // Font lives on <html>: rem-based Tailwind sizes (text-sm = 0.875rem) only react
+  // when the root font-size changes, and putting font-family here makes it cascade
+  // through portaled popups too without specificity surprises. Restored on unmount.
+  useEffect(() => {
+    const root = document.documentElement;
+    const prevSize = root.style.fontSize;
+    const prevFamily = root.style.fontFamily;
+    root.style.fontSize = `${state.fontSize}px`;
+    root.style.fontFamily = state.fontFamily === 'inherit' ? '' : state.fontFamily;
+    return () => {
+      root.style.fontSize = prevSize;
+      root.style.fontFamily = prevFamily;
+    };
+  }, [state.fontFamily, state.fontSize]);
 
   return (
     <ThemeRoot defaultTheme={state.mode} style={overrides}>
