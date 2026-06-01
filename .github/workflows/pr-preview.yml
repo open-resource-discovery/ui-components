@@ -30,7 +30,6 @@ jobs:
         env:
           PR_PREVIEW_NUMBER: ${{ github.event.pull_request.number }}
           STORYBOOK_BASE_URL: /pr-preview/ui-components/pr-${{ github.event.pull_request.number }}/
-          NODE_ENV: production
         run: |
           set -euo pipefail
           npm ci
