@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useState, type CSSProperties, type ReactNode } from "react";
 import { useTheme } from "./useTheme";
 
 const PortalContainerContext = createContext<HTMLElement | null>(null);
@@ -8,9 +8,10 @@ interface ThemeRootProps {
   children: ReactNode;
   defaultTheme?: "light" | "dark" | "system";
   className?: string;
+  style?: CSSProperties;
 }
 
-export function ThemeRoot({ children, defaultTheme = "system", className }: ThemeRootProps): ReactNode {
+export function ThemeRoot({ children, defaultTheme = "system", className, style }: ThemeRootProps): ReactNode {
   const [rootElement, setRootElement] = useState<HTMLElement | null>(null);
   const rootRef = useCallback((node: HTMLDivElement | null) => {
     setRootElement(node);
@@ -24,6 +25,7 @@ export function ThemeRoot({ children, defaultTheme = "system", className }: Them
   return (
     <div
       ref={rootRef}
+      style={style}
       className={`ord-ui text-foreground${resolvedTheme === "dark" ? " dark" : ""}${className ? ` ${className}` : ""}`}>
       <PortalContainerContext.Provider value={rootElement}>{children}</PortalContainerContext.Provider>
     </div>

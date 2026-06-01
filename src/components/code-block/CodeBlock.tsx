@@ -104,7 +104,7 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
     return (
       <div
         ref={ref}
-        className={cn("ord-code-block group rounded-lg border bg-muted overflow-hidden", className)}
+        className={cn("ord-code-block group rounded-[var(--ord-radius)] border bg-muted overflow-hidden", className)}
         {...props}>
         {filename && (
           <div className="flex items-center gap-2 px-3 py-2 border-b text-xs text-muted-foreground">

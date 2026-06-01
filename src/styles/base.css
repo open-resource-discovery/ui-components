@@ -26,6 +26,117 @@
   --color-popover: var(--ord-popover);
   --color-popover-foreground: var(--ord-popover-foreground);
   --radius: var(--ord-radius);
+
+  /* Card */
+  --color-card-bg: var(--ord-card-bg);
+  --color-card-fg: var(--ord-card-fg);
+  --color-card-border: var(--ord-card-border);
+
+  /* Button */
+  --color-button-primary-bg: var(--ord-button-primary-bg);
+  --color-button-primary-fg: var(--ord-button-primary-fg);
+  --color-button-primary-bg-hover: var(--ord-button-primary-bg-hover);
+  --color-button-primary-bg-active: var(--ord-button-primary-bg-active);
+  --color-button-secondary-bg: var(--ord-button-secondary-bg);
+  --color-button-secondary-fg: var(--ord-button-secondary-fg);
+  --color-button-secondary-bg-hover: var(--ord-button-secondary-bg-hover);
+  --color-button-secondary-bg-active: var(--ord-button-secondary-bg-active);
+  --color-button-destructive-bg: var(--ord-button-destructive-bg);
+  --color-button-destructive-fg: var(--ord-button-destructive-fg);
+  --color-button-destructive-bg-hover: var(--ord-button-destructive-bg-hover);
+  --color-button-destructive-bg-active: var(--ord-button-destructive-bg-active);
+  --color-button-outline-border: var(--ord-button-outline-border);
+  --color-button-outline-bg: var(--ord-button-outline-bg);
+  --color-button-outline-bg-hover: var(--ord-button-outline-bg-hover);
+  --color-button-outline-fg-hover: var(--ord-button-outline-fg-hover);
+  --color-button-ghost-bg-hover: var(--ord-button-ghost-bg-hover);
+  --color-button-ghost-fg-hover: var(--ord-button-ghost-fg-hover);
+  --color-button-link-fg: var(--ord-button-link-fg);
+
+  /* Badge */
+  --color-badge-default-bg: var(--ord-badge-default-bg);
+  --color-badge-default-fg: var(--ord-badge-default-fg);
+  --color-badge-secondary-bg: var(--ord-badge-secondary-bg);
+  --color-badge-secondary-fg: var(--ord-badge-secondary-fg);
+  --color-badge-destructive-bg: var(--ord-badge-destructive-bg);
+  --color-badge-destructive-fg: var(--ord-badge-destructive-fg);
+  --color-badge-success-bg: var(--ord-badge-success-bg);
+  --color-badge-success-fg: var(--ord-badge-success-fg);
+  --color-badge-warning-bg: var(--ord-badge-warning-bg);
+  --color-badge-warning-fg: var(--ord-badge-warning-fg);
+  --color-badge-outline-border: var(--ord-badge-outline-border);
+  --color-badge-outline-fg: var(--ord-badge-outline-fg);
+  --color-badge-highlight-bg: var(--ord-badge-highlight-bg);
+  --color-badge-highlight-fg: var(--ord-badge-highlight-fg);
+  --color-badge-highlight-border: var(--ord-badge-highlight-border);
+
+  /* Input */
+  --color-input-bg: var(--ord-input-bg);
+  --color-input-fg: var(--ord-input-fg);
+  --color-input-border: var(--ord-input-border);
+  --color-input-placeholder: var(--ord-input-placeholder);
+
+  /* Tabs */
+  --color-tabs-fg: var(--ord-tabs-fg);
+  --color-tabs-active-bg: var(--ord-tabs-active-bg);
+  --color-tabs-active-fg: var(--ord-tabs-active-fg);
+  --color-tabs-indicator: var(--ord-tabs-indicator);
+
+  /* Tooltip */
+  --color-tooltip-bg: var(--ord-tooltip-bg);
+  --color-tooltip-fg: var(--ord-tooltip-fg);
+
+  /* Dialog */
+  --color-dialog-backdrop: var(--ord-dialog-backdrop);
+  --color-dialog-bg: var(--ord-dialog-bg);
+  --color-dialog-fg: var(--ord-dialog-fg);
+  --color-dialog-border: var(--ord-dialog-border);
+  --color-dialog-description-fg: var(--ord-dialog-description-fg);
+
+  /* Sheet */
+  --color-sheet-backdrop: var(--ord-sheet-backdrop);
+  --color-sheet-bg: var(--ord-sheet-bg);
+  --color-sheet-fg: var(--ord-sheet-fg);
+  --color-sheet-border: var(--ord-sheet-border);
+  --color-sheet-description-fg: var(--ord-sheet-description-fg);
+
+  /* Combobox */
+  --color-combobox-popup-bg: var(--ord-combobox-popup-bg);
+  --color-combobox-popup-fg: var(--ord-combobox-popup-fg);
+  --color-combobox-popup-border: var(--ord-combobox-popup-border);
+  --color-combobox-item-bg-hover: var(--ord-combobox-item-bg-hover);
+  --color-combobox-item-fg-hover: var(--ord-combobox-item-fg-hover);
+
+  /* Select */
+  --color-select-trigger-bg: var(--ord-select-trigger-bg);
+  --color-select-trigger-fg: var(--ord-select-trigger-fg);
+  --color-select-trigger-border: var(--ord-select-trigger-border);
+  --color-select-popup-bg: var(--ord-select-popup-bg);
+  --color-select-popup-fg: var(--ord-select-popup-fg);
+  --color-select-popup-border: var(--ord-select-popup-border);
+  --color-select-item-bg-hover: var(--ord-select-item-bg-hover);
+  --color-select-item-fg-hover: var(--ord-select-item-fg-hover);
+
+  /* Switch */
+  --color-switch-track-on: var(--ord-switch-track-on);
+  --color-switch-track-off: var(--ord-switch-track-off);
+  --color-switch-thumb: var(--ord-switch-thumb);
+
+  /* Checkbox */
+  --color-checkbox-border: var(--ord-checkbox-border);
+  --color-checkbox-bg-checked: var(--ord-checkbox-bg-checked);
+  --color-checkbox-fg-checked: var(--ord-checkbox-fg-checked);
+
+  /* Progress */
+  --color-progress-track: var(--ord-progress-track);
+  --color-progress-indicator: var(--ord-progress-indicator);
+
+  /* Spinner */
+  --color-spinner-fg: var(--ord-spinner-fg);
+
+  /* Avatar */
+  --color-avatar-fallback-bg: var(--ord-avatar-fallback-bg);
+  --color-avatar-fallback-fg: var(--ord-avatar-fallback-fg);
 }
 
 .ord-ui {

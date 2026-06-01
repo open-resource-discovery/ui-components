@@ -26,7 +26,7 @@ const CheckboxRoot = forwardRef<HTMLSpanElement, CheckboxProps>(({ className, ch
     <BaseCheckbox.Root
       ref={ref}
       className={cn(
-        "inline-flex h-4 w-4 shrink-0 cursor-pointer items-center justify-center rounded-sm border border-primary ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:bg-primary data-[checked]:text-primary-foreground",
+        "inline-flex h-4 w-4 shrink-0 cursor-pointer items-center justify-center rounded-sm border border-checkbox-border ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:bg-checkbox-bg-checked data-[checked]:text-checkbox-fg-checked",
         className,
       )}
       {...props}>

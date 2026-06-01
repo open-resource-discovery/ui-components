@@ -7,7 +7,7 @@ type CardRootProps = ComponentPropsWithoutRef<"div">;
 const CardRoot = forwardRef<HTMLDivElement, CardRootProps>(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("bg-card text-card-foreground border border-border rounded-[var(--ord-radius)] shadow-sm", className)}
+    className={cn("bg-card-bg text-card-fg border border-card-border rounded-[var(--ord-radius)] shadow-sm", className)}
     {...props}
   />
 ));

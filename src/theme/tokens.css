@@ -12,7 +12,7 @@
   --ord-accent-foreground: #0b1120;
   --ord-destructive: #dc2626;
   --ord-destructive-foreground: #ffffff;
-  --ord-success: #22c55e;
+  --ord-success: #4a9696;
   --ord-success-foreground: #ffffff;
   --ord-warning: #f59e0b;
   --ord-warning-foreground: #ffffff;
@@ -23,6 +23,117 @@
   --ord-card-foreground: #0b1120;
   --ord-popover: #ffffff;
   --ord-popover-foreground: #0b1120;
+
+  /* Card */
+  --ord-card-bg: var(--ord-card);
+  --ord-card-fg: var(--ord-card-foreground);
+  --ord-card-border: var(--ord-border);
+
+  /* Button */
+  --ord-button-primary-bg: var(--ord-primary);
+  --ord-button-primary-fg: var(--ord-primary-foreground);
+  --ord-button-primary-bg-hover: color-mix(in oklab, var(--ord-button-primary-bg) 90%, transparent);
+  --ord-button-primary-bg-active: color-mix(in oklab, var(--ord-button-primary-bg) 80%, transparent);
+  --ord-button-secondary-bg: var(--ord-secondary);
+  --ord-button-secondary-fg: var(--ord-secondary-foreground);
+  --ord-button-secondary-bg-hover: color-mix(in oklab, var(--ord-button-secondary-bg) 80%, transparent);
+  --ord-button-secondary-bg-active: color-mix(in oklab, var(--ord-button-secondary-bg) 70%, transparent);
+  --ord-button-destructive-bg: var(--ord-destructive);
+  --ord-button-destructive-fg: var(--ord-destructive-foreground);
+  --ord-button-destructive-bg-hover: color-mix(in oklab, var(--ord-button-destructive-bg) 90%, transparent);
+  --ord-button-destructive-bg-active: color-mix(in oklab, var(--ord-button-destructive-bg) 80%, transparent);
+  --ord-button-outline-border: var(--ord-input);
+  --ord-button-outline-bg: var(--ord-background);
+  --ord-button-outline-bg-hover: var(--ord-accent);
+  --ord-button-outline-fg-hover: var(--ord-accent-foreground);
+  --ord-button-ghost-bg-hover: var(--ord-accent);
+  --ord-button-ghost-fg-hover: var(--ord-accent-foreground);
+  --ord-button-link-fg: var(--ord-primary);
+
+  /* Badge */
+  --ord-badge-default-bg: var(--ord-primary);
+  --ord-badge-default-fg: var(--ord-primary-foreground);
+  --ord-badge-secondary-bg: var(--ord-secondary);
+  --ord-badge-secondary-fg: var(--ord-secondary-foreground);
+  --ord-badge-destructive-bg: var(--ord-destructive);
+  --ord-badge-destructive-fg: var(--ord-destructive-foreground);
+  --ord-badge-success-bg: var(--ord-success);
+  --ord-badge-success-fg: var(--ord-success-foreground);
+  --ord-badge-warning-bg: var(--ord-warning);
+  --ord-badge-warning-fg: var(--ord-warning-foreground);
+  --ord-badge-outline-border: var(--ord-border);
+  --ord-badge-outline-fg: var(--ord-foreground);
+  --ord-badge-highlight-bg: color-mix(in oklab, var(--ord-primary) 10%, transparent);
+  --ord-badge-highlight-fg: var(--ord-primary);
+  --ord-badge-highlight-border: color-mix(in oklab, var(--ord-primary) 20%, transparent);
+
+  /* Input */
+  --ord-input-bg: var(--ord-background);
+  --ord-input-fg: var(--ord-foreground);
+  --ord-input-border: var(--ord-input);
+  --ord-input-placeholder: var(--ord-muted-foreground);
+
+  /* Tabs */
+  --ord-tabs-fg: var(--ord-muted-foreground);
+  --ord-tabs-active-bg: var(--ord-muted);
+  --ord-tabs-active-fg: var(--ord-foreground);
+  --ord-tabs-indicator: var(--ord-primary);
+
+  /* Tooltip */
+  --ord-tooltip-bg: var(--ord-foreground);
+  --ord-tooltip-fg: var(--ord-background);
+
+  /* Dialog */
+  --ord-dialog-backdrop: rgb(0 0 0 / 0.5);
+  --ord-dialog-bg: var(--ord-card);
+  --ord-dialog-fg: var(--ord-card-foreground);
+  --ord-dialog-border: var(--ord-border);
+  --ord-dialog-description-fg: var(--ord-muted-foreground);
+
+  /* Sheet */
+  --ord-sheet-backdrop: rgb(0 0 0 / 0.5);
+  --ord-sheet-bg: var(--ord-card);
+  --ord-sheet-fg: var(--ord-card-foreground);
+  --ord-sheet-border: var(--ord-border);
+  --ord-sheet-description-fg: var(--ord-muted-foreground);
+
+  /* Combobox (trigger reuses Input tokens) */
+  --ord-combobox-popup-bg: var(--ord-popover);
+  --ord-combobox-popup-fg: var(--ord-popover-foreground);
+  --ord-combobox-popup-border: var(--ord-border);
+  --ord-combobox-item-bg-hover: var(--ord-accent);
+  --ord-combobox-item-fg-hover: var(--ord-accent-foreground);
+
+  /* Select */
+  --ord-select-trigger-bg: var(--ord-background);
+  --ord-select-trigger-fg: var(--ord-foreground);
+  --ord-select-trigger-border: var(--ord-input);
+  --ord-select-popup-bg: var(--ord-popover);
+  --ord-select-popup-fg: var(--ord-popover-foreground);
+  --ord-select-popup-border: var(--ord-border);
+  --ord-select-item-bg-hover: var(--ord-accent);
+  --ord-select-item-fg-hover: var(--ord-accent-foreground);
+
+  /* Switch */
+  --ord-switch-track-on: var(--ord-primary);
+  --ord-switch-track-off: var(--ord-input);
+  --ord-switch-thumb: var(--ord-background);
+
+  /* Checkbox */
+  --ord-checkbox-border: var(--ord-primary);
+  --ord-checkbox-bg-checked: var(--ord-primary);
+  --ord-checkbox-fg-checked: var(--ord-primary-foreground);
+
+  /* Progress */
+  --ord-progress-track: var(--ord-secondary);
+  --ord-progress-indicator: var(--ord-primary);
+
+  /* Spinner */
+  --ord-spinner-fg: var(--ord-primary);
+
+  /* Avatar */
+  --ord-avatar-fallback-bg: var(--ord-muted);
+  --ord-avatar-fallback-fg: var(--ord-muted-foreground);
 }
 
 .ord-ui.dark {
@@ -38,7 +149,7 @@
   --ord-accent-foreground: #d4d4d4;
   --ord-destructive: #f44747;
   --ord-destructive-foreground: #ffffff;
-  --ord-success: #16a34a;
+  --ord-success: #27e0d1;
   --ord-success-foreground: #ffffff;
   --ord-warning: #ff9800;
   --ord-warning-foreground: #ffffff;

@@ -35,7 +35,7 @@ const DialogBackdrop = forwardRef<HTMLDivElement, DialogBackdropProps>(({ classN
   <BaseDialog.Backdrop
     ref={ref}
     className={cn(
-      "fixed inset-0 z-50 bg-black/50 data-[open]:animate-ord-fade-in data-[closed]:animate-ord-fade-out",
+      "fixed inset-0 z-50 bg-dialog-backdrop data-[open]:animate-ord-fade-in data-[closed]:animate-ord-fade-out",
       className,
     )}
     {...props}
@@ -50,7 +50,7 @@ const DialogPopup = forwardRef<HTMLDivElement, DialogPopupProps>(({ className, .
   <BaseDialog.Popup
     ref={ref}
     className={cn(
-      "fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg rounded-[var(--ord-radius)] border border-border bg-card text-card-foreground p-6 shadow-lg outline-none data-[open]:animate-ord-dialog-in data-[closed]:animate-ord-dialog-out",
+      "fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg rounded-[var(--ord-radius)] border border-dialog-border bg-dialog-bg text-dialog-fg p-6 shadow-lg outline-none data-[open]:animate-ord-dialog-in data-[closed]:animate-ord-dialog-out",
       className,
     )}
     {...props}
@@ -74,7 +74,7 @@ DialogTitle.displayName = "Dialog.Title";
 type DialogDescriptionProps = ComponentPropsWithoutRef<typeof BaseDialog.Description>;
 
 const DialogDescription = forwardRef<HTMLParagraphElement, DialogDescriptionProps>(({ className, ...props }, ref) => (
-  <BaseDialog.Description ref={ref} className={cn("mt-1.5 text-sm text-muted-foreground", className)} {...props} />
+  <BaseDialog.Description ref={ref} className={cn("mt-1.5 text-sm text-dialog-description-fg", className)} {...props} />
 ));
 DialogDescription.displayName = "Dialog.Description";
 
