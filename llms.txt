@@ -2,7 +2,7 @@
 
 > Accessible, themeable React UI components built on Base UI and Tailwind v4 — part of the Open Resource Discovery toolset.
 
-Install: `npm install @open-resource-discovery/ui-components`. Peer deps: React 18+ or 19, react-dom 18+ or 19. Optional peers: `shiki` for `CodeBlock`, `@monaco-editor/react` for `CodeEditor`. Wrap the app in `<ThemeRoot>` and import `'@open-resource-discovery/ui-components/styles'` once at the entry point. Theming is driven by `--ord-*` CSS variables on the `.ord-ui` class; `.ord-ui.dark` switches to dark mode.
+Install: `npm install @open-resource-discovery/ui-components`. Peer deps: React 18+ or 19, react-dom 18+ or 19. Optional peers: `shiki` for `CodeBlock`, `@monaco-editor/react` for `CodeEditor`. Wrap the app in `<ThemeRoot>` and import `'@open-resource-discovery/ui-components/styles'` once at the entry point. Theming is a **two-layer token system** on the `.ord-ui` class: a semantic layer (`--ord-primary`, `--ord-background`, …) plus a per-component layer (`--ord-button-primary-bg`, `--ord-tooltip-bg`, `--ord-dialog-backdrop`, …) that defaults to the semantic source — override the global layer for a palette swap, the per-component layer to retheme one slot. `.ord-ui.dark` switches to dark mode. `<ThemeRoot style={…}>` accepts inline CSS-variable overrides at runtime; this is the only correct place for them because portaled components (Dialog, Sheet, Tooltip, Combobox/Select popups) portal back up to `.ord-ui`.
 
 ## Getting Started
 
@@ -15,7 +15,8 @@ Install: `npm install @open-resource-discovery/ui-components`. Peer deps: React 
 - [Colours](https://open-resource-discovery.github.io/ui-components/?path=/story/styleguide-colours--default): Surface, brand, state, and border tokens — light and dark.
 - [Typography](https://open-resource-discovery.github.io/ui-components/?path=/story/styleguide-typography--default): Type scale and weight ramp.
 - [Radius & spacing](https://open-resource-discovery.github.io/ui-components/?path=/story/styleguide-radius-spacing--default): Corner radii and 4px-grid spacing.
-- [ThemeRoot](https://open-resource-discovery.github.io/ui-components/?path=/story/theme-themeroot--light): Required wrapper that scopes `.ord-ui` and exposes tokens.
+- [ThemeRoot](https://open-resource-discovery.github.io/ui-components/?path=/story/theme-themeroot--light): Required wrapper that scopes `.ord-ui` and exposes tokens. Accepts a `style` prop for runtime CSS-variable overrides.
+- [Theme Editor (live)](https://open-resource-discovery.github.io/ui-components/?path=/story/compositions-theme-editor--default): Edit semantic and per-component tokens against a full component gallery and copy the resulting CSS.
 
 ## Components
 

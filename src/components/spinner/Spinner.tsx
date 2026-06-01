@@ -2,7 +2,7 @@ import { forwardRef, type HTMLAttributes } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/cn";
 
-const spinnerVariants = cva("animate-spin text-primary", {
+const spinnerVariants = cva("animate-spin text-spinner-fg", {
   variants: {
     size: {
       sm: "h-4 w-4",

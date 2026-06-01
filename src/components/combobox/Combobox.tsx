@@ -18,7 +18,7 @@ const ComboboxInput = forwardRef<HTMLInputElement, ComboboxInputProps>(({ classN
   <BaseCombobox.Input
     ref={ref}
     className={cn(
-      "flex h-10 w-full rounded-[var(--ord-radius)] border border-input bg-background px-3 py-2 text-sm text-foreground ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+      "flex h-10 w-full rounded-[var(--ord-radius)] border border-input-border bg-input-bg px-3 py-2 text-sm text-input-fg ring-offset-background placeholder:text-input-placeholder focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
       className,
     )}
     {...props}
@@ -50,7 +50,7 @@ const ComboboxPopup = forwardRef<HTMLDivElement, ComboboxPopupProps>(({ classNam
   <BaseCombobox.Popup
     ref={ref}
     className={cn(
-      "bg-popover text-popover-foreground border border-border rounded-[var(--ord-radius)] shadow-md p-1 overflow-hidden min-w-[var(--anchor-width)]",
+      "bg-combobox-popup-bg text-combobox-popup-fg border border-combobox-popup-border rounded-[var(--ord-radius)] shadow-md p-1 overflow-hidden min-w-[var(--anchor-width)]",
       className,
     )}
     {...props}
@@ -65,7 +65,7 @@ const ComboboxItem = forwardRef<HTMLDivElement, ComboboxItemProps>(({ className,
   <BaseCombobox.Item
     ref={ref}
     className={cn(
-      "relative flex w-full cursor-pointer select-none items-center rounded-sm pl-8 pr-2 py-1.5 text-sm outline-none data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[selected]:bg-accent data-[selected]:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "relative flex w-full cursor-pointer select-none items-center rounded-sm pl-8 pr-2 py-1.5 text-sm outline-none data-[highlighted]:bg-combobox-item-bg-hover data-[highlighted]:text-combobox-item-fg-hover data-[selected]:bg-combobox-item-bg-hover data-[selected]:text-combobox-item-fg-hover data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       className,
     )}
     {...props}

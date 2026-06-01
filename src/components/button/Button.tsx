@@ -7,14 +7,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground shadow hover:bg-primary/90 active:bg-primary/80",
+        default:
+          "bg-button-primary-bg text-button-primary-fg shadow hover:bg-button-primary-bg-hover active:bg-button-primary-bg-active",
         destructive:
-          "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90 active:bg-destructive/80",
+          "bg-button-destructive-bg text-button-destructive-fg shadow-sm hover:bg-button-destructive-bg-hover active:bg-button-destructive-bg-active",
         outline:
-          "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground active:bg-accent/80",
-        secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 active:bg-secondary/70",
-        ghost: "hover:bg-accent hover:text-accent-foreground active:bg-accent/80",
-        link: "text-primary underline-offset-4 hover:underline",
+          "border border-button-outline-border bg-button-outline-bg shadow-sm hover:bg-button-outline-bg-hover hover:text-button-outline-fg-hover active:bg-button-outline-bg-hover/80",
+        secondary:
+          "bg-button-secondary-bg text-button-secondary-fg shadow-sm hover:bg-button-secondary-bg-hover active:bg-button-secondary-bg-active",
+        ghost: "hover:bg-button-ghost-bg-hover hover:text-button-ghost-fg-hover active:bg-button-ghost-bg-hover/80",
+        link: "text-button-link-fg underline-offset-4 hover:underline",
       },
       size: {
         sm: "h-8 rounded-md px-3 text-xs",

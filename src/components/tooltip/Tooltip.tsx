@@ -51,7 +51,7 @@ const TooltipPopup = forwardRef<HTMLDivElement, TooltipPopupProps>(({ className,
   <BaseTooltip.Popup
     ref={ref}
     className={cn(
-      "z-50 bg-foreground text-background px-2 py-1 text-xs rounded-[var(--ord-radius)] shadow-md data-[open]:animate-in data-[open]:fade-in-0 data-[closed]:animate-out data-[closed]:fade-out-0",
+      "z-50 bg-tooltip-bg text-tooltip-fg px-2 py-1 text-xs rounded-[var(--ord-radius)] shadow-md data-[open]:animate-in data-[open]:fade-in-0 data-[closed]:animate-out data-[closed]:fade-out-0",
       className,
     )}
     {...props}
@@ -63,7 +63,7 @@ TooltipPopup.displayName = "Tooltip.Popup";
 type TooltipArrowProps = ComponentPropsWithoutRef<typeof BaseTooltip.Arrow>;
 
 const TooltipArrow = forwardRef<HTMLDivElement, TooltipArrowProps>(({ className, ...props }, ref) => (
-  <BaseTooltip.Arrow ref={ref} className={cn("fill-foreground", className)} {...props} />
+  <BaseTooltip.Arrow ref={ref} className={cn("fill-tooltip-bg", className)} {...props} />
 ));
 TooltipArrow.displayName = "Tooltip.Arrow";
 

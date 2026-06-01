@@ -75,7 +75,11 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
     return (
       <div
         ref={ref}
-        className={cn("rounded-lg border bg-card overflow-hidden", highlighted && "ring-2 ring-primary", className)}
+        className={cn(
+          "rounded-[var(--ord-radius)] border bg-card overflow-hidden",
+          highlighted && "ring-2 ring-primary",
+          className,
+        )}
         {...props}>
         <Collapsible.Root open={open} onOpenChange={setOpen}>
           <Collapsible.Trigger className="flex items-center gap-2 w-full px-3 py-2 text-left hover:bg-accent/50 transition-colors cursor-pointer">

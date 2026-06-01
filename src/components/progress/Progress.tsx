@@ -16,7 +16,7 @@ export type ProgressTrackProps = ComponentPropsWithoutRef<typeof BaseProgress.Tr
 const ProgressTrack = forwardRef<HTMLDivElement, ProgressTrackProps>(({ className, ...props }, ref) => (
   <BaseProgress.Track
     ref={ref}
-    className={cn("relative h-2 w-full overflow-hidden rounded-full bg-secondary", className)}
+    className={cn("relative h-2 w-full overflow-hidden rounded-full bg-progress-track", className)}
     {...props}
   />
 ));
@@ -29,7 +29,7 @@ const ProgressIndicator = forwardRef<HTMLDivElement, ProgressIndicatorProps>(({ 
   <BaseProgress.Indicator
     ref={ref}
     className={cn(
-      "h-full rounded-full bg-primary transition-[width] data-[state=indeterminate]:animate-progress-indeterminate",
+      "h-full rounded-full bg-progress-indicator transition-[width] data-[state=indeterminate]:animate-progress-indeterminate",
       className,
     )}
     {...props}

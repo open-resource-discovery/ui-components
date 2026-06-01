@@ -18,7 +18,7 @@ const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(({ class
   <BaseSelect.Trigger
     ref={ref}
     className={cn(
-      "flex h-10 w-full items-center justify-between rounded-[var(--ord-radius)] border border-input bg-background px-3 py-2 text-sm text-foreground ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+      "flex h-10 w-full items-center justify-between rounded-[var(--ord-radius)] border border-select-trigger-border bg-select-trigger-bg px-3 py-2 text-sm text-select-trigger-fg ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
       className,
     )}
     {...props}
@@ -88,7 +88,7 @@ const SelectPopup = forwardRef<HTMLDivElement, SelectPopupProps>(({ className, .
   <BaseSelect.Popup
     ref={ref}
     className={cn(
-      "bg-popover text-popover-foreground border border-border rounded-[var(--ord-radius)] shadow-md p-1 overflow-hidden min-w-[var(--anchor-width)]",
+      "bg-select-popup-bg text-select-popup-fg border border-select-popup-border rounded-[var(--ord-radius)] shadow-md p-1 overflow-hidden min-w-[var(--anchor-width)]",
       className,
     )}
     {...props}
@@ -103,7 +103,7 @@ const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(({ className, ...
   <BaseSelect.Item
     ref={ref}
     className={cn(
-      "relative flex w-full cursor-pointer select-none items-center rounded-sm pl-8 pr-2 py-1.5 text-sm outline-none data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "relative flex w-full cursor-pointer select-none items-center rounded-sm pl-8 pr-2 py-1.5 text-sm outline-none data-[highlighted]:bg-select-item-bg-hover data-[highlighted]:text-select-item-fg-hover data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       className,
     )}
     {...props}
