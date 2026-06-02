@@ -7,7 +7,7 @@ export type InfoCardRootProps = ComponentPropsWithoutRef<"div">;
 const InfoCardRoot = forwardRef<HTMLDivElement, InfoCardRootProps>(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("bg-card text-card-foreground border border-border rounded-[var(--ord-radius)] shadow-sm", className)}
+    className={cn("bg-card-bg text-card-fg border border-border rounded-[var(--ord-radius)] shadow-sm", className)}
     {...props}
   />
 ));

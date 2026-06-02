@@ -76,7 +76,7 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
       <div
         ref={ref}
         className={cn(
-          "rounded-[var(--ord-radius)] border bg-card overflow-hidden",
+          "rounded-[var(--ord-radius)] border bg-card-bg overflow-hidden",
           highlighted && "ring-2 ring-primary",
           className,
         )}
