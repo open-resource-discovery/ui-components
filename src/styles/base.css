@@ -1,4 +1,7 @@
-@import 'tailwindcss';
+@layer theme, base, components, utilities;
+
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
 @import '../theme/tokens.css';
 
 @theme inline {
@@ -31,6 +34,10 @@
   --color-card-bg: var(--ord-card-bg);
   --color-card-fg: var(--ord-card-fg);
   --color-card-border: var(--ord-card-border);
+
+  /* Code */
+  --color-code-bg: var(--ord-code-bg);
+  --color-code-fg: var(--ord-code-fg);
 
   /* Button */
   --color-button-primary-bg: var(--ord-button-primary-bg);
@@ -143,8 +150,10 @@
   color: var(--ord-foreground);
 }
 
-.ord-ui :where(*) {
-  border-color: var(--ord-border);
+@layer base {
+  .ord-ui :where(*) {
+    border-color: var(--ord-border);
+  }
 }
 
 /* Progress indeterminate animation */

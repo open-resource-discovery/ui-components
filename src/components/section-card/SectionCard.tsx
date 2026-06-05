@@ -6,7 +6,10 @@ export type SectionCardRootProps = ComponentPropsWithoutRef<"div"> & {
 };
 
 const Root = forwardRef<HTMLDivElement, SectionCardRootProps>(({ className, children, ...props }, ref) => (
-  <div ref={ref} className={cn("rounded-lg border bg-card-bg overflow-hidden", className)} {...props}>
+  <div
+    ref={ref}
+    className={cn("rounded-lg border border-card-border bg-card-bg overflow-hidden", className)}
+    {...props}>
     {children}
   </div>
 ));

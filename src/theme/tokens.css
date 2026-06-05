@@ -134,6 +134,10 @@
   /* Avatar */
   --ord-avatar-fallback-bg: var(--ord-muted);
   --ord-avatar-fallback-fg: var(--ord-muted-foreground);
+
+  /* Code */
+  --ord-code-bg: var(--ord-muted);
+  --ord-code-fg: var(--ord-muted-foreground);
 }
 
 .ord-ui.dark {
@@ -160,4 +164,7 @@
   --ord-card-foreground: #d4d4d4;
   --ord-popover: #252526;
   --ord-popover-foreground: #d4d4d4;
+
+  /* Code */
+  /*--ord-code-bg: #2d2d30;*/
 }

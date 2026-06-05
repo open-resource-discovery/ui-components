@@ -7,7 +7,7 @@ export type InfoCardRootProps = ComponentPropsWithoutRef<"div">;
 const InfoCardRoot = forwardRef<HTMLDivElement, InfoCardRootProps>(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("bg-card-bg text-card-fg border border-border rounded-[var(--ord-radius)] shadow-sm", className)}
+    className={cn("bg-card-bg text-card-fg border border-card-border rounded-[var(--ord-radius)] shadow-sm", className)}
     {...props}
   />
 ));
@@ -17,7 +17,7 @@ InfoCardRoot.displayName = "InfoCard";
 export type InfoCardHeaderProps = ComponentPropsWithoutRef<"div">;
 
 const InfoCardHeader = forwardRef<HTMLDivElement, InfoCardHeaderProps>(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("flex items-center gap-3 p-4 pb-0", className)} {...props} />
+  <div ref={ref} className={cn("flex items-center gap-3 p-4", className)} {...props} />
 ));
 InfoCardHeader.displayName = "InfoCard.Header";
 
@@ -72,7 +72,7 @@ InfoCardSubtitle.displayName = "InfoCard.Subtitle";
 export type InfoCardContentProps = ComponentPropsWithoutRef<"div">;
 
 const InfoCardContent = forwardRef<HTMLDivElement, InfoCardContentProps>(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("flex flex-col gap-3 p-4", className)} {...props} />
+  <div ref={ref} className={cn("flex flex-col gap-3 px-4 pb-4 pt-0", className)} {...props} />
 ));
 InfoCardContent.displayName = "InfoCard.Content";
 

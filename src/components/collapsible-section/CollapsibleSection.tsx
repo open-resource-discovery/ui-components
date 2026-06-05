@@ -11,7 +11,12 @@ export interface CollapsibleSectionRootProps extends ComponentPropsWithoutRef<ty
 function CollapsibleSectionRoot({ className, bordered, ...props }: CollapsibleSectionRootProps): React.JSX.Element {
   return (
     <Collapsible.Root
-      className={cn("flex flex-col", bordered && "rounded-lg border bg-card-bg p-3", className)}
+      className={cn(
+        "flex flex-col py-1",
+        bordered && "rounded-lg border bg-card-bg p-2",
+        !bordered && "border-b last:border-b-0",
+        className,
+      )}
       {...props}
     />
   );
