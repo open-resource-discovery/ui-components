@@ -1,5 +1,6 @@
-@import 'tailwindcss';
-@import '../theme/tokens.css';
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "../theme/tokens.css";
 
 @theme inline {
   --color-background: var(--ord-background);
@@ -25,6 +26,8 @@
   --color-card-foreground: var(--ord-card-foreground);
   --color-popover: var(--ord-popover);
   --color-popover-foreground: var(--ord-popover-foreground);
+  --color-code-foreground: var(--ord-code-fg);
+  --color-code: var(--ord-code-bg);
   --radius: var(--ord-radius);
 
   /* Card */
@@ -307,7 +310,7 @@
 }
 
 /* Shiki dual-theme support */
-.ord-ui.dark .ord-code-block span[style*='--shiki-dark'] {
+.ord-ui.dark .ord-code-block span[style*="--shiki-dark"] {
   color: var(--shiki-dark) !important;
 }
 
