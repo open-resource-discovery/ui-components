@@ -29,6 +29,10 @@
   --ord-card-fg: var(--ord-card-foreground);
   --ord-card-border: var(--ord-border);
 
+  /* Code */
+  --ord-code-bg: var(--ord-muted);
+  --ord-code-fg: var(--ord-muted-foreground);
+
   /* Button */
   --ord-button-primary-bg: var(--ord-primary);
   --ord-button-primary-fg: var(--ord-primary-foreground);

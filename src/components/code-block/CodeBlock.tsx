@@ -104,10 +104,10 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
     return (
       <div
         ref={ref}
-        className={cn("ord-code-block group rounded-[var(--ord-radius)] border bg-muted overflow-hidden", className)}
+        className={cn("ord-code-block group rounded-[var(--ord-radius)] border bg-code overflow-hidden", className)}
         {...props}>
         {filename && (
-          <div className="flex items-center gap-2 px-3 py-2 border-b text-xs text-muted-foreground">
+          <div className="flex items-center gap-2 px-3 py-2 border-b text-xs text-code-foreground">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="12"
@@ -139,7 +139,7 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
               dangerouslySetInnerHTML={{ __html: highlightedHtml }}
             />
           ) : (
-            <pre className="p-4 overflow-x-auto font-mono text-sm whitespace-pre text-foreground">
+            <pre className="p-4 overflow-x-auto font-mono text-sm whitespace-pre text-code-foreground bg-code">
               <code>
                 {showLineNumbers
                   ? lines.map((line, i) => (
