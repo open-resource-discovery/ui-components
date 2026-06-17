@@ -1,8 +1,9 @@
-@layer theme, base, components, utilities;
+@layer theme, base, components;
 
 @import 'tailwindcss/theme.css' layer(theme);
-@import 'tailwindcss/utilities.css' layer(utilities);
-@import '../theme/tokens.css';
+@import 'tailwindcss/utilities.css';
+
+@import "../theme/tokens.css";
 
 @theme inline {
   --color-background: var(--ord-background);
@@ -150,6 +151,8 @@
 
 .ord-ui {
   color: var(--ord-foreground);
+  font-family: ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 @layer base {

@@ -56,7 +56,7 @@ InfoCardIcon.displayName = "InfoCard.Icon";
 export type InfoCardTitleProps = ComponentPropsWithoutRef<"h2">;
 
 const InfoCardTitle = forwardRef<HTMLHeadingElement, InfoCardTitleProps>(({ className, ...props }, ref) => (
-  <h2 ref={ref} className={cn("text-base font-semibold leading-tight", className)} {...props} />
+  <h2 ref={ref} className={cn("text-base font-semibold leading-tight m-0", className)} {...props} />
 ));
 InfoCardTitle.displayName = "InfoCard.Title";
 
@@ -64,7 +64,7 @@ InfoCardTitle.displayName = "InfoCard.Title";
 export type InfoCardSubtitleProps = ComponentPropsWithoutRef<"p">;
 
 const InfoCardSubtitle = forwardRef<HTMLParagraphElement, InfoCardSubtitleProps>(({ className, ...props }, ref) => (
-  <p ref={ref} className={cn("text-xs text-muted-foreground", className)} {...props} />
+  <p ref={ref} className={cn("text-xs text-muted-foreground m-0", className)} {...props} />
 ));
 InfoCardSubtitle.displayName = "InfoCard.Subtitle";
 
