@@ -1,4 +1,4 @@
-# @open-resource-discovery/ui-components
+# UI Components
 
 A general-purpose React UI component library with accessible, themeable components.
 
