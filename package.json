@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "type": "module",
   "license": "Apache-2.0",
-  "description": "A general-purpose React UI component library with accessible, themeable components",
+  "description": "A React UI component library with accessible, themeable components designed for specification UIs.",
   "repository": {
     "type": "git",
     "url": "https://github.com/open-resource-discovery/ui-components.git"
