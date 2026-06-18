@@ -1,6 +1,6 @@
 {
   "name": "@open-resource-discovery/ui-components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "license": "Apache-2.0",
   "description": "A React UI component library with accessible, themeable components designed for specification UIs.",
@@ -48,6 +48,7 @@
   ],
   "scripts": {
     "build": "vite build",
+    "build:watch": "vite build --watch",
     "dev": "vite",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",

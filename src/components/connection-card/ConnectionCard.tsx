@@ -11,7 +11,7 @@ const ConnectionCardRoot = forwardRef<HTMLDivElement, ConnectionCardRootProps>(
     <div
       ref={ref}
       className={cn(
-        "bg-card text-card-foreground border border-border rounded-[var(--ord-radius)] shadow-sm p-4 cursor-pointer transition-colors hover:border-primary/50 hover:bg-accent/30",
+        "bg-card-bg text-card-foreground border border-border rounded-[var(--ord-radius)] shadow-sm p-4 cursor-pointer transition-colors hover:border-primary/50 hover:bg-accent/30",
         selected && "border-primary bg-accent/20",
         className,
       )}

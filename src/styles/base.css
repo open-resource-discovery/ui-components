@@ -1,5 +1,8 @@
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/utilities.css" layer(utilities);
+@layer theme, base, components;
+
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css';
+
 @import "../theme/tokens.css";
 
 @theme inline {
@@ -34,6 +37,10 @@
   --color-card-bg: var(--ord-card-bg);
   --color-card-fg: var(--ord-card-fg);
   --color-card-border: var(--ord-card-border);
+
+  /* Code */
+  --color-code-bg: var(--ord-code-bg);
+  --color-code-fg: var(--ord-code-fg);
 
   /* Button */
   --color-button-primary-bg: var(--ord-button-primary-bg);
@@ -144,10 +151,14 @@
 
 .ord-ui {
   color: var(--ord-foreground);
+  font-family: ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-.ord-ui :where(*) {
-  border-color: var(--ord-border);
+@layer base {
+  .ord-ui :where(*) {
+    border-color: var(--ord-border);
+  }
 }
 
 /* Progress indeterminate animation */

@@ -6,7 +6,10 @@ export type SectionCardRootProps = ComponentPropsWithoutRef<"div"> & {
 };
 
 const Root = forwardRef<HTMLDivElement, SectionCardRootProps>(({ className, children, ...props }, ref) => (
-  <div ref={ref} className={cn("rounded-lg border bg-card overflow-hidden", className)} {...props}>
+  <div
+    ref={ref}
+    className={cn("rounded-lg border border-card-border bg-card-bg overflow-hidden", className)}
+    {...props}>
     {children}
   </div>
 ));
@@ -21,7 +24,7 @@ export type SectionCardHeaderProps = ComponentPropsWithoutRef<"div"> & {
 const Header = forwardRef<HTMLDivElement, SectionCardHeaderProps>(
   ({ icon, title, badges, className, ...props }, ref) => (
     <div ref={ref} className={cn("flex items-center gap-2 px-4 py-3", className)} {...props}>
-      {icon && <span className="shrink-0 h-4 w-4 text-muted-foreground [&>svg]:h-full [&>svg]:w-full">{icon}</span>}
+      {icon && <span className="shrink-0 h-4 w-4 [&>svg]:h-full [&>svg]:w-full">{icon}</span>}
       <span className="text-sm font-medium flex-1">{title}</span>
       {badges && <div className="flex items-center gap-1.5 shrink-0">{badges}</div>}
     </div>
