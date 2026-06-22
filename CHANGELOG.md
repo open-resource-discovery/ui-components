@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) rules.
 
+## [0.1.2]
+
+### Fixed
+
+- Switch Tailwind import back to `@import "tailwindcss"` and add `utilities` to the explicit `@layer` order declaration (`theme, base, components, utilities`) so the full Tailwind layer stack is correctly registered in Storybook.
+
 ## [0.1.1]
 
 ### Changed
