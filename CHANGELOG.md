@@ -5,7 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) rules.
 
-## [0.1.1]
+## [unreleased]
+
+## [[0.1.2](https://github.com/open-resource-discovery/ui-components/releases/tag/v0.1.2)] - 2026-03-22
+
+### Fixed
+
+- Switch Tailwind import back to `@import "tailwindcss"` and add `utilities` to the explicit `@layer` order declaration (`theme, base, components, utilities`) so the full Tailwind layer stack is correctly registered in Storybook.
+
+## [[0.1.1](https://github.com/open-resource-discovery/ui-components/releases/tag/v0.1.1)] - 2026-03-18
+
+Initial open-source release of `@open-resource-discovery/ui-components`.
 
 ### Changed
 
@@ -16,10 +26,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `<code>` element styling inside `.ord-ui` using the new code tokens.
 - Improve `CollapsibleSection`, `InfoCard`, and `SectionCard` appearance (spacing, borders, typography).
 - Fix issue with broken styles in the storybook and a2a-editor heading
-
-## [unreleased]
-
-Initial open-source release of `@open-resource-discovery/ui-components`.
 
 ### Added
 

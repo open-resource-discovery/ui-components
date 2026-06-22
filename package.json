@@ -1,6 +1,6 @@
 {
   "name": "@open-resource-discovery/ui-components",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "license": "Apache-2.0",
   "description": "A React UI component library with accessible, themeable components designed for specification UIs.",
