@@ -8,8 +8,8 @@
   --ord-secondary-foreground: #0b1120;
   --ord-muted: #f1f5f9;
   --ord-muted-foreground: #6b7280;
-  --ord-accent: #f1f5f9;
-  --ord-accent-foreground: #0b1120;
+  --ord-accent: #f4f4f5;
+  --ord-accent-foreground: #8b8bb6;
   --ord-destructive: #dc2626;
   --ord-destructive-foreground: #ffffff;
   --ord-success: #4a9696;
@@ -154,7 +154,7 @@
   --ord-muted: #2d2d30;
   --ord-muted-foreground: #969696;
   --ord-accent: #2d2d30;
-  --ord-accent-foreground: #d4d4d4;
+  --ord-accent-foreground: #bebedf;
   --ord-destructive: #f44747;
   --ord-destructive-foreground: #ffffff;
   --ord-success: #27e0d1;
