@@ -7,6 +7,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [unreleased]
 
+## [[0.1.3](https://github.com/open-resource-discovery/ui-components/releases/tag/v0.1.3)] - 2026-06-24
+
 ### Fixed
 
 - In `Card.Header` and `CollapsibleSection` badges row collapses in two or more lines instead of be hidden in narrow screens
