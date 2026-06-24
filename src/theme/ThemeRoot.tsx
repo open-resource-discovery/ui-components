@@ -2,7 +2,9 @@ import { createContext, useCallback, useContext, useEffect, useState, type CSSPr
 import { useTheme } from "./useTheme";
 
 const PortalContainerContext = createContext<HTMLElement | null>(null);
-export const usePortalContainer = (): HTMLElement | null => useContext(PortalContainerContext);
+export const usePortalContainer = (): HTMLElement | null =>
+  useContext(PortalContainerContext) ??
+  (typeof document !== "undefined" ? document.querySelector<HTMLElement>(".ord-ui") : null);
 
 interface ThemeRootProps {
   children: ReactNode;

@@ -56,7 +56,7 @@ const CollapsibleSectionTrigger = forwardRef<HTMLButtonElement, CollapsibleSecti
       </svg>
       {icon && <span className="shrink-0 h-4 w-4 [&>svg]:h-full [&>svg]:w-full">{icon}</span>}
       <span className="flex-1 truncate text-left">{children}</span>
-      {badges && <div className="flex items-center gap-1.5 shrink-0">{badges}</div>}
+      {badges && <div className="flex items-center gap-1.5">{badges}</div>}
       {description && (
         <span className="basis-full pl-[18px] text-xs font-normal text-muted-foreground truncate text-left group-data-[panel-open]:hidden">
           {description}

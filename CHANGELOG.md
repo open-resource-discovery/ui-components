@@ -7,6 +7,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [unreleased]
 
+### Fixed
+
+- In `Card.Header` and `CollapsibleSection` badges row collapses in two or more lines instead of be hidden in narrow screens
+- `--ord-accent-foreground` color in both dark and light themes is changed to be readable on `--ord-primary` background
+- `usePortalContainer` now falls back to `document.querySelector(".ord-ui")` when no `PortalContainerContext` provider is present, so portal components (`Select`, `SimpleSelect`, `Sheet`, `Dialog`, `Combobox`, `Tooltip`) work correctly when the library is embedded inside a host app that has its own `ThemeRoot`-equivalent (e.g. `a2a-editor`, `mcp-server-card-ui`) without requiring any additional context wiring.
+
 ## [[0.1.2](https://github.com/open-resource-discovery/ui-components/releases/tag/v0.1.2)] - 2026-03-22
 
 ### Fixed

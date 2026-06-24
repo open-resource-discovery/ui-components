@@ -23,10 +23,10 @@ export type SectionCardHeaderProps = ComponentPropsWithoutRef<"div"> & {
 
 const Header = forwardRef<HTMLDivElement, SectionCardHeaderProps>(
   ({ icon, title, badges, className, ...props }, ref) => (
-    <div ref={ref} className={cn("flex items-center gap-2 px-4 py-3", className)} {...props}>
+    <div ref={ref} className={cn("flex flex-wrap items-center gap-2 px-4 py-3", className)} {...props}>
       {icon && <span className="shrink-0 h-4 w-4 [&>svg]:h-full [&>svg]:w-full">{icon}</span>}
-      <span className="text-sm font-medium flex-1">{title}</span>
-      {badges && <div className="flex items-center gap-1.5 shrink-0">{badges}</div>}
+      <span className="text-sm font-medium flex-1 truncate">{title}</span>
+      {badges && <div className="flex items-center gap-1.5">{badges}</div>}
     </div>
   ),
 );
