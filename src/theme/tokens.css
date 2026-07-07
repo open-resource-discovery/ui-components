@@ -142,6 +142,17 @@
   /* Code */
   --ord-code-bg: var(--ord-muted);
   --ord-code-fg: var(--ord-muted-foreground);
+
+  /* hljs syntax tokens (light — VSCode-style) */
+  --ord-hljs-keyword:     #0000ff;
+  --ord-hljs-string:      #a31515;
+  --ord-hljs-number:      #098658;
+  --ord-hljs-attr:        #881391;
+  --ord-hljs-function:    #795e26;
+  --ord-hljs-literal:     #0000ff;
+  --ord-hljs-tag:         #800000;
+  --ord-hljs-comment:     #008000;
+  --ord-hljs-punctuation: #000000;
 }
 
 .ord-ui.dark {
@@ -171,4 +182,15 @@
 
   /* Code */
   /*--ord-code-bg: #2d2d30;*/
+
+  /* hljs syntax tokens (dark — VSCode-style) */
+  --ord-hljs-keyword:     #569cd6;
+  --ord-hljs-string:      #ce9178;
+  --ord-hljs-number:      #b5cea8;
+  --ord-hljs-attr:        #9cdcfe;
+  --ord-hljs-function:    #dcdcaa;
+  --ord-hljs-literal:     #569cd6;
+  --ord-hljs-tag:         #569cd6;
+  --ord-hljs-comment:     #6a9955;
+  --ord-hljs-punctuation: #d4d4d4;
 }

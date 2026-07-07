@@ -7,6 +7,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [unreleased]
 
+### Added
+
+- `CodeBlock`: built-in highlight.js default highlighter now covers ten languages — `json`, `xml`/`html`, `yaml`/`yml`, `bash`/`sh`, `typescript`/`ts`, `javascript`/`js`, `css`, `markdown`/`md`, `sql`, `python`/`py`. Previously only `json` was registered, so all other languages fell back to unstyled plain text.
+- `--ord-hljs-*` design tokens (`keyword`, `string`, `number`, `attr`, `function`, `literal`, `tag`, `comment`, `punctuation`) added to `tokens.css` with VSCode-style light and dark values, and corresponding `.ord-ui .hljs-*` class rules added to `base.css`. Consumer apps (`a2a-editor`, `mcp-server-card-ui`) that previously defined their own `--hljs-*` tokens and class rules can remove those duplicates.
+
+### Changed
+
+- `CodeBlock` Storybook stories updated: `YAML`, `SQL`, and `Python` stories added to cover the newly registered languages; Shiki loader extended with the same language set.
+
 ## [[0.1.5](https://github.com/open-resource-discovery/ui-components/releases/tag/v0.1.5)] - 2026-07-07
 
 ### Fixed

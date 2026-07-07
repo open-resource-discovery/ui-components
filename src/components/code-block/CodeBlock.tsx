@@ -1,9 +1,52 @@
 import { forwardRef, useCallback, useMemo, useState, type ComponentPropsWithoutRef } from "react";
 import { cn } from "@/utils/cn";
 import { Button } from "@/components/button";
+import hljs from "highlight.js/lib/core";
+import json from "highlight.js/lib/languages/json";
+import xml from "highlight.js/lib/languages/xml";
+import yaml from "highlight.js/lib/languages/yaml";
+import bash from "highlight.js/lib/languages/bash";
+import typescript from "highlight.js/lib/languages/typescript";
+import javascript from "highlight.js/lib/languages/javascript";
+import css from "highlight.js/lib/languages/css";
+import markdown from "highlight.js/lib/languages/markdown";
+import sql from "highlight.js/lib/languages/sql";
+import python from "highlight.js/lib/languages/python";
+import { HighlightOptions } from "highlight.js";
 
 type HighlighterLike = {
   codeToHtml: (code: string, options: Record<string, unknown>) => string;
+};
+
+hljs.registerLanguage("json", json);
+hljs.registerLanguage("xml", xml);
+hljs.registerLanguage("html", xml);
+hljs.registerLanguage("yaml", yaml);
+hljs.registerLanguage("yml", yaml);
+hljs.registerLanguage("bash", bash);
+hljs.registerLanguage("sh", bash);
+hljs.registerLanguage("typescript", typescript);
+hljs.registerLanguage("ts", typescript);
+hljs.registerLanguage("javascript", javascript);
+hljs.registerLanguage("js", javascript);
+hljs.registerLanguage("css", css);
+hljs.registerLanguage("markdown", markdown);
+hljs.registerLanguage("md", markdown);
+hljs.registerLanguage("sql", sql);
+hljs.registerLanguage("python", python);
+hljs.registerLanguage("py", python);
+
+const defaultHighlighter: HighlighterLike = {
+  codeToHtml: (code: string, options: Record<string, unknown>) => {
+    if (!code) return code;
+    try {
+      const hljsOptions: HighlightOptions = { language: typeof options.lang === "string" ? options.lang : "json" };
+
+      return `<pre><code>${hljs.highlight(code, hljsOptions).value}</code></pre>`;
+    } catch {
+      return code;
+    }
+  },
 };
 
 export type CodeBlockProps = ComponentPropsWithoutRef<"div"> & {
@@ -25,7 +68,7 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
       code,
       language,
       filename,
-      highlighter,
+      highlighter = defaultHighlighter,
       lightTheme = "github-light",
       darkTheme = "github-dark",
       showLineNumbers = false,
