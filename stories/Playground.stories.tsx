@@ -308,7 +308,11 @@ function DetailPanel() {
             statusCode={200}
             duration={45}
             requestBody={JSON.stringify({ jsonrpc: '2.0', method: 'initialize', id: 1 })}
+            requestHeaders={{ 'Content-Type': 'application/json', 'Accept': 'application/json' }}
             responseBody={JSON.stringify({ jsonrpc: '2.0', result: { protocolVersion: '2025-03-26', capabilities: {} }, id: 1 })}
+            onResend={() => console.log('Resend #1')}
+            onCopy={() => console.log('Copy as cURL #1')}
+            onEdit={(payload) => console.log('Edit & Send #1', payload)}
           />
           <HttpLogEntry
             method="POST"
@@ -316,7 +320,11 @@ function DetailPanel() {
             statusCode={200}
             duration={32}
             requestBody={JSON.stringify({ jsonrpc: '2.0', method: 'tools/list', id: 2 })}
+            requestHeaders={{ 'Content-Type': 'application/json', 'Accept': 'application/json' }}
             responseBody={JSON.stringify({ jsonrpc: '2.0', result: { tools: [{ name: 'echo' }] }, id: 2 })}
+            onResend={() => console.log('Resend #2')}
+            onCopy={() => console.log('Copy as cURL #2')}
+            onEdit={(payload) => console.log('Edit & Send #2', payload)}
           />
           <HttpLogEntry
             method="POST"
@@ -324,7 +332,11 @@ function DetailPanel() {
             statusCode={200}
             duration={18}
             requestBody={JSON.stringify({ jsonrpc: '2.0', method: 'tools/call', params: { name: 'echo', arguments: { text: 'hello' } }, id: 3 })}
+            requestHeaders={{ 'Content-Type': 'application/json', 'Accept': 'application/json' }}
             responseBody={JSON.stringify({ jsonrpc: '2.0', result: { content: [{ type: 'text', text: 'hello' }] }, id: 3 })}
+            onResend={() => console.log('Resend #3')}
+            onCopy={() => console.log('Copy as cURL #3')}
+            onEdit={(payload) => console.log('Edit & Send #3', payload)}
           />
         </div>
       </Tabs.Panel>

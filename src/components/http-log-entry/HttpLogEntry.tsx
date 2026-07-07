@@ -4,7 +4,13 @@ import { cn } from "@/utils/cn";
 import { Badge } from "@/components/badge";
 import { Button } from "@/components/button";
 import { CodeBlock } from "@/components/code-block";
+import { CodeEditor } from "@/components/code-editor";
 import { Spinner } from "@/components/spinner";
+
+export type HttpLogEntryEditPayload = {
+  headers: Record<string, string>;
+  body: string;
+};
 
 export type HttpLogEntryProps = ComponentPropsWithoutRef<"div"> & {
   method: string;
@@ -22,6 +28,7 @@ export type HttpLogEntryProps = ComponentPropsWithoutRef<"div"> & {
   highlighter?: Parameters<typeof CodeBlock>[0]["highlighter"];
   onResend?: () => void;
   onCopy?: () => void;
+  onEdit?: (payload: HttpLogEntryEditPayload) => void;
 };
 
 function formatJson(str: string | undefined): string {
@@ -51,12 +58,17 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
       highlighter,
       onResend,
       onCopy,
+      onEdit,
       className,
       ...props
     },
     ref,
   ) => {
     const [open, setOpen] = useState(defaultOpen);
+    const [editOpen, setEditOpen] = useState(false);
+    const [editHeaders, setEditHeaders] = useState("");
+    const [editBody, setEditBody] = useState("");
+    const [copied, setCopied] = useState(false);
 
     const isPending = (statusCode === null || statusCode === undefined) && !error;
     const isError =
@@ -178,7 +190,7 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
           <Collapsible.Panel className="border-t">
             <div className="p-3 space-y-4">
               {/* Action buttons */}
-              {(onResend || onCopy) && (
+              {(onResend || onCopy || onEdit) && (
                 <div className="flex items-center gap-2">
                   {onResend && (
                     <Button variant="ghost" size="sm" onClick={onResend}>
@@ -198,7 +210,57 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                     </Button>
                   )}
                   {onCopy && (
-                    <Button variant="ghost" size="sm" onClick={onCopy}>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => {
+                        onCopy();
+                        setCopied(true);
+                        setTimeout(() => setCopied(false), 2000);
+                      }}>
+                      {copied ? (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="text-success">
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                      ) : (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round">
+                          <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                          <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                        </svg>
+                      )}
+                      {copied ? "Copied" : "Copy as cURL"}
+                    </Button>
+                  )}
+                  {onEdit && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => {
+                        if (!editOpen) {
+                          setEditHeaders(requestHeaders ? JSON.stringify(requestHeaders, null, 2) : "{}");
+                          setEditBody(formatJson(requestBody) || "");
+                        }
+                        setEditOpen((v) => !v);
+                      }}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="12"
@@ -209,12 +271,73 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round">
-                        <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
-                        <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
                       </svg>
-                      Copy as cURL
+                      Edit
                     </Button>
                   )}
+                </div>
+              )}
+
+              {/* Edit panel */}
+              {editOpen && onEdit && (
+                <div className="space-y-3 border rounded-[var(--ord-radius)] p-3 bg-muted/20">
+                  <div className="space-y-1.5">
+                    <h4 className="text-xs font-medium text-muted-foreground">Headers</h4>
+                    <CodeEditor
+                      value={editHeaders}
+                      onChange={setEditHeaders}
+                      language="json"
+                      height="120px"
+                      minHeight="120px"
+                      showToolbar={false}
+                      className="text-xs"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <h4 className="text-xs font-medium text-muted-foreground">Body</h4>
+                    <CodeEditor
+                      value={editBody}
+                      onChange={setEditBody}
+                      language="json"
+                      height="200px"
+                      minHeight="200px"
+                      showToolbar={false}
+                      className="text-xs"
+                    />
+                  </div>
+                  <div className="flex items-center gap-2 justify-end">
+                    <Button variant="ghost" size="sm" onClick={() => setEditOpen(false)}>
+                      Cancel
+                    </Button>
+                    <Button
+                      size="sm"
+                      onClick={() => {
+                        let headers: Record<string, string> = {};
+                        try {
+                          headers = JSON.parse(editHeaders);
+                        } catch {
+                          // keep empty if invalid
+                        }
+                        onEdit({ headers, body: editBody });
+                        setEditOpen(false);
+                      }}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round">
+                        <polygon points="5 3 19 12 5 21 5 3" />
+                      </svg>
+                      Send
+                    </Button>
+                  </div>
                 </div>
               )}
 

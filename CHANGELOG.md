@@ -7,8 +7,17 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [unreleased]
 
+## [[0.1.4](https://github.com/open-resource-discovery/ui-components/releases/tag/v0.1.4)] - 2026-07-07
+
+### Added
+
+- `HttpLogEntry`: new `onEdit` prop and inline edit panel with Monaco-based headers/body editors and a Send button, so users can tweak a request before re-sending.
+- `CodeEditor`: new `height` prop to size the editor explicitly (in addition to `minHeight`).
+
 ### Changed
 
+- `HttpLogEntry`: "Copy as cURL" button now flashes a green checkmark and "Copied" label for 2s after being clicked.
+- Storybook `Compositions/MCP Playground` now wires `onResend`, `onCopy`, `onEdit`, and `requestHeaders` on its `HttpLogEntry` instances so the action buttons are visible in the composition.
 - Dependency updates
 
 ## [[0.1.3](https://github.com/open-resource-discovery/ui-components/releases/tag/v0.1.3)] - 2026-06-24

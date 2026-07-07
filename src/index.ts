@@ -192,7 +192,7 @@ export { ScrollArea } from "./components/scroll-area";
 export type { ScrollAreaProps } from "./components/scroll-area";
 
 export { HttpLogEntry } from "./components/http-log-entry";
-export type { HttpLogEntryProps } from "./components/http-log-entry";
+export type { HttpLogEntryProps, HttpLogEntryEditPayload } from "./components/http-log-entry";
 
 export { CodeBlock } from "./components/code-block";
 export type { CodeBlockProps } from "./components/code-block";
