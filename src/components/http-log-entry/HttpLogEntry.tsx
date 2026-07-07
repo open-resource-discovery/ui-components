@@ -1,4 +1,4 @@
-import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
+import { forwardRef, useState, type ComponentPropsWithoutRef, type ReactNode } from "react";
 import { Collapsible } from "@base-ui/react/collapsible";
 import { cn } from "@/utils/cn";
 import { Badge } from "@/components/badge";
@@ -26,6 +26,8 @@ export type HttpLogEntryProps = ComponentPropsWithoutRef<"div"> & {
   highlighted?: boolean;
   defaultOpen?: boolean;
   highlighter?: Parameters<typeof CodeBlock>[0]["highlighter"];
+  extraBadges?: ReactNode;
+  responseBodyContent?: ReactNode;
   onResend?: () => void;
   onCopy?: () => void;
   onEdit?: (payload: HttpLogEntryEditPayload) => void;
@@ -56,6 +58,8 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
       highlighted,
       defaultOpen = false,
       highlighter,
+      extraBadges,
+      responseBodyContent,
       onResend,
       onCopy,
       onEdit,
@@ -135,6 +139,9 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
             <Badge variant="outline" size="sm" className="font-mono shrink-0">
               {method}
             </Badge>
+
+            {/* Extra badges (e.g. SSE, WS) */}
+            {extraBadges}
 
             {/* Status code badge */}
             {statusCode !== null && statusCode !== undefined && (
@@ -376,7 +383,7 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
               </div>
 
               {/* Response section */}
-              {responseBody && (
+              {(responseBody ?? responseBodyContent ?? error) && (
                 <div className="space-y-2">
                   <h4 className="text-xs font-medium text-muted-foreground">Response</h4>
                   {statusCode !== null && statusCode !== undefined && (
@@ -388,15 +395,17 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                       HTTP {statusCode} {responseStatus}
                     </div>
                   )}
-                  <details open className="text-xs">
-                    <summary className="cursor-pointer text-muted-foreground hover:text-foreground">Body</summary>
-                    <CodeBlock
-                      code={formatJson(responseBody)}
-                      language="json"
-                      highlighter={highlighter}
-                      className="mt-1 text-[11px]"
-                    />
-                  </details>
+                  {responseBodyContent ?? (responseBody && (
+                    <details open className="text-xs">
+                      <summary className="cursor-pointer text-muted-foreground hover:text-foreground">Body</summary>
+                      <CodeBlock
+                        code={formatJson(responseBody)}
+                        language="json"
+                        highlighter={highlighter}
+                        className="mt-1 text-[11px]"
+                      />
+                    </details>
+                  ))}
                 </div>
               )}
 
