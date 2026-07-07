@@ -7,6 +7,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [unreleased]
 
+## [[0.1.5](https://github.com/open-resource-discovery/ui-components/releases/tag/v0.1.5)] - 2026-07-07
+
+### Fixed
+
+- `CodeEditor`: Monaco's global theme now reads the active `.ord-ui` theme from the DOM at apply-time, so mounting a new editor (e.g. `HttpLogEntry`'s edit panel) no longer flips every editor on the page to light in dark mode.
+
 ## [[0.1.4](https://github.com/open-resource-discovery/ui-components/releases/tag/v0.1.4)] - 2026-07-07
 
 ### Added

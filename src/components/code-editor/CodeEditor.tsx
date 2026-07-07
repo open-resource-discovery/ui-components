@@ -68,35 +68,25 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
     const [copied, setCopied] = useState(false);
     const [isDark, setIsDark] = useState(false);
 
-    // Detect dark mode from .ord-ui ancestor
-    useEffect(() => {
-      const el = containerRef.current;
-      if (!el) return;
-      const ordRoot = el.closest(".ord-ui");
-      if (!ordRoot) return;
-
-      const check = (): void => setIsDark(ordRoot.classList.contains("dark"));
-      check();
-
-      const observer = new MutationObserver(check);
-      observer.observe(ordRoot, { attributes: true, attributeFilter: ["class"] });
-      return (): void => {
-        observer.disconnect();
-      };
-    }, []);
-
+    // Monaco's theme is global (shared across every editor on the page), so the
+    // applied theme must always reflect the *current* DOM, never a stale React
+    // closure. Reading the `dark` class here at apply-time prevents a freshly
+    // mounted editor (which starts with isDark=false) from flipping every other
+    // editor to light when @monaco-editor/react runs its captured mount callback.
     const defineThemes = useCallback(() => {
       if (!monaco) return;
       const el = containerRef.current;
       const ordRoot = el?.closest(".ord-ui");
       if (!ordRoot) return;
 
-      const bg = getCssColor(ordRoot, "--background", isDark ? "#1e1e1e" : "#ffffff");
-      const fg = getCssColor(ordRoot, "--foreground", isDark ? "#d4d4d4" : "#1e1e1e");
-      const muted = getCssColor(ordRoot, "--muted", isDark ? "#2d2d30" : "#f5f5f5");
-      const mutedFg = getCssColor(ordRoot, "--muted-foreground", isDark ? "#858585" : "#237893");
-      const primary = getCssColor(ordRoot, "--primary", isDark ? "#0098ff" : "#005fb8");
-      const border = getCssColor(ordRoot, "--border", isDark ? "#3e3e42" : "#e0e0e0");
+      const dark = ordRoot.classList.contains("dark");
+
+      const bg = getCssColor(ordRoot, "--background", dark ? "#1e1e1e" : "#ffffff");
+      const fg = getCssColor(ordRoot, "--foreground", dark ? "#d4d4d4" : "#1e1e1e");
+      const muted = getCssColor(ordRoot, "--muted", dark ? "#2d2d30" : "#f5f5f5");
+      const mutedFg = getCssColor(ordRoot, "--muted-foreground", dark ? "#858585" : "#237893");
+      const primary = getCssColor(ordRoot, "--primary", dark ? "#0098ff" : "#005fb8");
+      const border = getCssColor(ordRoot, "--border", dark ? "#3e3e42" : "#e0e0e0");
 
       monaco.editor.defineTheme("ord-dark", {
         base: "vs-dark",
@@ -130,8 +120,30 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
         },
       });
 
-      monaco.editor.setTheme(isDark ? "ord-dark" : "ord-light");
-    }, [monaco, isDark]);
+      monaco.editor.setTheme(dark ? "ord-dark" : "ord-light");
+    }, [monaco]);
+
+    // Detect dark mode from .ord-ui ancestor and keep the global Monaco theme in
+    // sync with it (the state drives the <Editor theme> prop; defineThemes applies
+    // the theme globally).
+    useEffect(() => {
+      const el = containerRef.current;
+      if (!el) return;
+      const ordRoot = el.closest(".ord-ui");
+      if (!ordRoot) return;
+
+      const check = (): void => {
+        setIsDark(ordRoot.classList.contains("dark"));
+        defineThemes();
+      };
+      check();
+
+      const observer = new MutationObserver(check);
+      observer.observe(ordRoot, { attributes: true, attributeFilter: ["class"] });
+      return (): void => {
+        observer.disconnect();
+      };
+    }, [defineThemes]);
 
     useEffect(() => {
       if (monaco) defineThemes();
