@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useState, useCallback } from 'react';
-import { ScrollArea } from '../src/components/scroll-area';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useState, useCallback } from "react";
+import { ScrollArea } from "../src/components/scroll-area";
 
 const meta = {
-  title: 'Components/ScrollArea',
+  title: "Components/ScrollArea",
   component: ScrollArea,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div style={{ width: "100%", maxWidth: 300, height: 200 }}>
@@ -26,7 +26,9 @@ export const Default: Story = {
     <ScrollArea className="h-full border border-border rounded-md p-3">
       <div className="flex flex-col gap-2">
         {Array.from({ length: 20 }, (_, i) => (
-          <p key={i} className="text-sm">Message {i + 1}: This is a scrollable item.</p>
+          <p key={i} className="text-sm">
+            Message {i + 1}: This is a scrollable item.
+          </p>
         ))}
       </div>
     </ScrollArea>
@@ -34,7 +36,7 @@ export const Default: Story = {
 };
 
 function AutoScrollDemo() {
-  const [items, setItems] = useState(['Item 1', 'Item 2', 'Item 3']);
+  const [items, setItems] = useState(["Item 1", "Item 2", "Item 3"]);
 
   const addItem = useCallback(() => {
     setItems((prev) => [...prev, `Item ${prev.length + 1}`]);
@@ -42,17 +44,16 @@ function AutoScrollDemo() {
 
   return (
     <div className="flex flex-col h-full">
-      <ScrollArea className="flex-1 border border-border rounded-md p-3">
+      <ScrollArea className="flex-1 border border-border rounded-md p-3" autoScroll>
         <div className="flex flex-col gap-2">
           {items.map((item, i) => (
-            <p key={i} className="text-sm">{item}</p>
+            <p key={i} className="text-sm">
+              {item}
+            </p>
           ))}
         </div>
       </ScrollArea>
-      <button
-        onClick={addItem}
-        className="mt-2 px-3 py-1 text-xs bg-primary text-primary-foreground rounded-md"
-      >
+      <button onClick={addItem} className="mt-2 px-3 py-1 text-xs bg-primary text-primary-foreground rounded-md">
         Add Item (auto-scrolls)
       </button>
     </div>

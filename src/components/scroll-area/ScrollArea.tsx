@@ -6,7 +6,7 @@ export type ScrollAreaProps = ComponentPropsWithoutRef<"div"> & {
 };
 
 export const ScrollArea = forwardRef<HTMLDivElement, ScrollAreaProps>(
-  ({ autoScroll = true, className, children, ...props }, ref) => {
+  ({ autoScroll = false, className, children, ...props }, ref) => {
     const internalRef = useRef<HTMLDivElement>(null);
 
     const scrollRef = (ref as React.RefObject<HTMLDivElement>) ?? internalRef;
