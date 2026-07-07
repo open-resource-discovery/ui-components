@@ -11,6 +11,7 @@ export interface CodeEditorProps extends Omit<ComponentPropsWithoutRef<"div">, "
   readOnly?: boolean;
   lineNumbers?: "on" | "off";
   minHeight?: string;
+  height?: string;
   showToolbar?: boolean;
 }
 
@@ -54,6 +55,7 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
       readOnly = false,
       lineNumbers = "on",
       minHeight = "300px",
+      height,
       showToolbar = true,
       className,
       ...props
@@ -241,7 +243,7 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
         )}
         <div className="flex-1 overflow-hidden min-h-0" style={{ minHeight }}>
           <Editor
-            height="100%"
+            height={height ?? "100%"}
             value={value}
             onChange={(v) => onChange?.(v || "")}
             language={language}

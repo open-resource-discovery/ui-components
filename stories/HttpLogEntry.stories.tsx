@@ -77,6 +77,24 @@ export const Highlighted: Story = {
   },
 };
 
+export const WithEdit: Story = {
+  args: {
+    method: 'tools/call',
+    url: 'http://localhost:3000/mcp',
+    statusCode: 200,
+    responseStatus: 'OK',
+    duration: 62,
+    timestamp: new Date(),
+    defaultOpen: true,
+    requestBody: JSON.stringify({ jsonrpc: '2.0', method: 'tools/call', params: { name: 'get_weather', arguments: { city: 'Berlin' } }, id: 1 }),
+    requestHeaders: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    responseBody: JSON.stringify({ jsonrpc: '2.0', result: { content: [{ type: 'text', text: '22°C, sunny' }] }, id: 1 }),
+    onResend: () => console.log('Resend'),
+    onCopy: () => console.log('Copy as cURL'),
+    onEdit: (payload) => console.log('Edit & Send', payload),
+  },
+};
+
 export const Multiple: Story = {
   render: () => (
     <div className="flex flex-col gap-2">
