@@ -395,17 +395,18 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                       HTTP {statusCode} {responseStatus}
                     </div>
                   )}
-                  {responseBodyContent ?? (responseBody && (
-                    <details open className="text-xs">
-                      <summary className="cursor-pointer text-muted-foreground hover:text-foreground">Body</summary>
-                      <CodeBlock
-                        code={formatJson(responseBody)}
-                        language="json"
-                        highlighter={highlighter}
-                        className="mt-1 text-[11px]"
-                      />
-                    </details>
-                  ))}
+                  {responseBodyContent ??
+                    (responseBody && (
+                      <details open className="text-xs">
+                        <summary className="cursor-pointer text-muted-foreground hover:text-foreground">Body</summary>
+                        <CodeBlock
+                          code={formatJson(responseBody)}
+                          language="json"
+                          highlighter={highlighter}
+                          className="mt-1 text-[11px]"
+                        />
+                      </details>
+                    ))}
                 </div>
               )}
 
