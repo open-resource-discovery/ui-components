@@ -7,6 +7,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [unreleased]
 
+### Fixed
+
+- `CollapsibleSection`: chevron SVG now correctly rotates 90° when the section is open (`group-data-[panel-open]:rotate-90` was referencing the wrong element).
+- `CollapsibleSection`: bottom border is no longer visible when the section is open.
+
 ### Added
 
 - `HttpLogEntry`: new `extraBadges?: ReactNode` prop — renders additional badges (e.g. `SSE`, `WS`) in the trigger row between the method badge and the status code badge.

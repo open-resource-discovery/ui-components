@@ -158,3 +158,77 @@ export const Bordered: Story = {
     </CollapsibleSection.Root>
   ),
 };
+
+export const MultipleNonBordered: Story = {
+  render: () => (
+    <div>
+      <CollapsibleSection.Root>
+        <CollapsibleSection.Trigger icon={WrenchIcon} description="Fetches current weather data.">
+          get_weather
+        </CollapsibleSection.Trigger>
+        <CollapsibleSection.Content>
+          <pre className="text-xs bg-muted p-2 rounded-md">
+            {JSON.stringify({ type: 'object', properties: { city: { type: 'string' } }, required: ['city'] }, null, 2)}
+          </pre>
+        </CollapsibleSection.Content>
+      </CollapsibleSection.Root>
+      <CollapsibleSection.Root>
+        <CollapsibleSection.Trigger icon={CodeIcon} badges={<Badge variant="secondary" size="sm">v2</Badge>}>
+          search_docs
+        </CollapsibleSection.Trigger>
+        <CollapsibleSection.Content>
+          <pre className="text-xs bg-muted p-2 rounded-md">
+            {JSON.stringify({ type: 'object', properties: { query: { type: 'string' } }, required: ['query'] }, null, 2)}
+          </pre>
+        </CollapsibleSection.Content>
+      </CollapsibleSection.Root>
+      <CollapsibleSection.Root>
+        <CollapsibleSection.Trigger description="Executes a database query and returns rows.">
+          run_query
+        </CollapsibleSection.Trigger>
+        <CollapsibleSection.Content>
+          <pre className="text-xs bg-muted p-2 rounded-md">
+            {JSON.stringify({ type: 'object', properties: { sql: { type: 'string' } }, required: ['sql'] }, null, 2)}
+          </pre>
+        </CollapsibleSection.Content>
+      </CollapsibleSection.Root>
+    </div>
+  ),
+};
+
+export const MultipleBordered: Story = {
+  render: () => (
+    <div className="space-y-2">
+      <CollapsibleSection.Root bordered>
+        <CollapsibleSection.Trigger icon={WrenchIcon} badges={<Badge variant="success" size="sm">active</Badge>} description="Fetches current weather data.">
+          get_weather
+        </CollapsibleSection.Trigger>
+        <CollapsibleSection.Content>
+          <pre className="text-xs bg-muted p-2 rounded-md">
+            {JSON.stringify({ type: 'object', properties: { city: { type: 'string' } }, required: ['city'] }, null, 2)}
+          </pre>
+        </CollapsibleSection.Content>
+      </CollapsibleSection.Root>
+      <CollapsibleSection.Root bordered>
+        <CollapsibleSection.Trigger icon={CodeIcon} badges={<Badge variant="secondary" size="sm">v2</Badge>}>
+          search_docs
+        </CollapsibleSection.Trigger>
+        <CollapsibleSection.Content>
+          <pre className="text-xs bg-muted p-2 rounded-md">
+            {JSON.stringify({ type: 'object', properties: { query: { type: 'string' } }, required: ['query'] }, null, 2)}
+          </pre>
+        </CollapsibleSection.Content>
+      </CollapsibleSection.Root>
+      <CollapsibleSection.Root bordered>
+        <CollapsibleSection.Trigger description="Executes a database query and returns rows.">
+          run_query
+        </CollapsibleSection.Trigger>
+        <CollapsibleSection.Content>
+          <pre className="text-xs bg-muted p-2 rounded-md">
+            {JSON.stringify({ type: 'object', properties: { sql: { type: 'string' } }, required: ['sql'] }, null, 2)}
+          </pre>
+        </CollapsibleSection.Content>
+      </CollapsibleSection.Root>
+    </div>
+  ),
+};
