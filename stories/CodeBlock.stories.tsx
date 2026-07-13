@@ -8,7 +8,7 @@ async function getHighlighter() {
   if (!highlighterInstance) {
     highlighterInstance = await createHighlighter({
       themes: ['github-light', 'github-dark'],
-      langs: ['typescript', 'json', 'bash', 'html'],
+      langs: ['typescript', 'json', 'bash', 'html', 'yaml', 'sql', 'python', 'css', 'markdown'],
     });
   }
   return highlighterInstance;
@@ -61,12 +61,51 @@ npm install shiki
 
 echo "Done!"`;
 
+const yamlCode = `name: CI
+on:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - run: npm test`;
+
+const sqlCode = `SELECT u.id, u.name, COUNT(o.id) AS order_count
+FROM users u
+LEFT JOIN orders o ON o.user_id = u.id
+WHERE u.created_at > '2024-01-01'
+GROUP BY u.id, u.name
+ORDER BY order_count DESC
+LIMIT 10;`;
+
+const pythonCode = `def fibonacci(n: int) -> list[int]:
+    a, b = 0, 1
+    result = []
+    for _ in range(n):
+        result.append(a)
+        a, b = b, a + b
+    return result
+
+print(fibonacci(10))`;
+
 export const Default: Story = {
   args: {
     code: tsCode,
     language: 'typescript',
   },
   render: (args, { loaded }) => <CodeBlock {...args} highlighter={loaded.highlighter} />,
+};
+
+export const DefaultHighlighter: Story = {
+  name: 'Default Highlighter (highlight.js)',
+  args: {
+    code: jsonCode,
+    language: 'json',
+    filename: 'package.json',
+  },
 };
 
 export const PlainText: Story = {
@@ -101,6 +140,29 @@ export const Bash: Story = {
     filename: 'install.sh',
   },
   render: (args, { loaded }) => <CodeBlock {...args} highlighter={loaded.highlighter} />,
+};
+
+export const YAML: Story = {
+  args: {
+    code: yamlCode,
+    language: 'yaml',
+    filename: 'ci.yml',
+  },
+};
+
+export const SQL: Story = {
+  args: {
+    code: sqlCode,
+    language: 'sql',
+  },
+};
+
+export const Python: Story = {
+  args: {
+    code: pythonCode,
+    language: 'python',
+    filename: 'fibonacci.py',
+  },
 };
 
 export const WithLineNumbers: Story = {
@@ -138,6 +200,21 @@ export const Multiple: Story = {
       <CodeBlock code={tsCode} language="typescript" filename="app.ts" highlighter={loaded.highlighter} />
       <CodeBlock code={jsonCode} language="json" filename="config.json" highlighter={loaded.highlighter} />
       <CodeBlock code={bashCode} language="bash" highlighter={loaded.highlighter} />
+    </div>
+  ),
+};
+
+export const MultipleDefaultHighlighter: Story = {
+  name: 'Multiple (default highlighter)',
+  args: { code: '' },
+  render: () => (
+    <div className="flex flex-col gap-4">
+      <CodeBlock code={tsCode} language="typescript" filename="app.ts" />
+      <CodeBlock code={jsonCode} language="json" filename="config.json" />
+      <CodeBlock code={yamlCode} language="yaml" filename="ci.yml" />
+      <CodeBlock code={bashCode} language="bash" />
+      <CodeBlock code={sqlCode} language="sql" />
+      <CodeBlock code={pythonCode} language="python" filename="fibonacci.py" />
     </div>
   ),
 };

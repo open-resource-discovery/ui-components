@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { HttpLogEntry } from '../src/components/http-log-entry';
+import { Badge, CodeBlock } from '../src/index';
 
 const meta = {
   title: 'Components/HttpLogEntry',
@@ -95,7 +96,48 @@ export const WithEdit: Story = {
   },
 };
 
+const sseEvents = [
+  { index: 0, label: 'Event 1', dataJson: JSON.stringify({ jsonrpc: '2.0', result: { status: { state: 'submitted' } }, id: 5 }, null, 2) },
+  { index: 1, label: 'Event 2', dataJson: JSON.stringify({ jsonrpc: '2.0', result: { status: { state: 'working' }, artifact: { parts: [{ type: 'text', text: 'Fetching weather…' }] } }, id: 5 }, null, 2) },
+  { index: 2, label: 'Event 3', dataJson: JSON.stringify({ jsonrpc: '2.0', result: { status: { state: 'completed' }, artifact: { parts: [{ type: 'text', text: '22°C, sunny' }] } }, id: 5 }, null, 2) },
+];
+
+const sseResponseBodyContent = (
+  <div className="space-y-1">
+    <p className="text-[11px] text-muted-foreground">{sseEvents.length} events</p>
+    {sseEvents.map((evt) => (
+      <details key={evt.index} className="text-xs">
+        <summary className="cursor-pointer text-muted-foreground hover:text-foreground">{evt.label}</summary>
+        <CodeBlock code={evt.dataJson} language="json" className="mt-1 text-[11px]" />
+      </details>
+    ))}
+  </div>
+);
+
+export const SSEStream: Story = {
+  args: {
+    method: 'message/stream',
+    url: 'http://localhost:3000/a2a',
+    statusCode: 200,
+    responseStatus: 'OK',
+    duration: 340,
+    timestamp: new Date(),
+    defaultOpen: true,
+    requestBody: JSON.stringify({ jsonrpc: '2.0', method: 'message/stream', params: { message: { role: 'user', parts: [{ type: 'text', text: 'What is the weather in Berlin?' }] } }, id: 5 }),
+    requestHeaders: { 'Content-Type': 'application/json', Accept: 'text/event-stream' },
+    extraBadges: (
+      <Badge variant="outline" size="sm" className="font-mono shrink-0">
+        SSE
+      </Badge>
+    ),
+    responseBodyContent: sseResponseBodyContent,
+    onResend: () => console.log('Resend'),
+    onCopy: () => console.log('Copy as cURL'),
+  },
+};
+
 export const Multiple: Story = {
+  args: { method: '', url: '' },
   render: () => (
     <div className="flex flex-col gap-2">
       <HttpLogEntry

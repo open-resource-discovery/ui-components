@@ -1,6 +1,6 @@
 {
   "name": "@open-resource-discovery/ui-components",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "type": "module",
   "license": "Apache-2.0",
   "description": "A React UI component library with accessible, themeable components designed for specification UIs.",
@@ -81,6 +81,7 @@
     "@base-ui/react": "^1.5.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "highlight.js": "^11.11.1",
     "react-markdown": "^10.1.0",
     "react-resizable-panels": "^4.11.1",
     "tailwind-merge": "^3.6.0"

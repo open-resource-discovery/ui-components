@@ -14,7 +14,7 @@ function CollapsibleSectionRoot({ className, bordered, ...props }: CollapsibleSe
       className={cn(
         "flex flex-col py-1",
         bordered && "rounded-lg border bg-card-bg p-2",
-        !bordered && "border-b last:border-b-0",
+        !bordered && "border-b data-[open]:border-b-0 last:border-b-0",
         className,
       )}
       {...props}
@@ -51,7 +51,7 @@ const CollapsibleSectionTrigger = forwardRef<HTMLButtonElement, CollapsibleSecti
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="h-3 w-3 shrink-0 transition-transform data-[panel-open]:rotate-90">
+        className="h-3 w-3 shrink-0 transition-transform group-data-[panel-open]:rotate-90">
         <polyline points="9 18 15 12 9 6" />
       </svg>
       {icon && <span className="shrink-0 h-4 w-4 [&>svg]:h-full [&>svg]:w-full">{icon}</span>}
