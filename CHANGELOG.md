@@ -7,6 +7,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [unreleased]
 
+## [[0.1.6](https://github.com/open-resource-discovery/ui-components/releases/tag/v0.1.6)] - 2026-07-15
+
 ### Fixed
 
 - `CollapsibleSection`: chevron SVG now correctly rotates 90° when the section is open (`group-data-[panel-open]:rotate-90` was referencing the wrong element).
