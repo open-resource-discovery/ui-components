@@ -21,7 +21,7 @@ const Root = forwardRef<HTMLDivElement, SplitPaneRootProps>(
           id={autoSaveId}
           className={cn("h-full overflow-hidden", className)}
           style={style}
-          elementRef={ref as React.RefObject<HTMLDivElement>}
+          elementRef={ref}
           {...props}>
           {children}
         </Group>
@@ -78,7 +78,7 @@ const PanelSlot = forwardRef<HTMLDivElement, SplitPanelProps>(
         }}
         className={cn("overflow-auto", className)}
         style={style}
-        elementRef={ref as React.RefObject<HTMLDivElement>}
+        elementRef={ref}
         {...props}>
         {children}
       </Panel>
@@ -103,7 +103,7 @@ const Handle = forwardRef<HTMLDivElement, SplitPaneHandleProps>(({ showGrip = tr
         "bg-border/50",
         className,
       )}
-      elementRef={ref as React.RefObject<HTMLDivElement>}
+      elementRef={ref}
       {...props}>
       {showGrip && (
         <div
