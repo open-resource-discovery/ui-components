@@ -7,7 +7,7 @@ export interface FieldRootProps extends ComponentPropsWithoutRef<typeof BaseFiel
 }
 
 const FieldRoot = forwardRef<HTMLDivElement, FieldRootProps>(({ className, ...props }, ref) => {
-  return <BaseField.Root ref={ref} className={cn("flex flex-col gap-1.5", className)} {...props} />;
+  return <BaseField.Root ref={ref} className={cn("ordu:flex ordu:flex-col ordu:gap-1.5", className)} {...props} />;
 });
 FieldRoot.displayName = "Field.Root";
 
@@ -20,7 +20,7 @@ const FieldLabel = forwardRef<HTMLLabelElement, FieldLabelProps>(({ className, .
     <BaseField.Label
       ref={ref}
       className={cn(
-        "text-sm font-medium leading-none text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+        "ordu:text-sm ordu:font-medium ordu:leading-none ordu:text-foreground ordu:peer-disabled:cursor-not-allowed ordu:peer-disabled:opacity-70",
         className,
       )}
       {...props}
@@ -34,7 +34,9 @@ export interface FieldDescriptionProps extends ComponentPropsWithoutRef<typeof B
 }
 
 const FieldDescription = forwardRef<HTMLParagraphElement, FieldDescriptionProps>(({ className, ...props }, ref) => {
-  return <BaseField.Description ref={ref} className={cn("text-sm text-muted-foreground", className)} {...props} />;
+  return (
+    <BaseField.Description ref={ref} className={cn("ordu:text-sm ordu:text-muted-foreground", className)} {...props} />
+  );
 });
 FieldDescription.displayName = "Field.Description";
 
@@ -43,7 +45,13 @@ export interface FieldErrorProps extends ComponentPropsWithoutRef<typeof BaseFie
 }
 
 const FieldError = forwardRef<HTMLDivElement, FieldErrorProps>(({ className, ...props }, ref) => {
-  return <BaseField.Error ref={ref} className={cn("text-sm font-medium text-destructive", className)} {...props} />;
+  return (
+    <BaseField.Error
+      ref={ref}
+      className={cn("ordu:text-sm ordu:font-medium ordu:text-destructive", className)}
+      {...props}
+    />
+  );
 });
 FieldError.displayName = "Field.Error";
 

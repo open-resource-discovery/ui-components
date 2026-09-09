@@ -31,6 +31,36 @@ function App() {
 
 Wrap your application with `<ThemeRoot>` to provide theming context and CSS variables to all components.
 
+## Styling and host isolation
+
+The package stylesheet includes all default component styles. Consumers do not need Tailwind, a reset, or any other CSS for components to render correctly. Internal utilities are namespaced and the reset and tokens are scoped to `.ord-ui`, so ordinary host styles such as Docusaurus/Infima element rules and generic `.flex`, `.hidden`, or `.container` classes do not affect component internals or leak back into the host page.
+
+Import the library stylesheet once, before your application's stylesheet:
+
+```tsx
+import "@open-resource-discovery/ui-components/styles";
+import "./app.css";
+```
+
+Use ordinary, unprefixed classes for local overrides:
+
+```tsx
+<Button className="h-12 rounded-full px-8">Large action</Button>
+```
+
+`ordu:` is a private namespace for the library's defaults and must not be used by consumers. The component merge helper removes directly conflicting internal defaults when an ordinary consumer utility is supplied.
+
+Because the component defaults must be unlayered to beat unlayered host CSS, Tailwind consumers must also emit their override utilities unlayered and load them after the package stylesheet. Use this instead of Tailwind's standard layered import in the consuming CSS entry:
+
+```css
+@import "tailwindcss/theme.css" theme(reference);
+@import "tailwindcss/utilities.css";
+
+@source "./";
+```
+
+Keep any consumer `@theme` declarations alongside this entry. A plain CSS class loaded after the package works too. If changing the Tailwind entry is not possible, Tailwind's important modifier (for example `px-8!`) is the fallback. Arbitrary host `!important` rules are outside the isolation guarantee.
+
 ## Theming
 
 Components are styled using CSS custom properties. Override them to match your brand:
@@ -45,6 +75,14 @@ Components are styled using CSS custom properties. Override them to match your b
 ```
 
 Available tokens include `--ord-background`, `--ord-foreground`, `--ord-primary`, `--ord-secondary`, `--ord-muted`, `--ord-accent`, `--ord-destructive`, `--ord-success`, `--ord-warning`, `--ord-border`, `--ord-ring`, `--ord-card`, `--ord-popover`, and their `-foreground` variants.
+
+For runtime themes, set tokens directly on `ThemeRoot` so portaled components inherit them too:
+
+```tsx
+<ThemeRoot style={{ "--ord-primary": brandColor } as React.CSSProperties}>
+  <App />
+</ThemeRoot>
+```
 
 ## Dark Mode
 

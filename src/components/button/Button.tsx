@@ -3,26 +3,27 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/cn";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium cursor-pointer transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "ordu:inline-flex ordu:items-center ordu:justify-center ordu:gap-2 ordu:whitespace-nowrap ordu:text-sm ordu:font-medium ordu:cursor-pointer ordu:transition-colors ordu:focus-visible:outline-none ordu:focus-visible:ring-1 ordu:focus-visible:ring-ring ordu:disabled:pointer-events-none ordu:disabled:opacity-50 ordu:[&_svg]:pointer-events-none ordu:[&_svg]:size-4 ordu:[&_svg]:shrink-0",
   {
     variants: {
       variant: {
         default:
-          "bg-button-primary-bg text-button-primary-fg shadow hover:bg-button-primary-bg-hover active:bg-button-primary-bg-active",
+          "ordu:bg-button-primary-bg ordu:text-button-primary-fg ordu:shadow ordu:hover:bg-button-primary-bg-hover ordu:active:bg-button-primary-bg-active",
         destructive:
-          "bg-button-destructive-bg text-button-destructive-fg shadow-sm hover:bg-button-destructive-bg-hover active:bg-button-destructive-bg-active",
+          "ordu:bg-button-destructive-bg ordu:text-button-destructive-fg ordu:shadow-sm ordu:hover:bg-button-destructive-bg-hover ordu:active:bg-button-destructive-bg-active",
         outline:
-          "border border-button-outline-border bg-button-outline-bg shadow-sm hover:bg-button-outline-bg-hover hover:text-button-outline-fg-hover active:bg-button-outline-bg-hover/80",
+          "ordu:border ordu:border-button-outline-border ordu:bg-button-outline-bg ordu:shadow-sm ordu:hover:bg-button-outline-bg-hover ordu:hover:text-button-outline-fg-hover ordu:active:bg-button-outline-bg-hover/80",
         secondary:
-          "bg-button-secondary-bg text-button-secondary-fg shadow-sm hover:bg-button-secondary-bg-hover active:bg-button-secondary-bg-active",
-        ghost: "hover:bg-button-ghost-bg-hover hover:text-button-ghost-fg-hover active:bg-button-ghost-bg-hover/80",
-        link: "text-button-link-fg underline-offset-4 hover:underline",
+          "ordu:bg-button-secondary-bg ordu:text-button-secondary-fg ordu:shadow-sm ordu:hover:bg-button-secondary-bg-hover ordu:active:bg-button-secondary-bg-active",
+        ghost:
+          "ordu:hover:bg-button-ghost-bg-hover ordu:hover:text-button-ghost-fg-hover ordu:active:bg-button-ghost-bg-hover/80",
+        link: "ordu:text-button-link-fg ordu:underline-offset-4 ordu:hover:underline",
       },
       size: {
-        sm: "h-8 rounded-md px-3 text-xs",
-        default: "h-9 px-4 py-2 rounded-md",
-        lg: "h-10 rounded-md px-8",
-        icon: "h-9 w-9 rounded-full",
+        sm: "ordu:h-8 ordu:rounded-md ordu:px-3 ordu:text-xs",
+        default: "ordu:h-9 ordu:px-4 ordu:py-2 ordu:rounded-md",
+        lg: "ordu:h-10 ordu:rounded-md ordu:px-8",
+        icon: "ordu:h-9 ordu:w-9 ordu:rounded-full",
       },
     },
     defaultVariants: {

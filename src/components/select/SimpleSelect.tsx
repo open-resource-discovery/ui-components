@@ -43,7 +43,7 @@ export const SimpleSelect = forwardRef<HTMLDivElement, SimpleSelectProps>(
     }, [items]);
 
     return (
-      <div ref={ref} className={cn("w-full", className)} {...props}>
+      <div ref={ref} className={cn("ordu:w-full", className)} {...props}>
         <Select.Root
           value={value}
           defaultValue={defaultValue}

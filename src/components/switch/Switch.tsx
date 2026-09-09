@@ -9,7 +9,7 @@ const SwitchRoot = forwardRef<HTMLButtonElement, SwitchRootProps>(({ className, 
   <BaseSwitch.Root
     ref={ref}
     className={cn(
-      "peer inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:bg-switch-track-on data-[unchecked]:bg-switch-track-off",
+      "ordu:peer ordu:inline-flex ordu:h-5 ordu:w-9 ordu:shrink-0 ordu:cursor-pointer ordu:items-center ordu:rounded-full ordu:border-2 ordu:border-transparent ordu:transition-colors ordu:focus-visible:outline-none ordu:focus-visible:ring-2 ordu:focus-visible:ring-ring ordu:focus-visible:ring-offset-2 ordu:disabled:cursor-not-allowed ordu:disabled:opacity-50 ordu:data-[checked]:bg-switch-track-on ordu:data-[unchecked]:bg-switch-track-off",
       className,
     )}
     {...props}>
@@ -25,7 +25,7 @@ const SwitchThumb = forwardRef<HTMLSpanElement, SwitchThumbProps>(({ className, 
   <BaseSwitch.Thumb
     ref={ref}
     className={cn(
-      "pointer-events-none block h-4 w-4 rounded-full bg-switch-thumb shadow-lg ring-0 transition-transform data-[checked]:translate-x-4 data-[unchecked]:translate-x-0",
+      "ordu:pointer-events-none ordu:block ordu:h-4 ordu:w-4 ordu:rounded-full ordu:bg-switch-thumb ordu:shadow-lg ordu:ring-0 ordu:transition-transform ordu:data-[checked]:translate-x-4 ordu:data-[unchecked]:translate-x-0",
       className,
     )}
     {...props}

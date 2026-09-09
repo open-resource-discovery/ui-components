@@ -7,7 +7,7 @@ export interface RadioGroupProps extends ComponentPropsWithoutRef<typeof BaseRad
 }
 
 function RadioGroup({ className, ...props }: RadioGroupProps): React.JSX.Element {
-  return <BaseRadioGroup className={cn("flex flex-col gap-2", className)} {...props} />;
+  return <BaseRadioGroup className={cn("ordu:flex ordu:flex-col ordu:gap-2", className)} {...props} />;
 }
 RadioGroup.displayName = "RadioGroup";
 

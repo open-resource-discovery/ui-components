@@ -842,9 +842,8 @@ const meta = {
   title: 'Compositions/Theme Editor',
   parameters: {
     layout: 'fullscreen',
+    disableThemeRoot: true,
   },
-  // Disable the global ThemeRoot decorator from preview.tsx — this composition supplies its own.
-  decorators: [(Story) => <Story />],
 } satisfies Meta;
 
 export default meta;

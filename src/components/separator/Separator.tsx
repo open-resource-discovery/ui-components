@@ -10,7 +10,11 @@ const Separator = forwardRef<HTMLDivElement, SeparatorProps>(
     <BaseSeparator
       ref={ref}
       orientation={orientation}
-      className={cn("shrink-0 bg-border", orientation === "horizontal" ? "h-px w-full" : "h-full w-px", className)}
+      className={cn(
+        "ordu:shrink-0 ordu:bg-border",
+        orientation === "horizontal" ? "ordu:h-px ordu:w-full" : "ordu:h-full ordu:w-px",
+        className,
+      )}
       {...props}
     />
   ),

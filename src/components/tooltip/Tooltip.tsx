@@ -40,7 +40,7 @@ TooltipPortal.displayName = "Tooltip.Portal";
 type TooltipPositionerProps = ComponentPropsWithoutRef<typeof BaseTooltip.Positioner>;
 
 const TooltipPositioner = forwardRef<HTMLDivElement, TooltipPositionerProps>(({ className, ...props }, ref) => (
-  <BaseTooltip.Positioner ref={ref} className={cn("outline-none", className)} {...props} />
+  <BaseTooltip.Positioner ref={ref} className={cn("ordu:outline-none", className)} {...props} />
 ));
 TooltipPositioner.displayName = "Tooltip.Positioner";
 
@@ -51,7 +51,7 @@ const TooltipPopup = forwardRef<HTMLDivElement, TooltipPopupProps>(({ className,
   <BaseTooltip.Popup
     ref={ref}
     className={cn(
-      "z-50 bg-tooltip-bg text-tooltip-fg px-2 py-1 text-xs rounded-[var(--ord-radius)] shadow-md data-[open]:animate-in data-[open]:fade-in-0 data-[closed]:animate-out data-[closed]:fade-out-0",
+      "ordu:z-50 ordu:bg-tooltip-bg ordu:text-tooltip-fg ordu:px-2 ordu:py-1 ordu:text-xs ordu:rounded-[var(--ord-radius)] ordu:shadow-md ordu:data-[open]:animate-in ordu:data-[open]:fade-in-0 ordu:data-[closed]:animate-out ordu:data-[closed]:fade-out-0",
       className,
     )}
     {...props}
@@ -63,7 +63,7 @@ TooltipPopup.displayName = "Tooltip.Popup";
 type TooltipArrowProps = ComponentPropsWithoutRef<typeof BaseTooltip.Arrow>;
 
 const TooltipArrow = forwardRef<HTMLDivElement, TooltipArrowProps>(({ className, ...props }, ref) => (
-  <BaseTooltip.Arrow ref={ref} className={cn("fill-tooltip-bg", className)} {...props} />
+  <BaseTooltip.Arrow ref={ref} className={cn("ordu:fill-tooltip-bg", className)} {...props} />
 ));
 TooltipArrow.displayName = "Tooltip.Arrow";
 

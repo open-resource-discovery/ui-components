@@ -41,13 +41,17 @@ export function MarkdownText({ text, clampLines, className }: MarkdownTextProps)
       <div
         ref={ref}
         className={cn(
-          "text-sm leading-relaxed [&_p]:my-1 [&_h1]:text-base [&_h1]:font-semibold [&_h1]:my-2 [&_h2]:text-sm [&_h2]:font-semibold [&_h2]:my-2 [&_h3]:text-sm [&_h3]:font-medium [&_h3]:my-1.5 [&_ul]:my-1 [&_ol]:my-1 [&_li]:my-0 [&_a]:text-primary [&_a]:underline [&_code]:bg-muted [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded-sm [&_code]:text-xs [&_pre]:bg-muted [&_pre]:p-3 [&_pre]:rounded-md [&_pre]:overflow-x-auto [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_strong]:font-semibold",
+          "ordu:text-sm ordu:leading-relaxed ordu:[&_p]:my-1 ordu:[&_h1]:text-base ordu:[&_h1]:font-semibold ordu:[&_h1]:my-2 ordu:[&_h2]:text-sm ordu:[&_h2]:font-semibold ordu:[&_h2]:my-2 ordu:[&_h3]:text-sm ordu:[&_h3]:font-medium ordu:[&_h3]:my-1.5 ordu:[&_ul]:my-1 ordu:[&_ol]:my-1 ordu:[&_li]:my-0 ordu:[&_a]:text-primary ordu:[&_a]:underline ordu:[&_code]:bg-muted ordu:[&_code]:px-1 ordu:[&_code]:py-0.5 ordu:[&_code]:rounded-sm ordu:[&_code]:text-xs ordu:[&_pre]:bg-muted ordu:[&_pre]:p-3 ordu:[&_pre]:rounded-md ordu:[&_pre]:overflow-x-auto ordu:[&_pre_code]:bg-transparent ordu:[&_pre_code]:p-0 ordu:[&_strong]:font-semibold",
         )}
         style={maxHeightStyle}>
         <ReactMarkdown>{text}</ReactMarkdown>
       </div>
       {isClamped && (
-        <Button variant="ghost" size="sm" className="h-6 px-2 text-xs mt-1" onClick={() => setExpanded(!expanded)}>
+        <Button
+          variant="ghost"
+          size="sm"
+          className="ordu:h-6 ordu:px-2 ordu:text-xs ordu:mt-1"
+          onClick={() => setExpanded(!expanded)}>
           {expanded ? (
             <>
               <svg
@@ -60,7 +64,7 @@ export function MarkdownText({ text, clampLines, className }: MarkdownTextProps)
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="mr-1">
+                className="ordu:mr-1">
                 <polyline points="18 15 12 9 6 15" />
               </svg>
               Show less
@@ -77,7 +81,7 @@ export function MarkdownText({ text, clampLines, className }: MarkdownTextProps)
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="mr-1">
+                className="ordu:mr-1">
                 <polyline points="6 9 12 15 18 9" />
               </svg>
               Show more

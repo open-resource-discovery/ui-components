@@ -26,7 +26,7 @@ const CheckboxRoot = forwardRef<HTMLSpanElement, CheckboxProps>(({ className, ch
     <BaseCheckbox.Root
       ref={ref}
       className={cn(
-        "inline-flex h-4 w-4 shrink-0 cursor-pointer items-center justify-center rounded-sm border border-checkbox-border ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:bg-checkbox-bg-checked data-[checked]:text-checkbox-fg-checked",
+        "ordu:inline-flex ordu:h-4 ordu:w-4 ordu:shrink-0 ordu:cursor-pointer ordu:items-center ordu:justify-center ordu:rounded-sm ordu:border ordu:border-checkbox-border ordu:ring-offset-background ordu:focus-visible:outline-none ordu:focus-visible:ring-2 ordu:focus-visible:ring-ring ordu:focus-visible:ring-offset-2 ordu:disabled:cursor-not-allowed ordu:disabled:opacity-50 ordu:data-[checked]:bg-checkbox-bg-checked ordu:data-[checked]:text-checkbox-fg-checked",
         className,
       )}
       {...props}>
@@ -43,7 +43,7 @@ const CheckboxIndicator = forwardRef<
   return (
     <BaseCheckbox.Indicator
       ref={ref}
-      className={cn("flex items-center justify-center text-current", className)}
+      className={cn("ordu:flex ordu:items-center ordu:justify-center ordu:text-current", className)}
       {...props}>
       <CheckmarkIcon />
     </BaseCheckbox.Indicator>

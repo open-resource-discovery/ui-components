@@ -43,12 +43,12 @@ export const SimpleSheet = forwardRef<HTMLDivElement, SimpleSheetProps>(
                 {description !== null && <Sheet.Description>{description}</Sheet.Description>}
               </div>
             )}
-            <div className="flex-1 overflow-y-auto px-1 -mx-1">{children}</div>
-            {footer !== null && <div className="flex justify-end gap-2">{footer}</div>}
+            <div className="ordu:flex-1 ordu:overflow-y-auto ordu:px-1 ordu:-mx-1">{children}</div>
+            {footer !== null && <div className="ordu:flex ordu:justify-end ordu:gap-2">{footer}</div>}
             {showClose && (
               <Sheet.Close
                 aria-label="Close"
-                className="absolute right-4 top-4 inline-flex h-6 w-6 items-center justify-center rounded-sm text-muted-foreground opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                className="ordu:absolute ordu:right-4 ordu:top-4 ordu:inline-flex ordu:h-6 ordu:w-6 ordu:items-center ordu:justify-center ordu:rounded-sm ordu:text-muted-foreground ordu:opacity-70 ordu:transition-opacity ordu:hover:opacity-100 ordu:focus-visible:outline-none ordu:focus-visible:ring-2 ordu:focus-visible:ring-ring">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="14"

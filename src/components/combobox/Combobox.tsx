@@ -18,7 +18,7 @@ const ComboboxInput = forwardRef<HTMLInputElement, ComboboxInputProps>(({ classN
   <BaseCombobox.Input
     ref={ref}
     className={cn(
-      "flex h-10 w-full rounded-[var(--ord-radius)] border border-input-border bg-input-bg px-3 py-2 text-sm text-input-fg ring-offset-background placeholder:text-input-placeholder focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+      "ordu:flex ordu:h-10 ordu:w-full ordu:rounded-[var(--ord-radius)] ordu:border ordu:border-input-border ordu:bg-input-bg ordu:px-3 ordu:py-2 ordu:text-sm ordu:text-input-fg ordu:ring-offset-background ordu:placeholder:text-input-placeholder ordu:focus-visible:outline-none ordu:focus-visible:ring-2 ordu:focus-visible:ring-ring ordu:focus-visible:ring-offset-2 ordu:disabled:cursor-not-allowed ordu:disabled:opacity-50",
       className,
     )}
     {...props}
@@ -39,7 +39,7 @@ ComboboxPortal.displayName = "Combobox.Portal";
 type ComboboxPositionerProps = ComponentPropsWithoutRef<typeof BaseCombobox.Positioner>;
 
 const ComboboxPositioner = forwardRef<HTMLDivElement, ComboboxPositionerProps>(({ className, ...props }, ref) => (
-  <BaseCombobox.Positioner ref={ref} align="start" className={cn("outline-none", className)} {...props} />
+  <BaseCombobox.Positioner ref={ref} align="start" className={cn("ordu:outline-none", className)} {...props} />
 ));
 ComboboxPositioner.displayName = "Combobox.Positioner";
 
@@ -50,7 +50,7 @@ const ComboboxPopup = forwardRef<HTMLDivElement, ComboboxPopupProps>(({ classNam
   <BaseCombobox.Popup
     ref={ref}
     className={cn(
-      "bg-combobox-popup-bg text-combobox-popup-fg border border-combobox-popup-border rounded-[var(--ord-radius)] shadow-md p-1 overflow-hidden min-w-[var(--anchor-width)]",
+      "ordu:bg-combobox-popup-bg ordu:text-combobox-popup-fg ordu:border ordu:border-combobox-popup-border ordu:rounded-[var(--ord-radius)] ordu:shadow-md ordu:p-1 ordu:overflow-hidden ordu:min-w-[var(--anchor-width)]",
       className,
     )}
     {...props}
@@ -65,7 +65,7 @@ const ComboboxItem = forwardRef<HTMLDivElement, ComboboxItemProps>(({ className,
   <BaseCombobox.Item
     ref={ref}
     className={cn(
-      "relative flex w-full cursor-pointer select-none items-center rounded-sm pl-8 pr-2 py-1.5 text-sm outline-none data-[highlighted]:bg-combobox-item-bg-hover data-[highlighted]:text-combobox-item-fg-hover data-[selected]:bg-combobox-item-bg-hover data-[selected]:text-combobox-item-fg-hover data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "ordu:relative ordu:flex ordu:w-full ordu:cursor-pointer ordu:select-none ordu:items-center ordu:rounded-sm ordu:pl-8 ordu:pr-2 ordu:py-1.5 ordu:text-sm ordu:outline-none ordu:data-[highlighted]:bg-combobox-item-bg-hover ordu:data-[highlighted]:text-combobox-item-fg-hover ordu:data-[selected]:bg-combobox-item-bg-hover ordu:data-[selected]:text-combobox-item-fg-hover ordu:data-[disabled]:pointer-events-none ordu:data-[disabled]:opacity-50",
       className,
     )}
     {...props}
@@ -80,7 +80,10 @@ const ComboboxItemIndicator = forwardRef<HTMLSpanElement, ComboboxItemIndicatorP
   ({ className, children, ...props }, ref) => (
     <BaseCombobox.ItemIndicator
       ref={ref}
-      className={cn("absolute left-2 flex h-3.5 w-3.5 items-center justify-center", className)}
+      className={cn(
+        "ordu:absolute ordu:left-2 ordu:flex ordu:h-3.5 ordu:w-3.5 ordu:items-center ordu:justify-center",
+        className,
+      )}
       {...props}>
       {children ?? (
         <svg
@@ -107,7 +110,7 @@ type ComboboxEmptyProps = ComponentPropsWithoutRef<typeof BaseCombobox.Empty>;
 const ComboboxEmpty = forwardRef<HTMLDivElement, ComboboxEmptyProps>(({ className, ...props }, ref) => (
   <BaseCombobox.Empty
     ref={ref}
-    className={cn("px-2 py-4 text-center text-sm text-muted-foreground", className)}
+    className={cn("ordu:px-2 ordu:py-4 ordu:text-center ordu:text-sm ordu:text-muted-foreground", className)}
     {...props}
   />
 ));
@@ -117,7 +120,7 @@ ComboboxEmpty.displayName = "Combobox.Empty";
 type ComboboxGroupProps = ComponentPropsWithoutRef<typeof BaseCombobox.Group>;
 
 const ComboboxGroup = forwardRef<HTMLDivElement, ComboboxGroupProps>(({ className, ...props }, ref) => (
-  <BaseCombobox.Group ref={ref} className={cn("p-1", className)} {...props} />
+  <BaseCombobox.Group ref={ref} className={cn("ordu:p-1", className)} {...props} />
 ));
 ComboboxGroup.displayName = "Combobox.Group";
 
@@ -127,7 +130,7 @@ type ComboboxGroupLabelProps = ComponentPropsWithoutRef<typeof BaseCombobox.Grou
 const ComboboxGroupLabel = forwardRef<HTMLDivElement, ComboboxGroupLabelProps>(({ className, ...props }, ref) => (
   <BaseCombobox.GroupLabel
     ref={ref}
-    className={cn("px-2 py-1.5 text-xs font-semibold text-muted-foreground", className)}
+    className={cn("ordu:px-2 ordu:py-1.5 ordu:text-xs ordu:font-semibold ordu:text-muted-foreground", className)}
     {...props}
   />
 ));

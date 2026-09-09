@@ -5,3 +5,4 @@ storybook-static
 *.tsbuildinfo
 .claude/*
 !.claude/skills
+test_consumers

@@ -6,7 +6,7 @@ import { cn } from "@/utils/cn";
 type TabsRootProps = ComponentPropsWithoutRef<typeof BaseTabs.Root>;
 
 const TabsRoot = forwardRef<HTMLDivElement, TabsRootProps>(({ className, ...props }, ref) => (
-  <BaseTabs.Root ref={ref} className={cn("w-full", className)} {...props} />
+  <BaseTabs.Root ref={ref} className={cn("ordu:w-full", className)} {...props} />
 ));
 TabsRoot.displayName = "Tabs.Root";
 
@@ -17,7 +17,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(({ className, ...prop
   <BaseTabs.List
     ref={ref}
     className={cn(
-      "inline-flex h-9 w-full items-center justify-start rounded-lg p-[3px] text-tabs-fg gap-1 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]",
+      "ordu:inline-flex ordu:h-9 ordu:w-full ordu:items-center ordu:justify-start ordu:rounded-lg ordu:p-[3px] ordu:text-tabs-fg ordu:gap-1 ordu:overflow-x-auto ordu:[&::-webkit-scrollbar]:hidden ordu:[-ms-overflow-style:none] ordu:[scrollbar-width:none]",
       className,
     )}
     {...props}
@@ -32,7 +32,7 @@ const TabsTab = forwardRef<HTMLButtonElement, TabsTabProps>(({ className, ...pro
   <BaseTabs.Tab
     ref={ref}
     className={cn(
-      "inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-md px-2.5 py-1.5 text-sm font-medium cursor-pointer transition-[color,box-shadow] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-tabs-fg hover:text-tabs-active-fg data-[active]:bg-tabs-active-bg data-[active]:text-tabs-active-fg data-[active]:shadow-sm",
+      "ordu:inline-flex ordu:items-center ordu:justify-center ordu:gap-1.5 ordu:whitespace-nowrap ordu:rounded-md ordu:px-2.5 ordu:py-1.5 ordu:text-sm ordu:font-medium ordu:cursor-pointer ordu:transition-[color,box-shadow] ordu:focus-visible:outline-none ordu:focus-visible:ring-2 ordu:focus-visible:ring-ring ordu:focus-visible:ring-offset-2 ordu:disabled:pointer-events-none ordu:disabled:opacity-50 ordu:text-tabs-fg ordu:hover:text-tabs-active-fg ordu:data-[active]:bg-tabs-active-bg ordu:data-[active]:text-tabs-active-fg ordu:data-[active]:shadow-sm",
       className,
     )}
     {...props}
@@ -47,7 +47,7 @@ const TabsPanel = forwardRef<HTMLDivElement, TabsPanelProps>(({ className, ...pr
   <BaseTabs.Panel
     ref={ref}
     className={cn(
-      "mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+      "ordu:mt-2 ordu:ring-offset-background ordu:focus-visible:outline-none ordu:focus-visible:ring-2 ordu:focus-visible:ring-ring ordu:focus-visible:ring-offset-2",
       className,
     )}
     {...props}
@@ -61,7 +61,10 @@ type TabsIndicatorProps = ComponentPropsWithoutRef<typeof BaseTabs.Indicator>;
 const TabsIndicator = forwardRef<HTMLSpanElement, TabsIndicatorProps>(({ className, ...props }, ref) => (
   <BaseTabs.Indicator
     ref={ref}
-    className={cn("absolute bottom-0 h-0.5 bg-tabs-indicator transition-all duration-200", className)}
+    className={cn(
+      "ordu:absolute ordu:bottom-0 ordu:h-0.5 ordu:bg-tabs-indicator ordu:transition-all ordu:duration-200",
+      className,
+    )}
     {...props}
   />
 ));

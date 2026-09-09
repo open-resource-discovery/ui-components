@@ -1,6 +1,29 @@
-# Host-CSS bleed & styling — findings and refactor notes
+# Host-CSS bleed and styling isolation
 
-_Written 2026-09-07. Context for a future refactor of `@open-resource-discovery/ui-components` to simplify styling, especially when embedded in host pages (Docusaurus/Infima)._
+_Original research written 2026-09-07 and updated with the implemented `ui-components` architecture._
+
+## Implemented architecture
+
+`ui-components` now ships one self-contained styling island through `@open-resource-discovery/ui-components/styles`:
+
+- Tailwind preflight is not exported globally. A reset covering the elements used by the components is scoped to `.ord-ui`.
+- Internal utilities use Tailwind's native `ordu:` prefix and are emitted unlayered. Generic host classes cannot match them, while unlayered host element rules lose to the internal class selectors.
+- Tailwind implementation variables are renamed from global `--tw-*` names to `--ordu-tw-*` in the built artifact.
+- Default, dark, and per-component design tokens remain under `.ord-ui`; `--ord-*` names are unchanged.
+- `cn()` merges private prefixed defaults and ordinary consumer utilities as equivalent conflict groups, preserving `className` as the local override API.
+- Base UI portals remain attached to the active `ThemeRoot`, so the same reset and token overrides apply to dialogs, sheets, tooltips, selects, and comboboxes.
+- A build verification script rejects global preflight, global theme variables, unprefixed utility selectors, unscoped handwritten selectors, and raw `--tw-*` variables.
+
+The supported consumer setup is one stylesheet import followed by `ThemeRoot`. Tailwind is optional for default rendering. A consumer that wants utility overrides must generate those ordinary, unprefixed classes in an **unlayered** Tailwind utilities entry and load that CSS after the package stylesheet:
+
+```css
+@import "tailwindcss/theme.css" theme(reference);
+@import "tailwindcss/utilities.css";
+
+@source "./";
+```
+
+This constraint is structural: standard Tailwind utilities live in `@layer utilities`, and layered rules cannot override the unlayered declarations required to beat hosts such as Infima. An important utility is the fallback when a consumer cannot change its Tailwind entry. The `ordu:` namespace is private.
 
 ## The core problem
 
@@ -23,6 +46,7 @@ None of this lives in `ui-components` today — every consumer reinvents it:
 - **metadata-renderer**: still has the latent bug — relies on `@layer`, which structurally loses to Infima.
 
 Key cascade facts the workarounds exploit:
+
 - `.ord-ui :where(el)` = specificity `(0,1,0)` → beats Infima's bare-element `(0,0,1)`, while `:where()` keeps the element list at 0 so utilities can still override.
 - After stripping `@layer`, source order + specificity decide everything. Preflight is emitted before utilities, so utilities win over the preflight; both beat Infima.
 
@@ -31,6 +55,7 @@ Key cascade facts the workarounds exploit:
 Goal reached: **playground = ORD-styled (beats Infima); home + docs = Infima; Monaco untouched.**
 
 **Rendered overlay (right panel, `.overlay-card-view`)** — a standalone bundle:
+
 - `src/lib/standalone.ts` — IIFE entry exposing `window.OverlayPlayground.init/update/setTheme/destroy`.
 - `vite.standalone.config.ts` — bundles ui-components CSS + overlay CSS, then in `closeBundle`:
   - `stripCssLayers` — unwrap `@layer` so it beats Infima; re-scope loose `:where(.util)` + `@supports` block.
@@ -41,9 +66,11 @@ Goal reached: **playground = ORD-styled (beats Infima); home + docs = Infima; Mo
 - `website/src/components/Playground/renderer.tsx` — injects the stripped/scoped standalone `<link>`+`<script>` and calls `window.OverlayPlayground.init(...)` instead of importing the lib ESM (keeps the stripped CSS out of webpack's layering).
 
 **Playground chrome (left panel — website's own React using ui-components)**:
+
 - `website/src/css/custom.css` — an unlayered, `.ord-ui`-scoped element reset at specificity `(0,0,1)` (`:where(.ord-ui) el`): neutralizes Infima's margins + oversized heading `font-size` inside the playground, while any Tailwind utility `(0,1,0)` still overrides it. Scoped to `.ord-ui` so home/docs stay Infima.
 
 **Tailwind added to overlay-editor** (it wasn't a Tailwind project — that's why `HeroBlock`'s `pb-2` silently did nothing: no build scanned overlay's own `src/lib`, so its utilities were never generated; only classes ui-components happened to generate worked):
+
 - Installed `tailwindcss` + `@tailwindcss/vite` 4.3.3.
 - Added `tailwindcss()` to `vite.config.lib.ts` and `vite.standalone.config.ts`.
 - Made `src/lib/styles.css` a Tailwind entry (`@import "tailwindcss/theme.css"` + `utilities.css`, preflight skipped, `@source "./"` to scan `src/lib`), mirroring a2a-editor.
@@ -59,18 +86,28 @@ Goal reached: **playground = ORD-styled (beats Infima); home + docs = Infima; Mo
 - **Two surfaces are different:** the _rendered overlay_ (overlay-lib code, `.overlay-card-view`) and the _playground chrome_ (website code, `.ord-ui` only) need separate handling; a single scope can't serve both without the R4 conflict.
 
 ## Environment gotcha
+
 All `npm run` commands broke mid-session with `--min-release-age cannot be provided when using --before` — the user's `~/.npmrc` had `before=…` conflicting with npm's `min-release-age`. Worked around by invoking `node …/docusaurus.mjs` / `vite` directly; user later fixed `~/.npmrc`.
 
-## Recommendations for the future `ui-components` refactor (simplify styling)
+## Consumer migration
 
-The recurring pain is that **every consumer independently reinvents "make it beat host CSS without leaking."** Consider moving that into `ui-components` itself:
+For every consumer:
 
-1. **Ship a self-contained, `.ord-ui`-scoped, unlayered CSS artifact** (in addition to / instead of the current layered bundle) so any consumer can drop it into any host (Docusaurus, plain app) and get correct behavior with no per-consumer strip pipeline. Candidate: a `dist/ui-components.scoped.css` where preflight + utilities are `.ord-ui :where(…)`-scoped and unlayered.
-2. **Own the scoped preflight in `ui-components`** (`.ord-ui :where(*)` element reset) rather than making each consumer write `.a2a-root`/`.mcp-root`/`.overlay-root` copies. Use border longhands (see R3).
-3. **Keep design tokens off the global `:root`** — define them only on `.ord-ui` (already mostly true) so embedding never overrides host tokens like `--radius` (see R2).
-4. **Avoid emitting host-colliding generic class names** (`.container`, `.row`, `.col`, `.hidden`) unscoped, or scope all utilities under `.ord-ui` (see R1 / `.container` collision). A Tailwind `important`/prefix strategy or a build-time scope pass could enforce this.
-5. **Document the embedding contract**: layered CSS loses to unlayered host globals; provide the one supported "island" stylesheet + a short Docusaurus/Infima guide, so consumers stop hand-rolling strip/scope steps.
-6. **Consider whether `@layer` is worth it at all for the shipped bundle** given it structurally loses to unlayered host CSS; an unlayered-but-scoped island may be simpler for everyone.
-7. If tokens like `Card.Title { mb-1 }` / `Card.Description { m-0 }` are meant to be defaults, note they only take effect once the CSS is unlayered/scoped in the consumer — so they belong to the "island" story above.
+1. Upgrade `@open-resource-discovery/ui-components`, import its `styles` export once before application CSS, and keep all rendered and portaled UI under `ThemeRoot`.
+2. Keep the project's own Tailwind build when it uses utility classes. It should scan project source, emit the override utilities unlayered, and load its CSS after the ORD stylesheet.
+3. Remove copied resets that exist only to repair ORD components. Keep any reset or selector scoping still required by the consumer's own embedded UI.
+4. Stop stripping layers or rewriting selectors in the `ui-components` dependency. Standalone bundles may still need to isolate the consumer project's own generic CSS from a host page.
+5. Keep existing `--ord-*` mappings. Move runtime variables to `ThemeRoot.style` when portaled components must inherit them.
+6. Verify the integration against the package's `Compositions/Host CSS Isolation` story pattern before deleting old build guards.
 
-Reference implementations to study: `a2a-editor/src/lib/styles.css` + `vite.standalone.config.ts` (the mature version of the strip/scope pattern), and this session's `overlay-editor` equivalents.
+Project-specific follow-up:
+
+| Project              | Migration                                                                                                                                                                              |
+| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `a2a-editor`         | Remove the duplicated ORD scoped preflight and exclude dependency CSS from its layer-stripping/scoping transform. Retain isolation for editor-owned standalone CSS.                    |
+| `mcp-server-card-ui` | Apply the same split as `a2a-editor`: consume ORD CSS unchanged and keep any standalone transform only for project-owned styles.                                                       |
+| `overlay-editor`     | Remove ORD-specific reset and dependency selector rewriting. Keep `.overlay-card-view` isolation for overlay-owned utilities because that bundle is still embedded in arbitrary pages. |
+| `explorer`           | Replace documented ORD cascade workarounds with the standard import plus `ThemeRoot`, then retain only application-specific host interoperability rules.                               |
+| `metadata-renderer`  | Preserve its existing `--ord-*` theme mappings and ensure they apply on each renderer's `ThemeRoot`; load renderer application CSS after ORD CSS.                                      |
+
+The boundary is intentionally not Shadow DOM. React children, SSR, existing portals, and ordinary `className` overrides continue to work. Consequently, arbitrary host declarations using `!important` are outside the guaranteed isolation contract.

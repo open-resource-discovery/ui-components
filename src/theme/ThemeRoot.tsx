@@ -28,7 +28,7 @@ export function ThemeRoot({ children, defaultTheme = "system", className, style 
     <div
       ref={rootRef}
       style={style}
-      className={`ord-ui text-foreground${resolvedTheme === "dark" ? " dark" : ""}${className ? ` ${className}` : ""}`}>
+      className={`ord-ui ordu:text-foreground${resolvedTheme === "dark" ? " dark" : ""}${className ? ` ${className}` : ""}`}>
       <PortalContainerContext.Provider value={rootElement}>{children}</PortalContainerContext.Provider>
     </div>
   );

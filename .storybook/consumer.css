@@ -1,0 +1,33 @@
+@import "tailwindcss/theme.css" theme(reference);
+/* Consumer utilities are deliberately unlayered so they can override ORD's unlayered defaults. */
+@import "tailwindcss/utilities.css";
+
+/* Storybook is a consumer, so expose ORD's public token aliases without its private prefix. */
+@theme inline {
+  --color-background: var(--ord-background);
+  --color-foreground: var(--ord-foreground);
+  --color-primary: var(--ord-primary);
+  --color-primary-foreground: var(--ord-primary-foreground);
+  --color-secondary: var(--ord-secondary);
+  --color-secondary-foreground: var(--ord-secondary-foreground);
+  --color-muted: var(--ord-muted);
+  --color-muted-foreground: var(--ord-muted-foreground);
+  --color-accent: var(--ord-accent);
+  --color-accent-foreground: var(--ord-accent-foreground);
+  --color-destructive: var(--ord-destructive);
+  --color-destructive-foreground: var(--ord-destructive-foreground);
+  --color-success: var(--ord-success);
+  --color-success-foreground: var(--ord-success-foreground);
+  --color-warning: var(--ord-warning);
+  --color-warning-foreground: var(--ord-warning-foreground);
+  --color-border: var(--ord-border);
+  --color-input: var(--ord-input);
+  --color-ring: var(--ord-ring);
+  --color-card: var(--ord-card);
+  --color-card-foreground: var(--ord-card-foreground);
+  --color-popover: var(--ord-popover);
+  --color-popover-foreground: var(--ord-popover-foreground);
+  --radius: var(--ord-radius);
+}
+
+@source "../stories";

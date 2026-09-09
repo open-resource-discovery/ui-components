@@ -2,5 +2,6 @@
   "printWidth": 120,
   "quoteProps": "consistent",
   "bracketSameLine": true,
-  "singleQuote": false
+  "singleQuote": false,
+  "endOfLine": "auto"
 }

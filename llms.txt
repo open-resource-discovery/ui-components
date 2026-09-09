@@ -4,6 +4,16 @@
 
 Install: `npm install @open-resource-discovery/ui-components`. Peer deps: React 18+ or 19, react-dom 18+ or 19. Optional peers: `shiki` for `CodeBlock`, `@monaco-editor/react` for `CodeEditor`. Wrap the app in `<ThemeRoot>` and import `'@open-resource-discovery/ui-components/styles'` once at the entry point. Theming is a **two-layer token system** on the `.ord-ui` class: a semantic layer (`--ord-primary`, `--ord-background`, …) plus a per-component layer (`--ord-button-primary-bg`, `--ord-tooltip-bg`, `--ord-dialog-backdrop`, …) that defaults to the semantic source — override the global layer for a palette swap, the per-component layer to retheme one slot. `.ord-ui.dark` switches to dark mode. `<ThemeRoot style={…}>` accepts inline CSS-variable overrides at runtime; this is the only correct place for them because portaled components (Dialog, Sheet, Tooltip, Combobox/Select popups) portal back up to `.ord-ui`.
 
+## Styling contract
+
+- The exported stylesheet contains complete component defaults. Consumers do not need Tailwind or a copied reset.
+- Internal utilities use the private `ordu:` namespace. Do not use that prefix in consumer code.
+- The reset, tokens, and handwritten selectors are scoped to `.ord-ui`; generic host utilities do not match component internals.
+- Consumers with Tailwind pass ordinary classes through `className`, for example `<Button className="h-12 rounded-full px-8" />`. Their Tailwind CSS must scan their own source, emit utilities unlayered with `@import "tailwindcss/utilities.css";`, and load after the package stylesheet. Tailwind's standard layered utility import cannot override the deliberately unlayered ORD defaults; use important utilities only when the consumer entry cannot be changed.
+- Import order is package styles first, application styles second. Directly conflicting consumer utilities replace internal defaults through the package's merge helper.
+- Override `--ord-*` on `.ord-ui` or through `ThemeRoot.style` for global or per-component theming. Put runtime variables on `ThemeRoot`, not a child, so portals inherit them.
+- Normal host CSS is isolated. No library can safely defeat arbitrary host `!important` declarations while also preserving ordinary consumer overrides.
+
 ## Getting Started
 
 - [Storybook (live docs)](https://open-resource-discovery.github.io/ui-components/): Interactive demos and prop tables for every component.

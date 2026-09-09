@@ -1,6 +1,6 @@
 {
   "name": "@open-resource-discovery/ui-components",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "type": "module",
   "license": "Apache-2.0",
   "description": "A React UI component library with accessible, themeable components designed for specification UIs.",
@@ -47,7 +47,7 @@
     "*.css"
   ],
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && npm run verify:css",
     "build:watch": "vite build --watch",
     "dev": "vite",
     "storybook": "storybook dev -p 6006",
@@ -57,6 +57,7 @@
     "eslint:ci": "eslint .",
     "prettier": "prettier --write \"**/*.{json,yml,yaml,md}\"",
     "prettier:ci": "prettier --check \"**/*.{json,yml,yaml,md}\"",
+    "verify:css": "node scripts/verify-css-isolation.mjs",
     "format": "npm run prettier && npm run eslint",
     "test": "vitest run --passWithNoTests",
     "test:ci": "jest --ci --collectCoverage",

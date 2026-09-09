@@ -11,8 +11,8 @@ const ConnectionCardRoot = forwardRef<HTMLDivElement, ConnectionCardRootProps>(
     <div
       ref={ref}
       className={cn(
-        "bg-card-bg text-card-foreground border border-border rounded-[var(--ord-radius)] shadow-sm p-4 cursor-pointer transition-colors hover:border-primary/50 hover:bg-accent/30",
-        selected && "border-primary bg-accent/20",
+        "ordu:bg-card-bg ordu:text-card-foreground ordu:border ordu:border-border ordu:rounded-[var(--ord-radius)] ordu:shadow-sm ordu:p-4 ordu:cursor-pointer ordu:transition-colors ordu:hover:border-primary/50 ordu:hover:bg-accent/30",
+        selected && "ordu:border-primary ordu:bg-accent/20",
         className,
       )}
       {...props}
@@ -25,7 +25,7 @@ ConnectionCardRoot.displayName = "ConnectionCard";
 export type ConnectionCardHeaderProps = ComponentPropsWithoutRef<"div">;
 
 const ConnectionCardHeader = forwardRef<HTMLDivElement, ConnectionCardHeaderProps>(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("flex items-center justify-between gap-2", className)} {...props} />
+  <div ref={ref} className={cn("ordu:flex ordu:items-center ordu:justify-between ordu:gap-2", className)} {...props} />
 ));
 ConnectionCardHeader.displayName = "ConnectionCard.Header";
 
@@ -33,7 +33,7 @@ ConnectionCardHeader.displayName = "ConnectionCard.Header";
 export type ConnectionCardTitleProps = ComponentPropsWithoutRef<"h3">;
 
 const ConnectionCardTitle = forwardRef<HTMLHeadingElement, ConnectionCardTitleProps>(({ className, ...props }, ref) => (
-  <h3 ref={ref} className={cn("text-sm font-semibold leading-tight", className)} {...props} />
+  <h3 ref={ref} className={cn("ordu:text-sm ordu:font-semibold ordu:leading-tight", className)} {...props} />
 ));
 ConnectionCardTitle.displayName = "ConnectionCard.Title";
 
@@ -42,7 +42,7 @@ export type ConnectionCardDescriptionProps = ComponentPropsWithoutRef<"p">;
 
 const ConnectionCardDescription = forwardRef<HTMLParagraphElement, ConnectionCardDescriptionProps>(
   ({ className, ...props }, ref) => (
-    <p ref={ref} className={cn("text-xs text-muted-foreground mt-1", className)} {...props} />
+    <p ref={ref} className={cn("ordu:text-xs ordu:text-muted-foreground ordu:mt-1", className)} {...props} />
   ),
 );
 ConnectionCardDescription.displayName = "ConnectionCard.Description";
@@ -51,7 +51,7 @@ ConnectionCardDescription.displayName = "ConnectionCard.Description";
 export type ConnectionCardTagsProps = ComponentPropsWithoutRef<"div">;
 
 const ConnectionCardTags = forwardRef<HTMLDivElement, ConnectionCardTagsProps>(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("flex flex-wrap gap-1.5 mt-2", className)} {...props} />
+  <div ref={ref} className={cn("ordu:flex ordu:flex-wrap ordu:gap-1.5 ordu:mt-2", className)} {...props} />
 ));
 ConnectionCardTags.displayName = "ConnectionCard.Tags";
 

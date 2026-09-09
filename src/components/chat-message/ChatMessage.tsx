@@ -21,28 +21,31 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(
     const hasActions = (onCopy !== null && onCopy !== undefined) || (onRetry !== null && onRetry !== undefined);
 
     return (
-      <div ref={ref} className={cn("group flex", isUser ? "justify-end" : "justify-start", className)} {...props}>
-        <div className={cn("flex items-end gap-2", isUser && "flex-row-reverse")}>
-          {icon && <div className="shrink-0 w-6 h-6">{icon}</div>}
-          <div className="flex flex-col">
-            <div className={cn("flex items-end gap-1", isUser && "flex-row-reverse")}>
+      <div
+        ref={ref}
+        className={cn("ordu:group ordu:flex", isUser ? "ordu:justify-end" : "ordu:justify-start", className)}
+        {...props}>
+        <div className={cn("ordu:flex ordu:items-end ordu:gap-2", isUser && "ordu:flex-row-reverse")}>
+          {icon && <div className="ordu:shrink-0 ordu:w-6 ordu:h-6">{icon}</div>}
+          <div className="ordu:flex ordu:flex-col">
+            <div className={cn("ordu:flex ordu:items-end ordu:gap-1", isUser && "ordu:flex-row-reverse")}>
               <div
                 className={cn(
-                  "max-w-[85%] rounded-2xl px-4 py-2 text-sm",
+                  "ordu:max-w-[85%] ordu:rounded-2xl ordu:px-4 ordu:py-2 ordu:text-sm",
                   isUser
-                    ? "rounded-br-sm bg-primary text-primary-foreground"
-                    : "rounded-bl-sm bg-muted text-foreground",
+                    ? "ordu:rounded-br-sm ordu:bg-primary ordu:text-primary-foreground"
+                    : "ordu:rounded-bl-sm ordu:bg-muted ordu:text-foreground",
                 )}>
-                {status && <div className="flex items-center gap-1.5 mb-2">{status}</div>}
+                {status && <div className="ordu:flex ordu:items-center ordu:gap-1.5 ordu:mb-2">{status}</div>}
                 {children}
               </div>
               {hasActions && (
-                <div className="flex flex-col gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="ordu:flex ordu:flex-col ordu:gap-0.5 ordu:opacity-0 ordu:group-hover:opacity-100 ordu:transition-opacity">
                   {onCopy && (
                     <button
                       type="button"
                       onClick={onCopy}
-                      className="h-6 w-6 inline-flex items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                      className="ordu:h-6 ordu:w-6 ordu:inline-flex ordu:items-center ordu:justify-center ordu:rounded-md ordu:text-muted-foreground ordu:hover:text-foreground ordu:hover:bg-accent ordu:transition-colors"
                       aria-label="Copy">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +66,7 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(
                     <button
                       type="button"
                       onClick={onRetry}
-                      className="h-6 w-6 inline-flex items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+                      className="ordu:h-6 ordu:w-6 ordu:inline-flex ordu:items-center ordu:justify-center ordu:rounded-md ordu:text-muted-foreground ordu:hover:text-foreground ordu:hover:bg-accent ordu:transition-colors"
                       aria-label="Retry">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +89,11 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(
               )}
             </div>
             {formattedTime && (
-              <span className={cn("text-[10px] text-muted-foreground mt-1", isUser ? "text-right" : "text-left")}>
+              <span
+                className={cn(
+                  "ordu:text-[10px] ordu:text-muted-foreground ordu:mt-1",
+                  isUser ? "ordu:text-right" : "ordu:text-left",
+                )}>
                 {formattedTime}
               </span>
             )}

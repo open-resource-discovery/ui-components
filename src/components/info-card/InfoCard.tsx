@@ -7,7 +7,10 @@ export type InfoCardRootProps = ComponentPropsWithoutRef<"div">;
 const InfoCardRoot = forwardRef<HTMLDivElement, InfoCardRootProps>(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("bg-card-bg text-card-fg border border-card-border rounded-[var(--ord-radius)] shadow-sm", className)}
+    className={cn(
+      "ordu:bg-card-bg ordu:text-card-fg ordu:border ordu:border-card-border ordu:rounded-[var(--ord-radius)] ordu:shadow-sm",
+      className,
+    )}
     {...props}
   />
 ));
@@ -17,7 +20,7 @@ InfoCardRoot.displayName = "InfoCard";
 export type InfoCardHeaderProps = ComponentPropsWithoutRef<"div">;
 
 const InfoCardHeader = forwardRef<HTMLDivElement, InfoCardHeaderProps>(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("flex items-center gap-3 p-4", className)} {...props} />
+  <div ref={ref} className={cn("ordu:flex ordu:items-center ordu:gap-3 ordu:p-4", className)} {...props} />
 ));
 InfoCardHeader.displayName = "InfoCard.Header";
 
@@ -29,7 +32,11 @@ export interface InfoCardIconProps {
 
 function InfoCardIcon({ children, className }: InfoCardIconProps): React.JSX.Element {
   return (
-    <div className={cn("flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border bg-muted", className)}>
+    <div
+      className={cn(
+        "ordu:flex ordu:h-10 ordu:w-10 ordu:shrink-0 ordu:items-center ordu:justify-center ordu:rounded-lg ordu:border ordu:bg-muted",
+        className,
+      )}>
       {children ?? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +48,7 @@ function InfoCardIcon({ children, className }: InfoCardIconProps): React.JSX.Ele
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-muted-foreground">
+          className="ordu:text-muted-foreground">
           <circle cx="12" cy="12" r="10" />
           <path d="M12 16v-4" />
           <path d="M12 8h.01" />
@@ -56,7 +63,7 @@ InfoCardIcon.displayName = "InfoCard.Icon";
 export type InfoCardTitleProps = ComponentPropsWithoutRef<"h2">;
 
 const InfoCardTitle = forwardRef<HTMLHeadingElement, InfoCardTitleProps>(({ className, ...props }, ref) => (
-  <h2 ref={ref} className={cn("text-base font-semibold leading-tight m-0", className)} {...props} />
+  <h2 ref={ref} className={cn("ordu:text-base ordu:font-semibold ordu:leading-tight ordu:m-0", className)} {...props} />
 ));
 InfoCardTitle.displayName = "InfoCard.Title";
 
@@ -64,7 +71,7 @@ InfoCardTitle.displayName = "InfoCard.Title";
 export type InfoCardSubtitleProps = ComponentPropsWithoutRef<"p">;
 
 const InfoCardSubtitle = forwardRef<HTMLParagraphElement, InfoCardSubtitleProps>(({ className, ...props }, ref) => (
-  <p ref={ref} className={cn("text-xs text-muted-foreground m-0", className)} {...props} />
+  <p ref={ref} className={cn("ordu:text-xs ordu:text-muted-foreground ordu:m-0", className)} {...props} />
 ));
 InfoCardSubtitle.displayName = "InfoCard.Subtitle";
 
@@ -72,7 +79,11 @@ InfoCardSubtitle.displayName = "InfoCard.Subtitle";
 export type InfoCardContentProps = ComponentPropsWithoutRef<"div">;
 
 const InfoCardContent = forwardRef<HTMLDivElement, InfoCardContentProps>(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("flex flex-col gap-3 px-4 pb-4 pt-0", className)} {...props} />
+  <div
+    ref={ref}
+    className={cn("ordu:flex ordu:flex-col ordu:gap-3 ordu:px-4 ordu:pb-4 ordu:pt-0", className)}
+    {...props}
+  />
 ));
 InfoCardContent.displayName = "InfoCard.Content";
 
@@ -80,7 +91,7 @@ InfoCardContent.displayName = "InfoCard.Content";
 export type InfoCardSectionProps = ComponentPropsWithoutRef<"div">;
 
 const InfoCardSection = forwardRef<HTMLDivElement, InfoCardSectionProps>(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("flex flex-col gap-1", className)} {...props} />
+  <div ref={ref} className={cn("ordu:flex ordu:flex-col ordu:gap-1", className)} {...props} />
 ));
 InfoCardSection.displayName = "InfoCard.Section";
 

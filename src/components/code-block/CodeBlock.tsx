@@ -109,8 +109,9 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
         size="icon"
         onClick={handleCopy}
         className={cn(
-          "h-7 w-7 shrink-0",
-          !filename && "absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity",
+          "ordu:h-7 ordu:w-7 ordu:shrink-0",
+          !filename &&
+            "ordu:absolute ordu:top-2 ordu:right-2 ordu:opacity-0 ordu:group-hover:opacity-100 ordu:transition-opacity",
         )}
         aria-label={copied ? "Copied" : "Copy code"}>
         {copied ? (
@@ -147,10 +148,13 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
     return (
       <div
         ref={ref}
-        className={cn("ord-code-block group rounded-[var(--ord-radius)] border bg-code overflow-hidden", className)}
+        className={cn(
+          "ord-code-block ordu:group ordu:rounded-[var(--ord-radius)] ordu:border ordu:bg-code ordu:overflow-hidden",
+          className,
+        )}
         {...props}>
         {filename && (
-          <div className="flex items-center gap-2 px-3 py-2 border-b text-xs text-code-foreground">
+          <div className="ordu:flex ordu:items-center ordu:gap-2 ordu:px-3 ordu:py-2 ordu:border-b ordu:text-xs ordu:text-code-foreground">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="12"
@@ -161,33 +165,33 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="shrink-0">
+              className="ordu:shrink-0">
               <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
               <path d="M14 2v4a2 2 0 0 0 2 2h4" />
             </svg>
-            <span className="flex-1 truncate">{filename}</span>
+            <span className="ordu:flex-1 ordu:truncate">{filename}</span>
             {copyButton}
           </div>
         )}
 
-        <div className="relative" style={maxHeight ? { maxHeight, overflowY: "auto" } : undefined}>
+        <div className="ordu:relative" style={maxHeight ? { maxHeight, overflowY: "auto" } : undefined}>
           {!filename && copyButton}
 
           {highlightedHtml ? (
             <div
               className={cn(
-                "p-4 overflow-x-auto font-mono text-sm [&_pre]:!bg-transparent [&_code]:!bg-transparent",
+                "ordu:p-4 ordu:overflow-x-auto ordu:font-mono ordu:text-sm ordu:[&_pre]:!bg-transparent ordu:[&_code]:!bg-transparent",
                 showLineNumbers && "ord-code-block-lines",
               )}
               dangerouslySetInnerHTML={{ __html: highlightedHtml }}
             />
           ) : (
-            <pre className="p-4 overflow-x-auto font-mono text-sm whitespace-pre text-code-foreground bg-code">
+            <pre className="ordu:p-4 ordu:overflow-x-auto ordu:font-mono ordu:text-sm ordu:whitespace-pre ordu:text-code-foreground ordu:bg-code">
               <code>
                 {showLineNumbers
                   ? lines.map((line, i) => (
-                      <span key={i} className="block">
-                        <span className="inline-block w-8 mr-4 text-right text-muted-foreground select-none">
+                      <span key={i} className="ordu:block">
+                        <span className="ordu:inline-block ordu:w-8 ordu:mr-4 ordu:text-right ordu:text-muted-foreground ordu:select-none">
                           {i + 1}
                         </span>
                         {line}

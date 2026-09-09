@@ -25,17 +25,17 @@ export const SimpleDialog = forwardRef<HTMLDivElement, SimpleDialogProps>(
           <Dialog.Backdrop />
           <Dialog.Popup ref={ref} {...rest}>
             {(title !== null || description !== null) && (
-              <div className="mb-4">
+              <div className="ordu:mb-4">
                 {title !== null && <Dialog.Title>{title}</Dialog.Title>}
                 {description !== null && <Dialog.Description>{description}</Dialog.Description>}
               </div>
             )}
             {children}
-            {footer !== null && <div className="mt-6 flex justify-end gap-2">{footer}</div>}
+            {footer !== null && <div className="ordu:mt-6 ordu:flex ordu:justify-end ordu:gap-2">{footer}</div>}
             {showClose && (
               <Dialog.Close
                 aria-label="Close"
-                className="absolute right-4 top-4 inline-flex h-6 w-6 items-center justify-center rounded-sm text-muted-foreground opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                className="ordu:absolute ordu:right-4 ordu:top-4 ordu:inline-flex ordu:h-6 ordu:w-6 ordu:items-center ordu:justify-center ordu:rounded-sm ordu:text-muted-foreground ordu:opacity-70 ordu:transition-opacity ordu:hover:opacity-100 ordu:focus-visible:outline-none ordu:focus-visible:ring-2 ordu:focus-visible:ring-ring">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="14"
