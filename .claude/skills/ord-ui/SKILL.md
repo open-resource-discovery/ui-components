@@ -95,12 +95,39 @@ The package merge helper treats prefixed defaults and ordinary consumer utilitie
 @import "tailwindcss/theme.css" theme(reference);
 @import "tailwindcss/utilities.css";
 
+@theme inline {
+  --color-background: var(--ord-background);
+  --color-foreground: var(--ord-foreground);
+  --color-primary: var(--ord-primary);
+  --color-primary-foreground: var(--ord-primary-foreground);
+  --color-secondary: var(--ord-secondary);
+  --color-secondary-foreground: var(--ord-secondary-foreground);
+  --color-muted: var(--ord-muted);
+  --color-muted-foreground: var(--ord-muted-foreground);
+  --color-accent: var(--ord-accent);
+  --color-accent-foreground: var(--ord-accent-foreground);
+  --color-destructive: var(--ord-destructive);
+  --color-destructive-foreground: var(--ord-destructive-foreground);
+  --color-success: var(--ord-success);
+  --color-success-foreground: var(--ord-success-foreground);
+  --color-warning: var(--ord-warning);
+  --color-warning-foreground: var(--ord-warning-foreground);
+  --color-border: var(--ord-border);
+  --color-input: var(--ord-input);
+  --color-ring: var(--ord-ring);
+  --color-card: var(--ord-card);
+  --color-card-foreground: var(--ord-card-foreground);
+  --color-popover: var(--ord-popover);
+  --color-popover-foreground: var(--ord-popover-foreground);
+  --radius: var(--ord-radius);
+}
+
 @source "./";
 ```
 
-Load this consumer entry after `@open-resource-discovery/ui-components/styles`. Tailwind's standard layered utilities cannot override unlayered ORD declarations; use an important utility such as `px-8!` only when the entry cannot be changed. Plain CSS classes loaded after the package are also supported.
+Load this consumer entry after `@open-resource-discovery/ui-components/styles`. The `@theme` mappings make ORD's public tokens available to consumer utilities such as `bg-primary`. Tailwind's standard layered utilities cannot override unlayered ORD declarations; use an important utility such as `px-8!` only when the entry cannot be changed. Plain CSS classes loaded after the package are also supported.
 
-The isolation boundary protects against normal host CSS, including unlayered Docusaurus/Infima element rules. Arbitrary host `!important` declarations require an important consumer override.
+The isolation boundary protects against ordinary host CSS, including unlayered Docusaurus/Infima element rules and generic utility-name collisions. Higher-specificity host descendants such as `.markdown a` and host `!important` declarations require a deliberate consumer override or important utility.
 
 ### Applying overrides at runtime
 

@@ -20,6 +20,10 @@ describe("cn", () => {
     expect(cn("ordu:bg-primary", "bg-red-500!")).toBe("ordu:bg-primary bg-red-500!");
   });
 
+  it("keeps the internal utility when a consumer repeats the same class", () => {
+    expect(cn("ordu:flex ordu:h-9", "flex h-9")).toBe("ordu:flex ordu:h-9");
+  });
+
   it("merges arbitrary values and properties", () => {
     expect(cn("ordu:w-[320px] ordu:[color:red]", "w-[480px] [color:blue]")).toBe("w-[480px] [color:blue]");
   });

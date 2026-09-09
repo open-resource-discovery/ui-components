@@ -51,7 +51,7 @@ const TooltipPopup = forwardRef<HTMLDivElement, TooltipPopupProps>(({ className,
   <BaseTooltip.Popup
     ref={ref}
     className={cn(
-      "ordu:z-50 ordu:bg-tooltip-bg ordu:text-tooltip-fg ordu:px-2 ordu:py-1 ordu:text-xs ordu:rounded-[var(--ord-radius)] ordu:shadow-md ordu:data-[open]:animate-in ordu:data-[open]:fade-in-0 ordu:data-[closed]:animate-out ordu:data-[closed]:fade-out-0",
+      "ordu:z-50 ordu:bg-tooltip-bg ordu:text-tooltip-fg ordu:px-2 ordu:py-1 ordu:text-xs ordu:rounded-[var(--ord-radius)] ordu:shadow-md ordu:data-[open]:animate-ord-fade-in ordu:data-[closed]:animate-ord-fade-out",
       className,
     )}
     {...props}

@@ -155,6 +155,7 @@
   --ord-hljs-punctuation: #000000;
 }
 
+/* Keep dark defaults at the same specificity as .ord-ui so later brand overrides apply in both modes. */
 .ord-ui:where(.dark) {
   --ord-background: #1e1e1e;
   --ord-foreground: #d4d4d4;

@@ -7,7 +7,7 @@ _Original research written 2026-09-07 and updated with the implemented `ui-compo
 `ui-components` now ships one self-contained styling island through `@open-resource-discovery/ui-components/styles`:
 
 - Tailwind preflight is not exported globally. A reset covering the elements used by the components is scoped to `.ord-ui`.
-- Internal utilities use Tailwind's native `ordu:` prefix and are emitted unlayered. Generic host classes cannot match them, while unlayered host element rules lose to the internal class selectors.
+- Internal utilities use a private namespace configured with Tailwind's `prefix(ordu)` and are emitted unlayered. Generic host classes cannot match them, while unlayered host element rules lose to the internal class selectors.
 - Tailwind implementation variables are renamed from global `--tw-*` names to `--ordu-tw-*` in the built artifact.
 - Default, dark, and per-component design tokens remain under `.ord-ui`; `--ord-*` names are unchanged.
 - `cn()` merges private prefixed defaults and ordinary consumer utilities as equivalent conflict groups, preserving `className` as the local override API.
@@ -20,10 +20,37 @@ The supported consumer setup is one stylesheet import followed by `ThemeRoot`. T
 @import "tailwindcss/theme.css" theme(reference);
 @import "tailwindcss/utilities.css";
 
+@theme inline {
+  --color-background: var(--ord-background);
+  --color-foreground: var(--ord-foreground);
+  --color-primary: var(--ord-primary);
+  --color-primary-foreground: var(--ord-primary-foreground);
+  --color-secondary: var(--ord-secondary);
+  --color-secondary-foreground: var(--ord-secondary-foreground);
+  --color-muted: var(--ord-muted);
+  --color-muted-foreground: var(--ord-muted-foreground);
+  --color-accent: var(--ord-accent);
+  --color-accent-foreground: var(--ord-accent-foreground);
+  --color-destructive: var(--ord-destructive);
+  --color-destructive-foreground: var(--ord-destructive-foreground);
+  --color-success: var(--ord-success);
+  --color-success-foreground: var(--ord-success-foreground);
+  --color-warning: var(--ord-warning);
+  --color-warning-foreground: var(--ord-warning-foreground);
+  --color-border: var(--ord-border);
+  --color-input: var(--ord-input);
+  --color-ring: var(--ord-ring);
+  --color-card: var(--ord-card);
+  --color-card-foreground: var(--ord-card-foreground);
+  --color-popover: var(--ord-popover);
+  --color-popover-foreground: var(--ord-popover-foreground);
+  --radius: var(--ord-radius);
+}
+
 @source "./";
 ```
 
-This constraint is structural: standard Tailwind utilities live in `@layer utilities`, and layered rules cannot override the unlayered declarations required to beat hosts such as Infima. An important utility is the fallback when a consumer cannot change its Tailwind entry. The `ordu:` namespace is private.
+The `@theme` block exposes ORD's public semantic tokens to consumer utilities such as `bg-primary`; it does not emit global token defaults. The unlayered constraint is structural: standard Tailwind utilities live in `@layer utilities`, and layered rules cannot override the unlayered declarations required to beat hosts such as Infima. An important utility is the fallback when a consumer cannot change its Tailwind entry. The `ordu:` namespace is private.
 
 ## The core problem
 
@@ -97,7 +124,7 @@ For every consumer:
 2. Keep the project's own Tailwind build when it uses utility classes. It should scan project source, emit the override utilities unlayered, and load its CSS after the ORD stylesheet.
 3. Remove copied resets that exist only to repair ORD components. Keep any reset or selector scoping still required by the consumer's own embedded UI.
 4. Stop stripping layers or rewriting selectors in the `ui-components` dependency. Standalone bundles may still need to isolate the consumer project's own generic CSS from a host page.
-5. Keep existing `--ord-*` mappings. Move runtime variables to `ThemeRoot.style` when portaled components must inherit them.
+5. Keep existing `--ord-*` mappings. A later `.ord-ui` override intentionally applies in both light and dark modes; add a later `.ord-ui.dark` rule when the modes need different values. Move runtime variables to `ThemeRoot.style` when portaled components must inherit them.
 6. Verify the integration against the package's `Compositions/Host CSS Isolation` story pattern before deleting old build guards.
 
 Project-specific follow-up:
@@ -110,4 +137,4 @@ Project-specific follow-up:
 | `explorer`           | Replace documented ORD cascade workarounds with the standard import plus `ThemeRoot`, then retain only application-specific host interoperability rules.                               |
 | `metadata-renderer`  | Preserve its existing `--ord-*` theme mappings and ensure they apply on each renderer's `ThemeRoot`; load renderer application CSS after ORD CSS.                                      |
 
-The boundary is intentionally not Shadow DOM. React children, SSR, existing portals, and ordinary `className` overrides continue to work. Consequently, arbitrary host declarations using `!important` are outside the guaranteed isolation contract.
+The boundary is intentionally not Shadow DOM. React children, SSR, existing portals, and ordinary `className` overrides continue to work. Internal utility selectors deliberately stay at specificity `(0,1,0)` so ordinary consumer utilities can replace them. Consequently, higher-specificity host descendant selectors such as `.markdown a` and arbitrary host declarations using `!important` are outside the guaranteed isolation contract; handle those integration-specific rules with a deliberate consumer override or important utility.

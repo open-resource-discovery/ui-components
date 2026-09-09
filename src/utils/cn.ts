@@ -7,6 +7,13 @@ function removeInternalPrefix(className: string): string {
   return className.startsWith(INTERNAL_PREFIX) ? className.slice(INTERNAL_PREFIX.length) : className;
 }
 
+function restoreOriginalClassName(className: string, originalsByNormalized: Map<string, string[]>): string {
+  const candidates = originalsByNormalized.get(className);
+  if (!candidates) return className;
+
+  return candidates.find((candidate) => candidate.startsWith(INTERNAL_PREFIX)) ?? candidates[candidates.length - 1];
+}
+
 export function cn(...inputs: ClassValue[]): string {
   const classNames = clsx(inputs);
   if (!classNames) return "";
@@ -26,6 +33,6 @@ export function cn(...inputs: ClassValue[]): string {
 
   return twMerge(normalized.join(" "))
     .split(/\s+/)
-    .map((className) => originalsByNormalized.get(className)?.pop() ?? className)
+    .map((className) => restoreOriginalClassName(className, originalsByNormalized))
     .join(" ");
 }

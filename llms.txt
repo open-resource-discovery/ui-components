@@ -9,10 +9,10 @@ Install: `npm install @open-resource-discovery/ui-components`. Peer deps: React 
 - The exported stylesheet contains complete component defaults. Consumers do not need Tailwind or a copied reset.
 - Internal utilities use the private `ordu:` namespace. Do not use that prefix in consumer code.
 - The reset, tokens, and handwritten selectors are scoped to `.ord-ui`; generic host utilities do not match component internals.
-- Consumers with Tailwind pass ordinary classes through `className`, for example `<Button className="h-12 rounded-full px-8" />`. Their Tailwind CSS must scan their own source, emit utilities unlayered with `@import "tailwindcss/utilities.css";`, and load after the package stylesheet. Tailwind's standard layered utility import cannot override the deliberately unlayered ORD defaults; use important utilities only when the consumer entry cannot be changed.
+- Consumers with Tailwind pass ordinary classes through `className`, for example `<Button className="h-12 rounded-full px-8" />`. Their Tailwind CSS must scan their own source, emit utilities unlayered with `@import "tailwindcss/utilities.css";`, map semantic utilities to `--ord-*` using `@theme inline`, and load after the package stylesheet. Tailwind's standard layered utility import cannot override the deliberately unlayered ORD defaults; use important utilities only when the consumer entry cannot be changed.
 - Import order is package styles first, application styles second. Directly conflicting consumer utilities replace internal defaults through the package's merge helper.
-- Override `--ord-*` on `.ord-ui` or through `ThemeRoot.style` for global or per-component theming. Put runtime variables on `ThemeRoot`, not a child, so portals inherit them.
-- Normal host CSS is isolated. No library can safely defeat arbitrary host `!important` declarations while also preserving ordinary consumer overrides.
+- Override `--ord-*` on `.ord-ui` or through `ThemeRoot.style` for global or per-component theming. A later `.ord-ui` rule applies in both light and dark modes; use a later `.ord-ui.dark` rule for dark-specific values. Put runtime variables on `ThemeRoot`, not a child, so portals inherit them.
+- Host element rules and generic utility-name collisions are isolated. Higher-specificity host descendant selectors and arbitrary host `!important` declarations require deliberate consumer overrides.
 
 ## Getting Started
 
