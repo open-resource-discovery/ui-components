@@ -64,6 +64,7 @@
 .ord-ui :where(code, kbd, samp, pre) {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: inherit;
+  background-color: transparent;
 }
 
 .ord-ui :where(small) {
