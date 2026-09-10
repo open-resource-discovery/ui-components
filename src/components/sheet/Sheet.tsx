@@ -36,7 +36,7 @@ const SheetBackdrop = forwardRef<HTMLDivElement, SheetBackdropProps>(({ classNam
   <BaseDialog.Backdrop
     ref={ref}
     className={cn(
-      "fixed inset-0 z-50 bg-sheet-backdrop data-[open]:animate-ord-fade-in data-[closed]:animate-ord-fade-out",
+      "ordu:fixed ordu:inset-0 ordu:z-50 ordu:bg-sheet-backdrop ordu:data-[open]:animate-ord-fade-in ordu:data-[closed]:animate-ord-fade-out",
       className,
     )}
     {...props}
@@ -45,19 +45,22 @@ const SheetBackdrop = forwardRef<HTMLDivElement, SheetBackdropProps>(({ classNam
 SheetBackdrop.displayName = "Sheet.Backdrop";
 
 /* ----- Popup ----- */
-const sheetPopupVariants = cva("fixed z-50 bg-sheet-bg text-sheet-fg shadow-lg outline-none flex flex-col gap-4 p-6", {
-  variants: {
-    side: {
-      top: "inset-x-0 top-0 border-b border-sheet-border w-full data-[open]:animate-ord-slide-in-from-top data-[closed]:animate-ord-slide-out-to-top",
-      bottom:
-        "inset-x-0 bottom-0 border-t border-sheet-border w-full data-[open]:animate-ord-slide-in-from-bottom data-[closed]:animate-ord-slide-out-to-bottom",
-      left: "inset-y-0 left-0 border-r border-sheet-border h-full w-3/4 sm:max-w-sm data-[open]:animate-ord-slide-in-from-left data-[closed]:animate-ord-slide-out-to-left",
-      right:
-        "inset-y-0 right-0 border-l border-sheet-border h-full w-3/4 sm:max-w-sm data-[open]:animate-ord-slide-in-from-right data-[closed]:animate-ord-slide-out-to-right",
+const sheetPopupVariants = cva(
+  "ordu:fixed ordu:z-50 ordu:bg-sheet-bg ordu:text-sheet-fg ordu:shadow-lg ordu:outline-none ordu:flex ordu:flex-col ordu:gap-4 ordu:p-6",
+  {
+    variants: {
+      side: {
+        top: "ordu:inset-x-0 ordu:top-0 ordu:border-b ordu:border-sheet-border ordu:w-full ordu:data-[open]:animate-ord-slide-in-from-top ordu:data-[closed]:animate-ord-slide-out-to-top",
+        bottom:
+          "ordu:inset-x-0 ordu:bottom-0 ordu:border-t ordu:border-sheet-border ordu:w-full ordu:data-[open]:animate-ord-slide-in-from-bottom ordu:data-[closed]:animate-ord-slide-out-to-bottom",
+        left: "ordu:inset-y-0 ordu:left-0 ordu:border-r ordu:border-sheet-border ordu:h-full ordu:w-3/4 ordu:sm:max-w-sm ordu:data-[open]:animate-ord-slide-in-from-left ordu:data-[closed]:animate-ord-slide-out-to-left",
+        right:
+          "ordu:inset-y-0 ordu:right-0 ordu:border-l ordu:border-sheet-border ordu:h-full ordu:w-3/4 ordu:sm:max-w-sm ordu:data-[open]:animate-ord-slide-in-from-right ordu:data-[closed]:animate-ord-slide-out-to-right",
+      },
     },
+    defaultVariants: { side: "right" },
   },
-  defaultVariants: { side: "right" },
-});
+);
 
 type SheetPopupProps = ComponentPropsWithoutRef<typeof BaseDialog.Popup> & VariantProps<typeof sheetPopupVariants>;
 
@@ -72,7 +75,7 @@ type SheetTitleProps = ComponentPropsWithoutRef<typeof BaseDialog.Title>;
 const SheetTitle = forwardRef<HTMLHeadingElement, SheetTitleProps>(({ className, ...props }, ref) => (
   <BaseDialog.Title
     ref={ref}
-    className={cn("text-lg font-semibold leading-none tracking-tight", className)}
+    className={cn("ordu:text-lg ordu:font-semibold ordu:leading-none ordu:tracking-tight", className)}
     {...props}
   />
 ));
@@ -82,7 +85,11 @@ SheetTitle.displayName = "Sheet.Title";
 type SheetDescriptionProps = ComponentPropsWithoutRef<typeof BaseDialog.Description>;
 
 const SheetDescription = forwardRef<HTMLParagraphElement, SheetDescriptionProps>(({ className, ...props }, ref) => (
-  <BaseDialog.Description ref={ref} className={cn("mt-1.5 text-sm text-sheet-description-fg", className)} {...props} />
+  <BaseDialog.Description
+    ref={ref}
+    className={cn("ordu:mt-1.5 ordu:text-sm ordu:text-sheet-description-fg", className)}
+    {...props}
+  />
 ));
 SheetDescription.displayName = "Sheet.Description";
 

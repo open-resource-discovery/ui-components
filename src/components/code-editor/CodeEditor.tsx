@@ -81,12 +81,12 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
 
       const dark = ordRoot.classList.contains("dark");
 
-      const bg = getCssColor(ordRoot, "--background", dark ? "#1e1e1e" : "#ffffff");
-      const fg = getCssColor(ordRoot, "--foreground", dark ? "#d4d4d4" : "#1e1e1e");
-      const muted = getCssColor(ordRoot, "--muted", dark ? "#2d2d30" : "#f5f5f5");
-      const mutedFg = getCssColor(ordRoot, "--muted-foreground", dark ? "#858585" : "#237893");
-      const primary = getCssColor(ordRoot, "--primary", dark ? "#0098ff" : "#005fb8");
-      const border = getCssColor(ordRoot, "--border", dark ? "#3e3e42" : "#e0e0e0");
+      const bg = getCssColor(ordRoot, "--ord-background", dark ? "#1e1e1e" : "#ffffff");
+      const fg = getCssColor(ordRoot, "--ord-foreground", dark ? "#d4d4d4" : "#1e1e1e");
+      const muted = getCssColor(ordRoot, "--ord-muted", dark ? "#2d2d30" : "#f5f5f5");
+      const mutedFg = getCssColor(ordRoot, "--ord-muted-foreground", dark ? "#858585" : "#237893");
+      const primary = getCssColor(ordRoot, "--ord-primary", dark ? "#0098ff" : "#005fb8");
+      const border = getCssColor(ordRoot, "--ord-border", dark ? "#3e3e42" : "#e0e0e0");
 
       monaco.editor.defineTheme("ord-dark", {
         base: "vs-dark",
@@ -180,10 +180,13 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
           if (typeof ref === "function") ref(node);
           else if (ref) ref.current = node;
         }}
-        className={cn("h-full rounded-lg border overflow-hidden flex flex-col", className)}
+        className={cn(
+          "ordu:h-full ordu:rounded-lg ordu:border ordu:overflow-hidden ordu:flex ordu:flex-col",
+          className,
+        )}
         {...props}>
         {showToolbar && (
-          <div className="flex h-10 items-center gap-1 border-b bg-muted/30 px-2">
+          <div className="ordu:flex ordu:h-10 ordu:items-center ordu:gap-1 ordu:border-b ordu:bg-muted/30 ordu:px-2">
             <Button variant="ghost" size="sm" onClick={handleFormat} disabled={!value.trim()}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -193,7 +196,7 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="h-4 w-4">
+                className="ordu:h-4 ordu:w-4">
                 <path d="M15 4V2" />
                 <path d="M15 16v-2" />
                 <path d="M8 9h2" />
@@ -204,7 +207,7 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
                 <path d="m3 21 9-9" />
                 <path d="M12.2 6.2 10 4" />
               </svg>
-              <span className="hidden sm:inline">Format</span>
+              <span className="ordu:hidden ordu:sm:inline">Format</span>
             </Button>
             <Button variant="ghost" size="sm" onClick={handleCopy} disabled={!value.trim()}>
               {copied ? (
@@ -216,7 +219,7 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="h-4 w-4 text-success">
+                  className="ordu:h-4 ordu:w-4 ordu:text-success">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
               ) : (
@@ -228,14 +231,14 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="h-4 w-4">
+                  className="ordu:h-4 ordu:w-4">
                   <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
                   <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
                 </svg>
               )}
-              <span className="hidden sm:inline">{copied ? "Copied" : "Copy"}</span>
+              <span className="ordu:hidden ordu:sm:inline">{copied ? "Copied" : "Copy"}</span>
             </Button>
-            <div className="flex-1" />
+            <div className="ordu:flex-1" />
             <Button variant="ghost" size="sm" onClick={handleReset} disabled={!value.trim()}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -245,15 +248,15 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="h-4 w-4">
+                className="ordu:h-4 ordu:w-4">
                 <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
                 <path d="M3 3v5h5" />
               </svg>
-              <span className="hidden sm:inline">Reset</span>
+              <span className="ordu:hidden ordu:sm:inline">Reset</span>
             </Button>
           </div>
         )}
-        <div className="flex-1 overflow-hidden min-h-0" style={{ minHeight }}>
+        <div className="ordu:flex-1 ordu:overflow-hidden ordu:min-h-0" style={{ minHeight }}>
           <Editor
             height={height ?? "100%"}
             value={value}

@@ -3,21 +3,22 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/cn";
 
 const badgeVariants = cva(
-  "inline-flex items-center rounded-full font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  "ordu:inline-flex ordu:items-center ordu:rounded-full ordu:font-semibold ordu:transition-colors ordu:focus:outline-none ordu:focus:ring-2 ordu:focus:ring-ring ordu:focus:ring-offset-2",
   {
     variants: {
       variant: {
-        default: "bg-badge-default-bg text-badge-default-fg",
-        secondary: "bg-badge-secondary-bg text-badge-secondary-fg",
-        destructive: "bg-badge-destructive-bg text-badge-destructive-fg",
-        outline: "border border-badge-outline-border text-badge-outline-fg",
-        success: "bg-badge-success-bg text-badge-success-fg",
-        warning: "bg-badge-warning-bg text-badge-warning-fg",
-        highlight: "bg-badge-highlight-bg text-badge-highlight-fg border border-badge-highlight-border",
+        default: "ordu:bg-badge-default-bg ordu:text-badge-default-fg",
+        secondary: "ordu:bg-badge-secondary-bg ordu:text-badge-secondary-fg",
+        destructive: "ordu:bg-badge-destructive-bg ordu:text-badge-destructive-fg",
+        outline: "ordu:border ordu:border-badge-outline-border ordu:text-badge-outline-fg",
+        success: "ordu:bg-badge-success-bg ordu:text-badge-success-fg",
+        warning: "ordu:bg-badge-warning-bg ordu:text-badge-warning-fg",
+        highlight:
+          "ordu:bg-badge-highlight-bg ordu:text-badge-highlight-fg ordu:border ordu:border-badge-highlight-border",
       },
       size: {
-        sm: "px-2 py-0.5 text-[10px]",
-        default: "px-2.5 py-0.5 text-xs",
+        sm: "ordu:px-2 ordu:py-0.5 ordu:text-[10px]",
+        default: "ordu:px-2.5 ordu:py-0.5 ordu:text-xs",
       },
     },
     defaultVariants: {

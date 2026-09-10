@@ -41,11 +41,11 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(({ classN
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="relative">
+    <div className="ordu:relative">
       <input
         type={showPassword ? "text" : "password"}
         className={cn(
-          "flex h-10 w-full rounded-[var(--ord-radius)] border border-input bg-background px-3 py-2 pr-10 text-sm text-foreground ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+          "ordu:flex ordu:h-10 ordu:w-full ordu:rounded-[var(--ord-radius)] ordu:border ordu:border-input ordu:bg-background ordu:px-3 ordu:py-2 ordu:pr-10 ordu:text-sm ordu:text-foreground ordu:ring-offset-background ordu:placeholder:text-muted-foreground ordu:focus-visible:outline-none ordu:focus-visible:ring-2 ordu:focus-visible:ring-ring ordu:focus-visible:ring-offset-2 ordu:disabled:cursor-not-allowed ordu:disabled:opacity-50",
           className,
         )}
         ref={ref}
@@ -53,7 +53,7 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(({ classN
       />
       <button
         type="button"
-        className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground focus-visible:outline-none"
+        className="ordu:absolute ordu:right-3 ordu:top-1/2 ordu:-translate-y-1/2 ordu:text-muted-foreground ordu:hover:text-foreground ordu:focus-visible:outline-none"
         onClick={() => setShowPassword((prev) => !prev)}
         tabIndex={-1}
         aria-label={showPassword ? "Hide password" : "Show password"}>

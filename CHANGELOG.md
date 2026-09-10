@@ -7,6 +7,24 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [unreleased]
 
+The following changes are planned for version 0.2.0.
+
+### Added
+
+- Added a `.ord-ui`-scoped reset, private `ordu:` component utilities, namespaced Tailwind implementation variables and animations, and a build-time CSS-isolation guard.
+- Added host-isolation Storybook coverage and regression tests for `ThemeRoot` behavior and cross-namespace `className` merging.
+
+### Changed
+
+- **Breaking:** Version 0.2.0 moves ORD's reset and complete component styling into the package. Existing consumers should remove copied ORD resets, dependency layer stripping, and dependency selector rewriting, while keeping isolation needed for their own embeddable CSS.
+- Tailwind consumers that override component defaults must emit their own utilities unlayered after the package stylesheet and map semantic utilities to the public `--ord-*` tokens with `@theme inline`.
+- A later `.ord-ui` token override now applies consistently in both light and dark modes. Consumers that need mode-specific values can add a later `.ord-ui.dark` rule.
+
+### Fixed
+
+- Prevented component styles from leaking into host pages and protected component defaults from ordinary host element rules and generic utility-class collisions.
+- Restored Tooltip fade animations with package-owned keyframes and preserved private defaults when a consumer repeats an identical utility class.
+
 ## [[0.1.6](https://github.com/open-resource-discovery/ui-components/releases/tag/v0.1.6)] - 2026-07-15
 
 ### Fixed

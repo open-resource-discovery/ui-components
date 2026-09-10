@@ -18,7 +18,7 @@ const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(({ class
   <BaseSelect.Trigger
     ref={ref}
     className={cn(
-      "flex h-10 w-full items-center justify-between rounded-[var(--ord-radius)] border border-select-trigger-border bg-select-trigger-bg px-3 py-2 text-sm text-select-trigger-fg ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+      "ordu:flex ordu:h-10 ordu:w-full ordu:items-center ordu:justify-between ordu:rounded-[var(--ord-radius)] ordu:border ordu:border-select-trigger-border ordu:bg-select-trigger-bg ordu:px-3 ordu:py-2 ordu:text-sm ordu:text-select-trigger-fg ordu:ring-offset-background ordu:focus-visible:outline-none ordu:focus-visible:ring-2 ordu:focus-visible:ring-ring ordu:focus-visible:ring-offset-2 ordu:disabled:cursor-not-allowed ordu:disabled:opacity-50",
       className,
     )}
     {...props}
@@ -30,7 +30,7 @@ SelectTrigger.displayName = "Select.Trigger";
 type SelectValueProps = ComponentPropsWithoutRef<typeof BaseSelect.Value>;
 
 const SelectValue = forwardRef<HTMLSpanElement, SelectValueProps>(({ className, ...props }, ref) => (
-  <BaseSelect.Value ref={ref} className={cn("text-sm truncate", className)} {...props} />
+  <BaseSelect.Value ref={ref} className={cn("ordu:text-sm ordu:truncate", className)} {...props} />
 ));
 SelectValue.displayName = "Select.Value";
 
@@ -38,7 +38,7 @@ SelectValue.displayName = "Select.Value";
 type SelectIconProps = ComponentPropsWithoutRef<typeof BaseSelect.Icon>;
 
 const SelectIcon = forwardRef<HTMLSpanElement, SelectIconProps>(({ className, children, ...props }, ref) => (
-  <BaseSelect.Icon ref={ref} className={cn("flex shrink-0 text-muted-foreground", className)} {...props}>
+  <BaseSelect.Icon ref={ref} className={cn("ordu:flex ordu:shrink-0 ordu:text-muted-foreground", className)} {...props}>
     {children ?? (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@ const SelectPositioner = forwardRef<HTMLDivElement, SelectPositionerProps>(({ cl
     side="bottom"
     align="start"
     sideOffset={4}
-    className={cn("outline-none z-50", className)}
+    className={cn("ordu:outline-none ordu:z-50", className)}
     {...props}
   />
 ));
@@ -88,7 +88,7 @@ const SelectPopup = forwardRef<HTMLDivElement, SelectPopupProps>(({ className, .
   <BaseSelect.Popup
     ref={ref}
     className={cn(
-      "bg-select-popup-bg text-select-popup-fg border border-select-popup-border rounded-[var(--ord-radius)] shadow-md p-1 overflow-hidden min-w-[var(--anchor-width)]",
+      "ordu:bg-select-popup-bg ordu:text-select-popup-fg ordu:border ordu:border-select-popup-border ordu:rounded-[var(--ord-radius)] ordu:shadow-md ordu:p-1 ordu:overflow-hidden ordu:min-w-[var(--anchor-width)]",
       className,
     )}
     {...props}
@@ -103,7 +103,7 @@ const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(({ className, ...
   <BaseSelect.Item
     ref={ref}
     className={cn(
-      "relative flex w-full cursor-pointer select-none items-center rounded-sm pl-8 pr-2 py-1.5 text-sm outline-none data-[highlighted]:bg-select-item-bg-hover data-[highlighted]:text-select-item-fg-hover data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "ordu:relative ordu:flex ordu:w-full ordu:cursor-pointer ordu:select-none ordu:items-center ordu:rounded-sm ordu:pl-8 ordu:pr-2 ordu:py-1.5 ordu:text-sm ordu:outline-none ordu:data-[highlighted]:bg-select-item-bg-hover ordu:data-[highlighted]:text-select-item-fg-hover ordu:data-[disabled]:pointer-events-none ordu:data-[disabled]:opacity-50",
       className,
     )}
     {...props}
@@ -118,7 +118,10 @@ const SelectItemIndicator = forwardRef<HTMLSpanElement, SelectItemIndicatorProps
   ({ className, children, ...props }, ref) => (
     <BaseSelect.ItemIndicator
       ref={ref}
-      className={cn("absolute left-2 flex h-3.5 w-3.5 items-center justify-center", className)}
+      className={cn(
+        "ordu:absolute ordu:left-2 ordu:flex ordu:h-3.5 ordu:w-3.5 ordu:items-center ordu:justify-center",
+        className,
+      )}
       {...props}>
       {children ?? (
         <svg
@@ -151,7 +154,7 @@ SelectItemText.displayName = "Select.ItemText";
 type SelectGroupProps = ComponentPropsWithoutRef<typeof BaseSelect.Group>;
 
 const SelectGroup = forwardRef<HTMLDivElement, SelectGroupProps>(({ className, ...props }, ref) => (
-  <BaseSelect.Group ref={ref} className={cn("p-1", className)} {...props} />
+  <BaseSelect.Group ref={ref} className={cn("ordu:p-1", className)} {...props} />
 ));
 SelectGroup.displayName = "Select.Group";
 
@@ -161,7 +164,7 @@ type SelectGroupLabelProps = ComponentPropsWithoutRef<typeof BaseSelect.GroupLab
 const SelectGroupLabel = forwardRef<HTMLDivElement, SelectGroupLabelProps>(({ className, ...props }, ref) => (
   <BaseSelect.GroupLabel
     ref={ref}
-    className={cn("px-2 py-1.5 text-xs font-semibold text-muted-foreground", className)}
+    className={cn("ordu:px-2 ordu:py-1.5 ordu:text-xs ordu:font-semibold ordu:text-muted-foreground", className)}
     {...props}
   />
 ));
@@ -174,7 +177,7 @@ const SelectScrollUpArrow = forwardRef<HTMLDivElement, SelectScrollUpArrowProps>
   ({ className, children, ...props }, ref) => (
     <BaseSelect.ScrollUpArrow
       ref={ref}
-      className={cn("flex items-center justify-center py-1 text-muted-foreground", className)}
+      className={cn("ordu:flex ordu:items-center ordu:justify-center ordu:py-1 ordu:text-muted-foreground", className)}
       {...props}>
       {children ?? (
         <svg
@@ -202,7 +205,7 @@ const SelectScrollDownArrow = forwardRef<HTMLDivElement, SelectScrollDownArrowPr
   ({ className, children, ...props }, ref) => (
     <BaseSelect.ScrollDownArrow
       ref={ref}
-      className={cn("flex items-center justify-center py-1 text-muted-foreground", className)}
+      className={cn("ordu:flex ordu:items-center ordu:justify-center ordu:py-1 ordu:text-muted-foreground", className)}
       {...props}>
       {children ?? (
         <svg

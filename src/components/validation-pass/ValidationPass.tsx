@@ -9,18 +9,21 @@ export interface ValidationPassProps extends ComponentPropsWithoutRef<"div"> {
 export const ValidationPass = forwardRef<HTMLDivElement, ValidationPassProps>(
   ({ title = "All checks passed", suffix, className, ...props }, ref) => {
     return (
-      <div ref={ref} className={cn("flex flex-col items-center justify-center gap-4", className)} {...props}>
+      <div
+        ref={ref}
+        className={cn("ordu:flex ordu:flex-col ordu:items-center ordu:justify-center ordu:gap-4", className)}
+        {...props}>
         <svg
-          className="validation-pass-checkmark"
+          className="ord-validation-pass-checkmark"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 52 52"
           aria-hidden="true">
-          <circle className="validation-pass-circle" cx="26" cy="26" r="25" fill="none" />
-          <path className="validation-pass-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+          <circle className="ord-validation-pass-circle" cx="26" cy="26" r="25" fill="none" />
+          <path className="ord-validation-pass-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
         </svg>
-        <p className="text-lg">
-          <span className="font-bold text-foreground">{title}</span>
-          {suffix && <span className="font-normal text-muted-foreground">{suffix}</span>}
+        <p className="ordu:text-lg">
+          <span className="ordu:font-bold ordu:text-foreground">{title}</span>
+          {suffix && <span className="ordu:font-normal ordu:text-muted-foreground">{suffix}</span>}
         </p>
       </div>
     );

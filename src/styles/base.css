@@ -1,7 +1,8 @@
-@layer theme, base, components, utilities;
-@import "tailwindcss";
-
+@layer theme;
+@import "tailwindcss/theme.css" layer(theme) prefix(ordu) theme(reference);
 @import "../theme/tokens.css";
+@import "./reset.css";
+@import "tailwindcss/utilities.css" prefix(ordu);
 
 @theme inline {
   --color-background: var(--ord-background);
@@ -147,21 +148,35 @@
   --color-avatar-fallback-fg: var(--ord-avatar-fallback-fg);
 }
 
-.ord-ui {
-  background-color: var(--ord-background);
-  color: var(--ord-foreground);
-  font-family:
-    ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-
-@layer base {
-  .ord-ui :where(*) {
-    border-color: var(--ord-border);
+/* Package-owned animations avoid collisions with common host keyframe names. */
+@keyframes ord-spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
+@keyframes ord-bounce {
+  0%,
+  100% {
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    transform: translateY(-25%);
+  }
+  50% {
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    transform: none;
+  }
+}
+
+@utility animate-ord-spin {
+  animation: ord-spin 1s linear infinite;
+}
+
+@utility animate-ord-bounce {
+  animation: ord-bounce 1s infinite;
+}
+
 /* Progress indeterminate animation */
-@keyframes progress-indeterminate {
+@keyframes ord-progress-indeterminate {
   0% {
     transform: translateX(-100%);
     width: 50%;
@@ -177,7 +192,7 @@
 }
 
 @utility animate-progress-indeterminate {
-  animation: progress-indeterminate 1.5s ease-in-out infinite;
+  animation: ord-progress-indeterminate 1.5s ease-in-out infinite;
 }
 
 /* Overlay animations (Dialog + Sheet) */
@@ -329,39 +344,63 @@
 }
 
 /* hljs syntax highlighting (default highlighter) */
-.ord-ui .hljs { background: transparent !important; }
+.ord-ui .hljs {
+  background: transparent !important;
+}
 .ord-ui .hljs-keyword,
 .ord-ui .hljs-variable.language_,
-.ord-ui .hljs-template-variable { color: var(--ord-hljs-keyword); }
+.ord-ui .hljs-template-variable {
+  color: var(--ord-hljs-keyword);
+}
 .ord-ui .hljs-string,
 .ord-ui .hljs-regexp,
-.ord-ui .hljs-meta .hljs-string { color: var(--ord-hljs-string); }
+.ord-ui .hljs-meta .hljs-string {
+  color: var(--ord-hljs-string);
+}
 .ord-ui .hljs-number,
 .ord-ui .hljs-built_in,
 .ord-ui .hljs-selector-attr,
-.ord-ui .hljs-selector-pseudo { color: var(--ord-hljs-number); }
+.ord-ui .hljs-selector-pseudo {
+  color: var(--ord-hljs-number);
+}
 .ord-ui .hljs-attr,
-.ord-ui .hljs-attribute { color: var(--ord-hljs-attr); }
-.ord-ui .hljs-title.function_ { color: var(--ord-hljs-function); }
+.ord-ui .hljs-attribute {
+  color: var(--ord-hljs-attr);
+}
+.ord-ui .hljs-title.function_ {
+  color: var(--ord-hljs-function);
+}
 .ord-ui .hljs-literal,
 .ord-ui .hljs-addition,
 .ord-ui .hljs-selector-tag,
-.ord-ui .hljs-type { color: var(--ord-hljs-literal); }
+.ord-ui .hljs-type {
+  color: var(--ord-hljs-literal);
+}
 .ord-ui .hljs-tag,
-.ord-ui .hljs-name { color: var(--ord-hljs-tag); }
+.ord-ui .hljs-name {
+  color: var(--ord-hljs-tag);
+}
 .ord-ui .hljs-comment,
 .ord-ui .hljs-code,
-.ord-ui .hljs-formula { color: var(--ord-hljs-comment); }
-.ord-ui .hljs-punctuation { color: var(--ord-hljs-punctuation); }
-.ord-ui .hljs-section { color: var(--ord-hljs-attr); }
-.ord-ui .hljs-bullet { color: var(--ord-hljs-number); }
+.ord-ui .hljs-formula {
+  color: var(--ord-hljs-comment);
+}
+.ord-ui .hljs-punctuation {
+  color: var(--ord-hljs-punctuation);
+}
+.ord-ui .hljs-section {
+  color: var(--ord-hljs-attr);
+}
+.ord-ui .hljs-bullet {
+  color: var(--ord-hljs-number);
+}
 
 /* CodeBlock line numbers */
-.ord-code-block-lines code {
+.ord-ui .ord-code-block-lines code {
   counter-reset: line;
 }
 
-.ord-code-block-lines .line::before {
+.ord-ui .ord-code-block-lines .line::before {
   counter-increment: line;
   content: counter(line);
   display: inline-block;
@@ -373,7 +412,7 @@
 }
 
 /* ValidationPass animated checkmark */
-.validation-pass-checkmark {
+.ord-ui .ord-validation-pass-checkmark {
   width: 100%;
   max-width: 150px;
   max-height: 150px;
@@ -386,31 +425,31 @@
   stroke-miterlimit: 10;
   box-shadow: inset 0 0 0 var(--ord-success);
   animation:
-    validation-pass-fill 0.4s ease-in-out 0.4s forwards,
-    validation-pass-scale 0.3s ease-in-out 0.9s both;
+    ord-validation-pass-fill 0.4s ease-in-out 0.4s forwards,
+    ord-validation-pass-scale 0.3s ease-in-out 0.9s both;
   aspect-ratio: 1;
 }
-.validation-pass-circle {
+.ord-ui .ord-validation-pass-circle {
   stroke-dasharray: 166;
   stroke-dashoffset: 166;
   stroke-width: 4;
   stroke-miterlimit: 10;
   stroke: var(--ord-success);
   fill: none;
-  animation: validation-pass-stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+  animation: ord-validation-pass-stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
 }
-.validation-pass-check {
+.ord-ui .ord-validation-pass-check {
   transform-origin: 50% 50%;
   stroke-dasharray: 48;
   stroke-dashoffset: 48;
-  animation: validation-pass-stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+  animation: ord-validation-pass-stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
 }
-@keyframes validation-pass-stroke {
+@keyframes ord-validation-pass-stroke {
   100% {
     stroke-dashoffset: 0;
   }
 }
-@keyframes validation-pass-scale {
+@keyframes ord-validation-pass-scale {
   0%,
   100% {
     transform: none;
@@ -419,24 +458,24 @@
     transform: scale3d(1.1, 1.1, 1);
   }
 }
-@keyframes validation-pass-fill {
+@keyframes ord-validation-pass-fill {
   100% {
     box-shadow: inset 0 0 0 80px var(--ord-success);
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .validation-pass-checkmark,
-  .validation-pass-circle,
-  .validation-pass-check {
+  .ord-ui .ord-validation-pass-checkmark,
+  .ord-ui .ord-validation-pass-circle,
+  .ord-ui .ord-validation-pass-check {
     animation: none;
   }
-  .validation-pass-checkmark {
+  .ord-ui .ord-validation-pass-checkmark {
     box-shadow: inset 0 0 0 80px var(--ord-success);
   }
-  .validation-pass-circle {
+  .ord-ui .ord-validation-pass-circle {
     stroke-dashoffset: 0;
   }
-  .validation-pass-check {
+  .ord-ui .ord-validation-pass-check {
     stroke-dashoffset: 0;
   }
 }

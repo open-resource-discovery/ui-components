@@ -92,15 +92,15 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
       <div
         ref={ref}
         className={cn(
-          "rounded-[var(--ord-radius)] border bg-card-bg overflow-hidden",
-          highlighted && "ring-2 ring-primary",
+          "ordu:rounded-[var(--ord-radius)] ordu:border ordu:bg-card-bg ordu:overflow-hidden",
+          highlighted && "ordu:ring-2 ordu:ring-primary",
           className,
         )}
         {...props}>
         <Collapsible.Root open={open} onOpenChange={setOpen}>
-          <Collapsible.Trigger className="flex items-center gap-2 w-full px-3 py-2 text-left hover:bg-accent/50 transition-colors cursor-pointer">
+          <Collapsible.Trigger className="ordu:flex ordu:items-center ordu:gap-2 ordu:w-full ordu:px-3 ordu:py-2 ordu:text-left ordu:hover:bg-accent/50 ordu:transition-colors ordu:cursor-pointer">
             {/* Status icon */}
-            {isPending && <Spinner size="sm" className="h-3.5 w-3.5" />}
+            {isPending && <Spinner size="sm" className="ordu:h-3.5 ordu:w-3.5" />}
             {isSuccess && (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -112,7 +112,7 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="shrink-0 text-success">
+                className="ordu:shrink-0 ordu:text-success">
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                 <polyline points="22 4 12 14.01 9 11.01" />
               </svg>
@@ -128,7 +128,7 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="shrink-0 text-destructive">
+                className="ordu:shrink-0 ordu:text-destructive">
                 <circle cx="12" cy="12" r="10" />
                 <line x1="12" y1="8" x2="12" y2="12" />
                 <line x1="12" y1="16" x2="12.01" y2="16" />
@@ -136,7 +136,7 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
             )}
 
             {/* Method badge */}
-            <Badge variant="outline" size="sm" className="font-mono shrink-0">
+            <Badge variant="outline" size="sm" className="ordu:font-mono ordu:shrink-0">
               {method}
             </Badge>
 
@@ -145,19 +145,21 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
 
             {/* Status code badge */}
             {statusCode !== null && statusCode !== undefined && (
-              <Badge variant={statusCode < 400 ? "success" : "destructive"} size="sm" className="shrink-0">
+              <Badge variant={statusCode < 400 ? "success" : "destructive"} size="sm" className="ordu:shrink-0">
                 {statusCode}
               </Badge>
             )}
 
             {/* URL */}
-            <span className="text-xs text-muted-foreground truncate flex-1 min-w-0">{url}</span>
+            <span className="ordu:text-xs ordu:text-muted-foreground ordu:truncate ordu:flex-1 ordu:min-w-0">
+              {url}
+            </span>
 
             {/* Duration + Timestamp stacked */}
             {((duration !== null && duration !== undefined) || formattedTime) && (
-              <div className="flex flex-col items-end shrink-0">
+              <div className="ordu:flex ordu:flex-col ordu:items-end ordu:shrink-0">
                 {duration !== null && duration !== undefined && (
-                  <span className="text-[10px] text-muted-foreground flex items-center gap-0.5">
+                  <span className="ordu:text-[10px] ordu:text-muted-foreground ordu:flex ordu:items-center ordu:gap-0.5">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="10"
@@ -174,7 +176,7 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                     {duration}ms
                   </span>
                 )}
-                {formattedTime && <span className="text-[10px] text-muted-foreground">{formattedTime}</span>}
+                {formattedTime && <span className="ordu:text-[10px] ordu:text-muted-foreground">{formattedTime}</span>}
               </div>
             )}
 
@@ -189,16 +191,16 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className={cn("shrink-0 transition-transform", open && "rotate-180")}>
+              className={cn("ordu:shrink-0 ordu:transition-transform", open && "ordu:rotate-180")}>
               <polyline points="6 9 12 15 18 9" />
             </svg>
           </Collapsible.Trigger>
 
-          <Collapsible.Panel className="border-t">
-            <div className="p-3 space-y-4">
+          <Collapsible.Panel className="ordu:border-t">
+            <div className="ordu:p-3 ordu:space-y-4">
               {/* Action buttons */}
               {(onResend || onCopy || onEdit) && (
-                <div className="flex items-center gap-2">
+                <div className="ordu:flex ordu:items-center ordu:gap-2">
                   {onResend && (
                     <Button variant="ghost" size="sm" onClick={onResend}>
                       <svg
@@ -236,7 +238,7 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                           strokeWidth="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          className="text-success">
+                          className="ordu:text-success">
                           <polyline points="20 6 9 17 4 12" />
                         </svg>
                       ) : (
@@ -289,9 +291,9 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
 
               {/* Edit panel */}
               {editOpen && onEdit && (
-                <div className="space-y-3 border rounded-[var(--ord-radius)] p-3 bg-muted/20">
-                  <div className="space-y-1.5">
-                    <h4 className="text-xs font-medium text-muted-foreground">Headers</h4>
+                <div className="ordu:space-y-3 ordu:border ordu:rounded-[var(--ord-radius)] ordu:p-3 ordu:bg-muted/20">
+                  <div className="ordu:space-y-1.5">
+                    <h4 className="ordu:text-xs ordu:font-medium ordu:text-muted-foreground">Headers</h4>
                     <CodeEditor
                       value={editHeaders}
                       onChange={setEditHeaders}
@@ -299,11 +301,11 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                       height="120px"
                       minHeight="120px"
                       showToolbar={false}
-                      className="text-xs"
+                      className="ordu:text-xs"
                     />
                   </div>
-                  <div className="space-y-1.5">
-                    <h4 className="text-xs font-medium text-muted-foreground">Body</h4>
+                  <div className="ordu:space-y-1.5">
+                    <h4 className="ordu:text-xs ordu:font-medium ordu:text-muted-foreground">Body</h4>
                     <CodeEditor
                       value={editBody}
                       onChange={setEditBody}
@@ -311,10 +313,10 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                       height="200px"
                       minHeight="200px"
                       showToolbar={false}
-                      className="text-xs"
+                      className="ordu:text-xs"
                     />
                   </div>
-                  <div className="flex items-center gap-2 justify-end">
+                  <div className="ordu:flex ordu:items-center ordu:gap-2 ordu:justify-end">
                     <Button variant="ghost" size="sm" onClick={() => setEditOpen(false)}>
                       Cancel
                     </Button>
@@ -349,34 +351,36 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
               )}
 
               {/* Request section */}
-              <div className="space-y-2">
-                <h4 className="text-xs font-medium text-muted-foreground">Request</h4>
-                <div className="font-mono text-[11px] bg-muted p-2 rounded">POST {url}</div>
+              <div className="ordu:space-y-2">
+                <h4 className="ordu:text-xs ordu:font-medium ordu:text-muted-foreground">Request</h4>
+                <div className="ordu:font-mono ordu:text-[11px] ordu:bg-muted ordu:p-2 ordu:rounded">POST {url}</div>
 
                 {/* Headers */}
                 {requestHeaders && Object.keys(requestHeaders).length > 0 && (
-                  <details className="text-xs">
-                    <summary className="cursor-pointer text-muted-foreground hover:text-foreground">
+                  <details className="ordu:text-xs">
+                    <summary className="ordu:cursor-pointer ordu:text-muted-foreground ordu:hover:text-foreground">
                       Headers ({Object.keys(requestHeaders).length})
                     </summary>
                     <CodeBlock
                       code={JSON.stringify(requestHeaders, null, 2)}
                       language="json"
                       highlighter={highlighter}
-                      className="mt-1 text-[11px]"
+                      className="ordu:mt-1 ordu:text-[11px]"
                     />
                   </details>
                 )}
 
                 {/* Body */}
                 {requestBody && (
-                  <details open className="text-xs">
-                    <summary className="cursor-pointer text-muted-foreground hover:text-foreground">Body</summary>
+                  <details open className="ordu:text-xs">
+                    <summary className="ordu:cursor-pointer ordu:text-muted-foreground ordu:hover:text-foreground">
+                      Body
+                    </summary>
                     <CodeBlock
                       code={formatJson(requestBody)}
                       language="json"
                       highlighter={highlighter}
-                      className="mt-1 text-[11px]"
+                      className="ordu:mt-1 ordu:text-[11px]"
                     />
                   </details>
                 )}
@@ -384,26 +388,30 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
 
               {/* Response section */}
               {(responseBody ?? responseBodyContent ?? error) && (
-                <div className="space-y-2">
-                  <h4 className="text-xs font-medium text-muted-foreground">Response</h4>
+                <div className="ordu:space-y-2">
+                  <h4 className="ordu:text-xs ordu:font-medium ordu:text-muted-foreground">Response</h4>
                   {statusCode !== null && statusCode !== undefined && (
                     <div
                       className={cn(
-                        "font-mono text-[11px] p-2 rounded",
-                        statusCode < 400 ? "bg-success/10 text-success" : "bg-destructive/10 text-destructive",
+                        "ordu:font-mono ordu:text-[11px] ordu:p-2 ordu:rounded",
+                        statusCode < 400
+                          ? "ordu:bg-success/10 ordu:text-success"
+                          : "ordu:bg-destructive/10 ordu:text-destructive",
                       )}>
                       HTTP {statusCode} {responseStatus}
                     </div>
                   )}
                   {responseBodyContent ??
                     (responseBody && (
-                      <details open className="text-xs">
-                        <summary className="cursor-pointer text-muted-foreground hover:text-foreground">Body</summary>
+                      <details open className="ordu:text-xs">
+                        <summary className="ordu:cursor-pointer ordu:text-muted-foreground ordu:hover:text-foreground">
+                          Body
+                        </summary>
                         <CodeBlock
                           code={formatJson(responseBody)}
                           language="json"
                           highlighter={highlighter}
-                          className="mt-1 text-[11px]"
+                          className="ordu:mt-1 ordu:text-[11px]"
                         />
                       </details>
                     ))}
@@ -411,7 +419,11 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
               )}
 
               {/* Error block */}
-              {error && <div className="text-xs text-destructive bg-destructive/10 p-2 rounded">{error}</div>}
+              {error && (
+                <div className="ordu:text-xs ordu:text-destructive ordu:bg-destructive/10 ordu:p-2 ordu:rounded">
+                  {error}
+                </div>
+              )}
             </div>
           </Collapsible.Panel>
         </Collapsible.Root>

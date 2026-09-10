@@ -32,7 +32,7 @@ export const SimpleCombobox = forwardRef<HTMLDivElement, SimpleComboboxProps>(
     const maxHeight = `${maxVisibleItems * 36}px`;
 
     return (
-      <div ref={ref} className={cn("w-full", className)} {...props}>
+      <div ref={ref} className={cn("ordu:w-full", className)} {...props}>
         <Combobox.Root
           value={value}
           defaultValue={defaultValue}
@@ -46,7 +46,7 @@ export const SimpleCombobox = forwardRef<HTMLDivElement, SimpleComboboxProps>(
           <Combobox.Input placeholder={placeholder} />
           <Combobox.Portal>
             <Combobox.Positioner>
-              <Combobox.Popup className="overflow-y-auto" style={{ maxHeight }}>
+              <Combobox.Popup className="ordu:overflow-y-auto" style={{ maxHeight }}>
                 {filteredItems.length === 0 ? (
                   <Combobox.Empty>No results</Combobox.Empty>
                 ) : (

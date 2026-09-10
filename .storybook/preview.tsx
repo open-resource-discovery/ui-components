@@ -2,6 +2,7 @@ import type { Preview } from "@storybook/react-vite";
 import React from "react";
 import { ThemeRoot } from "../src/theme/ThemeRoot";
 import "../src/styles/base.css";
+import "./consumer.css";
 
 const preview: Preview = {
   parameters: {
@@ -28,6 +29,10 @@ const preview: Preview = {
   },
   decorators: [
     (Story, context): React.JSX.Element => {
+      if (context.parameters.disableThemeRoot === true) {
+        return <Story />;
+      }
+
       const value = context.globals?.backgrounds?.value ?? "light";
       const isDark = value === "dark";
       return (

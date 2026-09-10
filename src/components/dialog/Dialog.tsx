@@ -35,7 +35,7 @@ const DialogBackdrop = forwardRef<HTMLDivElement, DialogBackdropProps>(({ classN
   <BaseDialog.Backdrop
     ref={ref}
     className={cn(
-      "fixed inset-0 z-50 bg-dialog-backdrop data-[open]:animate-ord-fade-in data-[closed]:animate-ord-fade-out",
+      "ordu:fixed ordu:inset-0 ordu:z-50 ordu:bg-dialog-backdrop ordu:data-[open]:animate-ord-fade-in ordu:data-[closed]:animate-ord-fade-out",
       className,
     )}
     {...props}
@@ -50,7 +50,7 @@ const DialogPopup = forwardRef<HTMLDivElement, DialogPopupProps>(({ className, .
   <BaseDialog.Popup
     ref={ref}
     className={cn(
-      "fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg rounded-[var(--ord-radius)] border border-dialog-border bg-dialog-bg text-dialog-fg p-6 shadow-lg outline-none data-[open]:animate-ord-dialog-in data-[closed]:animate-ord-dialog-out",
+      "ordu:fixed ordu:left-1/2 ordu:top-1/2 ordu:z-50 ordu:-translate-x-1/2 ordu:-translate-y-1/2 ordu:w-full ordu:max-w-lg ordu:rounded-[var(--ord-radius)] ordu:border ordu:border-dialog-border ordu:bg-dialog-bg ordu:text-dialog-fg ordu:p-6 ordu:shadow-lg ordu:outline-none ordu:data-[open]:animate-ord-dialog-in ordu:data-[closed]:animate-ord-dialog-out",
       className,
     )}
     {...props}
@@ -64,7 +64,7 @@ type DialogTitleProps = ComponentPropsWithoutRef<typeof BaseDialog.Title>;
 const DialogTitle = forwardRef<HTMLHeadingElement, DialogTitleProps>(({ className, ...props }, ref) => (
   <BaseDialog.Title
     ref={ref}
-    className={cn("text-lg font-semibold leading-none tracking-tight", className)}
+    className={cn("ordu:text-lg ordu:font-semibold ordu:leading-none ordu:tracking-tight", className)}
     {...props}
   />
 ));
@@ -74,7 +74,11 @@ DialogTitle.displayName = "Dialog.Title";
 type DialogDescriptionProps = ComponentPropsWithoutRef<typeof BaseDialog.Description>;
 
 const DialogDescription = forwardRef<HTMLParagraphElement, DialogDescriptionProps>(({ className, ...props }, ref) => (
-  <BaseDialog.Description ref={ref} className={cn("mt-1.5 text-sm text-dialog-description-fg", className)} {...props} />
+  <BaseDialog.Description
+    ref={ref}
+    className={cn("ordu:mt-1.5 ordu:text-sm ordu:text-dialog-description-fg", className)}
+    {...props}
+  />
 ));
 DialogDescription.displayName = "Dialog.Description";
 

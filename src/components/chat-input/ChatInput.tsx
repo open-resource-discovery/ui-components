@@ -57,7 +57,7 @@ export const ChatInput = forwardRef<HTMLFormElement, ChatInputProps>(
     return (
       <form
         ref={ref}
-        className={cn("border-t border-border p-3 flex items-end gap-2", className)}
+        className={cn("ordu:border-t ordu:border-border ordu:p-3 ordu:flex ordu:items-end ordu:gap-2", className)}
         onSubmit={handleSubmit}
         {...props}>
         <textarea
@@ -67,7 +67,7 @@ export const ChatInput = forwardRef<HTMLFormElement, ChatInputProps>(
           disabled={disabled || loading}
           onInput={handleInput}
           onKeyDown={handleKeyDown}
-          className="flex-1 resize-none bg-transparent text-sm placeholder:text-muted-foreground focus:outline-none min-h-[40px] max-h-[120px] py-2.5"
+          className="ordu:flex-1 ordu:resize-none ordu:bg-transparent ordu:text-sm ordu:placeholder:text-muted-foreground ordu:focus:outline-none ordu:min-h-[40px] ordu:max-h-[120px] ordu:py-2.5"
         />
         {loading ? (
           <Button type="button" variant="ghost" size="icon" onClick={onCancel} aria-label="Stop">

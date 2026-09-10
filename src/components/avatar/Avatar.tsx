@@ -4,12 +4,12 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/cn";
 
 /* ----- Root ----- */
-const avatarRootVariants = cva("relative inline-flex shrink-0 overflow-hidden rounded-full", {
+const avatarRootVariants = cva("ordu:relative ordu:inline-flex ordu:shrink-0 ordu:overflow-hidden ordu:rounded-full", {
   variants: {
     size: {
-      sm: "h-8 w-8",
-      default: "h-10 w-10",
-      lg: "h-12 w-12",
+      sm: "ordu:h-8 ordu:w-8",
+      default: "ordu:h-10 ordu:w-10",
+      lg: "ordu:h-12 ordu:w-12",
     },
   },
   defaultVariants: {
@@ -29,7 +29,11 @@ AvatarRoot.displayName = "Avatar.Root";
 export type AvatarImageProps = ComponentPropsWithoutRef<typeof BaseAvatar.Image>;
 
 const AvatarImage = forwardRef<HTMLImageElement, AvatarImageProps>(({ className, ...props }, ref) => (
-  <BaseAvatar.Image ref={ref} className={cn("aspect-square h-full w-full object-cover", className)} {...props} />
+  <BaseAvatar.Image
+    ref={ref}
+    className={cn("ordu:aspect-square ordu:h-full ordu:w-full ordu:object-cover", className)}
+    {...props}
+  />
 ));
 AvatarImage.displayName = "Avatar.Image";
 
@@ -40,7 +44,7 @@ const AvatarFallback = forwardRef<HTMLSpanElement, AvatarFallbackProps>(({ class
   <BaseAvatar.Fallback
     ref={ref}
     className={cn(
-      "flex h-full w-full items-center justify-center rounded-full bg-avatar-fallback-bg text-avatar-fallback-fg text-sm font-medium",
+      "ordu:flex ordu:h-full ordu:w-full ordu:items-center ordu:justify-center ordu:rounded-full ordu:bg-avatar-fallback-bg ordu:text-avatar-fallback-fg ordu:text-sm ordu:font-medium",
       className,
     )}
     {...props}

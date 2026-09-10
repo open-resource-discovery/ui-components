@@ -1,0 +1,142 @@
+.ord-ui,
+.ord-ui :where(*),
+.ord-ui::after,
+.ord-ui::before,
+.ord-ui :where(*)::after,
+.ord-ui :where(*)::before,
+.ord-ui :where(*)::backdrop,
+.ord-ui :where(input[type="file"])::file-selector-button {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: var(--ord-border);
+}
+
+.ord-ui {
+  margin: 0;
+  background-color: var(--ord-background);
+  color: var(--ord-foreground);
+  font-family:
+    ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ord-ui :where(*) {
+  margin: 0;
+  padding: 0;
+}
+
+.ord-ui :where(input[type="file"])::file-selector-button {
+  margin: 0;
+  padding: 0;
+}
+
+.ord-ui :where(hr) {
+  height: 0;
+  color: inherit;
+  border-top-width: 1px;
+}
+
+.ord-ui :where(abbr[title]) {
+  text-decoration: underline dotted;
+}
+
+.ord-ui :where(h1, h2, h3, h4, h5, h6) {
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+.ord-ui :where(a) {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.ord-ui :where(b, strong) {
+  font-weight: bolder;
+}
+
+.ord-ui :where(code, kbd, samp, pre) {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: inherit;
+  background-color: transparent;
+}
+
+.ord-ui :where(small) {
+  font-size: 80%;
+}
+
+.ord-ui :where(sub, sup) {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+.ord-ui :where(sub) {
+  bottom: -0.25em;
+}
+
+.ord-ui :where(sup) {
+  top: -0.5em;
+}
+
+.ord-ui :where(table) {
+  display: table;
+  border-color: inherit;
+  border-collapse: collapse;
+  text-indent: 0;
+}
+
+.ord-ui :where(summary) {
+  display: list-item;
+}
+
+.ord-ui :where(ol, ul, menu) {
+  list-style: none;
+}
+
+.ord-ui :where(img, svg, video, canvas, audio, iframe, embed, object) {
+  display: block;
+  vertical-align: middle;
+}
+
+.ord-ui :where(img, video) {
+  max-width: 100%;
+  height: auto;
+}
+
+.ord-ui :where(button, input, select, optgroup, textarea),
+.ord-ui :where(input[type="file"])::file-selector-button {
+  border-radius: 0;
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  letter-spacing: inherit;
+  opacity: 1;
+}
+
+.ord-ui :where(button, input[type="button"], input[type="reset"], input[type="submit"]),
+.ord-ui :where(input[type="file"])::file-selector-button {
+  appearance: button;
+}
+
+.ord-ui :where(textarea) {
+  resize: vertical;
+}
+
+.ord-ui :where(input, textarea)::placeholder {
+  color: color-mix(in oklab, currentcolor 50%, transparent);
+  opacity: 1;
+}
+
+.ord-ui :where([hidden]:not([hidden="until-found"])) {
+  display: none !important;
+}

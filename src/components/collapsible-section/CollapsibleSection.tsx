@@ -12,9 +12,9 @@ function CollapsibleSectionRoot({ className, bordered, ...props }: CollapsibleSe
   return (
     <Collapsible.Root
       className={cn(
-        "flex flex-col py-1",
-        bordered && "rounded-lg border bg-card-bg p-2",
-        !bordered && "border-b data-[open]:border-b-0 last:border-b-0",
+        "ordu:flex ordu:flex-col ordu:py-1",
+        bordered && "ordu:rounded-lg ordu:border ordu:bg-card-bg ordu:p-2",
+        !bordered && "ordu:border-b ordu:data-[open]:border-b-0 ordu:last:border-b-0",
         className,
       )}
       {...props}
@@ -37,7 +37,7 @@ const CollapsibleSectionTrigger = forwardRef<HTMLButtonElement, CollapsibleSecti
     <Collapsible.Trigger
       ref={ref}
       className={cn(
-        "group flex flex-wrap items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer w-full",
+        "ordu:group ordu:flex ordu:flex-wrap ordu:items-center ordu:gap-1.5 ordu:text-sm ordu:font-medium ordu:text-muted-foreground ordu:hover:text-foreground ordu:transition-colors ordu:cursor-pointer ordu:w-full",
         className,
       )}
       {...props}>
@@ -51,14 +51,14 @@ const CollapsibleSectionTrigger = forwardRef<HTMLButtonElement, CollapsibleSecti
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="h-3 w-3 shrink-0 transition-transform group-data-[panel-open]:rotate-90">
+        className="ordu:h-3 ordu:w-3 ordu:shrink-0 ordu:transition-transform ordu:group-data-[panel-open]:rotate-90">
         <polyline points="9 18 15 12 9 6" />
       </svg>
-      {icon && <span className="shrink-0 h-4 w-4 [&>svg]:h-full [&>svg]:w-full">{icon}</span>}
-      <span className="flex-1 truncate text-left">{children}</span>
-      {badges && <div className="flex items-center gap-1.5">{badges}</div>}
+      {icon && <span className="ordu:shrink-0 ordu:h-4 ordu:w-4 ordu:[&>svg]:h-full ordu:[&>svg]:w-full">{icon}</span>}
+      <span className="ordu:flex-1 ordu:truncate ordu:text-left">{children}</span>
+      {badges && <div className="ordu:flex ordu:items-center ordu:gap-1.5">{badges}</div>}
       {description && (
-        <span className="basis-full pl-[18px] text-xs font-normal text-muted-foreground truncate text-left group-data-[panel-open]:hidden">
+        <span className="ordu:basis-full ordu:pl-[18px] ordu:text-xs ordu:font-normal ordu:text-muted-foreground ordu:truncate ordu:text-left ordu:group-data-[panel-open]:hidden">
           {description}
         </span>
       )}
@@ -73,7 +73,7 @@ export interface CollapsibleSectionContentProps extends ComponentPropsWithoutRef
 }
 
 const CollapsibleSectionContent = forwardRef<HTMLDivElement, CollapsibleSectionContentProps>(
-  ({ className, ...props }, ref) => <Collapsible.Panel ref={ref} className={cn("mt-1.5", className)} {...props} />,
+  ({ className, ...props }, ref) => <Collapsible.Panel ref={ref} className={cn("ordu:mt-1.5", className)} {...props} />,
 );
 CollapsibleSectionContent.displayName = "CollapsibleSection.Content";
 

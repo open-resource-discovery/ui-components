@@ -27,7 +27,7 @@ export const ScrollArea = forwardRef<HTMLDivElement, ScrollAreaProps>(
     }, [autoScroll, scrollRef]);
 
     return (
-      <div ref={scrollRef} className={cn("flex-1 overflow-y-auto", className)} {...props}>
+      <div ref={scrollRef} className={cn("ordu:flex-1 ordu:overflow-y-auto", className)} {...props}>
         {children}
       </div>
     );

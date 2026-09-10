@@ -8,7 +8,10 @@ export type SectionCardRootProps = ComponentPropsWithoutRef<"div"> & {
 const Root = forwardRef<HTMLDivElement, SectionCardRootProps>(({ className, children, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("rounded-lg border border-card-border bg-card-bg overflow-hidden", className)}
+    className={cn(
+      "ordu:rounded-lg ordu:border ordu:border-card-border ordu:bg-card-bg ordu:overflow-hidden",
+      className,
+    )}
     {...props}>
     {children}
   </div>
@@ -23,10 +26,13 @@ export type SectionCardHeaderProps = ComponentPropsWithoutRef<"div"> & {
 
 const Header = forwardRef<HTMLDivElement, SectionCardHeaderProps>(
   ({ icon, title, badges, className, ...props }, ref) => (
-    <div ref={ref} className={cn("flex flex-wrap items-center gap-2 px-4 py-3", className)} {...props}>
-      {icon && <span className="shrink-0 h-4 w-4 [&>svg]:h-full [&>svg]:w-full">{icon}</span>}
-      <span className="text-sm font-medium flex-1 truncate">{title}</span>
-      {badges && <div className="flex items-center gap-1.5">{badges}</div>}
+    <div
+      ref={ref}
+      className={cn("ordu:flex ordu:flex-wrap ordu:items-center ordu:gap-2 ordu:px-4 ordu:py-3", className)}
+      {...props}>
+      {icon && <span className="ordu:shrink-0 ordu:h-4 ordu:w-4 ordu:[&>svg]:h-full ordu:[&>svg]:w-full">{icon}</span>}
+      <span className="ordu:text-sm ordu:font-medium ordu:flex-1 ordu:truncate">{title}</span>
+      {badges && <div className="ordu:flex ordu:items-center ordu:gap-1.5">{badges}</div>}
     </div>
   ),
 );
@@ -37,7 +43,7 @@ export type SectionCardContentProps = ComponentPropsWithoutRef<"div"> & {
 };
 
 const Content = forwardRef<HTMLDivElement, SectionCardContentProps>(({ className, children, ...props }, ref) => (
-  <div ref={ref} className={cn("px-4 pb-4 pt-0", className)} {...props}>
+  <div ref={ref} className={cn("ordu:px-4 ordu:pb-4 ordu:pt-0", className)} {...props}>
     {children}
   </div>
 ));

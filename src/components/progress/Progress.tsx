@@ -6,7 +6,7 @@ import { cn } from "@/utils/cn";
 export type ProgressRootProps = ComponentPropsWithoutRef<typeof BaseProgress.Root>;
 
 const ProgressRoot = forwardRef<HTMLDivElement, ProgressRootProps>(({ className, ...props }, ref) => (
-  <BaseProgress.Root ref={ref} className={cn("flex w-full flex-col gap-1", className)} {...props} />
+  <BaseProgress.Root ref={ref} className={cn("ordu:flex ordu:w-full ordu:flex-col ordu:gap-1", className)} {...props} />
 ));
 ProgressRoot.displayName = "Progress.Root";
 
@@ -16,7 +16,10 @@ export type ProgressTrackProps = ComponentPropsWithoutRef<typeof BaseProgress.Tr
 const ProgressTrack = forwardRef<HTMLDivElement, ProgressTrackProps>(({ className, ...props }, ref) => (
   <BaseProgress.Track
     ref={ref}
-    className={cn("relative h-2 w-full overflow-hidden rounded-full bg-progress-track", className)}
+    className={cn(
+      "ordu:relative ordu:h-2 ordu:w-full ordu:overflow-hidden ordu:rounded-full ordu:bg-progress-track",
+      className,
+    )}
     {...props}
   />
 ));
@@ -29,7 +32,7 @@ const ProgressIndicator = forwardRef<HTMLDivElement, ProgressIndicatorProps>(({ 
   <BaseProgress.Indicator
     ref={ref}
     className={cn(
-      "h-full rounded-full bg-progress-indicator transition-[width] data-[state=indeterminate]:animate-progress-indeterminate",
+      "ordu:h-full ordu:rounded-full ordu:bg-progress-indicator ordu:transition-[width] ordu:data-[state=indeterminate]:animate-progress-indeterminate",
       className,
     )}
     {...props}
