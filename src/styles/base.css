@@ -79,6 +79,23 @@
   --color-badge-highlight-fg: var(--ord-badge-highlight-fg);
   --color-badge-highlight-border: var(--ord-badge-highlight-border);
 
+  /* StatusBadge */
+  --color-statusbadge-neutral-bg: var(--ord-statusbadge-neutral-bg);
+  --color-statusbadge-neutral-fg: var(--ord-statusbadge-neutral-fg);
+  --color-statusbadge-neutral-dot: var(--ord-statusbadge-neutral-dot);
+  --color-statusbadge-info-bg: var(--ord-statusbadge-info-bg);
+  --color-statusbadge-info-fg: var(--ord-statusbadge-info-fg);
+  --color-statusbadge-info-dot: var(--ord-statusbadge-info-dot);
+  --color-statusbadge-success-bg: var(--ord-statusbadge-success-bg);
+  --color-statusbadge-success-fg: var(--ord-statusbadge-success-fg);
+  --color-statusbadge-success-dot: var(--ord-statusbadge-success-dot);
+  --color-statusbadge-warning-bg: var(--ord-statusbadge-warning-bg);
+  --color-statusbadge-warning-fg: var(--ord-statusbadge-warning-fg);
+  --color-statusbadge-warning-dot: var(--ord-statusbadge-warning-dot);
+  --color-statusbadge-critical-bg: var(--ord-statusbadge-critical-bg);
+  --color-statusbadge-critical-fg: var(--ord-statusbadge-critical-fg);
+  --color-statusbadge-critical-dot: var(--ord-statusbadge-critical-dot);
+
   /* Input */
   --color-input-bg: var(--ord-input-bg);
   --color-input-fg: var(--ord-input-fg);
