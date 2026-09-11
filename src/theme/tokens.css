@@ -71,6 +71,23 @@
   --ord-badge-highlight-fg: var(--ord-primary);
   --ord-badge-highlight-border: color-mix(in oklab, var(--ord-primary) 20%, transparent);
 
+  /* StatusBadge (soft tonal — derived from semantic tokens so dark mode tracks automatically) */
+  --ord-statusbadge-neutral-bg: color-mix(in oklab, var(--ord-muted-foreground) 12%, transparent);
+  --ord-statusbadge-neutral-fg: var(--ord-foreground);
+  --ord-statusbadge-neutral-dot: var(--ord-muted-foreground);
+  --ord-statusbadge-info-bg: color-mix(in oklab, var(--ord-primary) 12%, transparent);
+  --ord-statusbadge-info-fg: var(--ord-primary);
+  --ord-statusbadge-info-dot: var(--ord-primary);
+  --ord-statusbadge-success-bg: color-mix(in oklab, var(--ord-success) 15%, transparent);
+  --ord-statusbadge-success-fg: var(--ord-success);
+  --ord-statusbadge-success-dot: var(--ord-success);
+  --ord-statusbadge-warning-bg: color-mix(in oklab, var(--ord-warning) 15%, transparent);
+  --ord-statusbadge-warning-fg: var(--ord-warning);
+  --ord-statusbadge-warning-dot: var(--ord-warning);
+  --ord-statusbadge-critical-bg: color-mix(in oklab, var(--ord-destructive) 12%, transparent);
+  --ord-statusbadge-critical-fg: var(--ord-destructive);
+  --ord-statusbadge-critical-dot: var(--ord-destructive);
+
   /* Input */
   --ord-input-bg: var(--ord-background);
   --ord-input-fg: var(--ord-foreground);
