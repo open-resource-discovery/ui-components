@@ -18,6 +18,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 - `CodeBlock`: `HighlightOptions` is now a type-only import, removing a spurious runtime reference.
 
+## [[0.2.0](https://github.com/open-resource-discovery/ui-components/releases/tag/v0.2.0)] - 2026-09-14
 
 ### Added
 
