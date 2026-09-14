@@ -12,7 +12,7 @@ import css from "highlight.js/lib/languages/css";
 import markdown from "highlight.js/lib/languages/markdown";
 import sql from "highlight.js/lib/languages/sql";
 import python from "highlight.js/lib/languages/python";
-import { HighlightOptions } from "highlight.js";
+import type { HighlightOptions } from "highlight.js";
 
 type HighlighterLike = {
   codeToHtml: (code: string, options: Record<string, unknown>) => string;

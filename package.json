@@ -1,6 +1,6 @@
 {
   "name": "@open-resource-discovery/ui-components",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "license": "Apache-2.0",
   "description": "A React UI component library with accessible, themeable components designed for specification UIs.",
@@ -108,6 +108,7 @@
     "shiki": "^4.1.0",
     "storybook": "^10.6.0",
     "tailwindcss": "^4.0.0",
+    "terser": "^5.51.2",
     "typescript": "^6.0.3",
     "vite": "^8.0.13",
     "vite-plugin-dts": "^5.0.1",

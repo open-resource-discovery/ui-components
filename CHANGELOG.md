@@ -7,7 +7,17 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [unreleased]
 
-The following changes are planned for version 0.2.0.
+### Changed
+
+- `CodeEditor`: `@monaco-editor/react` is now loaded lazily via a runtime `import()` instead of a static import. Consumers that never render `CodeEditor` no longer need the peer installed; a "Loading editor…" / "Editor unavailable" placeholder is shown while the module resolves or if it cannot be found.
+- `CodeEditor`: themes are defined via a `beforeMount` handler so the editor's initial render uses the correct ORD theme without a flash of the VS Code default.
+- Build: switched minifier to Terser to preserve `webpackIgnore`/`@vite-ignore` magic comments on the lazy Monaco `import()` through the published bundle. The `"use client"` RSC directive is injected as a Terser `preamble` so it survives minification and lands before any hoisted imports.
+- Build: added `resolve.conditions` and `resolve.mainFields` overrides to select isomorphic (non-browser) builds for dependencies, preventing `document.createElement` calls at module scope under SSR/prerender (notably `decode-named-character-reference` via `react-markdown`).
+
+### Fixed
+
+- `CodeBlock`: `HighlightOptions` is now a type-only import, removing a spurious runtime reference.
+
 
 ### Added
 

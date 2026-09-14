@@ -1,7 +1,14 @@
 import { forwardRef, useState, useEffect, useRef, useCallback, type ComponentPropsWithoutRef } from "react";
-import Editor, { useMonaco, type OnMount } from "@monaco-editor/react";
+// Type-only import — erased at build, so it creates no runtime dependency on the optional
+// `@monaco-editor/react` peer. The component itself is loaded lazily via a runtime import()
+// (see the effect below) so consumers that never render CodeEditor don't have to install Monaco.
+import type { BeforeMount, OnMount } from "@monaco-editor/react";
 import { Button } from "@/components/button";
 import { cn } from "@/utils/cn";
+
+type MonacoModule = typeof import("@monaco-editor/react");
+type MonacoEditorComponent = MonacoModule["default"];
+type MonacoInstance = Parameters<OnMount>[1];
 
 export interface CodeEditorProps extends Omit<ComponentPropsWithoutRef<"div">, "onChange" | "defaultValue"> {
   value: string;
@@ -64,64 +71,87 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
   ) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const editorRef = useRef<Parameters<OnMount>[0] | null>(null);
-    const monaco = useMonaco();
+    const [monaco, setMonaco] = useState<MonacoInstance | null>(null);
+    const [EditorComp, setEditorComp] = useState<MonacoEditorComponent | null>(null);
+    const [loadError, setLoadError] = useState(false);
     const [copied, setCopied] = useState(false);
     const [isDark, setIsDark] = useState(false);
+
+    // Load the Monaco React wrapper on demand (optional peer). The magic comments keep the
+    // consumer's bundler from resolving `@monaco-editor/react` at build time, so consumers that
+    // never render CodeEditor don't have to install it; it is resolved only at runtime, on mount.
+    useEffect(() => {
+      let active = true;
+      import(/* webpackIgnore: true */ /* @vite-ignore */ "@monaco-editor/react")
+        .then((mod) => {
+          if (active) setEditorComp(() => mod.default);
+        })
+        .catch(() => {
+          if (active) setLoadError(true);
+        });
+      return () => {
+        active = false;
+      };
+    }, []);
 
     // Monaco's theme is global (shared across every editor on the page), so the
     // applied theme must always reflect the *current* DOM, never a stale React
     // closure. Reading the `dark` class here at apply-time prevents a freshly
     // mounted editor (which starts with isDark=false) from flipping every other
     // editor to light when @monaco-editor/react runs its captured mount callback.
-    const defineThemes = useCallback(() => {
-      if (!monaco) return;
-      const el = containerRef.current;
-      const ordRoot = el?.closest(".ord-ui");
-      if (!ordRoot) return;
+    const defineThemes = useCallback(
+      (monacoArg?: MonacoInstance | null) => {
+        const m = monacoArg ?? monaco;
+        if (!m) return;
+        const el = containerRef.current;
+        const ordRoot = el?.closest(".ord-ui");
+        if (!ordRoot) return;
 
-      const dark = ordRoot.classList.contains("dark");
+        const dark = ordRoot.classList.contains("dark");
 
-      const bg = getCssColor(ordRoot, "--ord-background", dark ? "#1e1e1e" : "#ffffff");
-      const fg = getCssColor(ordRoot, "--ord-foreground", dark ? "#d4d4d4" : "#1e1e1e");
-      const muted = getCssColor(ordRoot, "--ord-muted", dark ? "#2d2d30" : "#f5f5f5");
-      const mutedFg = getCssColor(ordRoot, "--ord-muted-foreground", dark ? "#858585" : "#237893");
-      const primary = getCssColor(ordRoot, "--ord-primary", dark ? "#0098ff" : "#005fb8");
-      const border = getCssColor(ordRoot, "--ord-border", dark ? "#3e3e42" : "#e0e0e0");
+        const bg = getCssColor(ordRoot, "--ord-background", dark ? "#1e1e1e" : "#ffffff");
+        const fg = getCssColor(ordRoot, "--ord-foreground", dark ? "#d4d4d4" : "#1e1e1e");
+        const muted = getCssColor(ordRoot, "--ord-muted", dark ? "#2d2d30" : "#f5f5f5");
+        const mutedFg = getCssColor(ordRoot, "--ord-muted-foreground", dark ? "#858585" : "#237893");
+        const primary = getCssColor(ordRoot, "--ord-primary", dark ? "#0098ff" : "#005fb8");
+        const border = getCssColor(ordRoot, "--ord-border", dark ? "#3e3e42" : "#e0e0e0");
 
-      monaco.editor.defineTheme("ord-dark", {
-        base: "vs-dark",
-        inherit: true,
-        rules: [],
-        colors: {
-          "editor.background": bg,
-          "editor.foreground": fg,
-          "editorLineNumber.foreground": mutedFg,
-          "editorLineNumber.activeForeground": fg,
-          "editor.selectionBackground": primary + "44",
-          "editor.lineHighlightBackground": muted,
-          "editorWidget.background": bg,
-          "editorWidget.border": border,
-        },
-      });
+        m.editor.defineTheme("ord-dark", {
+          base: "vs-dark",
+          inherit: true,
+          rules: [],
+          colors: {
+            "editor.background": bg,
+            "editor.foreground": fg,
+            "editorLineNumber.foreground": mutedFg,
+            "editorLineNumber.activeForeground": fg,
+            "editor.selectionBackground": primary + "44",
+            "editor.lineHighlightBackground": muted,
+            "editorWidget.background": bg,
+            "editorWidget.border": border,
+          },
+        });
 
-      monaco.editor.defineTheme("ord-light", {
-        base: "vs",
-        inherit: true,
-        rules: [],
-        colors: {
-          "editor.background": bg,
-          "editor.foreground": fg,
-          "editorLineNumber.foreground": mutedFg,
-          "editorLineNumber.activeForeground": fg,
-          "editor.selectionBackground": primary + "33",
-          "editor.lineHighlightBackground": muted,
-          "editorWidget.background": bg,
-          "editorWidget.border": border,
-        },
-      });
+        m.editor.defineTheme("ord-light", {
+          base: "vs",
+          inherit: true,
+          rules: [],
+          colors: {
+            "editor.background": bg,
+            "editor.foreground": fg,
+            "editorLineNumber.foreground": mutedFg,
+            "editorLineNumber.activeForeground": fg,
+            "editor.selectionBackground": primary + "33",
+            "editor.lineHighlightBackground": muted,
+            "editorWidget.background": bg,
+            "editorWidget.border": border,
+          },
+        });
 
-      monaco.editor.setTheme(dark ? "ord-dark" : "ord-light");
-    }, [monaco]);
+        m.editor.setTheme(dark ? "ord-dark" : "ord-light");
+      },
+      [monaco],
+    );
 
     // Detect dark mode from .ord-ui ancestor and keep the global Monaco theme in
     // sync with it (the state drives the <Editor theme> prop; defineThemes applies
@@ -149,9 +179,14 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
       if (monaco) defineThemes();
     }, [monaco, defineThemes]);
 
+    // Define the ORD themes before the editor paints so the `theme` prop resolves without a flash.
+    const handleBeforeMount: BeforeMount = (monacoInstance) => {
+      setMonaco(monacoInstance);
+      defineThemes(monacoInstance);
+    };
+
     const handleMount: OnMount = (editor) => {
       editorRef.current = editor;
-      defineThemes();
     };
 
     const handleFormat = (): void => {
@@ -257,26 +292,33 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
           </div>
         )}
         <div className="ordu:flex-1 ordu:overflow-hidden ordu:min-h-0" style={{ minHeight }}>
-          <Editor
-            height={height ?? "100%"}
-            value={value}
-            onChange={(v) => onChange?.(v || "")}
-            language={language}
-            theme={isDark ? "ord-dark" : "ord-light"}
-            options={{
-              readOnly,
-              minimap: { enabled: false },
-              automaticLayout: true,
-              fontSize: 13,
-              lineNumbers,
-              scrollBeyondLastLine: false,
-              wordWrap: "on",
-              tabSize: 2,
-              renderLineHighlight: "line",
-              padding: { top: 8, bottom: 8 },
-            }}
-            onMount={handleMount}
-          />
+          {EditorComp ? (
+            <EditorComp
+              height={height ?? "100%"}
+              value={value}
+              onChange={(v) => onChange?.(v || "")}
+              language={language}
+              theme={isDark ? "ord-dark" : "ord-light"}
+              options={{
+                readOnly,
+                minimap: { enabled: false },
+                automaticLayout: true,
+                fontSize: 13,
+                lineNumbers,
+                scrollBeyondLastLine: false,
+                wordWrap: "on",
+                tabSize: 2,
+                renderLineHighlight: "line",
+                padding: { top: 8, bottom: 8 },
+              }}
+              beforeMount={handleBeforeMount}
+              onMount={handleMount}
+            />
+          ) : (
+            <div className="ordu:flex ordu:h-full ordu:items-center ordu:justify-center ordu:text-sm ordu:text-muted-foreground">
+              {loadError ? "Editor unavailable" : "Loading editor…"}
+            </div>
+          )}
         </div>
       </div>
     );

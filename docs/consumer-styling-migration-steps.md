@@ -7,8 +7,8 @@ _Companion to [host-css-and-styling-refactor.md](./host-css-and-styling-refactor
 `ui-components` now ships one self-isolating styling island: a `.ord-ui`-scoped reset
 (`src/styles/reset.css`), unlayered `ordu:`-prefixed utilities, tokens under `.ord-ui`
 (not `:root`), namespaced `--ordu-tw-*` internals, `ord-*` keyframes, and a
-`className`-preserving `cn()`. So the reset/scoping each consumer hand-rolled to *repair
-ORD components* is now redundant. Keep only what isolates the **consumer's own** CSS.
+`className`-preserving `cn()`. So the reset/scoping each consumer hand-rolled to _repair
+ORD components_ is now redundant. Keep only what isolates the **consumer's own** CSS.
 
 ## Precondition — the gate for removing the local preflight
 
@@ -16,7 +16,7 @@ Confirm the project's own rendered markup lives **inside `.ord-ui`**. In `overla
 the root element is `cn("ord-ui", "<x>-root", …)` — same element. If `.a2a-root` /
 `.mcp-root` also carry `.ord-ui` (or are wrapped in `<ThemeRoot>`), the library reset
 covers their elements and the local preflight is safe to delete. If some markup renders
-*outside* `.ord-ui`, keep a reset for those elements.
+_outside_ `.ord-ui`, keep a reset for those elements.
 
 Notation below: `.<x>-root` and `.<x>-card-view` are the project's scope classes
 (`.a2a-root`/`.a2a-card-view`, `.mcp-root`/`.mcp-card-view`, …).
@@ -58,7 +58,7 @@ app token definitions, scrollbar / SplitPane theming, navbar / search / footer c
 This is the bug behind "search input / cards lost their borders." The standalone bundle is
 injected **globally** on the page and carries the library's `.ord-ui :where(*){border-width:0}`
 reset. If the transform treats bare `.ord-ui` as "already scoped," that reset stays global
-and zeroes borders on the site chrome (also `.ord-ui`, but *not* inside `.<x>-card-view`);
+and zeroes borders on the site chrome (also `.ord-ui`, but _not_ inside `.<x>-card-view`);
 the card-scoped `ordu:` border utilities can't re-add them. `!important` overrides (e.g. a
 `border-b!` divider) survive; plain component borders do not.
 
@@ -75,7 +75,7 @@ In `vite.standalone.config.ts` (or equivalent):
 
 ## Change 4 (only if consuming `file:../ui-components`) — Fix duplicate React in tests
 
-A `file:` symlink to a ui-components dev checkout exposes *its* `node_modules/react` and
+A `file:` symlink to a ui-components dev checkout exposes _its_ `node_modules/react` and
 `@base-ui/*`, so tests that render a hook-using ORD component crash with
 `Cannot read properties of null (reading 'useState' / 'useMemo' / 'useRef')`. In
 `vitest.config.ts`:
