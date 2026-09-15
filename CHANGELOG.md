@@ -5,12 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) rules.
 
-
 ## [unreleased]
 
-## [[0.2.0](https://github.com/open-resource-discovery/ui-components/releases/tag/v0.2.0)] - 2026-09-14
+### Added
 
-The following changes are planned for version 0.2.0.
+- **Metadata UI** component batch for the Equilibrium/Explorer use cases: `Breadcrumbs`, `CopyButton`, `EmptyState`, `StatusBadge`, `MetricCard`, `EntityCard`, and `EntityGrid`. APIs are neutral and framework-agnostic (no router/app/domain dependencies); link-like components accept a caller-supplied `LinkRender` render-prop (`src/utils/link.tsx`). Each ships a Storybook story (grouped under "Metadata UI") and a Vitest render/interaction test.
+- `StatusBadge`: soft tonal `--ord-statusbadge-*` tokens derived from the semantic tokens (dark mode tracks automatically), wired via `@theme inline` bridges.
+
+### Changed
+
+- `CodeEditor`: `@monaco-editor/react` is now loaded lazily via a runtime `import()` instead of a static import. Consumers that never render `CodeEditor` no longer need the peer installed; a "Loading editor…" / "Editor unavailable" placeholder is shown while the module resolves or if it cannot be found.
+- `CodeEditor`: themes are defined via a `beforeMount` handler so the editor's initial render uses the correct ORD theme without a flash of the VS Code default.
+- Build: switched minifier to Terser to preserve `webpackIgnore`/`@vite-ignore` magic comments on the lazy Monaco `import()` through the published bundle. The `"use client"` RSC directive is injected as a Terser `preamble` so it survives minification and lands before any hoisted imports.
+- Build: added `resolve.conditions` and `resolve.mainFields` overrides to select isomorphic (non-browser) builds for dependencies, preventing `document.createElement` calls at module scope under SSR/prerender (notably `decode-named-character-reference` via `react-markdown`).
+
+### Fixed
+
+- `CodeBlock`: `HighlightOptions` is now a type-only import, removing a spurious runtime reference.
+
+## [[0.2.0](https://github.com/open-resource-discovery/ui-components/releases/tag/v0.2.0)] - 2026-09-14
 
 ### Added
 
@@ -27,7 +40,6 @@ The following changes are planned for version 0.2.0.
 
 - Prevented component styles from leaking into host pages and protected component defaults from ordinary host element rules and generic utility-class collisions.
 - Restored Tooltip fade animations with package-owned keyframes and preserved private defaults when a consumer repeats an identical utility class.
-
 
 ## [[0.1.6](https://github.com/open-resource-discovery/ui-components/releases/tag/v0.1.6)] - 2026-07-15
 

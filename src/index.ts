@@ -3,6 +3,7 @@ import "./styles/base.css";
 export { ThemeRoot, usePortalContainer } from "./theme/ThemeRoot";
 export { useTheme } from "./theme/useTheme";
 export { cn } from "./utils/cn";
+export type { LinkRender, LinkRenderProps } from "./utils/link";
 
 // Form Components
 export { Button, buttonVariants } from "./components/button";
@@ -119,9 +120,19 @@ export type { TabsRootProps, TabsListProps, TabsTabProps, TabsPanelProps, TabsIn
 export { Separator } from "./components/separator";
 export type { SeparatorProps } from "./components/separator";
 
+// Navigation Components
+export { Breadcrumbs } from "./components/breadcrumbs";
+export type { BreadcrumbsProps, BreadcrumbItem } from "./components/breadcrumbs";
+
 // Display Components
 export { Badge, badgeVariants } from "./components/badge";
 export type { BadgeProps } from "./components/badge";
+
+export { StatusBadge, statusBadgeVariants, toneToBadgeVariant } from "./components/status-badge";
+export type { StatusBadgeProps, StatusTone } from "./components/status-badge";
+
+export { CopyButton } from "./components/copy-button";
+export type { CopyButtonProps, CopyState } from "./components/copy-button";
 
 export { Tooltip } from "./components/tooltip";
 export type {
@@ -174,6 +185,18 @@ export type {
 
 export { SectionCard } from "./components/section-card";
 export type { SectionCardRootProps, SectionCardHeaderProps, SectionCardContentProps } from "./components/section-card";
+
+export { EmptyState } from "./components/empty-state";
+export type { EmptyStateProps } from "./components/empty-state";
+
+export { MetricCard } from "./components/metric-card";
+export type { MetricCardProps, MetricTrend, TrendDirection, TrendTone } from "./components/metric-card";
+
+export { EntityCard } from "./components/entity-card";
+export type { EntityCardProps, EntityCardModel, EntityStatus, EntityMetric } from "./components/entity-card";
+
+export { EntityGrid } from "./components/entity-grid";
+export type { EntityGridProps } from "./components/entity-grid";
 
 export { MarkdownText } from "./components/markdown-text";
 export type { MarkdownTextProps } from "./components/markdown-text";
