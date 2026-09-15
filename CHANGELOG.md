@@ -7,6 +7,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [unreleased]
 
+### Added
+
+- **Metadata UI** component batch for the Equilibrium/Explorer use cases: `Breadcrumbs`, `CopyButton`, `EmptyState`, `StatusBadge`, `MetricCard`, `EntityCard`, and `EntityGrid`. APIs are neutral and framework-agnostic (no router/app/domain dependencies); link-like components accept a caller-supplied `LinkRender` render-prop (`src/utils/link.tsx`). Each ships a Storybook story (grouped under "Metadata UI") and a Vitest render/interaction test.
+- `StatusBadge`: soft tonal `--ord-statusbadge-*` tokens derived from the semantic tokens (dark mode tracks automatically), wired via `@theme inline` bridges.
+
 ### Changed
 
 - `CodeEditor`: `@monaco-editor/react` is now loaded lazily via a runtime `import()` instead of a static import. Consumers that never render `CodeEditor` no longer need the peer installed; a "Loading editor…" / "Editor unavailable" placeholder is shown while the module resolves or if it cannot be found.

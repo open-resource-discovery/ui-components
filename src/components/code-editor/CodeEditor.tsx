@@ -89,7 +89,7 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
         .catch(() => {
           if (active) setLoadError(true);
         });
-      return () => {
+      return (): void => {
         active = false;
       };
     }, []);
