@@ -422,6 +422,13 @@
 .ord-ui .hljs-punctuation {
   color: var(--ord-hljs-punctuation);
 }
+/* Processing instructions / doctype (e.g. `<?xml version="1.0" encoding="utf-8"?>`).
+   Without this, meta text falls back to the muted code foreground — near-invisible on the
+   muted code background in light mode. (Quoted values are handled by `.hljs-meta .hljs-string`.) */
+.ord-ui .hljs-meta,
+.ord-ui .hljs-meta .hljs-keyword {
+  color: var(--ord-hljs-meta);
+}
 .ord-ui .hljs-section {
   color: var(--ord-hljs-attr);
 }
