@@ -96,6 +96,23 @@
   --color-statusbadge-critical-fg: var(--ord-statusbadge-critical-fg);
   --color-statusbadge-critical-dot: var(--ord-statusbadge-critical-dot);
 
+  /* EntityCard (color-valued tokens only; radius/padding/shadow are consumed as arbitrary values) */
+  --color-entitycard-bg: var(--ord-entitycard-bg);
+  --color-entitycard-fg: var(--ord-entitycard-fg);
+  --color-entitycard-border: var(--ord-entitycard-border);
+  --color-entitycard-hover-border: var(--ord-entitycard-hover-border);
+  --color-entitycard-divider: var(--ord-entitycard-divider);
+  --color-entitycard-title-fg: var(--ord-entitycard-title-fg);
+  --color-entitycard-subtitle-fg: var(--ord-entitycard-subtitle-fg);
+  --color-entitycard-description-fg: var(--ord-entitycard-description-fg);
+  --color-entitycard-icon-bg: var(--ord-entitycard-icon-bg);
+  --color-entitycard-icon-fg: var(--ord-entitycard-icon-fg);
+  --color-entitycard-chip-bg: var(--ord-entitycard-chip-bg);
+  --color-entitycard-chip-fg: var(--ord-entitycard-chip-fg);
+  --color-entitycard-chip-value-fg: var(--ord-entitycard-chip-value-fg);
+  --color-entitycard-action-fg: var(--ord-entitycard-action-fg);
+  --color-entitycard-explore-fg: var(--ord-entitycard-explore-fg);
+
   /* Input */
   --color-input-bg: var(--ord-input-bg);
   --color-input-fg: var(--ord-input-fg);

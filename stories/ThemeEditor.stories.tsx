@@ -107,6 +107,26 @@ const COMPONENT_TOKEN_GROUPS: Array<{ component: string; tokens: string[] }> = [
     tokens: ['--ord-card-bg', '--ord-card-fg', '--ord-card-border'],
   },
   {
+    component: 'EntityCard',
+    tokens: [
+      '--ord-entitycard-bg',
+      '--ord-entitycard-fg',
+      '--ord-entitycard-border',
+      '--ord-entitycard-hover-border',
+      '--ord-entitycard-divider',
+      '--ord-entitycard-title-fg',
+      '--ord-entitycard-subtitle-fg',
+      '--ord-entitycard-description-fg',
+      '--ord-entitycard-icon-bg',
+      '--ord-entitycard-icon-fg',
+      '--ord-entitycard-chip-bg',
+      '--ord-entitycard-chip-fg',
+      '--ord-entitycard-chip-value-fg',
+      '--ord-entitycard-action-fg',
+      '--ord-entitycard-explore-fg',
+    ],
+  },
+  {
     component: 'Button',
     tokens: [
       '--ord-button-primary-bg',
