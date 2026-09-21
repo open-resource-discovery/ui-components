@@ -135,24 +135,44 @@ const EntityCard = forwardRef<HTMLElement, EntityCardProps>(
       isSm ? "ordu:text-[14.5px]" : "ordu:text-[18px]",
     );
 
+    const renderStatus = (s: EntityStatus, key: number): ReactNode => (
+      <StatusBadge
+        key={key}
+        size="sm"
+        tone={s.tone}
+        label={s.label}
+        icon={s.icon}
+        dot={s.dot}
+        className={s.className}
+      />
+    );
+    // First two statuses pin to the top-right corner; the rest drop below the subtitle with the pills.
+    const cornerStatuses = statuses?.slice(0, 2) ?? [];
+    const restStatuses = statuses?.slice(2) ?? [];
+
     const body = (
       <>
         <div className="ordu:flex ordu:items-start ordu:gap-3">
           {icon && <span className={iconBox}>{icon}</span>}
-          <div className="ordu:flex ordu:min-w-0 ordu:flex-col ordu:gap-0.5">
+          <div className="ordu:flex ordu:min-w-0 ordu:flex-col ordu:gap-0.5 ordu:w-full">
             {kind && (
               <span className="ordu:text-[10px] ordu:font-semibold ordu:uppercase ordu:tracking-wide ordu:text-entitycard-subtitle-fg">
                 {kind}
               </span>
             )}
-            <div className="ordu:flex ordu:items-center ordu:gap-2">
+            <div className="ordu:flex ordu:min-w-0 ordu:items-baseline">
               <span className={titleClass}>{title}</span>
-              {version && <span className="ordu:text-xs ordu:text-entitycard-subtitle-fg">{version}</span>}
+              {version && <span className="ordu:text-xs ordu:text-entitycard-subtitle-fg ordu:px-1.5">{version}</span>}
             </div>
             {subtitle && (
               <span className="ordu:text-xs ordu:text-entitycard-subtitle-fg ordu:truncate">{subtitle}</span>
             )}
           </div>
+          {cornerStatuses.length ? (
+            <div className="ordu:flex ordu:shrink-0 ordu:items-center ordu:gap-1.5">
+              {cornerStatuses.map((s, i) => renderStatus(s, i))}
+            </div>
+          ) : null}
           {action && (
             <span className="ordu:ml-auto ordu:shrink-0 ordu:text-entitycard-action-fg ordu:[&>svg]:h-4 ordu:[&>svg]:w-4">
               {action}
@@ -168,22 +188,13 @@ const EntityCard = forwardRef<HTMLElement, EntityCardProps>(
             {description}
           </p>
         )}
-        {statuses?.length || pills ? (
-          <div className="ordu:mt-3 ordu:flex ordu:flex-wrap ordu:items-center ordu:gap-1.5">
-            {statuses?.map((s, i) => (
-              <StatusBadge
-                key={i}
-                size="sm"
-                tone={s.tone}
-                label={s.label}
-                icon={s.icon}
-                dot={s.dot}
-                className={s.className}
-              />
-            ))}
+        {restStatuses.length || pills ? (
+          <div className="ordu:mt-2.5 ordu:flex ordu:flex-wrap ordu:items-center ordu:gap-1.5">
+            {restStatuses.map((s, i) => renderStatus(s, i))}
             {pills}
           </div>
         ) : null}
+
         {metrics?.length ? (
           metricsVariant === "grid" ? (
             <dl className="ordu:mt-3 ordu:grid ordu:grid-cols-2 ordu:gap-x-4 ordu:gap-y-1.5 ordu:m-0">
