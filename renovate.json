@@ -1,6 +1,120 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    ":pinAllExceptPeerDependencies"
+  ],
+  "semanticCommits": "enabled",
+  "enabledManagers": ["npm", "github-actions"],
+  "branchPrefix": "deps/",
+  "timezone": "Europe/Berlin",
+  "schedule": ["every weekend"],
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 0,
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "vulnerabilityAlerts": {
+    "schedule": ["at any time"],
+    "automerge": true,
+    "semanticCommitType": "security",
+    "labels": ["security"],
+    "minimumReleaseAge": null
+  },
+  "packageRules": [
+    {
+      "description": "Vite build tools — must stay in sync with each other",
+      "groupName": "Vite Build Tools",
+      "matchManagers": ["npm"],
+      "matchPackageNames": [
+        "vite",
+        "@vitejs/plugin-react",
+        "vite-plugin-dts",
+        "@tailwindcss/vite"
+      ]
+    },
+    {
+      "description": "Tailwind CSS ecosystem — tailwindcss and its merge utility",
+      "groupName": "Tailwind CSS",
+      "matchManagers": ["npm"],
+      "matchPackageNames": [
+        "tailwindcss",
+        "tailwind-merge"
+      ]
+    },
+    {
+      "description": "Storybook — many inter-dependent packages",
+      "groupName": "Storybook",
+      "matchManagers": ["npm"],
+      "matchPackageNames": [
+        "/^@storybook\\//",
+        "storybook",
+        "eslint-plugin-storybook"
+      ]
+    },
+    {
+      "description": "Linting and formatting tools",
+      "groupName": "Linting Tools",
+      "matchManagers": ["npm"],
+      "matchPackageNames": [
+        "eslint",
+        "@sap/eslint-config",
+        "/^eslint-plugin/",
+        "/^@eslint\\//",
+        "typescript-eslint",
+        "prettier"
+      ]
+    },
+    {
+      "description": "TypeScript and type definitions",
+      "groupName": "TypeScript",
+      "matchManagers": ["npm"],
+      "matchPackageNames": [
+        "typescript",
+        "@types/node",
+        "@types/react",
+        "@types/react-dom"
+      ]
+    },
+    {
+      "description": "Testing tools",
+      "groupName": "Testing",
+      "matchManagers": ["npm"],
+      "matchPackageNames": [
+        "vitest",
+        "jsdom",
+        "@testing-library/react",
+        "@testing-library/jest-dom"
+      ]
+    },
+    {
+      "description": "GitHub Actions — automerge all non-major (digest included)",
+      "groupName": "GitHub Actions",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["minor", "patch", "digest"],
+      "semanticCommitType": "chore",
+      "automerge": true
+    },
+    {
+      "description": "Major updates — always require manual review",
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    },
+    {
+      "description": "npm patch and minor — automerge on green CI",
+      "matchManagers": ["npm"],
+      "matchDepTypes": ["dependencies", "devDependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "semanticCommitType": "chore",
+      "automerge": true
+    },
+    {
+      "description": "Security updates — bypass schedule, automerge immediately with security prefix",
+      "matchUpdateTypes": ["security"],
+      "schedule": ["at any time"],
+      "automerge": true,
+      "semanticCommitType": "security",
+      "labels": ["security"]
+    }
   ]
 }
