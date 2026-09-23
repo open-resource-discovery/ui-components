@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { SquaresButton } from '../src/components/squares-button';
+import { CopyButton } from '../src/components/copy-button';
 
 const meta = {
-  title: 'Metadata UI/SquaresButton',
-  component: SquaresButton,
+  title: 'Metadata UI/CopyButton',
+  component: CopyButton,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof SquaresButton>;
+} satisfies Meta<typeof CopyButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -55,7 +55,7 @@ export const InlineWithCode: Story = {
   render: () => (
     <div className="flex items-center gap-2 rounded-md border px-3 py-1.5 font-mono text-sm">
       <span>sap.s4:apiResource:Order_v1:v1</span>
-      <SquaresButton
+      <CopyButton
         value="sap.s4:apiResource:Order_v1:v1"
         size="sm"
         label="Copy identifier"

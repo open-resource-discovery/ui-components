@@ -28,7 +28,7 @@ import { CodeBlock } from '../src/components/code-block';
 import { HttpLogEntry } from '../src/components/http-log-entry';
 import { Breadcrumbs } from '../src/components/breadcrumbs';
 import { StatusBadge } from '../src/components/status-badge';
-import { SquaresButton } from '../src/components/squares-button';
+import { CopyButton } from '../src/components/copy-button';
 import { MetricCard } from '../src/components/metric-card';
 import { EntityCard } from '../src/components/entity-card';
 import { EntityGrid } from '../src/components/entity-grid';
@@ -877,7 +877,7 @@ function MetadataRow() {
         <Separator orientation="vertical" className="h-5" />
         <div className="flex items-center gap-1.5 rounded-md border border-border px-2.5 py-1 font-mono text-xs">
           <span>{ORD_ID}</span>
-          <SquaresButton
+          <CopyButton
             value={ORD_ID}
             size="sm"
             label="Copy identifier"

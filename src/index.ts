@@ -131,8 +131,17 @@ export type { BadgeProps } from "./components/badge";
 export { StatusBadge, statusBadgeVariants, toneToBadgeVariant } from "./components/status-badge";
 export type { StatusBadgeProps, StatusTone } from "./components/status-badge";
 
-export { SquaresButton } from "./components/squares-button";
-export type { SquaresButtonProps, CopyState } from "./components/squares-button";
+export { IconButton } from "./components/icon-button";
+export type { IconButtonProps } from "./components/icon-button";
+
+export { CopyButton } from "./components/copy-button";
+export type { CopyButtonProps, CopyState } from "./components/copy-button";
+
+export { LinkButton } from "./components/link-button";
+export type { LinkButtonProps } from "./components/link-button";
+
+export { ExternalLinkButton } from "./components/external-link-button";
+export type { ExternalLinkButtonProps } from "./components/external-link-button";
 
 export { Tooltip } from "./components/tooltip";
 export type {

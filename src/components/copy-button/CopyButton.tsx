@@ -1,6 +1,6 @@
 import { forwardRef, useCallback, useEffect, useRef, useState, type ButtonHTMLAttributes, type ReactNode } from "react";
-import { cn } from "@/utils/cn";
-import { buttonVariants, type ButtonProps } from "@/components/button";
+import { type ButtonProps } from "@/components/button";
+import { IconButton } from "@/components/icon-button";
 
 export type CopyState = "idle" | "copied" | "error";
 
@@ -51,7 +51,7 @@ const ErrorIcon = (
   </svg>
 );
 
-export interface SquaresButtonProps
+export interface CopyButtonProps
   extends
     Omit<ButtonHTMLAttributes<HTMLButtonElement>, "value" | "children" | "onCopy">,
     Pick<ButtonProps, "variant" | "size"> {
@@ -78,9 +78,10 @@ export interface SquaresButtonProps
 /**
  * A clipboard-copy button with transient success/error feedback and an `aria-live`
  * status region. Requires `navigator.clipboard`; when it is unavailable or denied,
- * the button enters the `error` state.
+ * the button enters the `error` state. The copy state machine lives here; the button
+ * surface is delegated to `IconButton`.
  */
-const SquaresButton = forwardRef<HTMLButtonElement, SquaresButtonProps>(
+const CopyButton = forwardRef<HTMLButtonElement, CopyButtonProps>(
   (
     {
       value,
@@ -131,31 +132,28 @@ const SquaresButton = forwardRef<HTMLButtonElement, SquaresButtonProps>(
       [value, timeout, onClick, onCopy, clearTimer],
     );
 
-    const content =
-      state === "copied"
-        ? (copiedContent ?? CopiedIcon)
-        : state === "error"
-          ? (errorContent ?? ErrorIcon)
-          : (children ?? CopyIcon);
-
+    const idleIcon = state === "error" ? (errorContent ?? ErrorIcon) : (children ?? CopyIcon);
     const announcement = state === "copied" ? copiedAnnouncement : state === "error" ? errorAnnouncement : undefined;
 
     return (
-      <button
+      <IconButton
         ref={ref}
-        type="button"
-        aria-label={label}
-        className={cn(buttonVariants({ variant, size, className }))}
+        icon={idleIcon}
+        activeIcon={copiedContent ?? CopiedIcon}
+        active={state === "copied"}
+        label={label}
+        variant={variant}
+        size={size}
+        className={className}
         onClick={handleClick}
         {...props}>
-        {content}
         <span role="status" aria-live="polite" className="ordu:sr-only">
           {announcement}
         </span>
-      </button>
+      </IconButton>
     );
   },
 );
-SquaresButton.displayName = "SquaresButton";
+CopyButton.displayName = "CopyButton";
 
-export { SquaresButton };
+export { CopyButton };
