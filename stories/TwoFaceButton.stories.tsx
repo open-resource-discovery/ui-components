@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { CopyButton } from '../src/components/copy-button';
+import { TwoFaceButton } from '../src/components/two-face-button';
 
 const meta = {
-  title: 'Metadata UI/CopyButton',
-  component: CopyButton,
+  title: 'Metadata UI/TwoFaceButton',
+  component: TwoFaceButton,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof CopyButton>;
+} satisfies Meta<typeof TwoFaceButton>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -55,7 +55,7 @@ export const InlineWithCode: Story = {
   render: () => (
     <div className="flex items-center gap-2 rounded-md border px-3 py-1.5 font-mono text-sm">
       <span>sap.s4:apiResource:Order_v1:v1</span>
-      <CopyButton
+      <TwoFaceButton
         value="sap.s4:apiResource:Order_v1:v1"
         size="sm"
         label="Copy identifier"

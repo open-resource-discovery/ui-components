@@ -2,9 +2,9 @@
 
 import { describe, expect, it, vi, afterEach } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { CopyButton } from "./CopyButton";
+import { TwoFaceButton } from "./TwoFaceButton";
 
-describe("CopyButton", () => {
+describe("TwoFaceButton", () => {
   afterEach(() => {
     vi.unstubAllGlobals();
   });
@@ -15,7 +15,13 @@ describe("CopyButton", () => {
     const onCopy = vi.fn();
 
     render(
-      <CopyButton value="hello" label="Copy" copiedAnnouncement="Copied" errorAnnouncement="Failed" onCopy={onCopy} />,
+      <TwoFaceButton
+        value="hello"
+        label="Copy"
+        copiedAnnouncement="Copied"
+        errorAnnouncement="Failed"
+        onCopy={onCopy}
+      />,
     );
 
     fireEvent.click(screen.getByRole("button", { name: "Copy" }));
@@ -31,7 +37,13 @@ describe("CopyButton", () => {
     const onCopy = vi.fn();
 
     render(
-      <CopyButton value="hello" label="Copy" copiedAnnouncement="Copied" errorAnnouncement="Failed" onCopy={onCopy} />,
+      <TwoFaceButton
+        value="hello"
+        label="Copy"
+        copiedAnnouncement="Copied"
+        errorAnnouncement="Failed"
+        onCopy={onCopy}
+      />,
     );
 
     fireEvent.click(screen.getByRole("button", { name: "Copy" }));
