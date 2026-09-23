@@ -26,6 +26,13 @@ import { Separator } from '../src/components/separator';
 import { MarkdownText } from '../src/components/markdown-text';
 import { CodeBlock } from '../src/components/code-block';
 import { HttpLogEntry } from '../src/components/http-log-entry';
+import { Breadcrumbs } from '../src/components/breadcrumbs';
+import { StatusBadge } from '../src/components/status-badge';
+import { TwoFaceButton } from '../src/components/two-face-button';
+import { MetricCard } from '../src/components/metric-card';
+import { EntityCard } from '../src/components/entity-card';
+import { EntityGrid } from '../src/components/entity-grid';
+import { EmptyState } from '../src/components/empty-state';
 
 // Mirror of src/theme/tokens.css. Source of truth: that file.
 const LIGHT_DEFAULTS = {
@@ -169,10 +176,29 @@ const COMPONENT_TOKEN_GROUPS: Array<{ component: string; tokens: string[] }> = [
     ],
   },
   {
-    component: 'Input',
-    tokens: ['--ord-input-bg', '--ord-input-fg', '--ord-input-border', '--ord-input-placeholder'],
+    component: 'StatusBadge',
+    tokens: [
+      '--ord-statusbadge-neutral-bg',
+      '--ord-statusbadge-neutral-fg',
+      '--ord-statusbadge-neutral-dot',
+      '--ord-statusbadge-info-bg',
+      '--ord-statusbadge-info-fg',
+      '--ord-statusbadge-info-dot',
+      '--ord-statusbadge-success-bg',
+      '--ord-statusbadge-success-fg',
+      '--ord-statusbadge-success-dot',
+      '--ord-statusbadge-warning-bg',
+      '--ord-statusbadge-warning-fg',
+      '--ord-statusbadge-warning-dot',
+      '--ord-statusbadge-critical-bg',
+      '--ord-statusbadge-critical-fg',
+      '--ord-statusbadge-critical-dot',
+    ],
   },
   {
+    component: 'Input',
+    tokens: ['--ord-input-bg', '--ord-input-fg', '--ord-input-border', '--ord-input-placeholder'],
+  },  {
     component: 'Tabs',
     tokens: ['--ord-tabs-fg', '--ord-tabs-active-bg', '--ord-tabs-active-fg', '--ord-tabs-indicator'],
   },
@@ -799,6 +825,91 @@ function DataRow() {
   );
 }
 
+const SearchIcon = (
+  <svg
+    aria-hidden="true"
+    viewBox="0 0 24 24"
+    width="20"
+    height="20"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round">
+    <circle cx="11" cy="11" r="8" />
+    <path d="m21 21-4.3-4.3" />
+  </svg>
+);
+
+interface GridResource {
+  id: string;
+  kind: string;
+  title: string;
+  version: string;
+}
+
+const GRID_RESOURCES: GridResource[] = [
+  { id: '1', kind: 'API Resource', title: 'Sales Order API', version: 'v1' },
+  { id: '2', kind: 'Event Resource', title: 'Order Changed', version: 'v2' },
+  { id: '3', kind: 'Entity Type', title: 'Business Partner', version: 'v1' },
+];
+
+const ORD_ID = 'sap.s4:apiResource:Order_v1:v1';
+
+function MetadataRow() {
+  return (
+    <div className="flex flex-col gap-5">
+      <Breadcrumbs
+        label="Breadcrumb"
+        items={[
+          { label: 'Products', href: '#' },
+          { label: 'Customer Order', href: '#' },
+          { label: 'Order API' },
+        ]}
+      />
+
+      <div className="flex flex-wrap items-center gap-2">
+        <StatusBadge tone="neutral" label="Draft" />
+        <StatusBadge tone="info" label="Proposal" />
+        <StatusBadge tone="success" label="Active" />
+        <StatusBadge tone="warning" label="Deprecated" />
+        <StatusBadge tone="critical" label="Failed" />
+        <Separator orientation="vertical" className="h-5" />
+        <div className="flex items-center gap-1.5 rounded-md border border-border px-2.5 py-1 font-mono text-xs">
+          <span>{ORD_ID}</span>
+          <TwoFaceButton
+            value={ORD_ID}
+            size="sm"
+            label="Copy identifier"
+            copiedAnnouncement="Copied"
+            errorAnnouncement="Copy failed"
+          />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+        <MetricCard label="Landscapes" value="3" />
+        <MetricCard label="Products" value="42" trend={{ direction: 'up', value: '+2' }} />
+        <MetricCard label="Compliance score" value="87%" detail="across 142 resources" />
+        <MetricCard label="Open violations" value="31" trend={{ direction: 'down', value: '-5' }} />
+      </div>
+
+      <EntityGrid<GridResource>
+        items={GRID_RESOURCES}
+        renderCount={(n) => `${n} resources`}
+        renderItem={(r) => <EntityCard kind={r.kind} title={r.title} version={r.version} href="#" />}
+      />
+
+      <EmptyState
+        icon={SearchIcon}
+        title="No results found"
+        description="Try adjusting your search or filters to find what you are looking for."
+        actions={<Button variant="outline">Reset filters</Button>}
+      />
+    </div>
+  );
+}
+
 function ComponentsGallery() {
   return (
     <main className="min-w-0 flex-1 overflow-y-auto bg-background p-6 text-foreground">
@@ -823,6 +934,9 @@ function ComponentsGallery() {
         </GallerySection>
         <GallerySection title="Data display">
           <DataRow />
+        </GallerySection>
+        <GallerySection title="Metadata UI">
+          <MetadataRow />
         </GallerySection>
       </div>
     </main>
