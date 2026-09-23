@@ -2,9 +2,9 @@
 
 import { describe, expect, it, vi, afterEach } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import { TwoFaceButton } from "./TwoFaceButton";
+import { SquaresButton } from "./SquaresButton";
 
-describe("TwoFaceButton", () => {
+describe("SquaresButton", () => {
   afterEach(() => {
     vi.unstubAllGlobals();
   });
@@ -15,7 +15,7 @@ describe("TwoFaceButton", () => {
     const onCopy = vi.fn();
 
     render(
-      <TwoFaceButton
+      <SquaresButton
         value="hello"
         label="Copy"
         copiedAnnouncement="Copied"
@@ -37,7 +37,7 @@ describe("TwoFaceButton", () => {
     const onCopy = vi.fn();
 
     render(
-      <TwoFaceButton
+      <SquaresButton
         value="hello"
         label="Copy"
         copiedAnnouncement="Copied"

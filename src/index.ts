@@ -131,8 +131,8 @@ export type { BadgeProps } from "./components/badge";
 export { StatusBadge, statusBadgeVariants, toneToBadgeVariant } from "./components/status-badge";
 export type { StatusBadgeProps, StatusTone } from "./components/status-badge";
 
-export { TwoFaceButton } from "./components/two-face-button";
-export type { TwoFaceButtonProps, CopyState } from "./components/two-face-button";
+export { SquaresButton } from "./components/squares-button";
+export type { SquaresButtonProps, CopyState } from "./components/squares-button";
 
 export { Tooltip } from "./components/tooltip";
 export type {

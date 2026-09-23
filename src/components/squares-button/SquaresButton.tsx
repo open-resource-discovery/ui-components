@@ -51,7 +51,7 @@ const ErrorIcon = (
   </svg>
 );
 
-export interface TwoFaceButtonProps
+export interface SquaresButtonProps
   extends
     Omit<ButtonHTMLAttributes<HTMLButtonElement>, "value" | "children" | "onCopy">,
     Pick<ButtonProps, "variant" | "size"> {
@@ -80,7 +80,7 @@ export interface TwoFaceButtonProps
  * status region. Requires `navigator.clipboard`; when it is unavailable or denied,
  * the button enters the `error` state.
  */
-const TwoFaceButton = forwardRef<HTMLButtonElement, TwoFaceButtonProps>(
+const SquaresButton = forwardRef<HTMLButtonElement, SquaresButtonProps>(
   (
     {
       value,
@@ -156,6 +156,6 @@ const TwoFaceButton = forwardRef<HTMLButtonElement, TwoFaceButtonProps>(
     );
   },
 );
-TwoFaceButton.displayName = "TwoFaceButton";
+SquaresButton.displayName = "SquaresButton";
 
-export { TwoFaceButton };
+export { SquaresButton };
