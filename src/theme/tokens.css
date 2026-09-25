@@ -71,6 +71,43 @@
   --ord-badge-highlight-fg: var(--ord-primary);
   --ord-badge-highlight-border: color-mix(in oklab, var(--ord-primary) 20%, transparent);
 
+  /* StatusBadge (soft tonal — derived from semantic tokens so dark mode tracks automatically) */
+  --ord-statusbadge-neutral-bg: color-mix(in oklab, var(--ord-muted-foreground) 12%, transparent);
+  --ord-statusbadge-neutral-fg: var(--ord-foreground);
+  --ord-statusbadge-neutral-dot: var(--ord-muted-foreground);
+  --ord-statusbadge-info-bg: color-mix(in oklab, var(--ord-primary) 12%, transparent);
+  --ord-statusbadge-info-fg: var(--ord-primary);
+  --ord-statusbadge-info-dot: var(--ord-primary);
+  --ord-statusbadge-success-bg: color-mix(in oklab, var(--ord-success) 15%, transparent);
+  --ord-statusbadge-success-fg: var(--ord-success);
+  --ord-statusbadge-success-dot: var(--ord-success);
+  --ord-statusbadge-warning-bg: color-mix(in oklab, var(--ord-warning) 15%, transparent);
+  --ord-statusbadge-warning-fg: var(--ord-warning);
+  --ord-statusbadge-warning-dot: var(--ord-warning);
+  --ord-statusbadge-critical-bg: color-mix(in oklab, var(--ord-destructive) 12%, transparent);
+  --ord-statusbadge-critical-fg: var(--ord-destructive);
+  --ord-statusbadge-critical-dot: var(--ord-destructive);
+
+  /* EntityCard (defaults chain to semantic tokens so host bridges + dark mode track automatically) */
+  --ord-entitycard-bg: var(--ord-card-bg);
+  --ord-entitycard-fg: var(--ord-card-fg);
+  --ord-entitycard-border: var(--ord-card-border);
+  --ord-entitycard-radius: var(--ord-radius);
+  --ord-entitycard-padding: 1.375rem; /* 22px product default; the sm size uses p-4 */
+  --ord-entitycard-hover-border: var(--ord-ring);
+  --ord-entitycard-hover-shadow: 0 2px 12px rgb(15 23 42 / 0.07);
+  --ord-entitycard-divider: var(--ord-muted); /* footer top border (#f1f5f9 ≈ muted) */
+  --ord-entitycard-title-fg: var(--ord-foreground);
+  --ord-entitycard-subtitle-fg: var(--ord-muted-foreground);
+  --ord-entitycard-description-fg: var(--ord-muted-foreground);
+  --ord-entitycard-icon-bg: var(--ord-muted); /* neutral default; iconClassName overrides per type */
+  --ord-entitycard-icon-fg: var(--ord-muted-foreground);
+  --ord-entitycard-chip-bg: var(--ord-muted); /* count-chip background (#f1f5f9) */
+  --ord-entitycard-chip-fg: var(--ord-muted-foreground);
+  --ord-entitycard-chip-value-fg: var(--ord-foreground); /* the bold <b> number */
+  --ord-entitycard-action-fg: var(--ord-muted-foreground); /* header trailing affordance */
+  --ord-entitycard-explore-fg: var(--ord-primary); /* footer "Explore ›" link */
+
   /* Input */
   --ord-input-bg: var(--ord-background);
   --ord-input-fg: var(--ord-foreground);
@@ -153,6 +190,7 @@
   --ord-hljs-tag: #800000;
   --ord-hljs-comment: #008000;
   --ord-hljs-punctuation: #000000;
+  --ord-hljs-meta: #0451a5;
 }
 
 /* Keep dark defaults at the same specificity as .ord-ui so later brand overrides apply in both modes. */
@@ -181,6 +219,9 @@
   --ord-popover: #252526;
   --ord-popover-foreground: #d4d4d4;
 
+  /* EntityCard (only the raw shadow needs a dark value; color tokens track their semantic parents) */
+  --ord-entitycard-hover-shadow: 0 2px 12px rgb(0 0 0 / 0.4);
+
   /* Code */
   /*--ord-code-bg: #2d2d30;*/
 
@@ -194,4 +235,5 @@
   --ord-hljs-tag: #569cd6;
   --ord-hljs-comment: #6a9955;
   --ord-hljs-punctuation: #d4d4d4;
+  --ord-hljs-meta: #569cd6;
 }

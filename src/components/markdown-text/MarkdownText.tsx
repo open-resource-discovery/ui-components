@@ -41,7 +41,7 @@ export function MarkdownText({ text, clampLines, className }: MarkdownTextProps)
       <div
         ref={ref}
         className={cn(
-          "ordu:text-sm ordu:leading-relaxed ordu:[&_p]:my-1 ordu:[&_h1]:text-base ordu:[&_h1]:font-semibold ordu:[&_h1]:my-2 ordu:[&_h2]:text-sm ordu:[&_h2]:font-semibold ordu:[&_h2]:my-2 ordu:[&_h3]:text-sm ordu:[&_h3]:font-medium ordu:[&_h3]:my-1.5 ordu:[&_ul]:my-1 ordu:[&_ol]:my-1 ordu:[&_li]:my-0 ordu:[&_a]:text-primary ordu:[&_a]:underline ordu:[&_code]:bg-muted ordu:[&_code]:px-1 ordu:[&_code]:py-0.5 ordu:[&_code]:rounded-sm ordu:[&_code]:text-xs ordu:[&_pre]:bg-muted ordu:[&_pre]:p-3 ordu:[&_pre]:rounded-md ordu:[&_pre]:overflow-x-auto ordu:[&_pre_code]:bg-transparent ordu:[&_pre_code]:p-0 ordu:[&_strong]:font-semibold",
+          "ordu:text-sm ordu:leading-relaxed ordu:[&_p]:my-1 ordu:[&_h1]:text-base ordu:[&_h1]:font-semibold ordu:[&_h1]:my-2 ordu:[&_h2]:text-sm ordu:[&_h2]:font-semibold ordu:[&_h2]:my-2 ordu:[&_h3]:text-sm ordu:[&_h3]:font-medium ordu:[&_h3]:my-1.5 ordu:[&_ul]:my-1 ordu:[&_ol]:my-1 ordu:[&_li]:my-0 ordu:[&_a]:text-primary ordu:[&_a]:underline ordu:[&_code]:bg-muted ordu:[&_code]:px-1 ordu:[&_code]:py-0.5 ordu:[&_code]:rounded-sm ordu:[&_code]:text-xs ordu:[&_code]:text-foreground ordu:[&_pre]:bg-muted ordu:[&_pre]:p-3 ordu:[&_pre]:rounded-md ordu:[&_pre]:overflow-x-auto ordu:[&_pre_code]:bg-transparent ordu:[&_pre_code]:p-0 ordu:[&_strong]:font-semibold",
         )}
         style={maxHeightStyle}>
         <ReactMarkdown>{text}</ReactMarkdown>

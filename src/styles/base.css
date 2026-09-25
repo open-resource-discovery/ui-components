@@ -79,6 +79,40 @@
   --color-badge-highlight-fg: var(--ord-badge-highlight-fg);
   --color-badge-highlight-border: var(--ord-badge-highlight-border);
 
+  /* StatusBadge */
+  --color-statusbadge-neutral-bg: var(--ord-statusbadge-neutral-bg);
+  --color-statusbadge-neutral-fg: var(--ord-statusbadge-neutral-fg);
+  --color-statusbadge-neutral-dot: var(--ord-statusbadge-neutral-dot);
+  --color-statusbadge-info-bg: var(--ord-statusbadge-info-bg);
+  --color-statusbadge-info-fg: var(--ord-statusbadge-info-fg);
+  --color-statusbadge-info-dot: var(--ord-statusbadge-info-dot);
+  --color-statusbadge-success-bg: var(--ord-statusbadge-success-bg);
+  --color-statusbadge-success-fg: var(--ord-statusbadge-success-fg);
+  --color-statusbadge-success-dot: var(--ord-statusbadge-success-dot);
+  --color-statusbadge-warning-bg: var(--ord-statusbadge-warning-bg);
+  --color-statusbadge-warning-fg: var(--ord-statusbadge-warning-fg);
+  --color-statusbadge-warning-dot: var(--ord-statusbadge-warning-dot);
+  --color-statusbadge-critical-bg: var(--ord-statusbadge-critical-bg);
+  --color-statusbadge-critical-fg: var(--ord-statusbadge-critical-fg);
+  --color-statusbadge-critical-dot: var(--ord-statusbadge-critical-dot);
+
+  /* EntityCard (color-valued tokens only; radius/padding/shadow are consumed as arbitrary values) */
+  --color-entitycard-bg: var(--ord-entitycard-bg);
+  --color-entitycard-fg: var(--ord-entitycard-fg);
+  --color-entitycard-border: var(--ord-entitycard-border);
+  --color-entitycard-hover-border: var(--ord-entitycard-hover-border);
+  --color-entitycard-divider: var(--ord-entitycard-divider);
+  --color-entitycard-title-fg: var(--ord-entitycard-title-fg);
+  --color-entitycard-subtitle-fg: var(--ord-entitycard-subtitle-fg);
+  --color-entitycard-description-fg: var(--ord-entitycard-description-fg);
+  --color-entitycard-icon-bg: var(--ord-entitycard-icon-bg);
+  --color-entitycard-icon-fg: var(--ord-entitycard-icon-fg);
+  --color-entitycard-chip-bg: var(--ord-entitycard-chip-bg);
+  --color-entitycard-chip-fg: var(--ord-entitycard-chip-fg);
+  --color-entitycard-chip-value-fg: var(--ord-entitycard-chip-value-fg);
+  --color-entitycard-action-fg: var(--ord-entitycard-action-fg);
+  --color-entitycard-explore-fg: var(--ord-entitycard-explore-fg);
+
   /* Input */
   --color-input-bg: var(--ord-input-bg);
   --color-input-fg: var(--ord-input-fg);
@@ -387,6 +421,13 @@
 }
 .ord-ui .hljs-punctuation {
   color: var(--ord-hljs-punctuation);
+}
+/* Processing instructions / doctype (e.g. `<?xml version="1.0" encoding="utf-8"?>`).
+   Without this, meta text falls back to the muted code foreground — near-invisible on the
+   muted code background in light mode. (Quoted values are handled by `.hljs-meta .hljs-string`.) */
+.ord-ui .hljs-meta,
+.ord-ui .hljs-meta .hljs-keyword {
+  color: var(--ord-hljs-meta);
 }
 .ord-ui .hljs-section {
   color: var(--ord-hljs-attr);
