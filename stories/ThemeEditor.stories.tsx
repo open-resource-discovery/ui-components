@@ -29,6 +29,8 @@ import { HttpLogEntry } from '../src/components/http-log-entry';
 import { Breadcrumbs } from '../src/components/breadcrumbs';
 import { StatusBadge } from '../src/components/status-badge';
 import { CopyButton } from '../src/components/copy-button';
+import { LinkButton } from '../src/components/link-button';
+import { ExternalLinkButton } from '../src/components/external-link-button';
 import { MetricCard } from '../src/components/metric-card';
 import { EntityCard } from '../src/components/entity-card';
 import { EntityGrid } from '../src/components/entity-grid';
@@ -884,6 +886,8 @@ function MetadataRow() {
             copiedAnnouncement="Copied"
             errorAnnouncement="Copy failed"
           />
+          <LinkButton href="#" size="sm" label="Open resource" />
+          <ExternalLinkButton href="#" size="sm" label="Open resource in a new tab" />
         </div>
       </div>
 
