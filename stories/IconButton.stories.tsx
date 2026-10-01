@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useEffect, useRef, useState } from 'react';
 import { IconButton } from '../src/components/icon-button';
 
 const StarIcon = (
@@ -50,12 +51,34 @@ export const Default: Story = {
   },
 };
 
+// Toggle demo: starts on the default icon, flips to the active icon on click, then reverts after
+// a couple of seconds. IconButton is stateless, so the story owns the `active` state.
 export const TwoIcons: Story = {
   args: {
     icon: StarIcon,
     activeIcon: CheckIcon,
-    active: true,
-    label: 'Favourited',
+    label: 'Favourite',
+    variant: 'ghost',
+    size: 'icon',
+  },
+  render: (args) => {
+    const [active, setActive] = useState(false);
+    const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+    useEffect(() => () => clearTimeout(timer.current), []);
+
+    return (
+      <IconButton
+        {...args}
+        active={active}
+        label={active ? 'Favourited' : 'Favourite'}
+        onClick={() => {
+          setActive(true);
+          clearTimeout(timer.current);
+          timer.current = setTimeout(() => setActive(false), 2000);
+        }}
+      />
+    );
   },
 };
 
