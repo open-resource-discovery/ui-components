@@ -79,9 +79,29 @@ describe("EntityCard", () => {
     expect(footer2.className).not.toContain("border-t");
   });
 
-  it("renders the footerAction slot", () => {
-    render(<EntityCard {...base} footerAction={<span>Explore</span>} />);
+  it("renders the action slot", () => {
+    render(<EntityCard {...base} action={<span>Explore</span>} />);
     expect(screen.getByText("Explore")).not.toBeNull();
+  });
+
+  it("wires onClick to the action button and leaves the card a non-interactive article", () => {
+    const onClick = vi.fn();
+    const { container } = render(
+      <EntityCard {...base} action={<>Explore</>} onClick={onClick} ariaLabel="Explore Sales Order" />,
+    );
+    expect(container.querySelector("article")).not.toBeNull();
+    const button = screen.getByRole("button", { name: "Explore Sales Order" });
+    fireEvent.click(button);
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it("renders the action as an anchor when href is set, keeping the card an article", () => {
+    const { container } = render(
+      <EntityCard {...base} action={<>Explore</>} href="/resources/1" ariaLabel="Open Sales Order" />,
+    );
+    expect(container.querySelector("article")).not.toBeNull();
+    const link = screen.getByRole("link", { name: "Open Sales Order" });
+    expect(link.getAttribute("href")).toBe("/resources/1");
   });
 
   it("renders free-form pills", () => {

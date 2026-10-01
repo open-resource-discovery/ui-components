@@ -21,14 +21,10 @@ const BoxIcon = (
     <path d="m3.3 7 8.7 5 8.7-5M12 22V12" />
   </svg>
 );
-const ChevronRight = (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-    <path d="m9 18 6-6-6-6" />
-  </svg>
-);
 
 // Default: the prototype product card — 18px title, mono namespace subtitle, count-chip metrics,
-// footer with version · owner and an "Explore ›" affordance. No `kind` eyebrow.
+// footer with version · owner and an "Explore ›" affordance. No `kind` eyebrow. Because `action` is
+// set, `onClick` wires the "Explore ›" button — clicking it pops an alert to show the event fired.
 export const Default: Story = {
   args: {
     title: "Sales Order",
@@ -56,12 +52,14 @@ export const Default: Story = {
         <span>Core Platform</span>
       </>
     ),
-    footerAction: <>Explore ›</>,
+    action: <>Explore ›</>,
+    ariaLabel: "Explore Sales Order",
+    onClick: () => window.alert("EntityCard onClick fired"),
   },
 };
 
 // The prototype resource card: compact size, per-type tinted icon square, "type · vN" subtitle,
-// a trailing chevron, dot status pills, and a mono format pill (via the free-form `pills` slot).
+// dot status pills, and a mono format pill (via the free-form `pills` slot). The whole card is clickable.
 export const ResourceCard: Story = {
   args: {
     size: "sm",
@@ -69,7 +67,6 @@ export const ResourceCard: Story = {
     iconClassName: "ordu:bg-[#eff6ff] ordu:text-[#2563eb]",
     title: "Sales Order API",
     subtitle: "API Resource · v1.2",
-    action: ChevronRight,
     description: "Create, read and update sales orders.",
     statuses: [
       { label: "Public", tone: "info" },
@@ -93,19 +90,33 @@ export const ResourceCard: Story = {
   },
 };
 
+// Whole-card link: no `action`, so the entire card navigates.
 export const AsLink: Story = {
   args: {
     ...Default.args,
+    action: undefined,
     href: "#",
     ariaLabel: "Open Sales Order",
   },
 };
 
+// Whole-card render slot (router <Link>): no `action`, so the entire card navigates.
 export const WithRenderProp: Story = {
   args: {
     ...Default.args,
+    action: undefined,
     // In an app: `(props) => <Link href="/products/sales-order" {...props} />`.
     render: (props) => <a href="#" {...props} />,
+  },
+};
+
+// When `action` is set, the interactive props wire the action button only — the card body is not a link.
+export const ActionLink: Story = {
+  args: {
+    ...Default.args,
+    action: <>Explore ›</>,
+    href: "#",
+    ariaLabel: "Explore Sales Order",
   },
 };
 
@@ -115,7 +126,7 @@ export const MetricsGrid: Story = {
     ...Default.args,
     metricsVariant: "grid",
     footer: undefined,
-    footerAction: undefined,
+    action: undefined,
   },
 };
 
@@ -151,7 +162,7 @@ export const DarkMode: Story = {
           { label: "Entity types", value: 8 },
         ]}
         footer={<span>v1 · 3 versions · Core Platform</span>}
-        footerAction={<>Explore ›</>}
+        action={<>Explore ›</>}
       />
     </ThemeRoot>
   ),
@@ -177,7 +188,6 @@ export const HostThemeBridge: Story = {
         iconClassName="ordu:bg-[#eff6ff] ordu:text-[#0070d2]"
         title="Sales Order API"
         subtitle="API Resource · v1.2"
-        action={ChevronRight}
         description="Create, read and update sales orders."
         statuses={[{ label: "Active", tone: "success" }]}
         footer={<span style={{ fontFamily: "ui-monospace, Menlo, monospace" }}>sap.s4:apiResource:SalesOrder</span>}

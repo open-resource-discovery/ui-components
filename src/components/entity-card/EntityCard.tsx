@@ -59,14 +59,15 @@ export interface EntityCardProps
   iconClassName?: string;
   /** How metrics render: inline count chips (default) or a two-column definition list. */
   metricsVariant?: "chips" | "grid";
-  /** Header trailing affordance, pinned to the right (e.g. a chevron). */
-  action?: ReactNode;
   /** Free-form tag row rendered after `statuses` (for app-specific pills the tones can't express). */
   pills?: ReactNode;
   /** Footer content on the left (e.g. version · owner, or an id + copy button). */
   footer?: ReactNode;
-  /** Footer content pinned to the right (e.g. an "Explore ›" affordance). */
-  footerAction?: ReactNode;
+  /**
+   * Footer affordance pinned to the right (e.g. an "Explore ›"). When set, `onClick`/`href`/`render`
+   * wire this button instead of the whole card.
+   */
+  action?: ReactNode;
   /** Draw the top divider above the footer (default true). */
   footerDivider?: boolean;
   /** Dim the card and disable pointer interaction. */
@@ -77,7 +78,7 @@ export interface EntityCardProps
   render?: LinkRender;
   /** Click handler; renders a `<button>` when there is no `href`/`render`. */
   onClick?: MouseEventHandler<HTMLElement>;
-  /** Accessible name when the whole card is interactive (no default text). */
+  /** Accessible name for the interactive element (the whole card, or `action` when set). No default text. */
   ariaLabel?: string;
 }
 
@@ -88,12 +89,13 @@ const interactive =
 
 /**
  * A semantic card for a typed entity (title, subtitle, statuses, metrics, footer). Its default
- * look matches the Equilibrium prototype card; slots (`icon`/`iconClassName`, `action`, `pills`,
- * `footer`/`footerAction`) plus the `--ord-entitycard-*` token layer let callers retheme it or bend
- * it to another app's card (e.g. Explorer). Renders as a native `<a>` when `href` is set, a
- * `<button>` when only `onClick` is set, or an `<article>` otherwise; a caller `render` slot (a
- * router `<Link>`) takes precedence, keeping the library router-agnostic. Statuses reuse
- * {@link StatusBadge}.
+ * look matches the Equilibrium prototype card; slots (`icon`/`iconClassName`, `pills`,
+ * `footer`/`action`) plus the `--ord-entitycard-*` token layer let callers retheme it or bend
+ * it to another app's card (e.g. Explorer). When `action` is set it becomes the interactive element —
+ * `onClick`/`href`/`render` wire the action button; otherwise they make the whole card interactive.
+ * Renders as a native `<a>` when `href` is set, a `<button>` when only `onClick` is set, or an
+ * `<article>` otherwise; a caller `render` slot (a router `<Link>`) takes precedence, keeping the
+ * library router-agnostic. Statuses reuse {@link StatusBadge}.
  */
 const EntityCard = forwardRef<HTMLElement, EntityCardProps>(
   (
@@ -109,10 +111,9 @@ const EntityCard = forwardRef<HTMLElement, EntityCardProps>(
       icon,
       iconClassName,
       metricsVariant = "chips",
-      action,
       pills,
       footer,
-      footerAction,
+      action,
       footerDivider = true,
       disabled = false,
       href,
@@ -150,6 +151,44 @@ const EntityCard = forwardRef<HTMLElement, EntityCardProps>(
     const cornerStatuses = statuses?.slice(0, 2) ?? [];
     const restStatuses = statuses?.slice(2) ?? [];
 
+    // When `action` is set it owns interactivity (render/href/onClick); otherwise the whole card does.
+    const cardIsInteractive = !action && (render || href || onClick);
+    const actionIsInteractive = Boolean(action) && (render || href || onClick);
+    const actionCls = cn(
+      "ordu:ml-auto ordu:inline-flex ordu:items-center ordu:gap-1 ordu:font-semibold ordu:text-entitycard-explore-fg",
+      actionIsInteractive &&
+        "ordu:cursor-pointer ordu:rounded ordu:focus-visible:outline-none ordu:focus-visible:ring-2 ordu:focus-visible:ring-ring",
+    );
+    let actionEl: ReactNode = null;
+    if (action) {
+      if (actionIsInteractive && render) {
+        actionEl = render({
+          "className": actionCls,
+          "children": action,
+          "aria-label": ariaLabel,
+          "aria-disabled": disabled || undefined,
+        });
+      } else if (actionIsInteractive && href) {
+        actionEl = (
+          <a href={href} aria-label={ariaLabel} aria-disabled={disabled || undefined} className={actionCls}>
+            {action}
+          </a>
+        );
+      } else if (actionIsInteractive && onClick) {
+        actionEl = (
+          <button type="button" onClick={onClick} disabled={disabled} aria-label={ariaLabel} className={actionCls}>
+            {action}
+          </button>
+        );
+      } else {
+        actionEl = (
+          <button type="button" className={actionCls}>
+            {action}
+          </button>
+        );
+      }
+    }
+
     const body = (
       <>
         <div className="ordu:flex ordu:items-start ordu:gap-3">
@@ -173,11 +212,6 @@ const EntityCard = forwardRef<HTMLElement, EntityCardProps>(
               {cornerStatuses.map((s, i) => renderStatus(s, i))}
             </div>
           ) : null}
-          {action && (
-            <span className="ordu:ml-auto ordu:shrink-0 ordu:text-entitycard-action-fg ordu:[&>svg]:h-4 ordu:[&>svg]:w-4">
-              {action}
-            </span>
-          )}
         </div>
         {description && (
           <p
@@ -218,18 +252,14 @@ const EntityCard = forwardRef<HTMLElement, EntityCardProps>(
             </div>
           )
         ) : null}
-        {footer || footerAction ? (
+        {footer || actionEl ? (
           <div
             className={cn(
               "ordu:mt-4 ordu:flex ordu:items-center ordu:gap-2 ordu:pt-3.5 ordu:text-xs ordu:text-entitycard-subtitle-fg",
               footerDivider && "ordu:border-t ordu:border-entitycard-divider",
             )}>
             {footer}
-            {footerAction && (
-              <span className="ordu:ml-auto ordu:inline-flex ordu:items-center ordu:gap-1 ordu:font-semibold ordu:text-entitycard-explore-fg">
-                {footerAction}
-              </span>
-            )}
+            {actionEl}
           </div>
         ) : null}
       </>
@@ -237,12 +267,12 @@ const EntityCard = forwardRef<HTMLElement, EntityCardProps>(
 
     const cls = cn(
       cardVariants({ size }),
-      (render || href || onClick) && interactive,
+      cardIsInteractive && interactive,
       disabled && "ordu:opacity-50 ordu:pointer-events-none",
       className,
     );
 
-    if (render) {
+    if (cardIsInteractive && render) {
       return render({
         "className": cls,
         "children": body,
@@ -251,7 +281,7 @@ const EntityCard = forwardRef<HTMLElement, EntityCardProps>(
         ...props,
       });
     }
-    if (href) {
+    if (cardIsInteractive && href) {
       return (
         <a
           ref={ref as Ref<HTMLAnchorElement>}
@@ -264,7 +294,7 @@ const EntityCard = forwardRef<HTMLElement, EntityCardProps>(
         </a>
       );
     }
-    if (onClick) {
+    if (cardIsInteractive && onClick) {
       return (
         <button
           ref={ref as Ref<HTMLButtonElement>}
@@ -279,7 +309,12 @@ const EntityCard = forwardRef<HTMLElement, EntityCardProps>(
       );
     }
     return (
-      <article ref={ref} aria-label={ariaLabel} aria-disabled={disabled || undefined} className={cls} {...props}>
+      <article
+        ref={ref}
+        aria-label={action ? undefined : ariaLabel}
+        aria-disabled={disabled || undefined}
+        className={cls}
+        {...props}>
         {body}
       </article>
     );
