@@ -1,235 +1,284 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useEffect, useMemo, useState, type CSSProperties } from 'react';
-import { ThemeRoot } from '../src/theme/ThemeRoot';
-import { Button } from '../src/components/button';
-import { Input } from '../src/components/input';
-import { Textarea } from '../src/components/textarea';
-import { PasswordInput } from '../src/components/password-input';
-import { Field } from '../src/components/field';
-import { Switch } from '../src/components/switch';
-import { Checkbox } from '../src/components/checkbox';
-import { SimpleSelect } from '../src/components/select';
-import { SimpleCombobox } from '../src/components/combobox';
-import { Badge } from '../src/components/badge';
-import { Spinner } from '../src/components/spinner';
-import { Progress } from '../src/components/progress';
-import { ValidationEntry } from '../src/components/validation-entry';
-import { ValidationPass } from '../src/components/validation-pass';
-import { Card } from '../src/components/card';
-import { InfoCard } from '../src/components/info-card';
-import { Tabs } from '../src/components/tabs';
-import { Dialog } from '../src/components/dialog';
-import { Sheet } from '../src/components/sheet';
-import { Tooltip } from '../src/components/tooltip';
-import { Avatar } from '../src/components/avatar';
-import { Separator } from '../src/components/separator';
-import { MarkdownText } from '../src/components/markdown-text';
-import { CodeBlock } from '../src/components/code-block';
-import { HttpLogEntry } from '../src/components/http-log-entry';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { ThemeRoot } from "../src/theme/ThemeRoot";
+import { Button } from "../src/components/button";
+import { Input } from "../src/components/input";
+import { Textarea } from "../src/components/textarea";
+import { PasswordInput } from "../src/components/password-input";
+import { Field } from "../src/components/field";
+import { Switch } from "../src/components/switch";
+import { Checkbox } from "../src/components/checkbox";
+import { SimpleSelect } from "../src/components/select";
+import { SimpleCombobox } from "../src/components/combobox";
+import { Badge } from "../src/components/badge";
+import { Spinner } from "../src/components/spinner";
+import { Progress } from "../src/components/progress";
+import { ValidationEntry } from "../src/components/validation-entry";
+import { ValidationPass } from "../src/components/validation-pass";
+import { Card } from "../src/components/card";
+import { InfoCard } from "../src/components/info-card";
+import { Tabs } from "../src/components/tabs";
+import { Dialog } from "../src/components/dialog";
+import { Sheet } from "../src/components/sheet";
+import { Tooltip } from "../src/components/tooltip";
+import { Avatar } from "../src/components/avatar";
+import { Separator } from "../src/components/separator";
+import { MarkdownText } from "../src/components/markdown-text";
+import { CodeBlock } from "../src/components/code-block";
+import { HttpLogEntry } from "../src/components/http-log-entry";
+import { Breadcrumbs } from "../src/components/breadcrumbs";
+import { StatusBadge } from "../src/components/status-badge";
+import { CopyButton } from "../src/components/copy-button";
+import { LinkButton } from "../src/components/link-button";
+import { ExternalLinkButton } from "../src/components/external-link-button";
+import { MetricCard } from "../src/components/metric-card";
+import { EntityCard } from "../src/components/entity-card";
+import { EntityGrid } from "../src/components/entity-grid";
+import { EmptyState } from "../src/components/empty-state";
 
 // Mirror of src/theme/tokens.css. Source of truth: that file.
 const LIGHT_DEFAULTS = {
-  '--ord-radius': '0.625rem',
-  '--ord-background': '#ffffff',
-  '--ord-foreground': '#0b1120',
-  '--ord-primary': '#172554',
-  '--ord-primary-foreground': '#f8fafc',
-  '--ord-secondary': '#f1f5f9',
-  '--ord-secondary-foreground': '#0b1120',
-  '--ord-muted': '#f1f5f9',
-  '--ord-muted-foreground': '#6b7280',
-  '--ord-accent': '#f1f5f9',
-  '--ord-accent-foreground': '#0b1120',
-  '--ord-destructive': '#dc2626',
-  '--ord-destructive-foreground': '#ffffff',
-  '--ord-success': '#4a9696',
-  '--ord-success-foreground': '#ffffff',
-  '--ord-warning': '#f59e0b',
-  '--ord-warning-foreground': '#ffffff',
-  '--ord-border': '#e2e8f0',
-  '--ord-input': '#e2e8f0',
-  '--ord-ring': '#64748b',
-  '--ord-card': '#ffffff',
-  '--ord-card-foreground': '#0b1120',
-  '--ord-popover': '#ffffff',
-  '--ord-popover-foreground': '#0b1120',
+  "--ord-radius": "0.625rem",
+  "--ord-background": "#ffffff",
+  "--ord-foreground": "#0b1120",
+  "--ord-primary": "#172554",
+  "--ord-primary-foreground": "#f8fafc",
+  "--ord-secondary": "#f1f5f9",
+  "--ord-secondary-foreground": "#0b1120",
+  "--ord-muted": "#f1f5f9",
+  "--ord-muted-foreground": "#6b7280",
+  "--ord-accent": "#f1f5f9",
+  "--ord-accent-foreground": "#0b1120",
+  "--ord-destructive": "#dc2626",
+  "--ord-destructive-foreground": "#ffffff",
+  "--ord-success": "#4a9696",
+  "--ord-success-foreground": "#ffffff",
+  "--ord-warning": "#f59e0b",
+  "--ord-warning-foreground": "#ffffff",
+  "--ord-border": "#e2e8f0",
+  "--ord-input": "#e2e8f0",
+  "--ord-ring": "#64748b",
+  "--ord-card": "#ffffff",
+  "--ord-card-foreground": "#0b1120",
+  "--ord-popover": "#ffffff",
+  "--ord-popover-foreground": "#0b1120",
 } as const;
 
 const DARK_DEFAULTS = {
-  '--ord-radius': '0.625rem',
-  '--ord-background': '#1e1e1e',
-  '--ord-foreground': '#d4d4d4',
-  '--ord-primary': '#0098ff',
-  '--ord-primary-foreground': '#1e1e1e',
-  '--ord-secondary': '#2d2d30',
-  '--ord-secondary-foreground': '#d4d4d4',
-  '--ord-muted': '#2d2d30',
-  '--ord-muted-foreground': '#969696',
-  '--ord-accent': '#2d2d30',
-  '--ord-accent-foreground': '#d4d4d4',
-  '--ord-destructive': '#f44747',
-  '--ord-destructive-foreground': '#ffffff',
-  '--ord-success': '#27e0d1',
-  '--ord-success-foreground': '#ffffff',
-  '--ord-warning': '#ff9800',
-  '--ord-warning-foreground': '#ffffff',
-  '--ord-border': '#3e3e42',
-  '--ord-input': '#3e3e42',
-  '--ord-ring': '#0098ff',
-  '--ord-card': '#252526',
-  '--ord-card-foreground': '#d4d4d4',
-  '--ord-popover': '#252526',
-  '--ord-popover-foreground': '#d4d4d4',
+  "--ord-radius": "0.625rem",
+  "--ord-background": "#1e1e1e",
+  "--ord-foreground": "#d4d4d4",
+  "--ord-primary": "#0098ff",
+  "--ord-primary-foreground": "#1e1e1e",
+  "--ord-secondary": "#2d2d30",
+  "--ord-secondary-foreground": "#d4d4d4",
+  "--ord-muted": "#2d2d30",
+  "--ord-muted-foreground": "#969696",
+  "--ord-accent": "#2d2d30",
+  "--ord-accent-foreground": "#d4d4d4",
+  "--ord-destructive": "#f44747",
+  "--ord-destructive-foreground": "#ffffff",
+  "--ord-success": "#27e0d1",
+  "--ord-success-foreground": "#ffffff",
+  "--ord-warning": "#ff9800",
+  "--ord-warning-foreground": "#ffffff",
+  "--ord-border": "#3e3e42",
+  "--ord-input": "#3e3e42",
+  "--ord-ring": "#0098ff",
+  "--ord-card": "#252526",
+  "--ord-card-foreground": "#d4d4d4",
+  "--ord-popover": "#252526",
+  "--ord-popover-foreground": "#d4d4d4",
 } as const;
 
 type TokenKey = keyof typeof LIGHT_DEFAULTS;
 
 const COLOR_PAIRS: Array<[TokenKey, TokenKey | null]> = [
-  ['--ord-background', '--ord-foreground'],
-  ['--ord-primary', '--ord-primary-foreground'],
-  ['--ord-secondary', '--ord-secondary-foreground'],
-  ['--ord-muted', '--ord-muted-foreground'],
-  ['--ord-accent', '--ord-accent-foreground'],
-  ['--ord-destructive', '--ord-destructive-foreground'],
-  ['--ord-success', '--ord-success-foreground'],
-  ['--ord-warning', '--ord-warning-foreground'],
-  ['--ord-border', '--ord-input'],
-  ['--ord-card', '--ord-card-foreground'],
-  ['--ord-popover', '--ord-popover-foreground'],
-  ['--ord-ring', null],
+  ["--ord-background", "--ord-foreground"],
+  ["--ord-primary", "--ord-primary-foreground"],
+  ["--ord-secondary", "--ord-secondary-foreground"],
+  ["--ord-muted", "--ord-muted-foreground"],
+  ["--ord-accent", "--ord-accent-foreground"],
+  ["--ord-destructive", "--ord-destructive-foreground"],
+  ["--ord-success", "--ord-success-foreground"],
+  ["--ord-warning", "--ord-warning-foreground"],
+  ["--ord-border", "--ord-input"],
+  ["--ord-card", "--ord-card-foreground"],
+  ["--ord-popover", "--ord-popover-foreground"],
+  ["--ord-ring", null],
 ];
 
 // Per-component tokens. Empty by default — each defaults to its semantic source via CSS cascade.
 // The editor only writes a token here when the user explicitly overrides it.
 const COMPONENT_TOKEN_GROUPS: Array<{ component: string; tokens: string[] }> = [
   {
-    component: 'Card',
-    tokens: ['--ord-card-bg', '--ord-card-fg', '--ord-card-border'],
+    component: "Card",
+    tokens: ["--ord-card-bg", "--ord-card-fg", "--ord-card-border"],
   },
   {
-    component: 'Button',
+    component: "EntityCard",
     tokens: [
-      '--ord-button-primary-bg',
-      '--ord-button-primary-fg',
-      '--ord-button-primary-bg-hover',
-      '--ord-button-primary-bg-active',
-      '--ord-button-secondary-bg',
-      '--ord-button-secondary-fg',
-      '--ord-button-secondary-bg-hover',
-      '--ord-button-destructive-bg',
-      '--ord-button-destructive-fg',
-      '--ord-button-destructive-bg-hover',
-      '--ord-button-outline-border',
-      '--ord-button-outline-bg',
-      '--ord-button-outline-bg-hover',
-      '--ord-button-outline-fg-hover',
-      '--ord-button-ghost-bg-hover',
-      '--ord-button-ghost-fg-hover',
-      '--ord-button-link-fg',
+      "--ord-entitycard-bg",
+      "--ord-entitycard-fg",
+      "--ord-entitycard-border",
+      "--ord-entitycard-hover-border",
+      "--ord-entitycard-divider",
+      "--ord-entitycard-title-fg",
+      "--ord-entitycard-subtitle-fg",
+      "--ord-entitycard-description-fg",
+      "--ord-entitycard-icon-bg",
+      "--ord-entitycard-icon-fg",
+      "--ord-entitycard-chip-bg",
+      "--ord-entitycard-chip-fg",
+      "--ord-entitycard-chip-value-fg",
+      "--ord-entitycard-action-fg",
+      "--ord-entitycard-explore-fg",
     ],
   },
   {
-    component: 'Badge',
+    component: "Button",
     tokens: [
-      '--ord-badge-default-bg',
-      '--ord-badge-default-fg',
-      '--ord-badge-secondary-bg',
-      '--ord-badge-secondary-fg',
-      '--ord-badge-destructive-bg',
-      '--ord-badge-destructive-fg',
-      '--ord-badge-success-bg',
-      '--ord-badge-success-fg',
-      '--ord-badge-warning-bg',
-      '--ord-badge-warning-fg',
-      '--ord-badge-outline-border',
-      '--ord-badge-outline-fg',
-      '--ord-badge-highlight-bg',
-      '--ord-badge-highlight-fg',
-      '--ord-badge-highlight-border',
+      "--ord-button-primary-bg",
+      "--ord-button-primary-fg",
+      "--ord-button-primary-bg-hover",
+      "--ord-button-primary-bg-active",
+      "--ord-button-secondary-bg",
+      "--ord-button-secondary-fg",
+      "--ord-button-secondary-bg-hover",
+      "--ord-button-destructive-bg",
+      "--ord-button-destructive-fg",
+      "--ord-button-destructive-bg-hover",
+      "--ord-button-outline-border",
+      "--ord-button-outline-bg",
+      "--ord-button-outline-bg-hover",
+      "--ord-button-outline-fg-hover",
+      "--ord-button-ghost-bg-hover",
+      "--ord-button-ghost-fg-hover",
+      "--ord-button-link-fg",
     ],
   },
   {
-    component: 'Input',
-    tokens: ['--ord-input-bg', '--ord-input-fg', '--ord-input-border', '--ord-input-placeholder'],
-  },
-  {
-    component: 'Tabs',
-    tokens: ['--ord-tabs-fg', '--ord-tabs-active-bg', '--ord-tabs-active-fg', '--ord-tabs-indicator'],
-  },
-  {
-    component: 'Tooltip',
-    tokens: ['--ord-tooltip-bg', '--ord-tooltip-fg'],
-  },
-  {
-    component: 'Dialog',
+    component: "Badge",
     tokens: [
-      '--ord-dialog-backdrop',
-      '--ord-dialog-bg',
-      '--ord-dialog-fg',
-      '--ord-dialog-border',
-      '--ord-dialog-description-fg',
+      "--ord-badge-default-bg",
+      "--ord-badge-default-fg",
+      "--ord-badge-secondary-bg",
+      "--ord-badge-secondary-fg",
+      "--ord-badge-destructive-bg",
+      "--ord-badge-destructive-fg",
+      "--ord-badge-success-bg",
+      "--ord-badge-success-fg",
+      "--ord-badge-warning-bg",
+      "--ord-badge-warning-fg",
+      "--ord-badge-outline-border",
+      "--ord-badge-outline-fg",
+      "--ord-badge-highlight-bg",
+      "--ord-badge-highlight-fg",
+      "--ord-badge-highlight-border",
     ],
   },
   {
-    component: 'Sheet',
+    component: "StatusBadge",
     tokens: [
-      '--ord-sheet-backdrop',
-      '--ord-sheet-bg',
-      '--ord-sheet-fg',
-      '--ord-sheet-border',
-      '--ord-sheet-description-fg',
+      "--ord-statusbadge-neutral-bg",
+      "--ord-statusbadge-neutral-fg",
+      "--ord-statusbadge-neutral-dot",
+      "--ord-statusbadge-info-bg",
+      "--ord-statusbadge-info-fg",
+      "--ord-statusbadge-info-dot",
+      "--ord-statusbadge-success-bg",
+      "--ord-statusbadge-success-fg",
+      "--ord-statusbadge-success-dot",
+      "--ord-statusbadge-warning-bg",
+      "--ord-statusbadge-warning-fg",
+      "--ord-statusbadge-warning-dot",
+      "--ord-statusbadge-critical-bg",
+      "--ord-statusbadge-critical-fg",
+      "--ord-statusbadge-critical-dot",
     ],
   },
   {
-    component: 'Combobox',
+    component: "Input",
+    tokens: ["--ord-input-bg", "--ord-input-fg", "--ord-input-border", "--ord-input-placeholder"],
+  },
+  {
+    component: "Tabs",
+    tokens: ["--ord-tabs-fg", "--ord-tabs-active-bg", "--ord-tabs-active-fg", "--ord-tabs-indicator"],
+  },
+  {
+    component: "Tooltip",
+    tokens: ["--ord-tooltip-bg", "--ord-tooltip-fg"],
+  },
+  {
+    component: "Dialog",
     tokens: [
-      '--ord-combobox-popup-bg',
-      '--ord-combobox-popup-fg',
-      '--ord-combobox-popup-border',
-      '--ord-combobox-item-bg-hover',
-      '--ord-combobox-item-fg-hover',
+      "--ord-dialog-backdrop",
+      "--ord-dialog-bg",
+      "--ord-dialog-fg",
+      "--ord-dialog-border",
+      "--ord-dialog-description-fg",
     ],
   },
   {
-    component: 'Select',
+    component: "Sheet",
     tokens: [
-      '--ord-select-trigger-bg',
-      '--ord-select-trigger-fg',
-      '--ord-select-trigger-border',
-      '--ord-select-popup-bg',
-      '--ord-select-popup-fg',
-      '--ord-select-popup-border',
-      '--ord-select-item-bg-hover',
-      '--ord-select-item-fg-hover',
+      "--ord-sheet-backdrop",
+      "--ord-sheet-bg",
+      "--ord-sheet-fg",
+      "--ord-sheet-border",
+      "--ord-sheet-description-fg",
     ],
   },
   {
-    component: 'Switch',
-    tokens: ['--ord-switch-track-on', '--ord-switch-track-off', '--ord-switch-thumb'],
+    component: "Combobox",
+    tokens: [
+      "--ord-combobox-popup-bg",
+      "--ord-combobox-popup-fg",
+      "--ord-combobox-popup-border",
+      "--ord-combobox-item-bg-hover",
+      "--ord-combobox-item-fg-hover",
+    ],
   },
   {
-    component: 'Checkbox',
-    tokens: ['--ord-checkbox-border', '--ord-checkbox-bg-checked', '--ord-checkbox-fg-checked'],
+    component: "Select",
+    tokens: [
+      "--ord-select-trigger-bg",
+      "--ord-select-trigger-fg",
+      "--ord-select-trigger-border",
+      "--ord-select-popup-bg",
+      "--ord-select-popup-fg",
+      "--ord-select-popup-border",
+      "--ord-select-item-bg-hover",
+      "--ord-select-item-fg-hover",
+    ],
   },
   {
-    component: 'Progress',
-    tokens: ['--ord-progress-track', '--ord-progress-indicator'],
+    component: "Switch",
+    tokens: ["--ord-switch-track-on", "--ord-switch-track-off", "--ord-switch-thumb"],
   },
   {
-    component: 'Spinner',
-    tokens: ['--ord-spinner-fg'],
+    component: "Checkbox",
+    tokens: ["--ord-checkbox-border", "--ord-checkbox-bg-checked", "--ord-checkbox-fg-checked"],
   },
   {
-    component: 'Avatar',
-    tokens: ['--ord-avatar-fallback-bg', '--ord-avatar-fallback-fg'],
+    component: "Progress",
+    tokens: ["--ord-progress-track", "--ord-progress-indicator"],
+  },
+  {
+    component: "Spinner",
+    tokens: ["--ord-spinner-fg"],
+  },
+  {
+    component: "Avatar",
+    tokens: ["--ord-avatar-fallback-bg", "--ord-avatar-fallback-fg"],
   },
 ];
 
 const FONT_PRESETS = [
-  { value: 'inherit', label: 'System default' },
-  { value: 'Inter, ui-sans-serif, system-ui, sans-serif', label: 'Inter (sans)' },
-  { value: 'Georgia, "Times New Roman", serif', label: 'Georgia (serif)' },
-  { value: '"JetBrains Mono", ui-monospace, monospace', label: 'JetBrains Mono' },
+  { value: "inherit", label: "System default" },
+  { value: "Inter, ui-sans-serif, system-ui, sans-serif", label: "Inter (sans)" },
+  { value: 'Georgia, "Times New Roman", serif', label: "Georgia (serif)" },
+  { value: '"JetBrains Mono", ui-monospace, monospace', label: "JetBrains Mono" },
 ];
 
 function isHex(s: string): boolean {
@@ -237,7 +286,7 @@ function isHex(s: string): boolean {
 }
 
 interface EditorState {
-  mode: 'light' | 'dark';
+  mode: "light" | "dark";
   colors: Partial<Record<TokenKey, string>>;
   componentColors: Record<string, string>;
   radius: number;
@@ -245,17 +294,17 @@ interface EditorState {
   fontSize: number;
 }
 
-const initialState = (mode: 'light' | 'dark'): EditorState => ({
+const initialState = (mode: "light" | "dark"): EditorState => ({
   mode,
   colors: {},
   componentColors: {},
   radius: 10,
-  fontFamily: 'inherit',
+  fontFamily: "inherit",
   fontSize: 14,
 });
 
 function buildOverrides(state: EditorState): CSSProperties {
-  const defaults = state.mode === 'dark' ? DARK_DEFAULTS : LIGHT_DEFAULTS;
+  const defaults = state.mode === "dark" ? DARK_DEFAULTS : LIGHT_DEFAULTS;
   const out: Record<string, string> = {};
   for (const [k, v] of Object.entries(state.colors)) {
     if (v && v !== defaults[k as TokenKey]) out[k] = v;
@@ -263,12 +312,12 @@ function buildOverrides(state: EditorState): CSSProperties {
   for (const [k, v] of Object.entries(state.componentColors)) {
     if (v) out[k] = v;
   }
-  out['--ord-radius'] = `${state.radius / 16}rem`;
+  out["--ord-radius"] = `${state.radius / 16}rem`;
   return out as CSSProperties;
 }
 
 function buildCss(state: EditorState): string {
-  const defaults = state.mode === 'dark' ? DARK_DEFAULTS : LIGHT_DEFAULTS;
+  const defaults = state.mode === "dark" ? DARK_DEFAULTS : LIGHT_DEFAULTS;
   const lines: string[] = [];
   for (const [k, v] of Object.entries(state.colors)) {
     if (v && v !== defaults[k as TokenKey]) lines.push(`  ${k}: ${v};`);
@@ -277,13 +326,13 @@ function buildCss(state: EditorState): string {
     if (v) lines.push(`  ${k}: ${v};`);
   }
   if (state.radius !== 10) lines.push(`  --ord-radius: ${state.radius / 16}rem;`);
-  if (state.fontFamily && state.fontFamily !== 'inherit') {
+  if (state.fontFamily && state.fontFamily !== "inherit") {
     lines.push(`  font-family: ${state.fontFamily};`);
   }
   if (state.fontSize !== 14) lines.push(`  font-size: ${state.fontSize}px;`);
 
-  const selector = state.mode === 'dark' ? '.ord-ui.dark' : '.ord-ui';
-  return `${selector} {\n${lines.join('\n') || '  /* no overrides yet */'}\n}\n`;
+  const selector = state.mode === "dark" ? ".ord-ui.dark" : ".ord-ui";
+  return `${selector} {\n${lines.join("\n") || "  /* no overrides yet */"}\n}\n`;
 }
 
 interface ColorRowProps {
@@ -293,16 +342,14 @@ interface ColorRowProps {
 }
 
 function ColorRow({ token, value, onChange }: ColorRowProps) {
-  const label = token.replace('--ord-', '').replace(/-/g, ' ');
+  const label = token.replace("--ord-", "").replace(/-/g, " ");
   return (
     <div className="flex flex-col gap-1">
-      <label className="text-[11px] font-medium text-muted-foreground capitalize">
-        {label}
-      </label>
+      <label className="text-[11px] font-medium text-muted-foreground capitalize">{label}</label>
       <div className="flex items-center gap-1.5">
         <input
           type="color"
-          value={isHex(value) ? value : '#000000'}
+          value={isHex(value) ? value : "#000000"}
           onChange={(e) => onChange(e.target.value)}
           className="h-7 w-7 cursor-pointer rounded-md border border-border bg-transparent p-0"
           aria-label={`${label} color picker`}
@@ -325,11 +372,10 @@ function EditorSidebar({
   state: EditorState;
   setState: React.Dispatch<React.SetStateAction<EditorState>>;
 }) {
-  const defaults = state.mode === 'dark' ? DARK_DEFAULTS : LIGHT_DEFAULTS;
+  const defaults = state.mode === "dark" ? DARK_DEFAULTS : LIGHT_DEFAULTS;
   const [copied, setCopied] = useState(false);
 
-  const setColor = (k: TokenKey, v: string) =>
-    setState((s) => ({ ...s, colors: { ...s.colors, [k]: v } }));
+  const setColor = (k: TokenKey, v: string) => setState((s) => ({ ...s, colors: { ...s.colors, [k]: v } }));
 
   const setComponentColor = (k: string, v: string) =>
     setState((s) => ({ ...s, componentColors: { ...s.componentColors, [k]: v } }));
@@ -347,7 +393,7 @@ function EditorSidebar({
       colors: {},
       componentColors: {},
       radius: 10,
-      fontFamily: 'inherit',
+      fontFamily: "inherit",
       fontSize: 14,
     }));
 
@@ -369,13 +415,12 @@ function EditorSidebar({
       <div className="flex items-center justify-between border-b border-border px-4 py-3">
         <h2 className="text-sm font-semibold">Theme Editor</h2>
         <div className="flex items-center gap-2">
-          <span className="text-xs text-muted-foreground">{state.mode === 'dark' ? 'Dark' : 'Light'}</span>
+          <span className="text-xs text-muted-foreground">{state.mode === "dark" ? "Dark" : "Light"}</span>
           <Switch.Root
-            checked={state.mode === 'dark'}
+            checked={state.mode === "dark"}
             onCheckedChange={(checked) =>
-              setState((s) => ({ ...s, mode: checked ? 'dark' : 'light', colors: {}, componentColors: {} }))
-            }
-          >
+              setState((s) => ({ ...s, mode: checked ? "dark" : "light", colors: {}, componentColors: {} }))
+            }>
             <Switch.Thumb />
           </Switch.Root>
         </div>
@@ -383,23 +428,13 @@ function EditorSidebar({
 
       <div className="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-4">
         <section>
-          <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            Colors
-          </h3>
+          <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Colors</h3>
           <div className="flex flex-col gap-2">
             {COLOR_PAIRS.map(([a, b]) => (
               <div key={a} className="grid grid-cols-2 gap-2">
-                <ColorRow
-                  token={a}
-                  value={state.colors[a] ?? defaults[a]}
-                  onChange={(v) => setColor(a, v)}
-                />
+                <ColorRow token={a} value={state.colors[a] ?? defaults[a]} onChange={(v) => setColor(a, v)} />
                 {b ? (
-                  <ColorRow
-                    token={b}
-                    value={state.colors[b] ?? defaults[b]}
-                    onChange={(v) => setColor(b, v)}
-                  />
+                  <ColorRow token={b} value={state.colors[b] ?? defaults[b]} onChange={(v) => setColor(b, v)} />
                 ) : (
                   <div />
                 )}
@@ -409,9 +444,7 @@ function EditorSidebar({
         </section>
 
         <section>
-          <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            Border radius
-          </h3>
+          <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Border radius</h3>
           <div className="flex items-center gap-3">
             <input
               type="range"
@@ -426,16 +459,14 @@ function EditorSidebar({
         </section>
 
         <section>
-          <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            Font
-          </h3>
+          <h3 className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Font</h3>
           <div className="flex flex-col gap-2">
             <Field.Root>
               <Field.Label className="text-[11px]">Family</Field.Label>
               <SimpleSelect
                 items={FONT_PRESETS}
                 value={state.fontFamily}
-                onChange={(v) => setState((s) => ({ ...s, fontFamily: v || 'inherit' }))}
+                onChange={(v) => setState((s) => ({ ...s, fontFamily: v || "inherit" }))}
               />
             </Field.Root>
             <Field.Root>
@@ -479,7 +510,7 @@ function EditorSidebar({
                           <div className="flex-1">
                             <ColorRow
                               token={token}
-                              value={state.componentColors[token] ?? ''}
+                              value={state.componentColors[token] ?? ""}
                               onChange={(v) => setComponentColor(token, v)}
                             />
                           </div>
@@ -488,8 +519,7 @@ function EditorSidebar({
                               type="button"
                               onClick={() => clearComponentColor(token)}
                               className="h-7 px-1.5 text-[10px] text-muted-foreground hover:text-foreground"
-                              aria-label={`Clear ${token}`}
-                            >
+                              aria-label={`Clear ${token}`}>
                               ✕
                             </button>
                           )}
@@ -509,7 +539,7 @@ function EditorSidebar({
           Reset
         </Button>
         <Button size="sm" className="flex-1" onClick={copy}>
-          {copied ? 'Copied!' : 'Copy CSS'}
+          {copied ? "Copied!" : "Copy CSS"}
         </Button>
       </div>
     </aside>
@@ -542,10 +572,10 @@ function ButtonsRow() {
 }
 
 const FRUITS = [
-  { value: 'apple', label: 'Apple' },
-  { value: 'banana', label: 'Banana' },
-  { value: 'cherry', label: 'Cherry' },
-  { value: 'mango', label: 'Mango' },
+  { value: "apple", label: "Apple" },
+  { value: "banana", label: "Banana" },
+  { value: "cherry", label: "Cherry" },
+  { value: "mango", label: "Mango" },
 ];
 
 function FormsRow() {
@@ -650,7 +680,9 @@ function SurfacesRow() {
           <p className="text-sm">Cards use bg-card, text-card-foreground, and border tokens.</p>
         </Card.Content>
         <Card.Footer className="gap-2">
-          <Button size="sm" variant="outline">Cancel</Button>
+          <Button size="sm" variant="outline">
+            Cancel
+          </Button>
           <Button size="sm">Confirm</Button>
         </Card.Footer>
       </Card>
@@ -661,7 +693,9 @@ function SurfacesRow() {
           <div className="flex flex-col gap-0.5">
             <div className="flex items-center gap-2">
               <InfoCard.Title>Echo Server</InfoCard.Title>
-              <Badge variant="outline" size="sm">1.0.0</Badge>
+              <Badge variant="outline" size="sm">
+                1.0.0
+              </Badge>
             </div>
             <InfoCard.Subtitle>mock/echo</InfoCard.Subtitle>
           </div>
@@ -771,10 +805,94 @@ function DataRow() {
           url="http://localhost:3000/mcp"
           statusCode={200}
           duration={42}
-          requestBody={JSON.stringify({ jsonrpc: '2.0', method: 'initialize', id: 1 }, null, 2)}
-          responseBody={JSON.stringify({ jsonrpc: '2.0', result: { ok: true }, id: 1 }, null, 2)}
+          requestBody={JSON.stringify({ jsonrpc: "2.0", method: "initialize", id: 1 }, null, 2)}
+          responseBody={JSON.stringify({ jsonrpc: "2.0", result: { ok: true }, id: 1 }, null, 2)}
         />
       </div>
+    </div>
+  );
+}
+
+const SearchIcon = (
+  <svg
+    aria-hidden="true"
+    viewBox="0 0 24 24"
+    width="20"
+    height="20"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round">
+    <circle cx="11" cy="11" r="8" />
+    <path d="m21 21-4.3-4.3" />
+  </svg>
+);
+
+interface GridResource {
+  id: string;
+  kind: string;
+  title: string;
+  version: string;
+}
+
+const GRID_RESOURCES: GridResource[] = [
+  { id: "1", kind: "API Resource", title: "Sales Order API", version: "v1" },
+  { id: "2", kind: "Event Resource", title: "Order Changed", version: "v2" },
+  { id: "3", kind: "Entity Type", title: "Business Partner", version: "v1" },
+];
+
+const ORD_ID = "sap.s4:apiResource:Order_v1:v1";
+
+function MetadataRow() {
+  return (
+    <div className="flex flex-col gap-5">
+      <Breadcrumbs
+        label="Breadcrumb"
+        items={[{ label: "Products", href: "#" }, { label: "Customer Order", href: "#" }, { label: "Order API" }]}
+      />
+
+      <div className="flex flex-wrap items-center gap-2">
+        <StatusBadge tone="neutral" label="Draft" />
+        <StatusBadge tone="info" label="Proposal" />
+        <StatusBadge tone="success" label="Active" />
+        <StatusBadge tone="warning" label="Deprecated" />
+        <StatusBadge tone="critical" label="Failed" />
+        <Separator orientation="vertical" className="h-5" />
+        <div className="flex items-center gap-1.5 rounded-md border border-border px-2.5 py-1 font-mono text-xs">
+          <span>{ORD_ID}</span>
+          <CopyButton
+            value={ORD_ID}
+            size="sm"
+            label="Copy identifier"
+            copiedAnnouncement="Copied"
+            errorAnnouncement="Copy failed"
+          />
+
+          <LinkButton href="#" size="sm" label="Open resource" />
+          <ExternalLinkButton href="#" size="sm" label="Open resource in a new tab" />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+        <MetricCard label="Landscapes" value="3" />
+        <MetricCard label="Products" value="42" trend={{ direction: "up", value: "+2" }} />
+        <MetricCard label="Compliance score" value="87%" detail="across 142 resources" />
+        <MetricCard label="Open violations" value="31" trend={{ direction: "down", value: "-5" }} />
+      </div>
+
+      <EntityGrid<GridResource>
+        items={GRID_RESOURCES}
+        renderCount={(n) => `${n} resources`}
+        renderItem={(r) => <EntityCard kind={r.kind} title={r.title} version={r.version} href="#" />}
+      />
+
+      <EmptyState
+        icon={SearchIcon}
+        title="No results found"
+        description="Try adjusting your search or filters to find what you are looking for."
+        actions={<Button variant="outline">Reset filters</Button>}
+      />
     </div>
   );
 }
@@ -804,13 +922,16 @@ function ComponentsGallery() {
         <GallerySection title="Data display">
           <DataRow />
         </GallerySection>
+        <GallerySection title="Metadata UI">
+          <MetadataRow />
+        </GallerySection>
       </div>
     </main>
   );
 }
 
 function ThemeEditorComposition() {
-  const [state, setState] = useState<EditorState>(() => initialState('light'));
+  const [state, setState] = useState<EditorState>(() => initialState("light"));
   const overrides = useMemo(() => buildOverrides(state), [state]);
 
   // Font lives on <html>: rem-based Tailwind sizes (text-sm = 0.875rem) only react
@@ -821,12 +942,23 @@ function ThemeEditorComposition() {
     const prevSize = root.style.fontSize;
     const prevFamily = root.style.fontFamily;
     root.style.fontSize = `${state.fontSize}px`;
-    root.style.fontFamily = state.fontFamily === 'inherit' ? '' : state.fontFamily;
+    root.style.fontFamily = state.fontFamily === "inherit" ? "" : state.fontFamily;
     return () => {
       root.style.fontSize = prevSize;
       root.style.fontFamily = prevFamily;
     };
   }, [state.fontFamily, state.fontSize]);
+
+  // The composition fills the viewport and scrolls inside its own panes; lock the
+  // Storybook preview body so it doesn't also scroll. Restored on unmount.
+  useEffect(() => {
+    const body = document.body;
+    const prevOverflow = body.style.overflow;
+    body.style.overflow = "hidden";
+    return () => {
+      body.style.overflow = prevOverflow;
+    };
+  }, []);
 
   return (
     <ThemeRoot defaultTheme={state.mode} style={overrides}>
@@ -839,9 +971,9 @@ function ThemeEditorComposition() {
 }
 
 const meta = {
-  title: 'Compositions/Theme Editor',
+  title: "Compositions/Theme Editor",
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
     disableThemeRoot: true,
   },
 } satisfies Meta;

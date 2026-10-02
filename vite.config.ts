@@ -35,8 +35,27 @@ export default defineConfig({
     alias: {
       "@": resolve(__dirname, "src"),
     },
+    // Bundle the isomorphic (non-"browser") builds of dependencies so the package is
+    // import-safe under SSR/prerender. Notably `decode-named-character-reference` (pulled in
+    // via react-markdown → micromark) ships a browser build that runs `document.createElement`
+    // at module scope; dropping the "browser" condition/mainField selects its data-map build,
+    // which works in both the browser and Node.
+    conditions: ["module", "import", "default"],
+    mainFields: ["module", "jsnext:main", "jsnext", "main"],
   },
   build: {
+    // Minify with terser so the webpackIgnore/@vite-ignore magic comments on the lazy
+    // Monaco import survive into the published bundle (esbuild's minifier drops them).
+    // The "use client" directive is added as a terser preamble — a rollup output.banner
+    // gets stripped by terser as a dead string-expression, whereas the preamble is prepended
+    // literally after minification, landing first (before the hoisted imports) as RSC requires.
+    minify: "terser",
+    terserOptions: {
+      format: {
+        preamble: '"use client";',
+        comments: /webpackIgnore|@vite-ignore/,
+      },
+    },
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
       name: "UIComponents",
