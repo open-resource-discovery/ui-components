@@ -5,7 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) rules.
 
+
 ## [unreleased]
+
+## [[0.3.0](https://github.com/open-resource-discovery/ui-components/releases/tag/v0.3.0)] - 2026-10-02
 
 ### Added
 
@@ -23,6 +26,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Fixed
 
 - `CodeBlock`: `HighlightOptions` is now a type-only import, removing a spurious runtime reference.
+
 
 ## [[0.2.0](https://github.com/open-resource-discovery/ui-components/releases/tag/v0.2.0)] - 2026-09-14
 
