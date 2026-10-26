@@ -28,9 +28,9 @@ export const Default: Story = {
 
 export const WithClamp: Story = {
   args: {
-    text: `# Heading
+    text: `## Heading
 
-This is a longer markdown text that should be clamped after a few lines. It contains multiple paragraphs.
+This is a longer markdown text that should be clamped after 5 lines. It contains multiple paragraphs. **Bold text** in the first paragraph.
 
 - Item one
 - Item two
@@ -39,7 +39,7 @@ This is a longer markdown text that should be clamped after a few lines. It cont
 Another paragraph with more content that will definitely overflow the clamp limit and trigger the "Show more" button.
 
 Final paragraph with **bold text** and \`inline code\`.`,
-    clampLines: 3,
+    clampLines: 5,
   },
 };
 
