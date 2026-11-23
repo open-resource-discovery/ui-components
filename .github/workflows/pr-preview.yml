@@ -9,19 +9,17 @@ jobs:
   pr-preview:
     permissions:
       contents: read
-      actions: write # required for upload-artifact in fork PRs
       pull-requests: read
-
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           persist-credentials: false
 
       - name: Setup Node
         if: github.event.action != 'closed'
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version: "26"
 
@@ -36,11 +34,15 @@ jobs:
           npm run build-storybook
 
       - name: PR preview
-        uses: open-resource-discovery/pr-preview-action@main
+        uses: open-resource-discovery/pr-preview-action@a2116cdd5daaa1208cda0b354501f4db81ac0d13 # main; shared action PR #30
         with:
-          fork: true
+          fork: false
           target-repo: open-resource-discovery/pr-preview
           pages-base-url: https://open-resource-discovery.github.io/pr-preview
           umbrella-dir: ui-components
           token: ${{ secrets.PR_PREVIEW_TOKEN }}
           build-dir: storybook-static
+          wait-poll-attempts: 72
+    if: github.event.pull_request.head.repo.full_name == github.repository
+permissions:
+  contents: read
