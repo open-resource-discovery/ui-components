@@ -1,5 +1,5 @@
-import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { Progress as BaseProgress } from "@base-ui/react/progress";
+import { type ComponentPropsWithoutRef, forwardRef } from "react";
 import { cn } from "@/utils/cn";
 
 /* ----- Root ----- */

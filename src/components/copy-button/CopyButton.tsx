@@ -1,5 +1,5 @@
-import { forwardRef, useCallback, useEffect, useRef, useState, type ButtonHTMLAttributes, type ReactNode } from "react";
-import { type ButtonProps } from "@/components/button";
+import { type ButtonHTMLAttributes, forwardRef, type ReactNode, useCallback, useEffect, useRef, useState } from "react";
+import type { ButtonProps } from "@/components/button";
 import { IconButton } from "@/components/icon-button";
 
 export type CopyState = "idle" | "copied" | "error";
@@ -14,7 +14,8 @@ const CopyIcon = (
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
-    strokeLinejoin="round">
+    strokeLinejoin="round"
+  >
     <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
     <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
   </svg>
@@ -30,7 +31,8 @@ const CopiedIcon = (
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
-    strokeLinejoin="round">
+    strokeLinejoin="round"
+  >
     <path d="M20 6 9 17l-5-5" />
   </svg>
 );
@@ -45,15 +47,15 @@ const ErrorIcon = (
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
-    strokeLinejoin="round">
+    strokeLinejoin="round"
+  >
     <path d="M18 6 6 18" />
     <path d="m6 6 12 12" />
   </svg>
 );
 
 export interface CopyButtonProps
-  extends
-    Omit<ButtonHTMLAttributes<HTMLButtonElement>, "value" | "children" | "onCopy">,
+  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "value" | "children" | "onCopy">,
     Pick<ButtonProps, "variant" | "size"> {
   /** Text written to the clipboard. */
   value: string;
@@ -146,7 +148,8 @@ const CopyButton = forwardRef<HTMLButtonElement, CopyButtonProps>(
         size={size}
         className={className}
         onClick={handleClick}
-        {...props}>
+        {...props}
+      >
         <span role="status" aria-live="polite" className="ordu:sr-only">
           {announcement}
         </span>

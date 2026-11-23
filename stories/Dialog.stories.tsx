@@ -1,19 +1,18 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Dialog } from '../src/components/dialog';
-import { SimpleDialog } from '../src/components/dialog';
-import { Button } from '../src/components/button';
-import { Input } from '../src/components/input';
-import { Textarea } from '../src/components/textarea';
-import { Field } from '../src/components/field';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Button } from "../src/components/button";
+import { Dialog, SimpleDialog } from "../src/components/dialog";
+import { Field } from "../src/components/field";
+import { Input } from "../src/components/input";
+import { Textarea } from "../src/components/textarea";
 
 const meta = {
-  title: 'Components/Dialog',
+  title: "Components/Dialog",
   component: Dialog.Root,
   parameters: {
-    layout: 'centered',
-    docs: { story: { inline: false, height: '420px' } },
+    layout: "centered",
+    docs: { story: { inline: false, height: "420px" } },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 } satisfies Meta<typeof Dialog.Root>;
 
 export default meta;

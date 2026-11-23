@@ -1,7 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import type React from "react";
+import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
-import { cn } from "@/utils/cn";
 import { Button } from "@/components/button";
+import { cn } from "@/utils/cn";
 
 export interface MarkdownTextProps {
   text: string;
@@ -48,7 +49,8 @@ export function MarkdownText({ text, clampLines, className }: MarkdownTextProps)
         className={cn(
           "ordu:text-sm ordu:leading-relaxed ordu:[&_p]:my-1 ordu:[&_h1]:text-base ordu:[&_h1]:font-semibold ordu:[&_h1]:my-2 ordu:[&_h2]:text-sm ordu:[&_h2]:font-semibold ordu:[&_h2]:my-2 ordu:[&_h3]:text-sm ordu:[&_h3]:font-medium ordu:[&_h3]:my-1.5 ordu:[&_ul]:my-1 ordu:[&_ol]:my-1 ordu:[&_li]:my-0 ordu:[&_a]:text-primary ordu:[&_a]:underline ordu:[&_code]:bg-muted ordu:[&_code]:px-1 ordu:[&_code]:py-0.5 ordu:[&_code]:rounded-sm ordu:[&_code]:text-xs ordu:[&_code]:text-foreground ordu:[&_pre]:bg-muted ordu:[&_pre]:p-3 ordu:[&_pre]:rounded-md ordu:[&_pre]:overflow-x-auto ordu:[&_pre_code]:bg-transparent ordu:[&_pre_code]:p-0 ordu:[&_strong]:font-semibold",
         )}
-        style={clampStyle}>
+        style={clampStyle}
+      >
         <ReactMarkdown>{text}</ReactMarkdown>
       </div>
       {isClamped && (
@@ -56,7 +58,8 @@ export function MarkdownText({ text, clampLines, className }: MarkdownTextProps)
           variant="ghost"
           size="sm"
           className="ordu:h-6 ordu:px-2 ordu:text-xs ordu:mt-1"
-          onClick={() => setExpanded(!expanded)}>
+          onClick={() => setExpanded(!expanded)}
+        >
           {expanded ? (
             <>
               <svg
@@ -69,7 +72,8 @@ export function MarkdownText({ text, clampLines, className }: MarkdownTextProps)
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="ordu:mr-1">
+                className="ordu:mr-1"
+              >
                 <polyline points="18 15 12 9 6 15" />
               </svg>
               Show less
@@ -86,7 +90,8 @@ export function MarkdownText({ text, clampLines, className }: MarkdownTextProps)
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="ordu:mr-1">
+                className="ordu:mr-1"
+              >
                 <polyline points="6 9 12 15 18 9" />
               </svg>
               Show more

@@ -1,12 +1,11 @@
-export { Card } from "./Card";
 export type {
-  CardRootProps,
-  CardHeaderProps,
-  CardTitleProps,
-  CardDescriptionProps,
   CardContentProps,
+  CardDescriptionProps,
   CardFooterProps,
+  CardHeaderProps,
+  CardRootProps,
+  CardTitleProps,
 } from "./Card";
-
-export { SimpleCard } from "./SimpleCard";
+export { Card } from "./Card";
 export type { SimpleCardProps } from "./SimpleCard";
+export { SimpleCard } from "./SimpleCard";

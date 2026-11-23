@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { PasswordInput } from '../src/components/password-input';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { PasswordInput } from "../src/components/password-input";
 
 const meta = {
-  title: 'Components/PasswordInput',
+  title: "Components/PasswordInput",
   component: PasswordInput,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div className="w-full max-w-[320px]">
@@ -22,19 +22,19 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    placeholder: 'Enter password...',
+    placeholder: "Enter password...",
   },
 };
 
 export const WithValue: Story = {
   args: {
-    defaultValue: 'supersecret123',
+    defaultValue: "supersecret123",
   },
 };
 
 export const Disabled: Story = {
   args: {
-    placeholder: 'Disabled',
+    placeholder: "Disabled",
     disabled: true,
   },
 };

@@ -1,4 +1,4 @@
-import { forwardRef, type ComponentPropsWithoutRef } from "react";
+import { type ComponentPropsWithoutRef, forwardRef } from "react";
 import { cn } from "@/utils/cn";
 
 export type ValidationStatus = "pass" | "fail" | "warning";
@@ -23,7 +23,8 @@ const statusConfig = {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="ordu:h-4 ordu:w-4">
+        className="ordu:h-4 ordu:w-4"
+      >
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
         <polyline points="22 4 12 14.01 9 11.01" />
       </svg>
@@ -41,7 +42,8 @@ const statusConfig = {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="ordu:h-4 ordu:w-4">
+        className="ordu:h-4 ordu:w-4"
+      >
         <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
         <line x1="12" y1="9" x2="12" y2="13" />
         <line x1="12" y1="17" x2="12.01" y2="17" />
@@ -60,7 +62,8 @@ const statusConfig = {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="ordu:h-4 ordu:w-4">
+        className="ordu:h-4 ordu:w-4"
+      >
         <circle cx="12" cy="12" r="10" />
         <line x1="15" y1="9" x2="9" y2="15" />
         <line x1="9" y1="9" x2="15" y2="15" />
@@ -81,7 +84,8 @@ export const ValidationEntry = forwardRef<HTMLDivElement, ValidationEntryProps>(
           className,
         )}
         style={{ borderLeftColor: config.borderColor, ...style }}
-        {...props}>
+        {...props}
+      >
         <div className="ordu:flex ordu:items-start ordu:gap-2">
           <span className={cn("ordu:mt-0.5 ordu:shrink-0", config.iconClass)}>{config.icon}</span>
           <div className="ordu:flex-1 ordu:min-w-0 ordu:space-y-1">

@@ -1,4 +1,4 @@
-import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import { type ComponentPropsWithoutRef, forwardRef, type ReactNode } from "react";
 import { cn } from "@/utils/cn";
 
 export interface EmptyStateProps extends Omit<ComponentPropsWithoutRef<"div">, "title"> {
@@ -24,7 +24,8 @@ const EmptyState = forwardRef<HTMLDivElement, EmptyStateProps>(
         "ordu:flex ordu:flex-col ordu:items-center ordu:justify-center ordu:gap-2 ordu:text-center ordu:px-6 ordu:py-10",
         className,
       )}
-      {...props}>
+      {...props}
+    >
       {icon && (
         <div className="ordu:mb-1 ordu:flex ordu:h-10 ordu:w-10 ordu:shrink-0 ordu:items-center ordu:justify-center ordu:rounded-lg ordu:border ordu:bg-muted ordu:text-muted-foreground ordu:[&>svg]:h-5 ordu:[&>svg]:w-5">
           {icon}

@@ -1,2 +1,2 @@
+export type { TabsIndicatorProps, TabsListProps, TabsPanelProps, TabsRootProps, TabsTabProps } from "./Tabs";
 export { Tabs } from "./Tabs";
-export type { TabsRootProps, TabsListProps, TabsTabProps, TabsPanelProps, TabsIndicatorProps } from "./Tabs";

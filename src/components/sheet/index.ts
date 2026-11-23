@@ -1,14 +1,13 @@
-export { Sheet, sheetPopupVariants } from "./Sheet";
 export type {
-  SheetRootProps,
-  SheetTriggerProps,
-  SheetPortalProps,
   SheetBackdropProps,
-  SheetPopupProps,
-  SheetTitleProps,
-  SheetDescriptionProps,
   SheetCloseProps,
+  SheetDescriptionProps,
+  SheetPopupProps,
+  SheetPortalProps,
+  SheetRootProps,
+  SheetTitleProps,
+  SheetTriggerProps,
 } from "./Sheet";
-
-export { SimpleSheet } from "./SimpleSheet";
+export { Sheet, sheetPopupVariants } from "./Sheet";
 export type { SimpleSheetProps } from "./SimpleSheet";
+export { SimpleSheet } from "./SimpleSheet";

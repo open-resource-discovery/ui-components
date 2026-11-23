@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useEffect, useRef, useState } from 'react';
-import { IconButton } from '../src/components/icon-button';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useEffect, useRef, useState } from "react";
+import { IconButton } from "../src/components/icon-button";
 
 const StarIcon = (
   <svg
@@ -12,7 +12,8 @@ const StarIcon = (
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
-    strokeLinejoin="round">
+    strokeLinejoin="round"
+  >
     <path d="M11.5 2.8 14 8l5.7.8-4.1 4 1 5.7-5.1-2.7-5.1 2.7 1-5.7-4.1-4L9 8Z" />
   </svg>
 );
@@ -27,18 +28,19 @@ const CheckIcon = (
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
-    strokeLinejoin="round">
+    strokeLinejoin="round"
+  >
     <path d="M20 6 9 17l-5-5" />
   </svg>
 );
 
 const meta = {
-  title: 'Metadata UI/IconButton',
+  title: "Metadata UI/IconButton",
   component: IconButton,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 } satisfies Meta<typeof IconButton>;
 
 export default meta;
@@ -47,7 +49,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     icon: StarIcon,
-    label: 'Favourite',
+    label: "Favourite",
   },
 };
 
@@ -57,9 +59,9 @@ export const TwoIcons: Story = {
   args: {
     icon: StarIcon,
     activeIcon: CheckIcon,
-    label: 'Favourite',
-    variant: 'ghost',
-    size: 'icon',
+    label: "Favourite",
+    variant: "ghost",
+    size: "icon",
   },
   render: (args) => {
     const [active, setActive] = useState(false);
@@ -71,7 +73,7 @@ export const TwoIcons: Story = {
       <IconButton
         {...args}
         active={active}
-        label={active ? 'Favourited' : 'Favourite'}
+        label={active ? "Favourited" : "Favourite"}
         onClick={() => {
           setActive(true);
           clearTimeout(timer.current);
@@ -85,8 +87,8 @@ export const TwoIcons: Story = {
 export const Outline: Story = {
   args: {
     icon: StarIcon,
-    label: 'Favourite',
-    variant: 'outline',
-    size: 'sm',
+    label: "Favourite",
+    variant: "outline",
+    size: "sm",
   },
 };

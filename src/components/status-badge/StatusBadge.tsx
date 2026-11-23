@@ -1,5 +1,5 @@
-import { forwardRef, type HTMLAttributes, type ReactNode } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import { forwardRef, type HTMLAttributes, type ReactNode } from "react";
 import { cn } from "@/utils/cn";
 
 export type StatusTone = "neutral" | "info" | "success" | "warning" | "critical";
@@ -38,7 +38,8 @@ const dotVariants = cva("ordu:h-1.5 ordu:w-1.5 ordu:shrink-0 ordu:rounded-full",
 });
 
 export interface StatusBadgeProps
-  extends Omit<HTMLAttributes<HTMLSpanElement>, "children">, VariantProps<typeof statusBadgeVariants> {
+  extends Omit<HTMLAttributes<HTMLSpanElement>, "children">,
+    VariantProps<typeof statusBadgeVariants> {
   /** Visible, caller-provided label. The component ships no default text. */
   label: ReactNode;
   /** Show the leading tone dot. Ignored when `icon` is provided. */

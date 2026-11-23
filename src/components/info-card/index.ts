@@ -1,10 +1,10 @@
-export { InfoCard } from "./InfoCard";
 export type {
-  InfoCardRootProps,
+  InfoCardContentProps,
   InfoCardHeaderProps,
   InfoCardIconProps,
-  InfoCardTitleProps,
-  InfoCardSubtitleProps,
-  InfoCardContentProps,
+  InfoCardRootProps,
   InfoCardSectionProps,
+  InfoCardSubtitleProps,
+  InfoCardTitleProps,
 } from "./InfoCard";
+export { InfoCard } from "./InfoCard";

@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { TypingIndicator } from '../src/components/typing-indicator';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { TypingIndicator } from "../src/components/typing-indicator";
 
 const meta = {
-  title: 'Components/TypingIndicator',
+  title: "Components/TypingIndicator",
   component: TypingIndicator,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 } satisfies Meta<typeof TypingIndicator>;
 
 export default meta;

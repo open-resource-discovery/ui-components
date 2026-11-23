@@ -1,7 +1,7 @@
-import React, { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { Dialog as BaseDialog } from "@base-ui/react/dialog";
-import { cn } from "@/utils/cn";
+import React, { type ComponentPropsWithoutRef, forwardRef } from "react";
 import { usePortalContainer } from "@/theme/ThemeRoot";
+import { cn } from "@/utils/cn";
 
 /* ----- Root ----- */
 type DialogRootProps = ComponentPropsWithoutRef<typeof BaseDialog.Root>;
@@ -106,12 +106,12 @@ export const Dialog = Object.assign(
 );
 
 export type {
-  DialogRootProps,
-  DialogTriggerProps,
-  DialogPortalProps,
   DialogBackdropProps,
-  DialogPopupProps,
-  DialogTitleProps,
-  DialogDescriptionProps,
   DialogCloseProps,
+  DialogDescriptionProps,
+  DialogPopupProps,
+  DialogPortalProps,
+  DialogRootProps,
+  DialogTitleProps,
+  DialogTriggerProps,
 };

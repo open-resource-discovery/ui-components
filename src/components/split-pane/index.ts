@@ -1,2 +1,2 @@
+export type { SplitPaneHandleProps, SplitPanelProps, SplitPaneRootProps } from "./SplitPane";
 export { SplitPane } from "./SplitPane";
-export type { SplitPaneRootProps, SplitPanelProps, SplitPaneHandleProps } from "./SplitPane";

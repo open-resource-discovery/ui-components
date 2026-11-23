@@ -1,2 +1,2 @@
+export type { SectionCardContentProps, SectionCardHeaderProps, SectionCardRootProps } from "./SectionCard";
 export { SectionCard } from "./SectionCard";
-export type { SectionCardRootProps, SectionCardHeaderProps, SectionCardContentProps } from "./SectionCard";

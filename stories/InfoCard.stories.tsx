@@ -1,16 +1,16 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { InfoCard } from '../src/components/info-card';
-import { CollapsibleSection } from '../src/components/collapsible-section';
-import { MarkdownText } from '../src/components/markdown-text';
-import { Badge } from '../src/components/badge';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Badge } from "../src/components/badge";
+import { CollapsibleSection } from "../src/components/collapsible-section";
+import { InfoCard } from "../src/components/info-card";
+import { MarkdownText } from "../src/components/markdown-text";
 
 const meta = {
-  title: 'Components/InfoCard',
+  title: "Components/InfoCard",
   component: InfoCard,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div style={{ width: "100%", maxWidth: 450 }}>
@@ -42,9 +42,15 @@ export const Default: Story = {
             <CollapsibleSection.Trigger>Capabilities</CollapsibleSection.Trigger>
             <CollapsibleSection.Content>
               <div className="flex flex-wrap gap-1.5">
-                <Badge variant="secondary" size="sm">Tools</Badge>
-                <Badge variant="secondary" size="sm">Resources</Badge>
-                <Badge variant="secondary" size="sm">Prompts</Badge>
+                <Badge variant="secondary" size="sm">
+                  Tools
+                </Badge>
+                <Badge variant="secondary" size="sm">
+                  Resources
+                </Badge>
+                <Badge variant="secondary" size="sm">
+                  Prompts
+                </Badge>
               </div>
             </CollapsibleSection.Content>
           </CollapsibleSection.Root>
@@ -52,7 +58,9 @@ export const Default: Story = {
         <InfoCard.Section>
           <CollapsibleSection.Root>
             <CollapsibleSection.Trigger>
-              <Badge variant="outline" size="sm">3</Badge>
+              <Badge variant="outline" size="sm">
+                3
+              </Badge>
               Tools
             </CollapsibleSection.Trigger>
             <CollapsibleSection.Content>
@@ -74,7 +82,18 @@ export const WithCustomIcon: Story = {
     <InfoCard>
       <InfoCard.Header>
         <InfoCard.Icon>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-muted-foreground">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="text-muted-foreground"
+          >
             <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
           </svg>
         </InfoCard.Icon>
@@ -85,7 +104,11 @@ export const WithCustomIcon: Story = {
       </InfoCard.Header>
       <InfoCard.Content>
         <InfoCard.Section>
-          <MarkdownText text={'Get current weather, forecasts, and historical data for any location worldwide.\n\n- Temperature\n- Humidity\n- Wind speed'} />
+          <MarkdownText
+            text={
+              "Get current weather, forecasts, and historical data for any location worldwide.\n\n- Temperature\n- Humidity\n- Wind speed"
+            }
+          />
         </InfoCard.Section>
       </InfoCard.Content>
     </InfoCard>
@@ -103,7 +126,8 @@ export const MarkdownOnly: Story = {
       </InfoCard.Header>
       <InfoCard.Content>
         <InfoCard.Section>
-          <MarkdownText text={`## Getting Started
+          <MarkdownText
+            text={`## Getting Started
 
 Install the package:
 
@@ -115,7 +139,8 @@ Then import and use:
 
 \`\`\`tsx
 import { InfoCard } from '@open-resource-discovery/ui-components';
-\`\`\``} />
+\`\`\``}
+          />
         </InfoCard.Section>
       </InfoCard.Content>
     </InfoCard>

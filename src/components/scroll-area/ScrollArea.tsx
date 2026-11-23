@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef, type ComponentPropsWithoutRef } from "react";
+import { type ComponentPropsWithoutRef, forwardRef, useEffect, useRef } from "react";
 import { cn } from "@/utils/cn";
 
 export type ScrollAreaProps = ComponentPropsWithoutRef<"div"> & {

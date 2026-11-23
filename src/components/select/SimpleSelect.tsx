@@ -1,6 +1,6 @@
-import React, { forwardRef, useMemo, type ComponentPropsWithoutRef } from "react";
-import { Select } from "./Select";
+import React, { type ComponentPropsWithoutRef, forwardRef, useMemo } from "react";
 import { cn } from "@/utils/cn";
+import { Select } from "./Select";
 
 export interface SelectItem {
   value: string;
@@ -51,7 +51,8 @@ export const SimpleSelect = forwardRef<HTMLDivElement, SimpleSelectProps>(
             onChange?.(val as string);
           }}
           disabled={disabled}
-          items={itemsMap}>
+          items={itemsMap}
+        >
           <Select.Trigger>
             <Select.Value placeholder={placeholder} />
             <Select.Icon />

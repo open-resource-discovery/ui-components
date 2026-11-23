@@ -1,8 +1,8 @@
-import React, { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { Dialog as BaseDialog } from "@base-ui/react/dialog";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/utils/cn";
+import React, { type ComponentPropsWithoutRef, forwardRef } from "react";
 import { usePortalContainer } from "@/theme/ThemeRoot";
+import { cn } from "@/utils/cn";
 
 /* ----- Root ----- */
 type SheetRootProps = ComponentPropsWithoutRef<typeof BaseDialog.Root>;
@@ -116,15 +116,14 @@ export const Sheet = Object.assign(
   },
 );
 
-export { sheetPopupVariants };
-
 export type {
-  SheetRootProps,
-  SheetTriggerProps,
-  SheetPortalProps,
   SheetBackdropProps,
-  SheetPopupProps,
-  SheetTitleProps,
-  SheetDescriptionProps,
   SheetCloseProps,
+  SheetDescriptionProps,
+  SheetPopupProps,
+  SheetPortalProps,
+  SheetRootProps,
+  SheetTitleProps,
+  SheetTriggerProps,
 };
+export { sheetPopupVariants };

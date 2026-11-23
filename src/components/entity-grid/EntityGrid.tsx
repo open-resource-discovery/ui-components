@@ -1,4 +1,4 @@
-import { type CSSProperties, type ComponentPropsWithoutRef, type ReactElement, type ReactNode } from "react";
+import type { ComponentPropsWithoutRef, CSSProperties, ReactElement, ReactNode } from "react";
 import { cn } from "@/utils/cn";
 
 export interface EntityGridProps<T> extends Omit<ComponentPropsWithoutRef<"div">, "children"> {

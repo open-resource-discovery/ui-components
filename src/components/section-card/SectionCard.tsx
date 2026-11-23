@@ -1,4 +1,4 @@
-import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import { type ComponentPropsWithoutRef, forwardRef, type ReactNode } from "react";
 import { cn } from "@/utils/cn";
 
 export type SectionCardRootProps = ComponentPropsWithoutRef<"div"> & {
@@ -12,7 +12,8 @@ const Root = forwardRef<HTMLDivElement, SectionCardRootProps>(({ className, chil
       "ordu:rounded-lg ordu:border ordu:border-card-border ordu:bg-card-bg ordu:overflow-hidden",
       className,
     )}
-    {...props}>
+    {...props}
+  >
     {children}
   </div>
 ));
@@ -29,7 +30,8 @@ const Header = forwardRef<HTMLDivElement, SectionCardHeaderProps>(
     <div
       ref={ref}
       className={cn("ordu:flex ordu:flex-wrap ordu:items-center ordu:gap-2 ordu:px-4 ordu:py-3", className)}
-      {...props}>
+      {...props}
+    >
       {icon && <span className="ordu:shrink-0 ordu:h-4 ordu:w-4 ordu:[&>svg]:h-full ordu:[&>svg]:w-full">{icon}</span>}
       <span className="ordu:text-sm ordu:font-medium ordu:flex-1 ordu:truncate">{title}</span>
       {badges && <div className="ordu:flex ordu:items-center ordu:gap-1.5">{badges}</div>}

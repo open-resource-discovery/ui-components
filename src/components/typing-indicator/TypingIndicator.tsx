@@ -1,4 +1,4 @@
-import { forwardRef, type ComponentPropsWithoutRef } from "react";
+import { type ComponentPropsWithoutRef, forwardRef } from "react";
 import { cn } from "@/utils/cn";
 
 export type TypingIndicatorProps = ComponentPropsWithoutRef<"div">;

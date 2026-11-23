@@ -1,16 +1,15 @@
-export { Combobox } from "./Combobox";
 export type {
-  ComboboxRootProps,
+  ComboboxEmptyProps,
+  ComboboxGroupLabelProps,
+  ComboboxGroupProps,
   ComboboxInputProps,
+  ComboboxItemIndicatorProps,
+  ComboboxItemProps,
+  ComboboxPopupProps,
   ComboboxPortalProps,
   ComboboxPositionerProps,
-  ComboboxPopupProps,
-  ComboboxItemProps,
-  ComboboxItemIndicatorProps,
-  ComboboxEmptyProps,
-  ComboboxGroupProps,
-  ComboboxGroupLabelProps,
+  ComboboxRootProps,
 } from "./Combobox";
-
+export { Combobox } from "./Combobox";
+export type { ComboboxItem, SimpleComboboxProps } from "./SimpleCombobox";
 export { SimpleCombobox } from "./SimpleCombobox";
-export type { SimpleComboboxProps, ComboboxItem } from "./SimpleCombobox";

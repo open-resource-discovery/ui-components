@@ -81,7 +81,8 @@ export const ResourceCard: Story = {
           borderRadius: 9999,
           padding: "2px 9px",
           fontSize: 11,
-        }}>
+        }}
+      >
         OData v4
       </span>
     ),
@@ -176,12 +177,13 @@ export const HostThemeBridge: Story = {
     <ThemeRoot
       style={
         {
-          "padding": 24,
-          "width": 340,
+          padding: 24,
+          width: 340,
           "--ord-radius": "0.375rem",
           "--ord-primary": "#0070d2",
         } as React.CSSProperties
-      }>
+      }
+    >
       <EntityCard
         size="sm"
         icon={BoxIcon}

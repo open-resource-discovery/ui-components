@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Input } from '../src/components/input';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Input } from "../src/components/input";
 
 const meta = {
-  title: 'Components/Input',
+  title: "Components/Input",
   component: Input,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div className="w-full max-w-[320px]">
@@ -22,32 +22,32 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    placeholder: 'Enter text...',
+    placeholder: "Enter text...",
   },
 };
 
 export const WithValue: Story = {
   args: {
-    defaultValue: 'Hello, World!',
+    defaultValue: "Hello, World!",
   },
 };
 
 export const Disabled: Story = {
   args: {
-    placeholder: 'Disabled input',
+    placeholder: "Disabled input",
     disabled: true,
   },
 };
 
 export const WithType: Story = {
   args: {
-    type: 'email',
-    placeholder: 'name@example.com',
+    type: "email",
+    placeholder: "name@example.com",
   },
 };
 
 export const File: Story = {
   args: {
-    type: 'file',
+    type: "file",
   },
 };

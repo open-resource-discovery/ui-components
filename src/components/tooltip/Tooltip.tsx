@@ -1,7 +1,7 @@
-import React, { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { Tooltip as BaseTooltip } from "@base-ui/react/tooltip";
-import { cn } from "@/utils/cn";
+import React, { type ComponentPropsWithoutRef, forwardRef } from "react";
 import { usePortalContainer } from "@/theme/ThemeRoot";
+import { cn } from "@/utils/cn";
 
 /* ----- Provider ----- */
 type TooltipProviderProps = ComponentPropsWithoutRef<typeof BaseTooltip.Provider>;
@@ -82,11 +82,11 @@ export const Tooltip = Object.assign(
 );
 
 export type {
+  TooltipArrowProps,
+  TooltipPopupProps,
+  TooltipPortalProps,
+  TooltipPositionerProps,
   TooltipProviderProps,
   TooltipRootProps,
   TooltipTriggerProps,
-  TooltipPortalProps,
-  TooltipPositionerProps,
-  TooltipPopupProps,
-  TooltipArrowProps,
 };

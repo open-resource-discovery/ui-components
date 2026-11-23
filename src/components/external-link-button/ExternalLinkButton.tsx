@@ -1,7 +1,7 @@
 import { forwardRef, type ReactNode } from "react";
+import { type ButtonProps, buttonVariants } from "@/components/button";
 import { cn } from "@/utils/cn";
-import { buttonVariants, type ButtonProps } from "@/components/button";
-import { type LinkRender } from "@/utils/link";
+import type { LinkRender } from "@/utils/link";
 
 export interface ExternalLinkButtonProps extends Pick<ButtonProps, "variant" | "size"> {
   /** Navigation target for the native `<a>` fallback. Ignored when `render` is provided. */
@@ -25,7 +25,8 @@ const ExternalLinkIcon = (
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
-    strokeLinejoin="round">
+    strokeLinejoin="round"
+  >
     <path d="M15 3h6v6" />
     <path d="M10 14 21 3" />
     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
@@ -43,11 +44,11 @@ const ExternalLinkButton = forwardRef<HTMLAnchorElement, ExternalLinkButtonProps
     const classes = cn(buttonVariants({ variant, size, className }));
     if (render) {
       return render({
-        "className": classes,
-        "children": icon,
+        className: classes,
+        children: icon,
         "aria-label": label,
-        "target": "_blank",
-        "rel": "noopener noreferrer",
+        target: "_blank",
+        rel: "noopener noreferrer",
       });
     }
     return (

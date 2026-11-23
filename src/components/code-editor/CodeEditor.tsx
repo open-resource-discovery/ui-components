@@ -1,8 +1,8 @@
-import { forwardRef, useState, useEffect, useRef, useCallback, type ComponentPropsWithoutRef } from "react";
 // Type-only import — erased at build, so it creates no runtime dependency on the optional
 // `@monaco-editor/react` peer. The component itself is loaded lazily via a runtime import()
 // (see the effect below) so consumers that never render CodeEditor don't have to install Monaco.
 import type { BeforeMount, OnMount } from "@monaco-editor/react";
+import { type ComponentPropsWithoutRef, forwardRef, useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/button";
 import { cn } from "@/utils/cn";
 
@@ -219,7 +219,8 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
           "ordu:h-full ordu:rounded-lg ordu:border ordu:overflow-hidden ordu:flex ordu:flex-col",
           className,
         )}
-        {...props}>
+        {...props}
+      >
         {showToolbar && (
           <div className="ordu:flex ordu:h-10 ordu:items-center ordu:gap-1 ordu:border-b ordu:bg-muted/30 ordu:px-2">
             <Button variant="ghost" size="sm" onClick={handleFormat} disabled={!value.trim()}>
@@ -231,7 +232,8 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="ordu:h-4 ordu:w-4">
+                className="ordu:h-4 ordu:w-4"
+              >
                 <path d="M15 4V2" />
                 <path d="M15 16v-2" />
                 <path d="M8 9h2" />
@@ -254,7 +256,8 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="ordu:h-4 ordu:w-4 ordu:text-success">
+                  className="ordu:h-4 ordu:w-4 ordu:text-success"
+                >
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
               ) : (
@@ -266,7 +269,8 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="ordu:h-4 ordu:w-4">
+                  className="ordu:h-4 ordu:w-4"
+                >
                   <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
                   <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
                 </svg>
@@ -283,7 +287,8 @@ export const CodeEditor = forwardRef<HTMLDivElement, CodeEditorProps>(
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="ordu:h-4 ordu:w-4">
+                className="ordu:h-4 ordu:w-4"
+              >
                 <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
                 <path d="M3 3v5h5" />
               </svg>

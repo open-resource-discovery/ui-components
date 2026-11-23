@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Tabs } from '../src/components/tabs';
-import { Badge } from '../src/components/badge';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Badge } from "../src/components/badge";
+import { Tabs } from "../src/components/tabs";
 
 const meta = {
-  title: 'Components/Tabs',
+  title: "Components/Tabs",
   component: Tabs.Root,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 } satisfies Meta<typeof Tabs.Root>;
 
 export default meta;
@@ -24,13 +24,13 @@ export const Default: Story = {
           <Tabs.Tab value="settings">Settings</Tabs.Tab>
         </Tabs.List>
         <Tabs.Panel value="account">
-          <p style={{ padding: '16px 0' }}>Manage your account settings and preferences.</p>
+          <p style={{ padding: "16px 0" }}>Manage your account settings and preferences.</p>
         </Tabs.Panel>
         <Tabs.Panel value="password">
-          <p style={{ padding: '16px 0' }}>Change your password here.</p>
+          <p style={{ padding: "16px 0" }}>Change your password here.</p>
         </Tabs.Panel>
         <Tabs.Panel value="settings">
-          <p style={{ padding: '16px 0' }}>Configure your application settings.</p>
+          <p style={{ padding: "16px 0" }}>Configure your application settings.</p>
         </Tabs.Panel>
       </Tabs.Root>
     </div>
@@ -45,15 +45,21 @@ export const WithBadges: Story = {
           <Tabs.Tab value="preview">Preview</Tabs.Tab>
           <Tabs.Tab value="validation">
             Validation
-            <Badge variant="destructive" size="sm">3</Badge>
+            <Badge variant="destructive" size="sm">
+              3
+            </Badge>
           </Tabs.Tab>
           <Tabs.Tab value="tools">
             Tools
-            <Badge variant="secondary" size="sm">5</Badge>
+            <Badge variant="secondary" size="sm">
+              5
+            </Badge>
           </Tabs.Tab>
           <Tabs.Tab value="logs">
             HTTP Log
-            <Badge variant="outline" size="sm">12</Badge>
+            <Badge variant="outline" size="sm">
+              12
+            </Badge>
           </Tabs.Tab>
         </Tabs.List>
         <Tabs.Panel value="preview">

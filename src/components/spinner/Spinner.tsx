@@ -1,5 +1,5 @@
-import { forwardRef, type HTMLAttributes } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import { forwardRef, type HTMLAttributes } from "react";
 import { cn } from "@/utils/cn";
 
 const spinnerVariants = cva("ordu:animate-ord-spin ordu:text-spinner-fg", {
@@ -27,7 +27,8 @@ const Spinner = forwardRef<SVGSVGElement, SpinnerProps>(({ className, size, ...p
       fill="none"
       viewBox="0 0 24 24"
       className={cn(spinnerVariants({ size, className }))}
-      {...props}>
+      {...props}
+    >
       <circle className="ordu:opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
       <path
         className="ordu:opacity-75"

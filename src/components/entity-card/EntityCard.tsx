@@ -1,8 +1,8 @@
-import { forwardRef, type HTMLAttributes, type MouseEventHandler, type ReactNode, type Ref } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/utils/cn";
-import { type LinkRender } from "@/utils/link";
+import { forwardRef, type HTMLAttributes, type MouseEventHandler, type ReactNode, type Ref } from "react";
 import { StatusBadge, type StatusTone } from "@/components/status-badge";
+import { cn } from "@/utils/cn";
+import type { LinkRender } from "@/utils/link";
 
 export interface EntityStatus {
   label: ReactNode;
@@ -49,8 +49,7 @@ const cardVariants = cva(
 );
 
 export interface EntityCardProps
-  extends
-    EntityCardModel,
+  extends EntityCardModel,
     Omit<HTMLAttributes<HTMLElement>, "title" | "onClick" | "color">,
     VariantProps<typeof cardVariants> {
   /** Optional leading icon. */
@@ -163,8 +162,8 @@ const EntityCard = forwardRef<HTMLElement, EntityCardProps>(
     if (action) {
       if (actionIsInteractive && render) {
         actionEl = render({
-          "className": actionCls,
-          "children": action,
+          className: actionCls,
+          children: action,
           "aria-label": ariaLabel,
           "aria-disabled": disabled || undefined,
         });
@@ -218,7 +217,8 @@ const EntityCard = forwardRef<HTMLElement, EntityCardProps>(
             className={cn(
               "ordu:mt-2.5 ordu:m-0 ordu:text-entitycard-description-fg",
               isSm ? "ordu:text-xs ordu:leading-normal" : "ordu:text-[13.5px] ordu:leading-relaxed",
-            )}>
+            )}
+          >
             {description}
           </p>
         )}
@@ -244,7 +244,8 @@ const EntityCard = forwardRef<HTMLElement, EntityCardProps>(
               {metrics.map((m, i) => (
                 <span
                   key={i}
-                  className="ordu:inline-flex ordu:items-center ordu:gap-1 ordu:rounded-md ordu:bg-entitycard-chip-bg ordu:px-2 ordu:py-1 ordu:text-[11.5px] ordu:text-entitycard-chip-fg">
+                  className="ordu:inline-flex ordu:items-center ordu:gap-1 ordu:rounded-md ordu:bg-entitycard-chip-bg ordu:px-2 ordu:py-1 ordu:text-[11.5px] ordu:text-entitycard-chip-fg"
+                >
                   <b className="ordu:font-bold ordu:text-entitycard-chip-value-fg">{m.value}</b>
                   {m.label}
                 </span>
@@ -257,7 +258,8 @@ const EntityCard = forwardRef<HTMLElement, EntityCardProps>(
             className={cn(
               "ordu:mt-4 ordu:flex ordu:items-center ordu:gap-2 ordu:pt-3.5 ordu:text-xs ordu:text-entitycard-subtitle-fg",
               footerDivider && "ordu:border-t ordu:border-entitycard-divider",
-            )}>
+            )}
+          >
             {footer}
             {actionEl}
           </div>
@@ -274,8 +276,8 @@ const EntityCard = forwardRef<HTMLElement, EntityCardProps>(
 
     if (cardIsInteractive && render) {
       return render({
-        "className": cls,
-        "children": body,
+        className: cls,
+        children: body,
         "aria-label": ariaLabel,
         "aria-disabled": disabled || undefined,
         ...props,
@@ -289,7 +291,8 @@ const EntityCard = forwardRef<HTMLElement, EntityCardProps>(
           aria-label={ariaLabel}
           aria-disabled={disabled || undefined}
           className={cls}
-          {...props}>
+          {...props}
+        >
           {body}
         </a>
       );
@@ -303,7 +306,8 @@ const EntityCard = forwardRef<HTMLElement, EntityCardProps>(
           disabled={disabled}
           aria-label={ariaLabel}
           className={cls}
-          {...props}>
+          {...props}
+        >
           {body}
         </button>
       );
@@ -314,7 +318,8 @@ const EntityCard = forwardRef<HTMLElement, EntityCardProps>(
         aria-label={action ? undefined : ariaLabel}
         aria-disabled={disabled || undefined}
         className={cls}
-        {...props}>
+        {...props}
+      >
         {body}
       </article>
     );

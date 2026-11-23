@@ -1,27 +1,24 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useState } from 'react';
-import { Combobox } from '../src/components/combobox';
-import { SimpleCombobox } from '../src/components/combobox';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useState } from "react";
+import { Combobox, SimpleCombobox } from "../src/components/combobox";
 
 const meta = {
-  title: 'Components/Combobox',
+  title: "Components/Combobox",
   component: Combobox.Root,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 } satisfies Meta<typeof Combobox.Root>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const fruits = ['Apple', 'Banana', 'Cherry', 'Grape', 'Kiwi', 'Mango', 'Orange', 'Peach', 'Pear', 'Strawberry'];
+const fruits = ["Apple", "Banana", "Cherry", "Grape", "Kiwi", "Mango", "Orange", "Peach", "Pear", "Strawberry"];
 
 function ComboboxExample() {
-  const [inputValue, setInputValue] = useState('');
-  const filteredFruits = fruits.filter((fruit) =>
-    fruit.toLowerCase().includes(inputValue.toLowerCase()),
-  );
+  const [inputValue, setInputValue] = useState("");
+  const filteredFruits = fruits.filter((fruit) => fruit.toLowerCase().includes(inputValue.toLowerCase()));
 
   return (
     <div style={{ width: "100%", maxWidth: 240 }}>
@@ -79,11 +76,7 @@ const fruitItems = fruits.map((f) => ({ value: f.toLowerCase(), label: f }));
 export const Simple: Story = {
   render: () => (
     <div style={{ width: "100%", maxWidth: 240 }}>
-      <SimpleCombobox
-        items={fruitItems}
-        placeholder="Pick a fruit..."
-        maxVisibleItems={5}
-      />
+      <SimpleCombobox items={fruitItems} placeholder="Pick a fruit..." maxVisibleItems={5} />
     </div>
   ),
 };

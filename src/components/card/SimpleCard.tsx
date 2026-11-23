@@ -1,6 +1,6 @@
-import React, { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
-import { Card } from "./Card";
+import React, { type ComponentPropsWithoutRef, forwardRef, type ReactNode } from "react";
 import { cn } from "@/utils/cn";
+import { Card } from "./Card";
 
 export interface SimpleCardProps extends Omit<ComponentPropsWithoutRef<"div">, "title" | "content"> {
   title?: ReactNode;

@@ -1,5 +1,5 @@
-import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { Switch as BaseSwitch } from "@base-ui/react/switch";
+import { type ComponentPropsWithoutRef, forwardRef } from "react";
 import { cn } from "@/utils/cn";
 
 /* ----- Root ----- */
@@ -12,7 +12,8 @@ const SwitchRoot = forwardRef<HTMLButtonElement, SwitchRootProps>(({ className, 
       "ordu:peer ordu:inline-flex ordu:h-5 ordu:w-9 ordu:shrink-0 ordu:cursor-pointer ordu:items-center ordu:rounded-full ordu:border-2 ordu:border-transparent ordu:transition-colors ordu:focus-visible:outline-none ordu:focus-visible:ring-2 ordu:focus-visible:ring-ring ordu:focus-visible:ring-offset-2 ordu:disabled:cursor-not-allowed ordu:disabled:opacity-50 ordu:data-[checked]:bg-switch-track-on ordu:data-[unchecked]:bg-switch-track-off",
       className,
     )}
-    {...props}>
+    {...props}
+  >
     {children}
   </BaseSwitch.Root>
 ));

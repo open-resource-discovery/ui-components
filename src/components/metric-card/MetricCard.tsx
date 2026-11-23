@@ -1,4 +1,4 @@
-import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import { type ComponentPropsWithoutRef, forwardRef, type ReactNode } from "react";
 import { cn } from "@/utils/cn";
 
 export type TrendDirection = "up" | "down" | "flat";
@@ -53,7 +53,8 @@ const MetricCard = forwardRef<HTMLDivElement, MetricCardProps>(
           "ordu:bg-card-bg ordu:text-card-fg ordu:border ordu:border-card-border ordu:rounded-[var(--ord-radius)] ordu:shadow-sm ordu:p-4 ordu:flex ordu:flex-col ordu:gap-1.5",
           className,
         )}
-        {...props}>
+        {...props}
+      >
         <div className="ordu:flex ordu:items-start ordu:justify-between ordu:gap-2">
           <span className="ordu:text-xs ordu:font-medium ordu:text-muted-foreground">{label}</span>
           {icon && (
@@ -70,7 +71,8 @@ const MetricCard = forwardRef<HTMLDivElement, MetricCardProps>(
             {trend && (
               <span
                 className={cn("ordu:inline-flex ordu:items-center ordu:gap-0.5 ordu:font-medium", toneClass[tone])}
-                aria-label={trend.label}>
+                aria-label={trend.label}
+              >
                 <svg
                   aria-hidden="true"
                   viewBox="0 0 24 24"
@@ -80,7 +82,8 @@ const MetricCard = forwardRef<HTMLDivElement, MetricCardProps>(
                   stroke="currentColor"
                   strokeWidth="2.5"
                   strokeLinecap="round"
-                  strokeLinejoin="round">
+                  strokeLinejoin="round"
+                >
                   <path d={arrowPath[trend.direction]} />
                 </svg>
                 {trend.value}

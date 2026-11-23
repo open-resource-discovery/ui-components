@@ -1,4 +1,4 @@
-import { createContext, forwardRef, useContext, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import { type ComponentPropsWithoutRef, createContext, forwardRef, type ReactNode, useContext } from "react";
 import { Group, Panel, Separator } from "react-resizable-panels";
 import { cn } from "@/utils/cn";
 
@@ -22,7 +22,8 @@ const Root = forwardRef<HTMLDivElement, SplitPaneRootProps>(
           className={cn("ordu:h-full ordu:overflow-hidden", className)}
           style={style}
           elementRef={ref}
-          {...props}>
+          {...props}
+        >
           {children}
         </Group>
       </OrientationContext.Provider>
@@ -79,7 +80,8 @@ const PanelSlot = forwardRef<HTMLDivElement, SplitPanelProps>(
         className={cn("ordu:overflow-auto", className)}
         style={style}
         elementRef={ref}
-        {...props}>
+        {...props}
+      >
         {children}
       </Panel>
     );
@@ -104,13 +106,15 @@ const Handle = forwardRef<HTMLDivElement, SplitPaneHandleProps>(({ showGrip = tr
         className,
       )}
       elementRef={ref}
-      {...props}>
+      {...props}
+    >
       {showGrip && (
         <div
           className={cn(
             "ordu:absolute ordu:z-10 ordu:flex ordu:items-center ordu:justify-center ordu:rounded-sm ordu:bg-border ordu:opacity-0 ordu:transition-opacity ordu:group-hover:opacity-100",
             isHorizontal ? "ordu:h-8 ordu:w-4" : "ordu:h-4 ordu:w-8",
-          )}>
+          )}
+        >
           {isHorizontal ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -122,7 +126,8 @@ const Handle = forwardRef<HTMLDivElement, SplitPaneHandleProps>(({ showGrip = tr
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="ordu:text-muted-foreground">
+              className="ordu:text-muted-foreground"
+            >
               <circle cx="9" cy="12" r="1" />
               <circle cx="9" cy="5" r="1" />
               <circle cx="9" cy="19" r="1" />
@@ -141,7 +146,8 @@ const Handle = forwardRef<HTMLDivElement, SplitPaneHandleProps>(({ showGrip = tr
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="ordu:text-muted-foreground">
+              className="ordu:text-muted-foreground"
+            >
               <circle cx="12" cy="9" r="1" />
               <circle cx="5" cy="9" r="1" />
               <circle cx="19" cy="9" r="1" />

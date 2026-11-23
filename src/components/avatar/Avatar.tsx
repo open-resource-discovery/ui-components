@@ -1,6 +1,6 @@
-import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { Avatar as BaseAvatar } from "@base-ui/react/avatar";
 import { cva, type VariantProps } from "class-variance-authority";
+import { type ComponentPropsWithoutRef, forwardRef } from "react";
 import { cn } from "@/utils/cn";
 
 /* ----- Root ----- */

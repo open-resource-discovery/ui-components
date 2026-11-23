@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useState, type CSSProperties, type ReactNode } from "react";
+import { type CSSProperties, createContext, type ReactNode, useCallback, useContext, useEffect, useState } from "react";
 import { useTheme } from "./useTheme";
 
 const PortalContainerContext = createContext<HTMLElement | null>(null);
@@ -28,7 +28,8 @@ export function ThemeRoot({ children, defaultTheme = "system", className, style 
     <div
       ref={rootRef}
       style={style}
-      className={`ord-ui ordu:text-foreground${resolvedTheme === "dark" ? " dark" : ""}${className ? ` ${className}` : ""}`}>
+      className={`ord-ui ordu:text-foreground${resolvedTheme === "dark" ? " dark" : ""}${className ? ` ${className}` : ""}`}
+    >
       <PortalContainerContext.Provider value={rootElement}>{children}</PortalContainerContext.Provider>
     </div>
   );

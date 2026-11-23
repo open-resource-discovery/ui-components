@@ -1,7 +1,7 @@
-import React, { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { Combobox as BaseCombobox } from "@base-ui/react/combobox";
-import { cn } from "@/utils/cn";
+import React, { type ComponentPropsWithoutRef, forwardRef } from "react";
 import { usePortalContainer } from "@/theme/ThemeRoot";
+import { cn } from "@/utils/cn";
 
 /* ----- Root ----- */
 type ComboboxRootProps = ComponentPropsWithoutRef<typeof BaseCombobox.Root>;
@@ -84,7 +84,8 @@ const ComboboxItemIndicator = forwardRef<HTMLSpanElement, ComboboxItemIndicatorP
         "ordu:absolute ordu:left-2 ordu:flex ordu:h-3.5 ordu:w-3.5 ordu:items-center ordu:justify-center",
         className,
       )}
-      {...props}>
+      {...props}
+    >
       {children ?? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +96,8 @@ const ComboboxItemIndicator = forwardRef<HTMLSpanElement, ComboboxItemIndicatorP
           stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round">
+          strokeLinejoin="round"
+        >
           <polyline points="20 6 9 17 4 12" />
         </svg>
       )}
@@ -154,14 +156,14 @@ export const Combobox = Object.assign(
 );
 
 export type {
-  ComboboxRootProps,
+  ComboboxEmptyProps,
+  ComboboxGroupLabelProps,
+  ComboboxGroupProps,
   ComboboxInputProps,
+  ComboboxItemIndicatorProps,
+  ComboboxItemProps,
+  ComboboxPopupProps,
   ComboboxPortalProps,
   ComboboxPositionerProps,
-  ComboboxPopupProps,
-  ComboboxItemProps,
-  ComboboxItemIndicatorProps,
-  ComboboxEmptyProps,
-  ComboboxGroupProps,
-  ComboboxGroupLabelProps,
+  ComboboxRootProps,
 };

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { EntityGrid } from "../src/components/entity-grid";
-import { EntityCard } from "../src/components/entity-card";
 import { EmptyState } from "../src/components/empty-state";
+import { EntityCard } from "../src/components/entity-card";
+import { EntityGrid } from "../src/components/entity-grid";
 
 const meta = {
   title: "Metadata UI/EntityGrid",

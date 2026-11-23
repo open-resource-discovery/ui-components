@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 
-import { beforeEach, describe, expect, it, vi } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import type { CSSProperties } from "react";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { ThemeRoot, usePortalContainer } from "./ThemeRoot";
 
 function PortalProbe(): React.JSX.Element {

@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Checkbox } from '../src/components/checkbox';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Checkbox } from "../src/components/checkbox";
 
 const meta = {
-  title: 'Components/Checkbox',
+  title: "Components/Checkbox",
   component: Checkbox.Root,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 } satisfies Meta<typeof Checkbox.Root>;
 
 export default meta;

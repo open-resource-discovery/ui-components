@@ -1,11 +1,11 @@
-import { forwardRef, useState, type ComponentPropsWithoutRef, type ReactNode } from "react";
 import { Collapsible } from "@base-ui/react/collapsible";
-import { cn } from "@/utils/cn";
+import { type ComponentPropsWithoutRef, forwardRef, type ReactNode, useState } from "react";
 import { Badge } from "@/components/badge";
 import { Button } from "@/components/button";
 import { CodeBlock } from "@/components/code-block";
 import { CodeEditor } from "@/components/code-editor";
 import { Spinner } from "@/components/spinner";
+import { cn } from "@/utils/cn";
 
 export type HttpLogEntryEditPayload = {
   headers: Record<string, string>;
@@ -96,7 +96,8 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
           highlighted && "ordu:ring-2 ordu:ring-primary",
           className,
         )}
-        {...props}>
+        {...props}
+      >
         <Collapsible.Root open={open} onOpenChange={setOpen}>
           <Collapsible.Trigger className="ordu:flex ordu:items-center ordu:gap-2 ordu:w-full ordu:px-3 ordu:py-2 ordu:text-left ordu:hover:bg-accent/50 ordu:transition-colors ordu:cursor-pointer">
             {/* Status icon */}
@@ -112,7 +113,8 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="ordu:shrink-0 ordu:text-success">
+                className="ordu:shrink-0 ordu:text-success"
+              >
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                 <polyline points="22 4 12 14.01 9 11.01" />
               </svg>
@@ -128,7 +130,8 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="ordu:shrink-0 ordu:text-destructive">
+                className="ordu:shrink-0 ordu:text-destructive"
+              >
                 <circle cx="12" cy="12" r="10" />
                 <line x1="12" y1="8" x2="12" y2="12" />
                 <line x1="12" y1="16" x2="12.01" y2="16" />
@@ -169,7 +172,8 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                       stroke="currentColor"
                       strokeWidth="2"
                       strokeLinecap="round"
-                      strokeLinejoin="round">
+                      strokeLinejoin="round"
+                    >
                       <circle cx="12" cy="12" r="10" />
                       <polyline points="12 6 12 12 16 14" />
                     </svg>
@@ -191,7 +195,8 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className={cn("ordu:shrink-0 ordu:transition-transform", open && "ordu:rotate-180")}>
+              className={cn("ordu:shrink-0 ordu:transition-transform", open && "ordu:rotate-180")}
+            >
               <polyline points="6 9 12 15 18 9" />
             </svg>
           </Collapsible.Trigger>
@@ -212,7 +217,8 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                         stroke="currentColor"
                         strokeWidth="2"
                         strokeLinecap="round"
-                        strokeLinejoin="round">
+                        strokeLinejoin="round"
+                      >
                         <polygon points="5 3 19 12 5 21 5 3" />
                       </svg>
                       Resend
@@ -226,7 +232,8 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                         onCopy();
                         setCopied(true);
                         setTimeout(() => setCopied(false), 2000);
-                      }}>
+                      }}
+                    >
                       {copied ? (
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -238,7 +245,8 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                           strokeWidth="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          className="ordu:text-success">
+                          className="ordu:text-success"
+                        >
                           <polyline points="20 6 9 17 4 12" />
                         </svg>
                       ) : (
@@ -251,7 +259,8 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                           stroke="currentColor"
                           strokeWidth="2"
                           strokeLinecap="round"
-                          strokeLinejoin="round">
+                          strokeLinejoin="round"
+                        >
                           <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
                           <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
                         </svg>
@@ -269,7 +278,8 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                           setEditBody(formatJson(requestBody) || "");
                         }
                         setEditOpen((v) => !v);
-                      }}>
+                      }}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="12"
@@ -279,7 +289,8 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                         stroke="currentColor"
                         strokeWidth="2"
                         strokeLinecap="round"
-                        strokeLinejoin="round">
+                        strokeLinejoin="round"
+                      >
                         <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
                         <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
                       </svg>
@@ -331,7 +342,8 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                         }
                         onEdit({ headers, body: editBody });
                         setEditOpen(false);
-                      }}>
+                      }}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="12"
@@ -341,7 +353,8 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                         stroke="currentColor"
                         strokeWidth="2"
                         strokeLinecap="round"
-                        strokeLinejoin="round">
+                        strokeLinejoin="round"
+                      >
                         <polygon points="5 3 19 12 5 21 5 3" />
                       </svg>
                       Send
@@ -397,7 +410,8 @@ export const HttpLogEntry = forwardRef<HTMLDivElement, HttpLogEntryProps>(
                         statusCode < 400
                           ? "ordu:bg-success/10 ordu:text-success"
                           : "ordu:bg-destructive/10 ordu:text-destructive",
-                      )}>
+                      )}
+                    >
                       HTTP {statusCode} {responseStatus}
                     </div>
                   )}

@@ -1,26 +1,26 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { CodeBlock } from '../src/components/code-block';
-import { createHighlighter } from 'shiki';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { createHighlighter } from "shiki";
+import { CodeBlock } from "../src/components/code-block";
 
 let highlighterInstance: Awaited<ReturnType<typeof createHighlighter>> | null = null;
 
 async function getHighlighter() {
   if (!highlighterInstance) {
     highlighterInstance = await createHighlighter({
-      themes: ['github-light', 'github-dark'],
-      langs: ['typescript', 'json', 'bash', 'html', 'yaml', 'sql', 'python', 'css', 'markdown'],
+      themes: ["github-light", "github-dark"],
+      langs: ["typescript", "json", "bash", "html", "yaml", "sql", "python", "css", "markdown"],
     });
   }
   return highlighterInstance;
 }
 
 const meta = {
-  title: 'Components/CodeBlock',
+  title: "Components/CodeBlock",
   component: CodeBlock,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div style={{ width: "100%", maxWidth: 550 }}>
@@ -94,17 +94,17 @@ print(fibonacci(10))`;
 export const Default: Story = {
   args: {
     code: tsCode,
-    language: 'typescript',
+    language: "typescript",
   },
   render: (args, { loaded }) => <CodeBlock {...args} highlighter={loaded.highlighter} />,
 };
 
 export const DefaultHighlighter: Story = {
-  name: 'Default Highlighter (highlight.js)',
+  name: "Default Highlighter (highlight.js)",
   args: {
     code: jsonCode,
-    language: 'json',
-    filename: 'package.json',
+    language: "json",
+    filename: "package.json",
   },
 };
 
@@ -117,18 +117,18 @@ export const PlainText: Story = {
 export const WithFilename: Story = {
   args: {
     code: tsCode,
-    language: 'typescript',
-    filename: 'highlight.ts',
+    language: "typescript",
+    filename: "highlight.ts",
   },
   render: (args, { loaded }) => <CodeBlock {...args} highlighter={loaded.highlighter} />,
 };
 
 export const JSON_Example: Story = {
-  name: 'JSON',
+  name: "JSON",
   args: {
     code: jsonCode,
-    language: 'json',
-    filename: 'package.json',
+    language: "json",
+    filename: "package.json",
   },
   render: (args, { loaded }) => <CodeBlock {...args} highlighter={loaded.highlighter} />,
 };
@@ -136,8 +136,8 @@ export const JSON_Example: Story = {
 export const Bash: Story = {
   args: {
     code: bashCode,
-    language: 'bash',
-    filename: 'install.sh',
+    language: "bash",
+    filename: "install.sh",
   },
   render: (args, { loaded }) => <CodeBlock {...args} highlighter={loaded.highlighter} />,
 };
@@ -145,32 +145,32 @@ export const Bash: Story = {
 export const YAML: Story = {
   args: {
     code: yamlCode,
-    language: 'yaml',
-    filename: 'ci.yml',
+    language: "yaml",
+    filename: "ci.yml",
   },
 };
 
 export const SQL: Story = {
   args: {
     code: sqlCode,
-    language: 'sql',
+    language: "sql",
   },
 };
 
 export const Python: Story = {
   args: {
     code: pythonCode,
-    language: 'python',
-    filename: 'fibonacci.py',
+    language: "python",
+    filename: "fibonacci.py",
   },
 };
 
 export const WithLineNumbers: Story = {
   args: {
     code: tsCode,
-    language: 'typescript',
+    language: "typescript",
     showLineNumbers: true,
-    filename: 'example.ts',
+    filename: "example.ts",
   },
   render: (args, { loaded }) => <CodeBlock {...args} highlighter={loaded.highlighter} />,
 };
@@ -178,7 +178,7 @@ export const WithLineNumbers: Story = {
 export const NoCopyButton: Story = {
   args: {
     code: jsonCode,
-    language: 'json',
+    language: "json",
     showCopyButton: false,
   },
   render: (args, { loaded }) => <CodeBlock {...args} highlighter={loaded.highlighter} />,
@@ -186,9 +186,9 @@ export const NoCopyButton: Story = {
 
 export const LongCode: Story = {
   args: {
-    code: Array.from({ length: 50 }, (_, i) => `const line${i + 1} = "This is line ${i + 1}";`).join('\n'),
-    language: 'typescript',
-    maxHeight: '200px',
+    code: Array.from({ length: 50 }, (_, i) => `const line${i + 1} = "This is line ${i + 1}";`).join("\n"),
+    language: "typescript",
+    maxHeight: "200px",
     showLineNumbers: true,
   },
   render: (args, { loaded }) => <CodeBlock {...args} highlighter={loaded.highlighter} />,
@@ -205,8 +205,8 @@ export const Multiple: Story = {
 };
 
 export const MultipleDefaultHighlighter: Story = {
-  name: 'Multiple (default highlighter)',
-  args: { code: '' },
+  name: "Multiple (default highlighter)",
+  args: { code: "" },
   render: () => (
     <div className="flex flex-col gap-4">
       <CodeBlock code={tsCode} language="typescript" filename="app.ts" />

@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ChatMessage } from '../src/components/chat-message';
-import { Badge } from '../src/components/badge';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Badge } from "../src/components/badge";
+import { ChatMessage } from "../src/components/chat-message";
 
 const meta = {
-  title: 'Components/ChatMessage',
+  title: "Components/ChatMessage",
   component: ChatMessage,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div style={{ width: "100%", maxWidth: 400 }}>
@@ -22,7 +22,18 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const BotIcon = (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-muted-foreground">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="text-muted-foreground"
+  >
     <path d="M12 8V4H8" />
     <rect width="16" height="12" x="4" y="8" rx="2" />
     <path d="M2 14h2" />
@@ -33,7 +44,18 @@ const BotIcon = (
 );
 
 const UserIcon = (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-muted-foreground">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="text-muted-foreground"
+  >
     <circle cx="12" cy="8" r="5" />
     <path d="M20 21a8 8 0 0 0-16 0" />
   </svg>
@@ -41,7 +63,7 @@ const UserIcon = (
 
 export const UserMessage: Story = {
   args: {
-    role: 'user',
+    role: "user",
     timestamp: new Date(),
     children: <p>Hello! Can you help me with my project?</p>,
   },
@@ -49,7 +71,7 @@ export const UserMessage: Story = {
 
 export const AgentMessage: Story = {
   args: {
-    role: 'agent',
+    role: "agent",
     timestamp: new Date(),
     children: <p>Of course! I'd be happy to help. What are you working on?</p>,
   },
@@ -75,17 +97,12 @@ export const WithActions: Story = {
         role="user"
         icon={UserIcon}
         timestamp={new Date(Date.now() - 60000)}
-        onCopy={() => console.log('Copy user message')}
-        onRetry={() => console.log('Retry message')}
+        onCopy={() => console.log("Copy user message")}
+        onRetry={() => console.log("Retry message")}
       >
         <p>What's the weather like today?</p>
       </ChatMessage>
-      <ChatMessage
-        role="agent"
-        icon={BotIcon}
-        timestamp={new Date()}
-        onCopy={() => console.log('Copy agent message')}
-      >
+      <ChatMessage role="agent" icon={BotIcon} timestamp={new Date()} onCopy={() => console.log("Copy agent message")}>
         <p>It's 22°C and sunny with light winds from the west. No umbrella needed!</p>
       </ChatMessage>
     </div>
@@ -119,7 +136,11 @@ export const WithStatus: Story = {
         icon={BotIcon}
         timestamp={new Date()}
         onCopy={() => {}}
-        status={<Badge variant="success" size="sm">Compliant</Badge>}
+        status={
+          <Badge variant="success" size="sm">
+            Compliant
+          </Badge>
+        }
       >
         <p>The response has been validated against the A2A protocol specification.</p>
       </ChatMessage>
@@ -130,8 +151,12 @@ export const WithStatus: Story = {
         onCopy={() => {}}
         status={
           <>
-            <Badge variant="warning" size="sm">Non-compliant</Badge>
-            <Badge variant="outline" size="sm">2 issues</Badge>
+            <Badge variant="warning" size="sm">
+              Non-compliant
+            </Badge>
+            <Badge variant="outline" size="sm">
+              2 issues
+            </Badge>
           </>
         }
       >

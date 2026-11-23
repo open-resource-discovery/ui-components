@@ -1,4 +1,4 @@
-import { type AriaAttributes, type ReactElement, type ReactNode } from "react";
+import type { AriaAttributes, ReactElement, ReactNode } from "react";
 
 /**
  * Props a component hands to a caller-supplied link renderer.
@@ -10,9 +10,9 @@ import { type AriaAttributes, type ReactElement, type ReactNode } from "react";
  */
 export interface LinkRenderProps {
   /** Class names the component computed for the link surface. Spread onto the element. */
-  "className": string;
+  className: string;
   /** The link's visible content. */
-  "children": ReactNode;
+  children: ReactNode;
   /** Set on the current item so assistive tech can announce it. */
   "aria-current"?: AriaAttributes["aria-current"];
   /** Any additional DOM attributes the component forwards (e.g. `data-testid`, `aria-label`). */

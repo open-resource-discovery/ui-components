@@ -1,40 +1,40 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
-import { ThemeRoot } from "../src/theme/ThemeRoot";
-import { Button } from "../src/components/button";
-import { Input } from "../src/components/input";
-import { Textarea } from "../src/components/textarea";
-import { PasswordInput } from "../src/components/password-input";
-import { Field } from "../src/components/field";
-import { Switch } from "../src/components/switch";
-import { Checkbox } from "../src/components/checkbox";
-import { SimpleSelect } from "../src/components/select";
-import { SimpleCombobox } from "../src/components/combobox";
-import { Badge } from "../src/components/badge";
-import { Spinner } from "../src/components/spinner";
-import { Progress } from "../src/components/progress";
-import { ValidationEntry } from "../src/components/validation-entry";
-import { ValidationPass } from "../src/components/validation-pass";
-import { Card } from "../src/components/card";
-import { InfoCard } from "../src/components/info-card";
-import { Tabs } from "../src/components/tabs";
-import { Dialog } from "../src/components/dialog";
-import { Sheet } from "../src/components/sheet";
-import { Tooltip } from "../src/components/tooltip";
+import { type CSSProperties, useEffect, useMemo, useState } from "react";
 import { Avatar } from "../src/components/avatar";
-import { Separator } from "../src/components/separator";
-import { MarkdownText } from "../src/components/markdown-text";
-import { CodeBlock } from "../src/components/code-block";
-import { HttpLogEntry } from "../src/components/http-log-entry";
+import { Badge } from "../src/components/badge";
 import { Breadcrumbs } from "../src/components/breadcrumbs";
-import { StatusBadge } from "../src/components/status-badge";
+import { Button } from "../src/components/button";
+import { Card } from "../src/components/card";
+import { Checkbox } from "../src/components/checkbox";
+import { CodeBlock } from "../src/components/code-block";
+import { SimpleCombobox } from "../src/components/combobox";
 import { CopyButton } from "../src/components/copy-button";
-import { LinkButton } from "../src/components/link-button";
-import { ExternalLinkButton } from "../src/components/external-link-button";
-import { MetricCard } from "../src/components/metric-card";
+import { Dialog } from "../src/components/dialog";
+import { EmptyState } from "../src/components/empty-state";
 import { EntityCard } from "../src/components/entity-card";
 import { EntityGrid } from "../src/components/entity-grid";
-import { EmptyState } from "../src/components/empty-state";
+import { ExternalLinkButton } from "../src/components/external-link-button";
+import { Field } from "../src/components/field";
+import { HttpLogEntry } from "../src/components/http-log-entry";
+import { InfoCard } from "../src/components/info-card";
+import { Input } from "../src/components/input";
+import { LinkButton } from "../src/components/link-button";
+import { MarkdownText } from "../src/components/markdown-text";
+import { MetricCard } from "../src/components/metric-card";
+import { PasswordInput } from "../src/components/password-input";
+import { Progress } from "../src/components/progress";
+import { SimpleSelect } from "../src/components/select";
+import { Separator } from "../src/components/separator";
+import { Sheet } from "../src/components/sheet";
+import { Spinner } from "../src/components/spinner";
+import { StatusBadge } from "../src/components/status-badge";
+import { Switch } from "../src/components/switch";
+import { Tabs } from "../src/components/tabs";
+import { Textarea } from "../src/components/textarea";
+import { Tooltip } from "../src/components/tooltip";
+import { ValidationEntry } from "../src/components/validation-entry";
+import { ValidationPass } from "../src/components/validation-pass";
+import { ThemeRoot } from "../src/theme/ThemeRoot";
 
 // Mirror of src/theme/tokens.css. Source of truth: that file.
 const LIGHT_DEFAULTS = {
@@ -420,7 +420,8 @@ function EditorSidebar({
             checked={state.mode === "dark"}
             onCheckedChange={(checked) =>
               setState((s) => ({ ...s, mode: checked ? "dark" : "light", colors: {}, componentColors: {} }))
-            }>
+            }
+          >
             <Switch.Thumb />
           </Switch.Root>
         </div>
@@ -519,7 +520,8 @@ function EditorSidebar({
                               type="button"
                               onClick={() => clearComponentColor(token)}
                               className="h-7 px-1.5 text-[10px] text-muted-foreground hover:text-foreground"
-                              aria-label={`Clear ${token}`}>
+                              aria-label={`Clear ${token}`}
+                            >
                               ✕
                             </button>
                           )}
@@ -823,7 +825,8 @@ const SearchIcon = (
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
-    strokeLinejoin="round">
+    strokeLinejoin="round"
+  >
     <circle cx="11" cy="11" r="8" />
     <path d="m21 21-4.3-4.3" />
   </svg>

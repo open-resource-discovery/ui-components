@@ -1,7 +1,7 @@
 import { forwardRef, type ReactNode } from "react";
+import { type ButtonProps, buttonVariants } from "@/components/button";
 import { cn } from "@/utils/cn";
-import { buttonVariants, type ButtonProps } from "@/components/button";
-import { type LinkRender } from "@/utils/link";
+import type { LinkRender } from "@/utils/link";
 
 export interface LinkButtonProps extends Pick<ButtonProps, "variant" | "size"> {
   /** Navigation target for the native `<a>` fallback. Ignored when `render` is provided. */
@@ -25,7 +25,8 @@ const LinkIcon = (
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
-    strokeLinejoin="round">
+    strokeLinejoin="round"
+  >
     <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
     <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
   </svg>
@@ -40,7 +41,7 @@ const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
   ({ href, render, label, icon = LinkIcon, variant = "ghost", size = "icon", className }, ref) => {
     const classes = cn(buttonVariants({ variant, size, className }));
     if (render) {
-      return render({ "className": classes, "children": icon, "aria-label": label });
+      return render({ className: classes, children: icon, "aria-label": label });
     }
     return (
       <a ref={ref} href={href} aria-label={label} className={classes}>

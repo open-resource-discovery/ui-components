@@ -1,8 +1,8 @@
-export { ConnectionCard } from "./ConnectionCard";
 export type {
-  ConnectionCardRootProps,
-  ConnectionCardHeaderProps,
-  ConnectionCardTitleProps,
   ConnectionCardDescriptionProps,
+  ConnectionCardHeaderProps,
+  ConnectionCardRootProps,
   ConnectionCardTagsProps,
+  ConnectionCardTitleProps,
 } from "./ConnectionCard";
+export { ConnectionCard } from "./ConnectionCard";

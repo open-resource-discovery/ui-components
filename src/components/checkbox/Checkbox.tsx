@@ -1,5 +1,5 @@
-import React, { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { Checkbox as BaseCheckbox } from "@base-ui/react/checkbox";
+import React, { type ComponentPropsWithoutRef, forwardRef } from "react";
 import { cn } from "@/utils/cn";
 
 const CheckmarkIcon = (): React.JSX.Element => (
@@ -12,7 +12,8 @@ const CheckmarkIcon = (): React.JSX.Element => (
     stroke="currentColor"
     strokeWidth="3"
     strokeLinecap="round"
-    strokeLinejoin="round">
+    strokeLinejoin="round"
+  >
     <polyline points="20 6 9 17 4 12" />
   </svg>
 );
@@ -29,7 +30,8 @@ const CheckboxRoot = forwardRef<HTMLSpanElement, CheckboxProps>(({ className, ch
         "ordu:inline-flex ordu:h-4 ordu:w-4 ordu:shrink-0 ordu:cursor-pointer ordu:items-center ordu:justify-center ordu:rounded-sm ordu:border ordu:border-checkbox-border ordu:ring-offset-background ordu:focus-visible:outline-none ordu:focus-visible:ring-2 ordu:focus-visible:ring-ring ordu:focus-visible:ring-offset-2 ordu:disabled:cursor-not-allowed ordu:disabled:opacity-50 ordu:data-[checked]:bg-checkbox-bg-checked ordu:data-[checked]:text-checkbox-fg-checked",
         className,
       )}
-      {...props}>
+      {...props}
+    >
       {children}
     </BaseCheckbox.Root>
   );
@@ -44,7 +46,8 @@ const CheckboxIndicator = forwardRef<
     <BaseCheckbox.Indicator
       ref={ref}
       className={cn("ordu:flex ordu:items-center ordu:justify-center ordu:text-current", className)}
-      {...props}>
+      {...props}
+    >
       <CheckmarkIcon />
     </BaseCheckbox.Indicator>
   );

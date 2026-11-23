@@ -1,6 +1,6 @@
-import { forwardRef, Fragment, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import { type ComponentPropsWithoutRef, Fragment, forwardRef, type ReactNode } from "react";
 import { cn } from "@/utils/cn";
-import { type LinkRender } from "@/utils/link";
+import type { LinkRender } from "@/utils/link";
 
 export interface BreadcrumbItem {
   label: ReactNode;
@@ -34,7 +34,8 @@ const DefaultSeparator = (
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
-    strokeLinejoin="round">
+    strokeLinejoin="round"
+  >
     <path d="m9 18 6-6-6-6" />
   </svg>
 );

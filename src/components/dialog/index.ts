@@ -1,14 +1,13 @@
-export { Dialog } from "./Dialog";
 export type {
-  DialogRootProps,
-  DialogTriggerProps,
-  DialogPortalProps,
   DialogBackdropProps,
-  DialogPopupProps,
-  DialogTitleProps,
-  DialogDescriptionProps,
   DialogCloseProps,
+  DialogDescriptionProps,
+  DialogPopupProps,
+  DialogPortalProps,
+  DialogRootProps,
+  DialogTitleProps,
+  DialogTriggerProps,
 } from "./Dialog";
-
-export { SimpleDialog } from "./SimpleDialog";
+export { Dialog } from "./Dialog";
 export type { SimpleDialogProps } from "./SimpleDialog";
+export { SimpleDialog } from "./SimpleDialog";

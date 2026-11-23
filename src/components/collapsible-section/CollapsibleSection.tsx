@@ -1,5 +1,5 @@
-import React, { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
 import { Collapsible } from "@base-ui/react/collapsible";
+import React, { type ComponentPropsWithoutRef, forwardRef, type ReactNode } from "react";
 import { cn } from "@/utils/cn";
 
 /* ----- Root ----- */
@@ -40,7 +40,8 @@ const CollapsibleSectionTrigger = forwardRef<HTMLButtonElement, CollapsibleSecti
         "ordu:group ordu:flex ordu:flex-wrap ordu:items-center ordu:gap-1.5 ordu:text-sm ordu:font-medium ordu:text-muted-foreground ordu:hover:text-foreground ordu:transition-colors ordu:cursor-pointer ordu:w-full",
         className,
       )}
-      {...props}>
+      {...props}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="12"
@@ -51,7 +52,8 @@ const CollapsibleSectionTrigger = forwardRef<HTMLButtonElement, CollapsibleSecti
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="ordu:h-3 ordu:w-3 ordu:shrink-0 ordu:transition-transform ordu:group-data-[panel-open]:rotate-90">
+        className="ordu:h-3 ordu:w-3 ordu:shrink-0 ordu:transition-transform ordu:group-data-[panel-open]:rotate-90"
+      >
         <polyline points="9 18 15 12 9 6" />
       </svg>
       {icon && <span className="ordu:shrink-0 ordu:h-4 ordu:w-4 ordu:[&>svg]:h-full ordu:[&>svg]:w-full">{icon}</span>}

@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Tooltip } from '../src/components/tooltip';
-import { Button } from '../src/components/button';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Button } from "../src/components/button";
+import { Tooltip } from "../src/components/tooltip";
 
 const meta = {
-  title: 'Components/Tooltip',
+  title: "Components/Tooltip",
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 } satisfies Meta;
 
 export default meta;
@@ -42,9 +42,7 @@ export const WithLongContent: Story = {
         </Tooltip.Trigger>
         <Tooltip.Portal>
           <Tooltip.Positioner>
-            <Tooltip.Popup>
-              This tooltip has longer content to demonstrate wrapping behavior.
-            </Tooltip.Popup>
+            <Tooltip.Popup>This tooltip has longer content to demonstrate wrapping behavior.</Tooltip.Popup>
           </Tooltip.Positioner>
         </Tooltip.Portal>
       </Tooltip.Root>

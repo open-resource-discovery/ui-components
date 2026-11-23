@@ -1,6 +1,6 @@
-export { CollapsibleSection } from "./CollapsibleSection";
 export type {
+  CollapsibleSectionContentProps,
   CollapsibleSectionRootProps,
   CollapsibleSectionTriggerProps,
-  CollapsibleSectionContentProps,
 } from "./CollapsibleSection";
+export { CollapsibleSection } from "./CollapsibleSection";

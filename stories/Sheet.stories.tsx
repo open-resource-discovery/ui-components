@@ -1,24 +1,23 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Sheet } from '../src/components/sheet';
-import { SimpleSheet } from '../src/components/sheet';
-import { Button } from '../src/components/button';
-import { Input } from '../src/components/input';
-import { Field } from '../src/components/field';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Button } from "../src/components/button";
+import { Field } from "../src/components/field";
+import { Input } from "../src/components/input";
+import { Sheet, SimpleSheet } from "../src/components/sheet";
 
 const meta = {
-  title: 'Components/Sheet',
+  title: "Components/Sheet",
   component: Sheet.Root,
   parameters: {
-    layout: 'centered',
-    docs: { story: { inline: false, height: '480px' } },
+    layout: "centered",
+    docs: { story: { inline: false, height: "480px" } },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 } satisfies Meta<typeof Sheet.Root>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-function SheetExample({ side }: { side: 'top' | 'right' | 'bottom' | 'left' }) {
+function SheetExample({ side }: { side: "top" | "right" | "bottom" | "left" }) {
   return (
     <Sheet.Root>
       <Sheet.Trigger render={<Button>Open from {side}</Button>} />

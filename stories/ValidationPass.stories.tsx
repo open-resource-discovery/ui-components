@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ValidationPass } from '../src/components/validation-pass';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { ValidationPass } from "../src/components/validation-pass";
 
 const meta = {
-  title: 'Components/ValidationPass',
+  title: "Components/ValidationPass",
   component: ValidationPass,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div style={{ width: "100%", maxWidth: 450 }}>
@@ -25,9 +25,7 @@ export const Default: Story = {
 };
 
 export const WithSuffix: Story = {
-  render: () => (
-    <ValidationPass title="Agent card is valid" suffix=" (v0.3)" />
-  ),
+  render: () => <ValidationPass title="Agent card is valid" suffix=" (v0.3)" />,
 };
 
 export const InPanel: Story = {

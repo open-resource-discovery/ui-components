@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 
+import { fireEvent, render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
 import { IconButton } from "./IconButton";
 
 const Icon = <svg data-testid="idle-icon" aria-hidden="true" viewBox="0 0 24 24" />;

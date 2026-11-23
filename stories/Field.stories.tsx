@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Field } from '../src/components/field';
-import { Input } from '../src/components/input';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Field } from "../src/components/field";
+import { Input } from "../src/components/input";
 
 const meta = {
-  title: 'Components/Field',
+  title: "Components/Field",
   component: Field.Root,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div className="w-full max-w-[320px]">

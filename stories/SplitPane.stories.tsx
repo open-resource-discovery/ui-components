@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { SplitPane } from '../src/components/split-pane';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { SplitPane } from "../src/components/split-pane";
 
 const meta = {
-  title: 'Components/SplitPane',
+  title: "Components/SplitPane",
   component: SplitPane.Root,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div style={{ height: 400 }}>
@@ -21,11 +21,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 function PaneContent({ label, color }: { label: string; color: string }) {
-  return (
-    <div className={`h-full flex items-center justify-center text-sm font-medium ${color}`}>
-      {label}
-    </div>
-  );
+  return <div className={`h-full flex items-center justify-center text-sm font-medium ${color}`}>{label}</div>;
 }
 
 export const TwoPanes: Story = {

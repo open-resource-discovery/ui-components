@@ -1,7 +1,7 @@
-import React, { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { Select as BaseSelect } from "@base-ui/react/select";
-import { cn } from "@/utils/cn";
+import React, { type ComponentPropsWithoutRef, forwardRef } from "react";
 import { usePortalContainer } from "@/theme/ThemeRoot";
+import { cn } from "@/utils/cn";
 
 /* ----- Root ----- */
 type SelectRootProps = ComponentPropsWithoutRef<typeof BaseSelect.Root>;
@@ -49,7 +49,8 @@ const SelectIcon = forwardRef<HTMLSpanElement, SelectIconProps>(({ className, ch
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
-        strokeLinejoin="round">
+        strokeLinejoin="round"
+      >
         <path d="m6 9 6 6 6-6" />
       </svg>
     )}
@@ -122,7 +123,8 @@ const SelectItemIndicator = forwardRef<HTMLSpanElement, SelectItemIndicatorProps
         "ordu:absolute ordu:left-2 ordu:flex ordu:h-3.5 ordu:w-3.5 ordu:items-center ordu:justify-center",
         className,
       )}
-      {...props}>
+      {...props}
+    >
       {children ?? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -133,7 +135,8 @@ const SelectItemIndicator = forwardRef<HTMLSpanElement, SelectItemIndicatorProps
           stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round">
+          strokeLinejoin="round"
+        >
           <polyline points="20 6 9 17 4 12" />
         </svg>
       )}
@@ -178,7 +181,8 @@ const SelectScrollUpArrow = forwardRef<HTMLDivElement, SelectScrollUpArrowProps>
     <BaseSelect.ScrollUpArrow
       ref={ref}
       className={cn("ordu:flex ordu:items-center ordu:justify-center ordu:py-1 ordu:text-muted-foreground", className)}
-      {...props}>
+      {...props}
+    >
       {children ?? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -189,7 +193,8 @@ const SelectScrollUpArrow = forwardRef<HTMLDivElement, SelectScrollUpArrowProps>
           stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round">
+          strokeLinejoin="round"
+        >
           <path d="m18 15-6-6-6 6" />
         </svg>
       )}
@@ -206,7 +211,8 @@ const SelectScrollDownArrow = forwardRef<HTMLDivElement, SelectScrollDownArrowPr
     <BaseSelect.ScrollDownArrow
       ref={ref}
       className={cn("ordu:flex ordu:items-center ordu:justify-center ordu:py-1 ordu:text-muted-foreground", className)}
-      {...props}>
+      {...props}
+    >
       {children ?? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -217,7 +223,8 @@ const SelectScrollDownArrow = forwardRef<HTMLDivElement, SelectScrollDownArrowPr
           stroke="currentColor"
           strokeWidth="2"
           strokeLinecap="round"
-          strokeLinejoin="round">
+          strokeLinejoin="round"
+        >
           <path d="m6 9 6 6 6-6" />
         </svg>
       )}
@@ -248,18 +255,18 @@ export const Select = Object.assign(
 );
 
 export type {
-  SelectRootProps,
-  SelectTriggerProps,
-  SelectValueProps,
+  SelectGroupLabelProps,
+  SelectGroupProps,
   SelectIconProps,
+  SelectItemIndicatorProps,
+  SelectItemProps,
+  SelectItemTextProps,
+  SelectPopupProps,
   SelectPortalProps,
   SelectPositionerProps,
-  SelectPopupProps,
-  SelectItemProps,
-  SelectItemIndicatorProps,
-  SelectItemTextProps,
-  SelectGroupProps,
-  SelectGroupLabelProps,
-  SelectScrollUpArrowProps,
+  SelectRootProps,
   SelectScrollDownArrowProps,
+  SelectScrollUpArrowProps,
+  SelectTriggerProps,
+  SelectValueProps,
 };

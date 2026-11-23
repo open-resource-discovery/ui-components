@@ -1,5 +1,5 @@
-import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { Separator as BaseSeparator } from "@base-ui/react/separator";
+import { type ComponentPropsWithoutRef, forwardRef } from "react";
 import { cn } from "@/utils/cn";
 
 /* ----- Separator ----- */
@@ -21,5 +21,5 @@ const Separator = forwardRef<HTMLDivElement, SeparatorProps>(
 );
 Separator.displayName = "Separator";
 
-export { Separator };
 export type { SeparatorProps };
+export { Separator };

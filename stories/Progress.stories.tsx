@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Progress } from '../src/components/progress';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Progress } from "../src/components/progress";
 
 const meta = {
-  title: 'Components/Progress',
+  title: "Components/Progress",
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div style={{ width: "100%", maxWidth: 300 }}>

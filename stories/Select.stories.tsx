@@ -1,14 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Select } from '../src/components/select';
-import { SimpleSelect } from '../src/components/select';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Select, SimpleSelect } from "../src/components/select";
 
 const meta = {
-  title: 'Components/Select',
+  title: "Components/Select",
   component: Select.Root,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div className="p-8" style={{ width: "100%", maxWidth: 300 }}>
@@ -23,7 +22,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => (
-    <Select.Root defaultValue="streamable-http" items={{ 'streamable-http': 'Streamable HTTP', sse: 'SSE', stdio: 'stdio' }}>
+    <Select.Root
+      defaultValue="streamable-http"
+      items={{ "streamable-http": "Streamable HTTP", sse: "SSE", stdio: "stdio" }}
+    >
       <Select.Trigger>
         <Select.Value placeholder="Select transport..." />
         <Select.Icon />
@@ -52,7 +54,10 @@ export const Default: Story = {
 
 export const WithGroups: Story = {
   render: () => (
-    <Select.Root defaultValue="streamable-http" items={{ 'streamable-http': 'Streamable HTTP', sse: 'SSE', stdio: 'stdio' }}>
+    <Select.Root
+      defaultValue="streamable-http"
+      items={{ "streamable-http": "Streamable HTTP", sse: "SSE", stdio: "stdio" }}
+    >
       <Select.Trigger>
         <Select.Value placeholder="Select transport..." />
         <Select.Icon />
@@ -87,7 +92,7 @@ export const WithGroups: Story = {
 
 export const Disabled: Story = {
   render: () => (
-    <Select.Root defaultValue="streamable-http" disabled items={{ 'streamable-http': 'Streamable HTTP' }}>
+    <Select.Root defaultValue="streamable-http" disabled items={{ "streamable-http": "Streamable HTTP" }}>
       <Select.Trigger>
         <Select.Value placeholder="Select transport..." />
         <Select.Icon />
@@ -107,40 +112,31 @@ export const Disabled: Story = {
 };
 
 const transportItems = [
-  { value: 'streamable-http', label: 'Streamable HTTP' },
-  { value: 'sse', label: 'SSE' },
-  { value: 'stdio', label: 'stdio' },
+  { value: "streamable-http", label: "Streamable HTTP" },
+  { value: "sse", label: "SSE" },
+  { value: "stdio", label: "stdio" },
 ];
 
 export const Simple: Story = {
   render: () => (
-    <SimpleSelect
-      items={transportItems}
-      placeholder="Select transport..."
-      defaultValue="streamable-http"
-    />
+    <SimpleSelect items={transportItems} placeholder="Select transport..." defaultValue="streamable-http" />
   ),
 };
 
 const groupedItems = [
   {
-    label: 'Remote',
+    label: "Remote",
     items: [
-      { value: 'streamable-http', label: 'Streamable HTTP' },
-      { value: 'sse', label: 'SSE' },
+      { value: "streamable-http", label: "Streamable HTTP" },
+      { value: "sse", label: "SSE" },
     ],
   },
   {
-    label: 'Local',
-    items: [{ value: 'stdio', label: 'stdio' }],
+    label: "Local",
+    items: [{ value: "stdio", label: "stdio" }],
   },
 ];
 
 export const SimpleWithGroups: Story = {
-  render: () => (
-    <SimpleSelect
-      items={groupedItems}
-      placeholder="Select transport..."
-    />
-  ),
+  render: () => <SimpleSelect items={groupedItems} placeholder="Select transport..." />,
 };

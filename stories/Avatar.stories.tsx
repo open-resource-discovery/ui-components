@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Avatar } from '../src/components/avatar';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Avatar } from "../src/components/avatar";
 
 const meta = {
-  title: 'Components/Avatar',
+  title: "Components/Avatar",
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 } satisfies Meta;
 
 export default meta;

@@ -1,5 +1,5 @@
-import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { Field as BaseField } from "@base-ui/react/field";
+import { type ComponentPropsWithoutRef, forwardRef } from "react";
 import { cn } from "@/utils/cn";
 
 export interface FieldRootProps extends ComponentPropsWithoutRef<typeof BaseField.Root> {

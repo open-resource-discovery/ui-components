@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { MarkdownText } from '../src/components/markdown-text';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { MarkdownText } from "../src/components/markdown-text";
 
 const meta = {
-  title: 'Components/MarkdownText',
+  title: "Components/MarkdownText",
   component: MarkdownText,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div style={{ width: "100%", maxWidth: 400 }}>
@@ -22,7 +22,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    text: 'This is a **bold** and *italic* markdown text with a [link](https://example.com).',
+    text: "This is a **bold** and *italic* markdown text with a [link](https://example.com).",
   },
 };
 

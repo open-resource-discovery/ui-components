@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useState, useCallback } from "react";
+import { useCallback, useState } from "react";
 import { ScrollArea } from "../src/components/scroll-area";
 
 const meta = {

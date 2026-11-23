@@ -1,4 +1,4 @@
-import React, { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import React, { type ComponentPropsWithoutRef, forwardRef, type ReactNode } from "react";
 import { Dialog } from "./Dialog";
 
 export interface SimpleDialogProps extends Omit<ComponentPropsWithoutRef<"div">, "title" | "children"> {
@@ -35,7 +35,8 @@ export const SimpleDialog = forwardRef<HTMLDivElement, SimpleDialogProps>(
             {showClose && (
               <Dialog.Close
                 aria-label="Close"
-                className="ordu:absolute ordu:right-4 ordu:top-4 ordu:inline-flex ordu:h-6 ordu:w-6 ordu:items-center ordu:justify-center ordu:rounded-sm ordu:text-muted-foreground ordu:opacity-70 ordu:transition-opacity ordu:hover:opacity-100 ordu:focus-visible:outline-none ordu:focus-visible:ring-2 ordu:focus-visible:ring-ring">
+                className="ordu:absolute ordu:right-4 ordu:top-4 ordu:inline-flex ordu:h-6 ordu:w-6 ordu:items-center ordu:justify-center ordu:rounded-sm ordu:text-muted-foreground ordu:opacity-70 ordu:transition-opacity ordu:hover:opacity-100 ordu:focus-visible:outline-none ordu:focus-visible:ring-2 ordu:focus-visible:ring-ring"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="14"
@@ -45,7 +46,8 @@ export const SimpleDialog = forwardRef<HTMLDivElement, SimpleDialogProps>(
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
-                  strokeLinejoin="round">
+                  strokeLinejoin="round"
+                >
                   <path d="M18 6 6 18" />
                   <path d="m6 6 12 12" />
                 </svg>

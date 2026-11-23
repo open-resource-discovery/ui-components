@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { StatusBadge } from '../src/components/status-badge';
-import { ThemeRoot } from '../src/theme/ThemeRoot';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { StatusBadge } from "../src/components/status-badge";
+import { ThemeRoot } from "../src/theme/ThemeRoot";
 
 const meta = {
-  title: 'Metadata UI/StatusBadge',
+  title: "Metadata UI/StatusBadge",
   component: StatusBadge,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 } satisfies Meta<typeof StatusBadge>;
 
 export default meta;
@@ -16,52 +16,52 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    tone: 'neutral',
-    label: 'Draft',
+    tone: "neutral",
+    label: "Draft",
   },
 };
 
 export const Info: Story = {
   args: {
-    tone: 'info',
-    label: 'Proposal',
+    tone: "info",
+    label: "Proposal",
   },
 };
 
 export const Success: Story = {
   args: {
-    tone: 'success',
-    label: 'Active',
+    tone: "success",
+    label: "Active",
   },
 };
 
 export const Warning: Story = {
   args: {
-    tone: 'warning',
-    label: 'Deprecated',
+    tone: "warning",
+    label: "Deprecated",
   },
 };
 
 export const Critical: Story = {
   args: {
-    tone: 'critical',
-    label: 'Failed',
+    tone: "critical",
+    label: "Failed",
   },
 };
 
 export const WithoutDot: Story = {
   args: {
-    tone: 'info',
-    label: 'No dot',
+    tone: "info",
+    label: "No dot",
     dot: false,
   },
 };
 
 export const Small: Story = {
   args: {
-    tone: 'success',
-    size: 'sm',
-    label: 'Active',
+    tone: "success",
+    size: "sm",
+    label: "Active",
   },
 };
 
@@ -78,7 +78,7 @@ export const AllTones: Story = {
 };
 
 export const DarkMode: Story = {
-  parameters: { disableThemeRoot: true, backgrounds: { value: 'dark' } },
+  parameters: { disableThemeRoot: true, backgrounds: { value: "dark" } },
   render: () => (
     <ThemeRoot defaultTheme="dark" style={{ padding: 24 }}>
       <div className="flex flex-wrap gap-2">

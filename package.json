@@ -15,15 +15,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "react",
-    "components",
-    "ui",
-    "accessible",
-    "themeable",
-    "design-system",
-    "open-resource-discovery"
-  ],
+  "keywords": ["react", "components", "ui", "accessible", "themeable", "design-system", "open-resource-discovery"],
   "main": "./dist/ui-components.cjs",
   "module": "./dist/ui-components.js",
   "types": "./dist/index.d.ts",
@@ -40,12 +32,8 @@
     },
     "./styles": "./dist/ui-components.css"
   },
-  "files": [
-    "dist"
-  ],
-  "sideEffects": [
-    "*.css"
-  ],
+  "files": ["dist"],
+  "sideEffects": ["*.css"],
   "scripts": {
     "build": "vite build && npm run verify:css",
     "build:watch": "vite build --watch",
@@ -53,16 +41,20 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "typecheck": "tsc --noEmit",
-    "eslint": "eslint . --fix",
-    "eslint:ci": "eslint .",
-    "prettier": "prettier --write \"**/*.{json,yml,yaml,md}\"",
-    "prettier:ci": "prettier --check \"**/*.{json,yml,yaml,md}\"",
+    "eslint": "npm run lint",
+    "eslint:ci": "npm run lint",
+    "prettier": "npm run format",
+    "prettier:ci": "npm run format:check",
     "verify:css": "node scripts/verify-css-isolation.mjs",
-    "format": "npm run prettier && npm run eslint",
-    "test": "vitest run --passWithNoTests",
-    "test:ci": "jest --ci --collectCoverage",
-    "test:watch": "jest --watchAll",
-    "prepublishOnly": "npm run build"
+    "format": "biome format --write . && oxfmt --no-error-on-unmatched-pattern '**/*.{md,yml,yaml,css,scss,html}'",
+    "test": "vitest run",
+    "test:ci": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "format:check": "biome format . && oxfmt --check --no-error-on-unmatched-pattern '**/*.{md,yml,yaml,css,scss,html}'",
+    "check:tooling": "npm run lint && npm run format:check"
   },
   "peerDependencies": {
     "@monaco-editor/react": "^4.0.0",
@@ -90,20 +82,16 @@
   "devDependencies": {
     "@microsoft/api-extractor": "^7.59.3",
     "@monaco-editor/react": "^4.7.0",
-    "@sap/eslint-config": "^0.5.1",
     "@storybook/addon-docs": "^10.6.0",
     "@storybook/react-vite": "^10.6.0",
     "@tailwindcss/vite": "^4.0.0",
     "@testing-library/jest-dom": "^7.0.0",
     "@testing-library/react": "^16.0.0",
-    "@types/react": "^19.2.15",
-    "@types/react-dom": "^19.0.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "^6.2.1",
     "ajv": "^8.20.0",
-    "eslint": "^10.4.0",
-    "eslint-plugin-storybook": "10.6.5",
     "jsdom": "^31.0.0",
-    "prettier": "^3.9.10",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "shiki": "^4.6.0",
@@ -113,7 +101,9 @@
     "typescript": "^6.0.3",
     "vite": "^8.0.13",
     "vite-plugin-dts": "^5.0.1",
-    "vitest": "^5.1.0"
+    "vitest": "^5.1.0",
+    "@biomejs/biome": "2.6.4",
+    "oxfmt": "0.75.0"
   },
   "engines": {
     "node": ">=22.23.4",

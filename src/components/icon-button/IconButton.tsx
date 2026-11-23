@@ -1,9 +1,10 @@
-import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from "react";
+import { type ButtonHTMLAttributes, forwardRef, type ReactNode } from "react";
+import { type ButtonProps, buttonVariants } from "@/components/button";
 import { cn } from "@/utils/cn";
-import { buttonVariants, type ButtonProps } from "@/components/button";
 
 export interface IconButtonProps
-  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children">, Pick<ButtonProps, "variant" | "size"> {
+  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children">,
+    Pick<ButtonProps, "variant" | "size"> {
   /** Icon shown by default. */
   icon: ReactNode;
   /** Second icon; shown in place of `icon` while `active` is true. */
@@ -33,7 +34,8 @@ const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         type="button"
         aria-label={label}
         className={cn(buttonVariants({ variant, size, className }))}
-        {...props}>
+        {...props}
+      >
         {active && activeIcon ? activeIcon : icon}
         {children}
       </button>

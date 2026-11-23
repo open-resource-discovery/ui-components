@@ -1,4 +1,4 @@
-import { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import { type ComponentPropsWithoutRef, forwardRef, type ReactNode } from "react";
 import { cn } from "@/utils/cn";
 
 export type ChatMessageProps = ComponentPropsWithoutRef<"div"> & {
@@ -24,7 +24,8 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(
       <div
         ref={ref}
         className={cn("ordu:group ordu:flex", isUser ? "ordu:justify-end" : "ordu:justify-start", className)}
-        {...props}>
+        {...props}
+      >
         <div className={cn("ordu:flex ordu:items-end ordu:gap-2", isUser && "ordu:flex-row-reverse")}>
           {icon && <div className="ordu:shrink-0 ordu:w-6 ordu:h-6">{icon}</div>}
           <div className="ordu:flex ordu:flex-col">
@@ -35,7 +36,8 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(
                   isUser
                     ? "ordu:rounded-br-sm ordu:bg-primary ordu:text-primary-foreground"
                     : "ordu:rounded-bl-sm ordu:bg-muted ordu:text-foreground",
-                )}>
+                )}
+              >
                 {status && <div className="ordu:flex ordu:items-center ordu:gap-1.5 ordu:mb-2">{status}</div>}
                 {children}
               </div>
@@ -46,7 +48,8 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(
                       type="button"
                       onClick={onCopy}
                       className="ordu:h-6 ordu:w-6 ordu:inline-flex ordu:items-center ordu:justify-center ordu:rounded-md ordu:text-muted-foreground ordu:hover:text-foreground ordu:hover:bg-accent ordu:transition-colors"
-                      aria-label="Copy">
+                      aria-label="Copy"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="14"
@@ -56,7 +59,8 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(
                         stroke="currentColor"
                         strokeWidth="2"
                         strokeLinecap="round"
-                        strokeLinejoin="round">
+                        strokeLinejoin="round"
+                      >
                         <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
                         <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
                       </svg>
@@ -67,7 +71,8 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(
                       type="button"
                       onClick={onRetry}
                       className="ordu:h-6 ordu:w-6 ordu:inline-flex ordu:items-center ordu:justify-center ordu:rounded-md ordu:text-muted-foreground ordu:hover:text-foreground ordu:hover:bg-accent ordu:transition-colors"
-                      aria-label="Retry">
+                      aria-label="Retry"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="14"
@@ -77,7 +82,8 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(
                         stroke="currentColor"
                         strokeWidth="2"
                         strokeLinecap="round"
-                        strokeLinejoin="round">
+                        strokeLinejoin="round"
+                      >
                         <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" />
                         <path d="M21 3v5h-5" />
                         <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
@@ -93,7 +99,8 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(
                 className={cn(
                   "ordu:text-[10px] ordu:text-muted-foreground ordu:mt-1",
                   isUser ? "ordu:text-right" : "ordu:text-left",
-                )}>
+                )}
+              >
                 {formattedTime}
               </span>
             )}

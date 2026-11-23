@@ -1,9 +1,9 @@
-import { defineConfig, type Plugin } from "vite";
-import react from "@vitejs/plugin-react";
-import tailwindcss from "@tailwindcss/vite";
-import dts from "vite-plugin-dts";
 import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
+import tailwindcss from "@tailwindcss/vite";
+import react from "@vitejs/plugin-react";
+import { defineConfig, type Plugin } from "vite";
+import dts from "vite-plugin-dts";
 
 function namespaceTailwindInternals(): Plugin {
   return {
@@ -75,7 +75,7 @@ export default defineConfig({
       ],
       output: {
         globals: {
-          "react": "React",
+          react: "React",
           "react-dom": "ReactDOM",
         },
       },

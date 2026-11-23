@@ -1,15 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Card } from '../src/components/card';
-import { SimpleCard } from '../src/components/card';
-import { Button } from '../src/components/button';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Button } from "../src/components/button";
+import { Card, SimpleCard } from "../src/components/card";
 
 const meta = {
-  title: 'Components/Card',
+  title: "Components/Card",
   component: Card,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 } satisfies Meta<typeof Card>;
 
 export default meta;
@@ -42,7 +41,9 @@ export const Simple: Story = {
       content={<p className="text-sm text-muted-foreground">Check your inbox for the latest updates.</p>}
       buttons={
         <>
-          <Button variant="outline" size="sm">Dismiss</Button>
+          <Button variant="outline" size="sm">
+            Dismiss
+          </Button>
           <Button size="sm">View All</Button>
         </>
       }
@@ -51,10 +52,5 @@ export const Simple: Story = {
 };
 
 export const MinimalSimpleCard: Story = {
-  render: () => (
-    <SimpleCard
-      style={{ width: "100%", maxWidth: 350 }}
-      title="Simple Title Only"
-    />
-  ),
+  render: () => <SimpleCard style={{ width: "100%", maxWidth: 350 }} title="Simple Title Only" />,
 };

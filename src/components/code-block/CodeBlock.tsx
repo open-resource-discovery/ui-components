@@ -1,18 +1,18 @@
-import { forwardRef, useCallback, useMemo, useState, type ComponentPropsWithoutRef } from "react";
-import { cn } from "@/utils/cn";
-import { Button } from "@/components/button";
+import type { HighlightOptions } from "highlight.js";
 import hljs from "highlight.js/lib/core";
+import bash from "highlight.js/lib/languages/bash";
+import css from "highlight.js/lib/languages/css";
+import javascript from "highlight.js/lib/languages/javascript";
 import json from "highlight.js/lib/languages/json";
+import markdown from "highlight.js/lib/languages/markdown";
+import python from "highlight.js/lib/languages/python";
+import sql from "highlight.js/lib/languages/sql";
+import typescript from "highlight.js/lib/languages/typescript";
 import xml from "highlight.js/lib/languages/xml";
 import yaml from "highlight.js/lib/languages/yaml";
-import bash from "highlight.js/lib/languages/bash";
-import typescript from "highlight.js/lib/languages/typescript";
-import javascript from "highlight.js/lib/languages/javascript";
-import css from "highlight.js/lib/languages/css";
-import markdown from "highlight.js/lib/languages/markdown";
-import sql from "highlight.js/lib/languages/sql";
-import python from "highlight.js/lib/languages/python";
-import type { HighlightOptions } from "highlight.js";
+import { type ComponentPropsWithoutRef, forwardRef, useCallback, useMemo, useState } from "react";
+import { Button } from "@/components/button";
+import { cn } from "@/utils/cn";
 
 type HighlighterLike = {
   codeToHtml: (code: string, options: Record<string, unknown>) => string;
@@ -113,7 +113,8 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
           !filename &&
             "ordu:absolute ordu:top-2 ordu:right-2 ordu:opacity-0 ordu:group-hover:opacity-100 ordu:transition-opacity",
         )}
-        aria-label={copied ? "Copied" : "Copy code"}>
+        aria-label={copied ? "Copied" : "Copy code"}
+      >
         {copied ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +125,8 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
             stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
-            strokeLinejoin="round">
+            strokeLinejoin="round"
+          >
             <polyline points="20 6 9 17 4 12" />
           </svg>
         ) : (
@@ -137,7 +139,8 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
             stroke="currentColor"
             strokeWidth="2"
             strokeLinecap="round"
-            strokeLinejoin="round">
+            strokeLinejoin="round"
+          >
             <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
             <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
           </svg>
@@ -152,7 +155,8 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
           "ord-code-block ordu:group ordu:rounded-[var(--ord-radius)] ordu:border ordu:bg-code ordu:overflow-hidden",
           className,
         )}
-        {...props}>
+        {...props}
+      >
         {filename && (
           <div className="ordu:flex ordu:items-center ordu:gap-2 ordu:px-3 ordu:py-2 ordu:border-b ordu:text-xs ordu:text-code-foreground">
             <svg
@@ -165,7 +169,8 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="ordu:shrink-0">
+              className="ordu:shrink-0"
+            >
               <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
               <path d="M14 2v4a2 2 0 0 0 2 2h4" />
             </svg>

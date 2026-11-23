@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ChatInput } from '../src/components/chat-input';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { ChatInput } from "../src/components/chat-input";
 
 const meta = {
-  title: 'Components/ChatInput',
+  title: "Components/ChatInput",
   component: ChatInput,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div style={{ width: "100%", maxWidth: 400 }}>
@@ -22,14 +22,14 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    placeholder: 'Type a message...',
-    onSubmit: (value) => console.log('Submitted:', value),
+    placeholder: "Type a message...",
+    onSubmit: (value) => console.log("Submitted:", value),
   },
 };
 
 export const Disabled: Story = {
   args: {
-    placeholder: 'Connect to start chatting...',
+    placeholder: "Connect to start chatting...",
     disabled: true,
   },
 };
@@ -37,6 +37,6 @@ export const Disabled: Story = {
 export const Loading: Story = {
   args: {
     loading: true,
-    onCancel: () => console.log('Cancelled'),
+    onCancel: () => console.log("Cancelled"),
   },
 };

@@ -1,2 +1,2 @@
+export type { ProgressIndicatorProps, ProgressRootProps, ProgressTrackProps } from "./Progress";
 export { Progress } from "./Progress";
-export type { ProgressRootProps, ProgressTrackProps, ProgressIndicatorProps } from "./Progress";

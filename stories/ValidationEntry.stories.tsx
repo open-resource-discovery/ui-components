@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ValidationEntry } from '../src/components/validation-entry';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { ValidationEntry } from "../src/components/validation-entry";
 
 const meta = {
-  title: 'Components/ValidationEntry',
+  title: "Components/ValidationEntry",
   component: ValidationEntry,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div style={{ width: "100%", maxWidth: 450 }}>
@@ -22,11 +22,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Pass: Story = {
   render: () => (
-    <ValidationEntry
-      status="pass"
-      rule="valid-tool-name"
-      message="All tool names follow the naming convention."
-    />
+    <ValidationEntry status="pass" rule="valid-tool-name" message="All tool names follow the naming convention." />
   ),
 };
 
@@ -67,16 +63,8 @@ export const Multiple: Story = {
         message="Tool description exceeds recommended 200 character limit."
         path="/tools/0/description"
       />
-      <ValidationEntry
-        status="pass"
-        rule="valid-tool-name"
-        message="All tool names follow the naming convention."
-      />
-      <ValidationEntry
-        status="pass"
-        rule="unique-ids"
-        message="All resource IDs are unique."
-      />
+      <ValidationEntry status="pass" rule="valid-tool-name" message="All tool names follow the naming convention." />
+      <ValidationEntry status="pass" rule="unique-ids" message="All resource IDs are unique." />
     </div>
   ),
 };

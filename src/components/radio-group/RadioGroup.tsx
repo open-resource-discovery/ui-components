@@ -1,5 +1,6 @@
-import React, { type ComponentPropsWithoutRef } from "react";
 import { RadioGroup as BaseRadioGroup } from "@base-ui/react/radio-group";
+import type React from "react";
+import type { ComponentPropsWithoutRef } from "react";
 import { cn } from "@/utils/cn";
 
 export interface RadioGroupProps extends ComponentPropsWithoutRef<typeof BaseRadioGroup> {

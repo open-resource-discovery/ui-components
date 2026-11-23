@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { CollapsibleSection } from '../src/components/collapsible-section';
-import { Badge } from '../src/components/badge';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Badge } from "../src/components/badge";
+import { CollapsibleSection } from "../src/components/collapsible-section";
 
 const meta = {
-  title: 'Components/CollapsibleSection',
+  title: "Components/CollapsibleSection",
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div style={{ width: "100%", maxWidth: 400 }}>
@@ -21,13 +21,29 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const WrenchIcon = (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
   </svg>
 );
 
 const CodeIcon = (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polyline points="16 18 22 12 16 6" />
     <polyline points="8 6 2 12 8 18" />
   </svg>
@@ -39,7 +55,7 @@ export const Default: Story = {
       <CollapsibleSection.Trigger>Input Schema</CollapsibleSection.Trigger>
       <CollapsibleSection.Content>
         <pre className="text-xs bg-muted p-2 rounded-md">
-          {JSON.stringify({ type: 'object', properties: { name: { type: 'string' } } }, null, 2)}
+          {JSON.stringify({ type: "object", properties: { name: { type: "string" } } }, null, 2)}
         </pre>
       </CollapsibleSection.Content>
     </CollapsibleSection.Root>
@@ -68,8 +84,12 @@ export const WithBadges: Story = {
         icon={CodeIcon}
         badges={
           <>
-            <Badge variant="secondary" size="sm">required</Badge>
-            <Badge variant="outline" size="sm">v2</Badge>
+            <Badge variant="secondary" size="sm">
+              required
+            </Badge>
+            <Badge variant="outline" size="sm">
+              v2
+            </Badge>
           </>
         }
       >
@@ -77,7 +97,7 @@ export const WithBadges: Story = {
       </CollapsibleSection.Trigger>
       <CollapsibleSection.Content>
         <pre className="text-xs bg-muted p-2 rounded-md mt-1">
-          {JSON.stringify({ type: 'object', properties: { query: { type: 'string' } }, required: ['query'] }, null, 2)}
+          {JSON.stringify({ type: "object", properties: { query: { type: "string" } }, required: ["query"] }, null, 2)}
         </pre>
       </CollapsibleSection.Content>
     </CollapsibleSection.Root>
@@ -95,9 +115,11 @@ export const WithDescription: Story = {
       </CollapsibleSection.Trigger>
       <CollapsibleSection.Content>
         <div className="pl-[18px] space-y-2">
-          <p className="text-sm text-muted-foreground">Fetches current weather data for a given city using the OpenWeather API.</p>
+          <p className="text-sm text-muted-foreground">
+            Fetches current weather data for a given city using the OpenWeather API.
+          </p>
           <pre className="text-xs bg-muted p-2 rounded-md">
-            {JSON.stringify({ type: 'object', properties: { city: { type: 'string' } }, required: ['city'] }, null, 2)}
+            {JSON.stringify({ type: "object", properties: { city: { type: "string" } }, required: ["city"] }, null, 2)}
           </pre>
         </div>
       </CollapsibleSection.Content>
@@ -110,7 +132,11 @@ export const Full: Story = {
     <CollapsibleSection.Root>
       <CollapsibleSection.Trigger
         icon={WrenchIcon}
-        badges={<Badge variant="success" size="sm">active</Badge>}
+        badges={
+          <Badge variant="success" size="sm">
+            active
+          </Badge>
+        }
         description="Search documentation and return relevant snippets."
       >
         search_docs
@@ -119,7 +145,11 @@ export const Full: Story = {
         <div className="pl-[18px] space-y-2">
           <p className="text-sm">Search documentation and return relevant snippets.</p>
           <pre className="text-xs bg-muted p-2 rounded-md">
-            {JSON.stringify({ type: 'object', properties: { query: { type: 'string' }, limit: { type: 'number', default: 5 } } }, null, 2)}
+            {JSON.stringify(
+              { type: "object", properties: { query: { type: "string" }, limit: { type: "number", default: 5 } } },
+              null,
+              2,
+            )}
           </pre>
         </div>
       </CollapsibleSection.Content>
@@ -145,14 +175,22 @@ export const Bordered: Story = {
     <CollapsibleSection.Root bordered>
       <CollapsibleSection.Trigger
         icon={WrenchIcon}
-        badges={<Badge variant="success" size="sm">active</Badge>}
+        badges={
+          <Badge variant="success" size="sm">
+            active
+          </Badge>
+        }
         description="Search documentation and return relevant snippets."
       >
         search_docs
       </CollapsibleSection.Trigger>
       <CollapsibleSection.Content>
         <pre className="text-xs bg-muted p-2 rounded-md">
-          {JSON.stringify({ type: 'object', properties: { query: { type: 'string' }, limit: { type: 'number' } } }, null, 2)}
+          {JSON.stringify(
+            { type: "object", properties: { query: { type: "string" }, limit: { type: "number" } } },
+            null,
+            2,
+          )}
         </pre>
       </CollapsibleSection.Content>
     </CollapsibleSection.Root>
@@ -168,17 +206,28 @@ export const MultipleNonBordered: Story = {
         </CollapsibleSection.Trigger>
         <CollapsibleSection.Content>
           <pre className="text-xs bg-muted p-2 rounded-md">
-            {JSON.stringify({ type: 'object', properties: { city: { type: 'string' } }, required: ['city'] }, null, 2)}
+            {JSON.stringify({ type: "object", properties: { city: { type: "string" } }, required: ["city"] }, null, 2)}
           </pre>
         </CollapsibleSection.Content>
       </CollapsibleSection.Root>
       <CollapsibleSection.Root>
-        <CollapsibleSection.Trigger icon={CodeIcon} badges={<Badge variant="secondary" size="sm">v2</Badge>}>
+        <CollapsibleSection.Trigger
+          icon={CodeIcon}
+          badges={
+            <Badge variant="secondary" size="sm">
+              v2
+            </Badge>
+          }
+        >
           search_docs
         </CollapsibleSection.Trigger>
         <CollapsibleSection.Content>
           <pre className="text-xs bg-muted p-2 rounded-md">
-            {JSON.stringify({ type: 'object', properties: { query: { type: 'string' } }, required: ['query'] }, null, 2)}
+            {JSON.stringify(
+              { type: "object", properties: { query: { type: "string" } }, required: ["query"] },
+              null,
+              2,
+            )}
           </pre>
         </CollapsibleSection.Content>
       </CollapsibleSection.Root>
@@ -188,7 +237,7 @@ export const MultipleNonBordered: Story = {
         </CollapsibleSection.Trigger>
         <CollapsibleSection.Content>
           <pre className="text-xs bg-muted p-2 rounded-md">
-            {JSON.stringify({ type: 'object', properties: { sql: { type: 'string' } }, required: ['sql'] }, null, 2)}
+            {JSON.stringify({ type: "object", properties: { sql: { type: "string" } }, required: ["sql"] }, null, 2)}
           </pre>
         </CollapsibleSection.Content>
       </CollapsibleSection.Root>
@@ -200,22 +249,41 @@ export const MultipleBordered: Story = {
   render: () => (
     <div className="space-y-2">
       <CollapsibleSection.Root bordered>
-        <CollapsibleSection.Trigger icon={WrenchIcon} badges={<Badge variant="success" size="sm">active</Badge>} description="Fetches current weather data.">
+        <CollapsibleSection.Trigger
+          icon={WrenchIcon}
+          badges={
+            <Badge variant="success" size="sm">
+              active
+            </Badge>
+          }
+          description="Fetches current weather data."
+        >
           get_weather
         </CollapsibleSection.Trigger>
         <CollapsibleSection.Content>
           <pre className="text-xs bg-muted p-2 rounded-md">
-            {JSON.stringify({ type: 'object', properties: { city: { type: 'string' } }, required: ['city'] }, null, 2)}
+            {JSON.stringify({ type: "object", properties: { city: { type: "string" } }, required: ["city"] }, null, 2)}
           </pre>
         </CollapsibleSection.Content>
       </CollapsibleSection.Root>
       <CollapsibleSection.Root bordered>
-        <CollapsibleSection.Trigger icon={CodeIcon} badges={<Badge variant="secondary" size="sm">v2</Badge>}>
+        <CollapsibleSection.Trigger
+          icon={CodeIcon}
+          badges={
+            <Badge variant="secondary" size="sm">
+              v2
+            </Badge>
+          }
+        >
           search_docs
         </CollapsibleSection.Trigger>
         <CollapsibleSection.Content>
           <pre className="text-xs bg-muted p-2 rounded-md">
-            {JSON.stringify({ type: 'object', properties: { query: { type: 'string' } }, required: ['query'] }, null, 2)}
+            {JSON.stringify(
+              { type: "object", properties: { query: { type: "string" } }, required: ["query"] },
+              null,
+              2,
+            )}
           </pre>
         </CollapsibleSection.Content>
       </CollapsibleSection.Root>
@@ -225,7 +293,7 @@ export const MultipleBordered: Story = {
         </CollapsibleSection.Trigger>
         <CollapsibleSection.Content>
           <pre className="text-xs bg-muted p-2 rounded-md">
-            {JSON.stringify({ type: 'object', properties: { sql: { type: 'string' } }, required: ['sql'] }, null, 2)}
+            {JSON.stringify({ type: "object", properties: { sql: { type: "string" } }, required: ["sql"] }, null, 2)}
           </pre>
         </CollapsibleSection.Content>
       </CollapsibleSection.Root>

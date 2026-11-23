@@ -1,4 +1,4 @@
-import React, { forwardRef, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import React, { type ComponentPropsWithoutRef, forwardRef, type ReactNode } from "react";
 import { cn } from "@/utils/cn";
 
 /* ----- Root ----- */
@@ -36,7 +36,8 @@ function InfoCardIcon({ children, className }: InfoCardIconProps): React.JSX.Ele
       className={cn(
         "ordu:flex ordu:h-10 ordu:w-10 ordu:shrink-0 ordu:items-center ordu:justify-center ordu:rounded-lg ordu:border ordu:bg-muted",
         className,
-      )}>
+      )}
+    >
       {children ?? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +49,8 @@ function InfoCardIcon({ children, className }: InfoCardIconProps): React.JSX.Ele
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="ordu:text-muted-foreground">
+          className="ordu:text-muted-foreground"
+        >
           <circle cx="12" cy="12" r="10" />
           <path d="M12 16v-4" />
           <path d="M12 8h.01" />

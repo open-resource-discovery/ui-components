@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { useState } from 'react';
-import { CodeEditor } from '../src/components/code-editor';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useState } from "react";
+import { CodeEditor } from "../src/components/code-editor";
 
 const meta = {
-  title: 'Components/CodeEditor',
+  title: "Components/CodeEditor",
   component: CodeEditor,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div style={{ width: "100%", maxWidth: 600, height: 400 }}>
@@ -23,15 +23,15 @@ type Story = StoryObj<typeof meta>;
 
 const sampleJson = JSON.stringify(
   {
-    name: 'get_weather',
-    description: 'Fetches current weather data for a given city.',
+    name: "get_weather",
+    description: "Fetches current weather data for a given city.",
     inputSchema: {
-      type: 'object',
+      type: "object",
       properties: {
-        city: { type: 'string', description: 'City name' },
-        units: { type: 'string', enum: ['metric', 'imperial'], default: 'metric' },
+        city: { type: "string", description: "City name" },
+        units: { type: "string", enum: ["metric", "imperial"], default: "metric" },
       },
-      required: ['city'],
+      required: ["city"],
     },
   },
   null,
@@ -40,15 +40,7 @@ const sampleJson = JSON.stringify(
 
 function ControlledEditor(props: { readOnly?: boolean; showToolbar?: boolean }) {
   const [value, setValue] = useState(sampleJson);
-  return (
-    <CodeEditor
-      value={value}
-      onChange={setValue}
-      defaultValue={sampleJson}
-      minHeight="350px"
-      {...props}
-    />
-  );
+  return <CodeEditor value={value} onChange={setValue} defaultValue={sampleJson} minHeight="350px" {...props} />;
 }
 
 export const Default: Story = {

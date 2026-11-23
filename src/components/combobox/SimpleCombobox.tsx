@@ -1,6 +1,6 @@
-import React, { forwardRef, useState, useMemo, type ComponentPropsWithoutRef } from "react";
-import { Combobox } from "./Combobox";
+import React, { type ComponentPropsWithoutRef, forwardRef, useMemo, useState } from "react";
 import { cn } from "@/utils/cn";
+import { Combobox } from "./Combobox";
 
 export interface ComboboxItem {
   value: string;
@@ -42,7 +42,8 @@ export const SimpleCombobox = forwardRef<HTMLDivElement, SimpleComboboxProps>(
           onInputValueChange={(val) => {
             setInputValue(val);
           }}
-          disabled={disabled}>
+          disabled={disabled}
+        >
           <Combobox.Input placeholder={placeholder} />
           <Combobox.Portal>
             <Combobox.Positioner>

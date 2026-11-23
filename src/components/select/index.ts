@@ -1,20 +1,19 @@
-export { Select } from "./Select";
 export type {
-  SelectRootProps,
-  SelectTriggerProps,
-  SelectValueProps,
+  SelectGroupLabelProps,
+  SelectGroupProps,
   SelectIconProps,
+  SelectItemIndicatorProps,
+  SelectItemProps,
+  SelectItemTextProps,
+  SelectPopupProps,
   SelectPortalProps,
   SelectPositionerProps,
-  SelectPopupProps,
-  SelectItemProps,
-  SelectItemIndicatorProps,
-  SelectItemTextProps,
-  SelectGroupProps,
-  SelectGroupLabelProps,
-  SelectScrollUpArrowProps,
+  SelectRootProps,
   SelectScrollDownArrowProps,
+  SelectScrollUpArrowProps,
+  SelectTriggerProps,
+  SelectValueProps,
 } from "./Select";
-
+export { Select } from "./Select";
+export type { SelectGroup, SelectItem, SimpleSelectProps } from "./SimpleSelect";
 export { SimpleSelect } from "./SimpleSelect";
-export type { SimpleSelectProps, SelectItem, SelectGroup } from "./SimpleSelect";

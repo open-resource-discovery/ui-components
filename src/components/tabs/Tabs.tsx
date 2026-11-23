@@ -1,5 +1,5 @@
-import { forwardRef, type ComponentPropsWithoutRef } from "react";
 import { Tabs as BaseTabs } from "@base-ui/react/tabs";
+import { type ComponentPropsWithoutRef, forwardRef } from "react";
 import { cn } from "@/utils/cn";
 
 /* ----- Root ----- */
@@ -82,4 +82,4 @@ export const Tabs = Object.assign(
   },
 );
 
-export type { TabsRootProps, TabsListProps, TabsTabProps, TabsPanelProps, TabsIndicatorProps };
+export type { TabsIndicatorProps, TabsListProps, TabsPanelProps, TabsRootProps, TabsTabProps };

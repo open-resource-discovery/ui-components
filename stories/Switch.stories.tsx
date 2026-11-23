@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Switch } from '../src/components/switch';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Switch } from "../src/components/switch";
 
 const meta = {
-  title: 'Components/Switch',
+  title: "Components/Switch",
   component: Switch.Root,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   decorators: [
     (Story) => (
       <div style={{ padding: 20 }}>
