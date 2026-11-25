@@ -6,3 +6,4 @@ storybook-static
 .claude/*
 !.claude/skills
 test_consumers
+/coverage/

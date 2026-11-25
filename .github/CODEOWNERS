@@ -3,3 +3,5 @@
 /renovate.json @open-resource-discovery/ui-components-admin
 /package.json @open-resource-discovery/ui-components-admin
 /package-lock.json @open-resource-discovery/ui-components-admin
+/npmrc @open-resource-discovery/ui-components-admin
+/SECURITY_INSTALL.md @open-resource-discovery/ui-components-admin
