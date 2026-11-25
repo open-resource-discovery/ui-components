@@ -62,7 +62,8 @@
     "test": "vitest run --passWithNoTests",
     "test:ci": "vitest run --coverage --passWithNoTests",
     "test:watch": "vitest",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "publish:package": "npm run build && npm publish"
   },
   "peerDependencies": {
     "@monaco-editor/react": "^4.0.0",

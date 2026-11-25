@@ -35,7 +35,7 @@ jobs:
           STORYBOOK_BASE_URL: /pr-preview/ui-components/pr-${{ github.event.pull_request.number }}/
         run: |
           set -euo pipefail
-          npm ci
+          npm ci --ignore-scripts
           npm run build-storybook
 
       - name: PR preview
