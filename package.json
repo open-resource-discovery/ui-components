@@ -60,9 +60,10 @@
     "verify:css": "node scripts/verify-css-isolation.mjs",
     "format": "npm run prettier && npm run eslint",
     "test": "vitest run --passWithNoTests",
-    "test:ci": "jest --ci --collectCoverage",
-    "test:watch": "jest --watchAll",
-    "prepublishOnly": "npm run build"
+    "test:ci": "vitest run --coverage --passWithNoTests",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build",
+    "publish:package": "npm run build && npm publish"
   },
   "peerDependencies": {
     "@monaco-editor/react": "^4.0.0",
@@ -113,7 +114,8 @@
     "typescript": "^6.0.3",
     "vite": "^8.0.13",
     "vite-plugin-dts": "^5.0.1",
-    "vitest": "^5.1.0"
+    "vitest": "^5.1.0",
+    "@vitest/coverage-v8": "5.1.0"
   },
   "engines": {
     "node": ">=22.23.4",
@@ -121,5 +123,16 @@
   },
   "overrides": {
     "dompurify": "^3.4.5"
+  },
+  "packageManager": "npm@11.20.0",
+  "devEngines": {
+    "packageManager": {
+      "name": "npm",
+      "version": ">=11.20.0",
+      "onFail": "error"
+    }
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": false
   }
 }

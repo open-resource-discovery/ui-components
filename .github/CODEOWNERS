@@ -1,0 +1,9 @@
+# Review owners for CI and build configuration.
+/.github/ @open-resource-discovery/ui-components-admin
+/renovate.json @open-resource-discovery/ui-components-admin
+/package.json @open-resource-discovery/ui-components-admin
+/package-lock.json @open-resource-discovery/ui-components-admin
+/npmrc @open-resource-discovery/ui-components-admin
+
+# Review the installer policy with the corresponding package owners.
+/.npmrc @open-resource-discovery/ui-components-admin
